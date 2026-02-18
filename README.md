@@ -32,7 +32,8 @@ Note: The project pins/builds with `uv_build`. Standard `pip` also works as long
 
 Using uv (recommended):
 - If you don't have uv: https://docs.astral.sh/uv/
-- Install the CLI directly from GitHub (no clone):
+
+#### Install the CLI directly from GitHub (no clone):
 
 ```
 uv tool install git+ssh://git@github.com/PyDofus/pydofus3.git
@@ -40,7 +41,7 @@ uv tool install git+ssh://git@github.com/PyDofus/pydofus3.git
 pydofus3 --help
 ```
 
-- from the repo root:
+#### Install from the repo root
 ```
 uv sync
 ```
@@ -51,7 +52,7 @@ This creates a virtualenv and installs all dependencies. Then run the CLI with:
 uv run pydofus3 --help
 ```
 
-- To add as a dependency in another uv project:
+#### add as a dependency in another uv project:
 
 ```
 uv add "git+ssh://git@github.com/PyDofus/pydofus3.git" --raw
