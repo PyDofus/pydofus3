@@ -112,7 +112,7 @@ wheels = [
 [[package]]
 name = "catalog"
 version = "0.1.0"
-source = { git = "ssh://git@github.com/souff/catalog.git#b5b9786a55bf81beab04f1092785c8ea5269b386" }
+source = { git = "ssh://git@github.com/PyDofus/catalog.git#b5b9786a55bf81beab04f1092785c8ea5269b386" }
 dependencies = [
     { name = "orjson" },
     { name = "pydantic" },
@@ -810,7 +810,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "catalog", git = "ssh://git@github.com/souff/catalog.git" },
+    { name = "catalog", git = "ssh://git@github.com/PyDofus/catalog.git" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.129.0" },
     { name = "fpng-py", git = "https://github.com/K0lb3/fpng_py.git" },
     { name = "moviepy", specifier = ">=2.2.1" },

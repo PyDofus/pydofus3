@@ -5,7 +5,7 @@ description = ""
 readme = "README.md"
 requires-python = '>=3.14'
 dependencies = [
-    "catalog @ git+ssh://git@github.com/souff/catalog.git",
+    "catalog @ git+ssh://git@github.com/PyDofus/catalog.git",
     "fastapi[standard]>=0.129.0",
     "fpng-py @ https://github.com/K0lb3/fpng_py.git",
     "moviepy>=2.2.1",
