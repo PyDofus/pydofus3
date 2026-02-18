@@ -1,0 +1,12 @@
+from pydofus3.not_generated.base import D2oData
+from typing import ClassVar
+
+from pydofus3.not_generated.base import MyBaseModel
+
+
+class MapsCoordinateData(D2oData):
+	bundle_name: ClassVar[str] = "mapscoordinatesdataroot"
+
+	compressedCoords: int
+	mapIds: list[int]
+

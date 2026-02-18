@@ -1,0 +1,35 @@
+from typing import Annotated
+from pydofus3.not_generated.base import FlagBaseModel
+
+
+class MapInformationFlags(FlagBaseModel):
+	CapabilityAllowChallenge : Annotated[bool,1]
+	CapabilityAllowAggression : Annotated[bool,2]
+	CapabilityAllowTeleportTo : Annotated[bool,4]
+	CapabilityAllowTeleportFrom : Annotated[bool,8]
+	CapabilityAllowExchangesBetweenPlayers : Annotated[bool,16]
+	CapabilityAllowHumanVendor : Annotated[bool,32]
+	CapabilityAllowCollector : Annotated[bool,64]
+	CapabilityAllowSoulCapture : Annotated[bool,128]
+	CapabilityAllowSoulSummon : Annotated[bool,256]
+	CapabilityAllowTavernRegen : Annotated[bool,512]
+	CapabilityAllowTombMode : Annotated[bool,1024]
+	CapabilityAllowTeleportEverywhere : Annotated[bool,2048]
+	CapabilityAllowFightChallenges : Annotated[bool,4096]
+	CapabilityAllowMonsterRespawn : Annotated[bool,8192]
+	CapabilityAllowMonsterFight : Annotated[bool,16384]
+	CapabilityAllowMount : Annotated[bool,32768]
+	CapabilityAllowObjectDisposal : Annotated[bool,65536]
+	CapabilityAllowUnderwater : Annotated[bool,131072]
+	CapabilityAllowPvp1V1 : Annotated[bool,262144]
+	CapabilityAllowPvp3V3 : Annotated[bool,524288]
+	CapabilityAllowMonsterAggression : Annotated[bool,1048576]
+	AllCapabilitiesMask : Annotated[bool,2097151]
+	Outdoor : Annotated[bool,2097152]
+	ShowNameOnFingerpost : Annotated[bool,4194304]
+	HasPriorityOnWorldmap : Annotated[bool,8388608]
+	AllowPrism : Annotated[bool,16777216]
+	IsTransition : Annotated[bool,33554432]
+	MapHasTemplate : Annotated[bool,67108864]
+	HasPublicPaddock : Annotated[bool,134217728]
+

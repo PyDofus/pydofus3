@@ -1,0 +1,7 @@
+from pydofus3.generated.pydantic.AleCore.Parameters.Shader.ShaderOutlineParameters import ShaderOutlineParameters
+from pydofus3.generated.pydantic.Editor.AleCore.Data.ClientAnimatedElementTransform import ClientAnimatedElementTransform
+from pydofus3.generated.pydantic.Editor.AleCore.Data.IClientInteractiveElement import IClientInteractiveElement
+
+class ClientInteractiveAnimatedElementTransform(ClientAnimatedElementTransform, IClientInteractiveElement):
+	shaderOutlineParameters: ShaderOutlineParameters
+

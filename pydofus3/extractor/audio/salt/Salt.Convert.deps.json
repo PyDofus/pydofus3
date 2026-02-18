@@ -1,0 +1,121 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Salt.Convert/1.0.0": {
+        "dependencies": {
+          "Salt": "1.0.0"
+        },
+        "runtime": {
+          "Salt.Convert.dll": {}
+        }
+      },
+      "Fmod5Sharp/3.0.1": {
+        "dependencies": {
+          "IndexRange": "1.0.2",
+          "NAudio.Core": "2.1.0",
+          "OggVorbisEncoder": "1.2.0"
+        },
+        "runtime": {
+          "lib/net6.0/Fmod5Sharp.dll": {
+            "assemblyVersion": "3.0.1.0",
+            "fileVersion": "3.0.1.0"
+          }
+        }
+      },
+      "IndexRange/1.0.2": {
+        "runtime": {
+          "lib/netstandard2.1/IndexRange.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      },
+      "NAudio.Core/2.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/NAudio.Core.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        }
+      },
+      "OggVorbisEncoder/1.2.0": {
+        "runtime": {
+          "lib/net5.0/OggVorbisEncoder.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
+      "DragonLib/3.1.0-prerel": {
+        "runtime": {
+          "DragonLib.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Salt/1.0.0": {
+        "dependencies": {
+          "DragonLib": "3.1.0-prerel",
+          "Fmod5Sharp": "3.0.1"
+        },
+        "runtime": {
+          "Salt.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Salt.Convert/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fmod5Sharp/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3jRJUmGuwGI1pRx8i9G0bkghDMHb0tzMgKklYjgCQqku40IkahlDwa4PCfhYBJPYyoqJXnvxvsk363amWbLNXA==",
+      "path": "fmod5sharp/3.0.1",
+      "hashPath": "fmod5sharp.3.0.1.nupkg.sha512"
+    },
+    "IndexRange/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BxTYJba0X+rMh7kyA2fYpOrFR3+bIVnBT/VzRinlAe7UZmHGcZk2SoWEIXzqnSFdkfCoi4K0QoHoE/nc71lmDg==",
+      "path": "indexrange/1.0.2",
+      "hashPath": "indexrange.1.0.2.nupkg.sha512"
+    },
+    "NAudio.Core/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0iowfmolibU4KxjaC/s7lox/BeDg76UVvXtCuCzRiNpylVndqsxXxp+bVWFrpv0KzQDIKLxZrnDmYENlAI0u9g==",
+      "path": "naudio.core/2.1.0",
+      "hashPath": "naudio.core.2.1.0.nupkg.sha512"
+    },
+    "OggVorbisEncoder/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qCCdA/8uXQ6zzMMrhJRHKH1xKw89fg1avwsaYIniSoNzTLQSCO8MPgEDQ1Gcg8PxsSXcjYnxqePA6ke9qSBArA==",
+      "path": "oggvorbisencoder/1.2.0",
+      "hashPath": "oggvorbisencoder.1.2.0.nupkg.sha512"
+    },
+    "DragonLib/3.1.0-prerel": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Salt/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

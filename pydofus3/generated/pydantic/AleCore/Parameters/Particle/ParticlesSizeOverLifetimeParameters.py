@@ -1,0 +1,13 @@
+from pydofus3.generated.pydantic.AleCore.Data.Ale2ConstantsOrCurves import Ale2ConstantsOrCurves
+from pydofus3.generated.pydantic.AleCore.Data.Ale2ConstantsOrCurvesHideMode import Ale2ConstantsOrCurvesHideMode
+from pydofus3.not_generated.base import MyBaseModel
+
+
+class ParticlesSizeOverLifetimeParameters(MyBaseModel):
+	isSizeOverLifetimeSeparateAxes: bool
+	sizeOverLifetime3DMode: int
+	sizeOverLifetimeSize: Ale2ConstantsOrCurves
+	sizeOverLifetimeSizeX: Ale2ConstantsOrCurvesHideMode
+	sizeOverLifetimeSizeY: Ale2ConstantsOrCurvesHideMode
+	sizeOverLifetimeSizeZ: Ale2ConstantsOrCurvesHideMode
+

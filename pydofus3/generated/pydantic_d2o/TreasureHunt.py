@@ -1,0 +1,2 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Quest.TreasureHunt.LegendaryTreasureHuntData import LegendaryTreasureHuntData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Quest.TreasureHunt.PointOfInterestData import PointOfInterestData

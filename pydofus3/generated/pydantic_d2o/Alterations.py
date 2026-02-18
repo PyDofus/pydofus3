@@ -1,0 +1,2 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Alterations.AlterationCategoryData import AlterationCategoryData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Alterations.AlterationData import AlterationData

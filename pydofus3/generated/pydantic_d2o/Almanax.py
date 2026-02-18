@@ -1,0 +1,3 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Almanax.AlmanaxCalendarData import AlmanaxCalendarData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Almanax.AlmanaxCategoryData import AlmanaxCategoryData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Almanax.AlmanaxZodiacData import AlmanaxZodiacData

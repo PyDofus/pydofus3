@@ -1,0 +1,6 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionMilestoneRewardData import GuildMissionMilestoneRewardData
+from pydofus3.not_generated.base import MetadataRoot
+
+class GuildMissionMilestoneRewardsDataRoot(MetadataRoot[GuildMissionMilestoneRewardData]):
+	pass
+

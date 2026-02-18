@@ -1,0 +1,3 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamIntensityData import InfiniteDreamIntensityData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamRewardActionData import InfiniteDreamRewardActionData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamRewardData import InfiniteDreamRewardData

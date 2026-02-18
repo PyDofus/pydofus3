@@ -1,0 +1,6 @@
+from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.MapAnimatedElements.IMapAnimatedElement import IMapAnimatedElement
+from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.TargetedStagingEffect import TargetedStagingEffect
+
+class MapAnimatedElementStagingEffect(TargetedStagingEffect):
+	mapAnimatedElement: IMapAnimatedElement
+

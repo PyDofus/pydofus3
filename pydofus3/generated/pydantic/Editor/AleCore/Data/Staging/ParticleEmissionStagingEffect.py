@@ -1,0 +1,9 @@
+from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCurve
+from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.ParticleEmissionBurstStagingParameters import ParticleEmissionBurstStagingParameters
+from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.ParticlesStagingEffect import ParticlesStagingEffect
+from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.StagingEvolutiveVar import StagingEvolutiveVar
+
+class ParticleEmissionStagingEffect(ParticlesStagingEffect):
+	rateOverTime: StagingEvolutiveVar[AleMinMaxCurve]
+	bursts: list[ParticleEmissionBurstStagingParameters]
+

@@ -1,0 +1,8 @@
+from pydofus3.generated.pydantic.AleCore.Parameters.Shader.ShaderOutlineParameters import ShaderOutlineParameters
+from pydofus3.generated.pydantic.Editor.AleCore.Data.ClientSortableElementTransform import ClientSortableElementTransform
+from pydofus3.generated.pydantic.Editor.AleCore.Data.IClientInteractiveElement import IClientInteractiveElement
+
+class ClientInteractiveElementTransform(ClientSortableElementTransform, IClientInteractiveElement):
+	m_interactionId: int
+	shaderOutlineParameters: ShaderOutlineParameters
+

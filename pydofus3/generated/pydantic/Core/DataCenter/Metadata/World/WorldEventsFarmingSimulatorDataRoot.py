@@ -1,0 +1,6 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.World.WorldEventFarmingSimulatorData import WorldEventFarmingSimulatorData
+from pydofus3.not_generated.base import MetadataRoot
+
+class WorldEventsFarmingSimulatorDataRoot(MetadataRoot[WorldEventFarmingSimulatorData]):
+	pass
+

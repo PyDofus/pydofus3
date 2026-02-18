@@ -1,0 +1,5 @@
+from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.MapAnimatedElementStagingEffect import MapAnimatedElementStagingEffect
+
+class ShowMapAnimatedElementStagingEffect(MapAnimatedElementStagingEffect):
+	show: bool
+

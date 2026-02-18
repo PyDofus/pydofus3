@@ -1,0 +1,532 @@
+{
+  "relation": {
+    "custom_PopupsInformation_buttons": {
+      "popupId": "PopupsInformation"
+    },
+    "custom_GuildRightGroups_rights": {
+      "groupId": "GuildRightGroups"
+    },
+    "GuildHalls": {
+      "subareaId": "SubAreas",
+      "mapId": "MapsInformation"
+    },
+    "GuildMissionGrades": {
+      "rankId": "GuildMissionRanks"
+    },
+    "GuildShopBoosts": {
+      "alterationId": "Alterations"
+    },
+    "GuildMissionMilestones": {
+      "activityId": "GuildMissionActivities"
+    },
+    "GuildMissions": {
+      "superCategoryId": "GuildMissionSuperCategories",
+      "gradeId": "GuildMissionGrades"
+    },
+    "GuildMissionObjectives": {
+      "superCategoryId": "GuildMissionSuperCategories",
+      "missionId": "GuildMissions",
+      "alterationId": "Alterations",
+      "areaId": "Areas",
+      "subareaId": "SubAreas",
+      "mapId": "MapsInformation",
+      "monsterId": "Monsters",
+      "familyId": "MonsterRaces",
+      "objectId": "Items"
+    },
+    "RideFoods": {
+      "gid": "Items",
+      "typeId": "ItemTypes",
+      "familyId": "MountFamilies"
+    },
+    "ItemTypes": {
+      "superTypeId": "ItemSuperTypes"
+    },
+    "Heads": {
+      "breed": "Breeds"
+    },
+    "GuildRights": {
+      "groupId": "GuildRightGroups"
+    },
+    "Challenges": {
+      "targetMonsterId": "Monsters"
+    },
+    "AllianceRights": {
+      "groupId": "AllianceRightGroups"
+    },
+    "AllianceTags": {
+      "typeId": "AllianceTagTypes"
+    },
+    "ActivitySuggestions": {
+      "categoryId": "ActivitySuggestionCategories",
+      "mapId": "MapsInformation"
+    },
+    "ActivitySuggestionCategories": {
+      "parentId": "ActivitySuggestionCategories"
+    },
+    "AchievementCategories": {
+      "parentId": "AchievementCategories"
+    },
+    "AchievementObjectives": {
+      "achievementId": "Achievements"
+    },
+    "ProgressingAchievementSeasons": {
+      "seasonId": "ServerSeasons"
+    },
+    "ProgressingAchievementSteps": {
+      "achievementId": "Achievements",
+      "progressId": "ProgressingAchievementSeasons"
+    },
+    "AchievementRewards": {
+      "achievementId": "Achievements"
+    },
+    "Achievements": {
+      "categoryId": "AchievementCategories"
+    },
+    "AlignmentOrders": {
+      "sideId": "AlignmentSides"
+    },
+    "AlignmentRanks": {
+      "orderId": "AlignmentOrders"
+    },
+    "AlignmentRanksGifts": {
+      "id": "AlignmentRanks"
+    },
+    "AlignmentTitles": {
+      "sideId": "AlignmentSides"
+    },
+    "AlmanaxCalendars": {
+      "npcId": "Npcs"
+    },
+    "AlterationCategories": {
+      "parentId": "AlterationCategories"
+    },
+    "Alterations": {
+      "categoryId": "AlterationCategories"
+    },
+    "Areas": {
+      "superAreaId": "SuperAreas",
+      "worldmapId": "WorldMaps"
+    },
+    "ArenaLeagues": {
+      "ornamentId": "Ornaments"
+    },
+    "BreachBosses": {
+      "monsterId": "Monsters"
+    },
+    "BreachDungeonModificators": {
+      "modificatorId": "SpellPairs"
+    },
+    "Characteristics": {
+      "categoryId": "CharacteristicCategories",
+      "scaleFormulaId": "LuaFormulas"
+    },
+    "CompanionCharacteristics": {
+      "caracId": "Characteristics",
+      "companionId": "Companions"
+    },
+    "CompanionSpells": {
+      "companionId": "Companions",
+      "spellId": "Spells"
+    },
+    "Companions": {
+      "startingSpellLevelId": "SpellLevels"
+    },
+    "CustomModeBreedSpells": {
+      "breedId": "Breeds",
+      "id": "Spells",
+      "pairId": "SpellPairs"
+    },
+    "Dungeons": {
+      "entranceMapId": "MapsInformation",
+      "exitMapId": "MapsInformation"
+    },
+    "Effects": {
+      "characteristic": "Characteristics",
+      "oppositeId": "Effects"
+    },
+    "EmblemSymbols": {
+      "categoryId": "EmblemSymbolCategories"
+    },
+    "Emoticons": {
+      "spellLevelId": "SpellLevels"
+    },
+    "EvolutiveEffects": {
+      "actionId": "Effects",
+      "targetId": "Items"
+    },
+    "FeatureDescriptions": {
+      "parentId": "FeatureDescriptions"
+    },
+    "ForgettableSpells": {
+      "id": "Spells",
+      "itemId": "Items",
+      "pairId": "SpellPairs"
+    },
+    "GuildChestTabs": {
+      "serverType": "ServerGameTypes"
+    },
+    "GuildTags": {
+      "typeId": "GuildTagTypes"
+    },
+    "HavenbagFurnitures": {
+      "themeId": "HavenbagThemes"
+    },
+    "HavenbagThemes": {
+      "mapId": "MapsInformation"
+    },
+    "Hints": {
+      "categoryId": "HintCategories",
+      "mapId": "MapsInformation",
+      "subareaId": "SubAreas",
+      "worldMapId": "WorldMaps"
+    },
+    "Items": {
+      "itemSetId": "ItemSets",
+      "typeId": "ItemTypes"
+    },
+    "LegendaryTreasureHunts": {
+      "chestId": "Items",
+      "mapItemId": "Items",
+      "monsterId": "Monsters"
+    },
+    "LivingObjectSkinsMoods": {
+      "id": "Items"
+    },
+    "MapsInformation": {
+      "subAreaId": "SubAreas"
+    },
+    "MapReferences": {
+      "mapId": "MapsInformation"
+    },
+    "MapScrollActions": {
+      "bottomMapId": "MapsInformation",
+      "id": "MapsInformation",
+      "leftMapId": "MapsInformation",
+      "rightMapId": "MapsInformation",
+      "topMapId": "MapsInformation"
+    },
+    "Modsters": {
+      "itemId": "Items",
+      "modsterId": "Monsters"
+    },
+    "MonsterMiniBosses": {
+      "id": "Monsters",
+      "monsterReplacingId": "Monsters"
+    },
+    "MonsterRaces": {
+      "superRaceId": "MonsterSuperRaces"
+    },
+    "Monsters": {
+      "correspondingMiniBossId": "Monsters",
+      "favoriteSubareaId": "SubAreas",
+      "race": "MonsterRaces"
+    },
+    "Mounts": {
+      "certificateId": "Items",
+      "familyId": "MountFamilies"
+    },
+    "PopupsInformation": {
+      "parentId": "PopupsInformation"
+    },
+    "QuestObjectives": {
+      "mapId": "MapsInformation",
+      "stepId": "QuestSteps",
+      "typeId": "QuestObjectiveTypes"
+    },
+    "QuestStepRewards": {
+      "stepId": "QuestSteps"
+    },
+    "QuestSteps": {
+      "dialogId": "NpcMessages",
+      "questId": "Quests"
+    },
+    "Quests": {
+      "categoryId": "QuestCategories"
+    },
+    "Recipes": {
+      "id": "Items",
+      "jobId": "Jobs",
+      "resultTypeId": "ItemTypes",
+      "skillId": "Skills"
+    },
+    "ServerCommunities": {
+      "namingRuleAdminId": "NamingRules",
+      "namingRuleAllianceNameId": "NamingRules",
+      "namingRuleAllianceTagId": "NamingRules",
+      "namingRuleGuildNameId": "NamingRules",
+      "namingRuleModoId": "NamingRules",
+      "namingRuleMountNameId": "NamingRules",
+      "namingRuleNameGeneratorId": "NamingRules",
+      "namingRulePartyNameId": "NamingRules",
+      "namingRulePlayerNameId": "NamingRules",
+      "namingRulePresetNameId": "NamingRules"
+    },
+    "Servers": {
+      "communityId": "ServerCommunities",
+      "gameTypeId": "ServerGameTypes",
+      "populationId": "ServerPopulations"
+    },
+    "custom_Signs_signs": {
+      "skillId": "Skills"
+    },
+    "Skills": {
+      "gatheredRessourceItem": "Items",
+      "parentJobId": "Jobs"
+    },
+    "SpellBombs": {
+      "chainReactionSpellId": "Spells",
+      "explodSpellId": "Spells",
+      "instantSpellId": "Spells"
+    },
+    "SpellLevels": {
+      "spellBreed": "SpellTypes",
+      "spellId": "Spells"
+    },
+    "SpellVariants": {
+      "breedId": "Breeds"
+    },
+    "Spells": {
+      "typeId": "SpellTypes"
+    },
+    "SubAreas": {
+      "areaId": "Areas",
+      "associatedZaapMapId": "MapsInformation",
+      "customWorldMapId": "WorldMaps"
+    },
+    "SuperAreas": {
+      "worldmapId": "WorldMaps"
+    },
+    "Titles": {
+      "categoryId": "TitleCategories"
+    },
+    "VeteranRewards": {
+      "itemGID": "Items"
+    },
+    "Waypoints": {
+      "mapId": "MapsInformation",
+      "subAreaId": "SubAreas"
+    },
+    "custom_AllianceRightGroups_rights": {
+      "groupId": "AllianceRightGroups"
+    },
+    "custom_Alterations_possibleEffects": {
+      "effectId": "Effects"
+    },
+    "custom_Breeds_breedRoles": {
+      "roleId": "BreedRoles"
+    },
+    "custom_Collections_collectables": {
+      "entityId": "Monsters",
+      "typeId": "Collections"
+    },
+    "custom_Items_possibleEffects": {
+      "effectId": "Effects",
+      "spellId": "Spells"
+    },
+    "custom_Monsters_animFunList": {
+      "entityId": "Monsters"
+    },
+    "custom_Monsters_drops": {
+      "monsterId": "Monsters",
+      "objectId": "Items"
+    },
+    "custom_Monsters_grades": {
+      "monsterId": "Monsters"
+    },
+    "custom_Mounts_effects": {
+      "effectId": "Effects"
+    },
+    "custom_Npcs_animFunList": {
+      "entityId": "Npcs"
+    },
+    "custom_RandomDropGroups_randomDropItems": {
+      "itemId": "Items"
+    },
+    "custom_SpellLevels_criticalEffect": {
+      "effectId": "Effects"
+    },
+    "custom_SpellLevels_effects": {
+      "effectId": "Effects"
+    },
+    "custom_custom_Monsters_drops_specificDropCoefficient": {
+      "monsterId": "Monsters"
+    }
+  },
+  "relation_many_many": {
+    "AchievementRewards": {
+      "emotesReward": {
+        "table2": "Emoticons"
+      },
+      "itemsReward": {
+        "key_sup": [
+          "itemsQuantityReward"
+        ],
+        "table2": "Items"
+      },
+      "ornamentsReward": {
+        "table2": "Ornaments"
+      },
+      "spellsReward": {
+        "table2": "Spells"
+      },
+      "titlesReward": {
+        "table2": "Titles"
+      }
+    },
+    "AlmanaxCalendars": {
+      "bonusesIds": {
+        "table2": "Bonuses"
+      }
+    },
+    "Bonuses": {
+      "criterionsIds": {
+        "table2": "BonusesCriterions"
+      }
+    },
+    "BreachBosses": {
+      "incompatibleBosses": {
+        "table2": "BreachBosses"
+      }
+    },
+    "Breeds": {
+      "breedSpellsId": {
+        "table2": "Spells"
+      }
+    },
+    "Challenges": {
+      "incompatibleChallenges": {
+        "table2": "Challenges"
+      }
+    },
+    "Dungeons": {
+      "mapIds": {
+        "table2": "MapsInformation"
+      }
+    },
+    "Items": {
+      "dropTemporisMonsterIds": {
+        "table2": "Monsters"
+      },
+      "resourcesBySubarea": {
+        "split": [
+          "nb"
+        ],
+        "table2": "SubAreas"
+      }
+    },
+    "LegendaryPowersCategories": {
+      "categorySpells": {
+        "table2": "Spells"
+      }
+    },
+    "MapsCoordinates": {
+      "mapIds": {
+        "table2": "MapsInformation"
+      }
+    },
+    "Modsters": {
+      "modsterAchievements": {
+        "table2": "Achievements"
+      },
+      "modsterActiveSpells": {
+        "table2": "Spells"
+      },
+      "modsterHiddenAchievements": {
+        "table2": "Achievements"
+      },
+      "modsterPassiveSpells": {
+        "table2": "Spells"
+      },
+      "parentsModsterId": {
+        "table2": "Monsters"
+      }
+    },
+    "Monsters": {
+      "incompatibleChallenges": {
+        "table2": "Challenges"
+      },
+      "spells": {
+        "table2": "Spells"
+      },
+      "subareas": {
+        "table2": "SubAreas"
+      }
+    },
+    "Npcs": {
+      "actions": {
+        "table2": "NpcActions"
+      },
+      "dialogMessages": {
+        "split": [
+          "msg"
+        ],
+        "table2": "NpcMessages"
+      },
+      "dialogReplies": {
+        "split": [
+          "msg"
+        ],
+        "table2": "NpcMessages"
+      }
+    },
+    "QuestStepRewards": {
+      "emotesReward": {
+        "table2": "Emoticons"
+      },
+      "itemsReward": {
+        "split": [
+          "nb"
+        ],
+        "table2": "Items"
+      },
+      "jobsReward": {
+        "table2": "Jobs"
+      },
+      "spellsReward": {
+        "table2": "Spells"
+      },
+      "titlesReward": {
+        "table2": "Titles"
+      }
+    },
+    "Recipes": {
+      "ingredientIds": {
+        "key_sup": [
+          "quantities"
+        ],
+        "table2": "Items"
+      }
+    },
+    "ServerCommunities": {
+      "supportedLangIds": {
+        "table2": "ServerLangs"
+      }
+    },
+    "Skills": {
+      "modifiableItemTypeIds": {
+        "table2": "ItemTypes"
+      }
+    },
+    "SmileyPacks": {
+      "smileys": {
+        "table2": "Smileys"
+      }
+    },
+    "SpellStates": {
+      "effectsIds": {
+        "table2": "Effects"
+      }
+    },
+    "SpellVariants": {
+      "spellIds": {
+        "table2": "Spells"
+      }
+    },
+    "InfiniteDreamRewards": {
+      "actions": {
+        "table2": "InfiniteDreamRewardActions"
+      }
+    }
+  }
+}

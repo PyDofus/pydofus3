@@ -1,0 +1,9 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.AppearanceData import AppearanceData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.IdleData import IdleData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.OrnamentData import OrnamentData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.RiderBoneData import RiderBoneData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.SkinMappingData import SkinMappingData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.SkinPositionData import SkinPositionData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.SkinSlotRuleData import SkinSlotRuleData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.TitleCategoryData import TitleCategoryData  # noqa
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Appearance.TitleData import TitleData  # noqa

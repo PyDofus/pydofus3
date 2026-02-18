@@ -1,0 +1,38 @@
+[project]
+name = "pydofus3"
+version = "0.2.0"
+description = ""
+readme = "README.md"
+requires-python = '>=3.14'
+dependencies = [
+    "catalog @ git+ssh://git@github.com/souff/catalog.git",
+    "fastapi[standard]>=0.129.0",
+    "fpng-py @ https://github.com/K0lb3/fpng_py.git",
+    "moviepy>=2.2.1",
+    "pandas>=3.0.0",
+    "proto-schema-parser>=2.1.0",
+    "psycopg>=3.3.2",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.13.0",
+    "sqlalchemy>=2.0.46",
+    "typer>=0.23.1",
+    "unitypy>=1.24.2",
+]
+
+[project.scripts]
+pydofus3 = "pydofus3.cli.main:app"
+
+[build-system]
+requires = ["uv_build>=0.10.3,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "pydofus3"
+module-root = ""
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"
+docstring-code-format = true

@@ -1,0 +1,5 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.CustomModeBreedSpellData import CustomModeBreedSpellData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ForgettableSpellData import ForgettableSpellData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ModsterData import ModsterData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ProgressingAchievementSeasonData import ProgressingAchievementSeasonData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ProgressingAchievementStepData import ProgressingAchievementStepData
