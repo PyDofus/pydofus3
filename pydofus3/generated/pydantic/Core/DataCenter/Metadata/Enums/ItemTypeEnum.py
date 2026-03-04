@@ -91,10 +91,12 @@ class ItemTypeEnum(OpenAPIIntEnum):
     CosmeticWings = 300
     TamedMount = 301
     CosmeticFace = 306
-    Mount = 311
     Makina = 323
     PaddockRessources = 326
     SoulStoneBoss = 327
     SoulStoneMiniBoss = 328
     CosmeticBody = 329
     CosmeticIdle = 330
+    DragoTurkey = 331
+    Muldo = 332
+    FlyHorn = 333
