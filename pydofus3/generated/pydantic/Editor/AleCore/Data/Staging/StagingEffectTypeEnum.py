@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class StagingEffectTypeEnum(OpenAPIIntEnum):
 	Distortion = 0
 	Translation = 1

@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ChatChannel(OpenAPIIntEnum):
 	General = 0
 	Team = 1

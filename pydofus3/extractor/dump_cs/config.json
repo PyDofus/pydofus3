@@ -1,0 +1,439 @@
+{
+  "i18nMapping": {
+    "Core.DataCenter.Metadata.Alignment.AlignmentGiftData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alignment.AlignmentOrderData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alignment.AlignmentRankData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alignment.AlignmentSideData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alliance.AllianceRankData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alliance.KothRoleData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Almanax.AlmanaxCalendarData": [
+      "celebrationDescriptionId",
+      "celebrationNameId",
+      "descId",
+      "meridiaDescriptionId",
+      "meridiaEffectId",
+      "nameId",
+      "rubrikabraxId"
+    ],
+    "Core.DataCenter.Metadata.Almanax.AlmanaxCategoryData": [
+      "nameId",
+      "protectorDescriptionId",
+      "protectorNameId"
+    ],
+    "Core.DataCenter.Metadata.Almanax.AlmanaxZodiacData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alterations.AlterationCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Alterations.AlterationData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Appearance.IdleData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Appearance.OrnamentData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Appearance.TitleCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Appearance.TitleData": [
+      "nameFemaleId",
+      "nameMaleId"
+    ],
+    "Core.DataCenter.Metadata.Arena.ArenaLeagueData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Breach.BreachPrizeData": [
+      "descriptionKey",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Breach.BreachWorldMapSectorData": [
+      "legendId",
+      "sectorNameId"
+    ],
+    "Core.DataCenter.Metadata.Breed.BodyData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Breed.BreedData": [
+      "descriptionId",
+      "gameplayClassDescriptionId",
+      "gameplayDescriptionId",
+      "longNameId",
+      "shortNameId"
+    ],
+    "Core.DataCenter.Metadata.Breed.BreedRoleByBreedData": [
+      "descriptionId"
+    ],
+    "Core.DataCenter.Metadata.Breed.BreedRoleData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Breed.HeadData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Calendar.CalendarEventData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Challenge.ChallengeData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Characteristic.CharacteristicCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Characteristic.CharacteristicData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Communication.ChatChannelData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Communication.EmoticonData": [
+      "nameId",
+      "shortcutId"
+    ],
+    "Core.DataCenter.Metadata.Communication.InfoMessageData": [
+      "textId"
+    ],
+    "Core.DataCenter.Metadata.Communication.SmileyPackData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Document.DocumentData": [
+      "authorId",
+      "contentId",
+      "subTitleId",
+      "titleId"
+    ],
+    "Core.DataCenter.Metadata.Effect.ActionFilterData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Effect.EffectData": [
+      "descriptionId",
+      "theoreticalDescriptionId"
+    ],
+    "Core.DataCenter.Metadata.ExternalNotification.ExternalNotificationData": [
+      "descriptionId",
+      "messageId"
+    ],
+    "Core.DataCenter.Metadata.Guild.EmblemSymbolCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildChestTabData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildHallData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildHallThemeData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildLevelRewardData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionActivityData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionMilestoneData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionObjectiveData": [
+      "descriptionId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionRankData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionSuperCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildRankData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Guild.GuildShopBoostData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.House.HavenbagThemeData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.House.HouseData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamIntensityData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamRewardData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamTrialData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Interactive.InteractiveData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Interactive.SignData": [
+      "textKey"
+    ],
+    "Core.DataCenter.Metadata.Interactive.SkillNameData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Item.ItemData": [
+      "descriptionId",
+      "importantNoticeId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Item.ItemSetData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Item.ItemTypeData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Job.JobData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Job.RecipeData": [
+      "resultNameId"
+    ],
+    "Core.DataCenter.Metadata.Job.SkillData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.LivingObjects.SpeakingItemTextData": [
+      "textStringId"
+    ],
+    "Core.DataCenter.Metadata.Misc.ChoiceData": [
+      "choiceNameId"
+    ],
+    "Core.DataCenter.Metadata.Misc.ChoiceOptionData": [
+      "descriptionId"
+    ],
+    "Core.DataCenter.Metadata.Misc.MonthData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Monster.CompanionData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Monster.MonsterData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Monster.MonsterRaceData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Monster.MonsterSuperRaceData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Mount.MountBehaviorData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Mount.MountData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Mount.MountFamilyData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Notification.NotificationData": [
+      "messageId",
+      "titleId"
+    ],
+    "Core.DataCenter.Metadata.Npc.NpcActionData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Npc.NpcData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Npc.NpcMessageData": [
+      "messageId"
+    ],
+    "Core.DataCenter.Metadata.Npc.TaxCollectorFirstnameData": [
+      "firstnameId"
+    ],
+    "Core.DataCenter.Metadata.Npc.TaxCollectorNameData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Popup.PopupButtonData": [
+      "textId"
+    ],
+    "Core.DataCenter.Metadata.Popup.PopupInformationData": [
+      "descriptionId",
+      "titleId"
+    ],
+    "Core.DataCenter.Metadata.Progression.ActivitySuggestionCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Progression.ActivitySuggestionData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Progression.FeatureDescriptionData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.AchievementCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.AchievementData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.AchievementObjectiveData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.QuestCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.QuestData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.QuestObjectiveTypeData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.QuestStepData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.TreasureHunt.LegendaryTreasureHuntData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.TreasureHunt.PointOfInterestData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.Ride.PaddocksData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Quest.Ride.RidesData": [
+      "nameId",
+      "colorId"
+    ],
+    "Core.DataCenter.Metadata.Quest.Ride.RideSpeciesData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Scenarios.FightScenarioData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Seasons.SeasonData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Server.ServerCommunityData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Server.ServerData": [
+      "commentId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Server.ServerGameTypeData": [
+      "descriptionId",
+      "nameId",
+      "rulesId"
+    ],
+    "Core.DataCenter.Metadata.Server.ServerLangData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Server.ServerPopulationData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Social.SocialRightData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Social.SocialRightGroupData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Social.SocialTagData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Social.SocialTagTypeData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Spell.SpellData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Spell.SpellPairData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Spell.SpellStateData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.Spell.SpellTypeData": [
+      "longNameId",
+      "shortNameId"
+    ],
+    "Core.DataCenter.Metadata.World.AreaData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.DungeonData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.HintCategoryData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.HintData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.MapInformationData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.SubAreaData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.SuperAreaData": [
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.WorldEventData": [
+      "descriptionId",
+      "nameId"
+    ],
+    "Core.DataCenter.Metadata.World.WorldMapData": [
+      "nameId"
+    ]
+  },
+  "importMapping": {
+    "Optional": "from typing import Optional",
+    "Any": "from typing import Any",
+    "Iterable": "from typing import Iterable",
+    "float_nan": "from pydofus3.not_generated.base import float_nan",
+  },
+  "unityEngineMapping": ["Rect","Color32", "Vector2Int", "Vector3", "Vector2", "Material", "ParticleSystem", "BlendMode", "BlendOp", "float2", "Color", "Quaternion","Vector4","SortingCriteria","RenderPassEvent","ScriptableRendererFeature"],
+  "wrappedMapping": {
+    "WrappedDoubleList": "float_nan",
+    "WrappedEffectInstanceList": "EffectInstanceData",
+    "WrappedFloatList": "float_nan",
+    "WrappedIntList": "int",
+    "WrappedUintList": "int"
+  },
+  "effectInstanceMapping": {
+    "AlterationData": "EffectInstanceDice",
+    "ItemData": "EffectInstanceDice",
+    "ItemSetData": "EffectInstanceDice",
+    "MountData": "EffectInstanceDice"
+  },
+  "targetAssembly": ["Ankama.Animator2D.dll","AleCore.dll","Ankama.Dofus.Core.DataCenter.dll" ],
+  "notGenerated": "pydofus3.not_generated",
+  "generated": "pydofus3.generated.pydantic",
+  "skipType": ["TweenerCore", "FloatOptions", "JsonConverter", "Action", "Attribute", "EventArgs", "MulticastDelegate", "AnimationCurve", "GameObject", "LayerMask","MonoBehaviour","PlayableAsset","PlayableBehaviour","RenderTexture", "ScriptableObject","Shader","TextAsset","Texture","Texture2D","FilteringSettings","RenderQueueRange","ShaderTagId","SubMeshDescriptor","RendererListHandle","TextureHandle","ScriptableRenderPass","TrackAsset"]
+}

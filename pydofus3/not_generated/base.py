@@ -29,7 +29,7 @@ class FlagBaseModel(BaseModel):
 
 
 def none_to_na(value):
-    return value if value else math.nan
+    return math.nan if value is None else value
 
 
 type float_nan = Annotated[float, BeforeValidator(none_to_na)]

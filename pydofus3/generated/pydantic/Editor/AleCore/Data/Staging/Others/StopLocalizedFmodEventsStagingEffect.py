@@ -1,5 +1,7 @@
-from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.IStagingEffect import IStagingEffect
+from pydofus3.not_generated.base import MyBaseModel
+from typing import ClassVar
 
-class StopLocalizedFmodEventsStagingEffect(IStagingEffect):
+class StopLocalizedFmodEventsStagingEffect(MyBaseModel):
+	TYPE: ClassVar[str] = "StopLocalizedSound"
 	fmodEvent: str
 

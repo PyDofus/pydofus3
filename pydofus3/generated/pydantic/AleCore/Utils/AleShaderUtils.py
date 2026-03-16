@@ -1,30 +1,20 @@
 from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import OpenAPIIntEnum
-
 from pydofus3.not_generated.unity import BlendMode
 from pydofus3.not_generated.unity import BlendOp
+from typing import ClassVar
 
 class AleShaderUtils(MyBaseModel):
-	pass
-	class AleBlending(MyBaseModel):
-		sourceFactor: BlendMode
-		blendOperation: BlendOp
-		destinationFactor: BlendMode
-	class BlendingPatterns(OpenAPIIntEnum):
-		Normal = 0
-		Addition = 1
-		LumiereVive = 2
-		Incrustation = 3
-		Produit = 4
-		Assombrir = 5
-		Soustraction = 6
+	HighlightCoef: ClassVar[str] = "_HighlightCoef"
+	HighlightAdd: ClassVar[str] = "_HighlightAdd"
+
 	class RenderingLayerMask(OpenAPIIntEnum):
 		DEFAULT = 1
 		REFRACTION = 2
 		INLINE = 4
 		OUTLINE = 8
 		WAVE = 16
+
 	class ShaderTypeEnum(OpenAPIIntEnum):
 		All = 0
 		Blending = 1
@@ -41,4 +31,18 @@ class AleShaderUtils(MyBaseModel):
 		Dissolve = 12
 		Emissive = 13
 		Wave = 14
+
+	class AleBlending(MyBaseModel):
+		sourceFactor: BlendMode
+		blendOperation: BlendOp
+		destinationFactor: BlendMode
+
+	class BlendingPatterns(OpenAPIIntEnum):
+		Normal = 0
+		Addition = 1
+		LumiereVive = 2
+		Incrustation = 3
+		Produit = 4
+		Assombrir = 5
+		Soustraction = 6
 

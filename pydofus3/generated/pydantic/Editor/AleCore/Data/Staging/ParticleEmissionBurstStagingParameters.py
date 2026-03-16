@@ -1,8 +1,7 @@
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCurve
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.StagingEvolutiveVar import StagingEvolutiveVar
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
 
 class ParticleEmissionBurstStagingParameters(MyBaseModel):
 	burstIndex: int

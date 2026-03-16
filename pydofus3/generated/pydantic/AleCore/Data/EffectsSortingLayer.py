@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class EffectsSortingLayer(OpenAPIIntEnum):
 	MapBackground = 0
 	PaintBackground = 1

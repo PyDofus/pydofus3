@@ -5,10 +5,9 @@ from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemEmitFromCone impo
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemShapeMultiModeValue import AleParticleSystemShapeMultiModeValue
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemShapeType import AleParticleSystemShapeType
 from pydofus3.generated.pydantic.AleCore.Data.AleVector3 import AleVector3
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
-from typing import Union, Annotated
+from pydofus3.not_generated.base import MyBaseModel
+from typing import Annotated, Union
 
 class ParticlesShapeParameters(MyBaseModel):
 	particleSystemShape: AleParticleSystemShapeType

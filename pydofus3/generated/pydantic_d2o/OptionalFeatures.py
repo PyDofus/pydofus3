@@ -3,3 +3,5 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.Forge
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ModsterData import ModsterData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ProgressingAchievementSeasonData import ProgressingAchievementSeasonData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ProgressingAchievementStepData import ProgressingAchievementStepData
+
+__all__ =["CustomModeBreedSpellData", "ForgettableSpellData", "ModsterData", "ProgressingAchievementSeasonData", "ProgressingAchievementStepData"]

@@ -1,6 +1,5 @@
-from typing import Annotated
 from pydofus3.not_generated.base import FlagBaseModel
-
+from typing import Annotated
 
 class MapInformationFlags(FlagBaseModel):
 	CapabilityAllowChallenge : Annotated[bool,1]

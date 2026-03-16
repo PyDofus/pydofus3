@@ -1,7 +1,7 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ItemSuperTypeEnum(OpenAPIIntEnum):
+	None_ = -1
 	Collar = 1
 	Weapon = 2
 	Ring = 3

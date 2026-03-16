@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydofus3.generated.datacenter import Datacenter
-from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Challenge, Characteristic, Collection, Communication, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Scenarios, Seasons, Server, Social, Sound, Spell, TreasureHunt, World
+from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Challenge, Characteristic, Collection, Communication, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
 
 data = Datacenter()
 app = FastAPI()
@@ -69,6 +69,9 @@ async def CreatureBoneOverrideData() -> list[Appearance.CreatureBoneOverrideData
 @app.get("/CreatureBoneTypeData", tags=["Appearance"])
 async def CreatureBoneTypeData() -> list[Appearance.CreatureBoneTypeData]:
     return data.CreatureBoneTypeData
+@app.get("/IdleData", tags=["Appearance"])
+async def IdleData() -> list[Appearance.IdleData]:
+    return data.IdleData
 @app.get("/OrnamentData", tags=["Appearance"])
 async def OrnamentData() -> list[Appearance.OrnamentData]:
     return data.OrnamentData
@@ -114,6 +117,9 @@ async def BreachWorldMapCoordinateData() -> list[Breach.BreachWorldMapCoordinate
 @app.get("/BreachWorldMapSectorData", tags=["Breach"])
 async def BreachWorldMapSectorData() -> list[Breach.BreachWorldMapSectorData]:
     return data.BreachWorldMapSectorData
+@app.get("/BodyData", tags=["Breed"])
+async def BodyData() -> list[Breed.BodyData]:
+    return data.BodyData
 @app.get("/BreedData", tags=["Breed"])
 async def BreedData() -> list[Breed.BreedData]:
     return data.BreedData
@@ -261,6 +267,9 @@ async def InfiniteDreamRewardActionData() -> list[InfiniteDreams.InfiniteDreamRe
 @app.get("/InfiniteDreamRewardData", tags=["InfiniteDreams"])
 async def InfiniteDreamRewardData() -> list[InfiniteDreams.InfiniteDreamRewardData]:
     return data.InfiniteDreamRewardData
+@app.get("/InfiniteDreamTrialData", tags=["InfiniteDreams"])
+async def InfiniteDreamTrialData() -> list[InfiniteDreams.InfiniteDreamTrialData]:
+    return data.InfiniteDreamTrialData
 @app.get("/InteractiveData", tags=["Interactive"])
 async def InteractiveData() -> list[Interactive.InteractiveData]:
     return data.InteractiveData
@@ -351,6 +360,9 @@ async def MonsterMiniBossData() -> list[Monster.MonsterMiniBossData]:
 @app.get("/MonsterRaceData", tags=["Monster"])
 async def MonsterRaceData() -> list[Monster.MonsterRaceData]:
     return data.MonsterRaceData
+@app.get("/MonsterSoulData", tags=["Monster"])
+async def MonsterSoulData() -> list[Monster.MonsterSoulData]:
+    return data.MonsterSoulData
 @app.get("/MonsterSuperRaceData", tags=["Monster"])
 async def MonsterSuperRaceData() -> list[Monster.MonsterSuperRaceData]:
     return data.MonsterSuperRaceData
@@ -447,6 +459,21 @@ async def QuestStepData() -> list[Quest.QuestStepData]:
 @app.get("/QuestStepRewardData", tags=["Quest"])
 async def QuestStepRewardData() -> list[Quest.QuestStepRewardData]:
     return data.QuestStepRewardData
+@app.get("/PaddockGaugesData", tags=["Ride"])
+async def PaddockGaugesData() -> list[Ride.PaddockGaugesData]:
+    return data.PaddockGaugesData
+@app.get("/PaddocksData", tags=["Ride"])
+async def PaddocksData() -> list[Ride.PaddocksData]:
+    return data.PaddocksData
+@app.get("/RideGaugesData", tags=["Ride"])
+async def RideGaugesData() -> list[Ride.RideGaugesData]:
+    return data.RideGaugesData
+@app.get("/RideSpeciesData", tags=["Ride"])
+async def RideSpeciesData() -> list[Ride.RideSpeciesData]:
+    return data.RideSpeciesData
+@app.get("/RidesData", tags=["Ride"])
+async def RidesData() -> list[Ride.RidesData]:
+    return data.RidesData
 @app.get("/FightScenarioData", tags=["Scenarios"])
 async def FightScenarioData() -> list[Scenarios.FightScenarioData]:
     return data.FightScenarioData
@@ -486,6 +513,9 @@ async def SoundBoneData() -> list[Sound.SoundBoneData]:
 @app.get("/SpellBombData", tags=["Spell"])
 async def SpellBombData() -> list[Spell.SpellBombData]:
     return data.SpellBombData
+@app.get("/SpellBombWallData", tags=["Spell"])
+async def SpellBombWallData() -> list[Spell.SpellBombWallData]:
+    return data.SpellBombWallData
 @app.get("/SpellData", tags=["Spell"])
 async def SpellData() -> list[Spell.SpellData]:
     return data.SpellData
@@ -507,6 +537,9 @@ async def SpellTypeData() -> list[Spell.SpellTypeData]:
 @app.get("/SpellVariantData", tags=["Spell"])
 async def SpellVariantData() -> list[Spell.SpellVariantData]:
     return data.SpellVariantData
+@app.get("/AuctionHouseData", tags=["TradeCenter"])
+async def AuctionHouseData() -> list[TradeCenter.AuctionHouseData]:
+    return data.AuctionHouseData
 @app.get("/LegendaryTreasureHuntData", tags=["TreasureHunt"])
 async def LegendaryTreasureHuntData() -> list[TreasureHunt.LegendaryTreasureHuntData]:
     return data.LegendaryTreasureHuntData

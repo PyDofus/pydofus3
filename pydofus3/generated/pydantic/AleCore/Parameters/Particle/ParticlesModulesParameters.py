@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class ParticlesModulesParameters(MyBaseModel):
 	isEmissionModuleActivated: bool
 	isShapeModuleActivated: bool

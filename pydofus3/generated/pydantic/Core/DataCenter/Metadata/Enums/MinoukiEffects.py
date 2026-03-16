@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class MinoukiEffects(OpenAPIIntEnum):
 	CardSuperEffectID = 3
 	MinoukiSuperEffectID = 4

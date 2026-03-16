@@ -2,10 +2,10 @@ import gc
 import importlib
 import logging
 from collections import defaultdict
-from compression.zstd import ZstdCompressor
+from compression.zstd import compress
 from itertools import chain
 from pathlib import Path
-from typing import Callable, ClassVar, Generator
+from typing import Callable, Generator
 
 import UnityPy
 import orjson
@@ -30,7 +30,6 @@ logger = logging.getLogger(__name__)
 
 
 class UnityExtractor:
-    compressor: ClassVar = ZstdCompressor()
 
     def __init__(self, dofus: Path, type_folder: TypeData | str, config: UnityExtractorOptionConfig):
         set_unity_version(dofus)
@@ -190,7 +189,7 @@ class UnityExtractor:
         json_data = orjson.dumps(data, option=orjson.OPT_NON_STR_KEYS)
         if self.config.compress:
             output = output.with_name(output.name + '.zst')
-            json_data = self.compressor.compress(json_data)
+            json_data = compress(json_data)
         output.write_bytes(json_data)
         if self.config.type_tree:
             type_tree_dir = output.parent / 'type_tree'

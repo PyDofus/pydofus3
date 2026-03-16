@@ -2,7 +2,6 @@ from pydofus3.generated.pydantic.AleCore.Data.Sound.FmodParameterValue import Fm
 from pydofus3.generated.pydantic.AleCore.Data.Sound.Playlist import Playlist
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class PlaylistSet(MyBaseModel):
 	musicPlaylist: Playlist
 	ambiantPlaylist: Playlist

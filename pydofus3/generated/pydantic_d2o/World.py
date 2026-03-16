@@ -16,3 +16,5 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.World.WorldEventMonste
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.World.WorldEventRewardData import WorldEventRewardData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.World.WorldEventWorldBossesData import WorldEventWorldBossesData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.World.WorldMapData import WorldMapData
+
+__all__ =["AreaData", "DungeonData", "HintCategoryData", "HintData", "MapInformationData", "MapReferenceData", "MapScrollActionData", "MapsCoordinateData", "SubAreaData", "SuperAreaData", "WaypointData", "WorldEventData", "WorldEventDungeonData", "WorldEventFarmingSimulatorData", "WorldEventMonstersHunterData", "WorldEventRewardData", "WorldEventWorldBossesData", "WorldMapData"]

@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class RoleId(OpenAPIIntEnum):
 	Debuffer = 1
 	Tank = 2

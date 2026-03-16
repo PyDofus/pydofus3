@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class SpellScriptGfxType(OpenAPIIntEnum):
 	Unknown = 0
 	Caster = 1

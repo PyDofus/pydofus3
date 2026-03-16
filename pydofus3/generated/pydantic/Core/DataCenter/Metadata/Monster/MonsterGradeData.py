@@ -1,7 +1,6 @@
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterBonusCharacteristicsData import MonsterBonusCharacteristicsData
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class MonsterGradeData(MyBaseModel):
 	bonusCharacteristics: MonsterBonusCharacteristicsData
 	grade: int

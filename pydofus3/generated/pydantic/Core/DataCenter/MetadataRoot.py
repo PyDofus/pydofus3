@@ -1,6 +1,6 @@
-from pydofus3.generated.pydantic.Core.DataCenter.IDataContainer import IDataContainer
 from pydofus3.generated.pydantic.Core.DataCenter.MetadataDictionaryContainer import MetadataDictionaryContainer
+from pydofus3.not_generated.base import MyBaseModel
 
-class MetadataRoot[T](IDataContainer):
+class MetadataRoot[T](MyBaseModel):
 	objectsById: MetadataDictionaryContainer[T]
 

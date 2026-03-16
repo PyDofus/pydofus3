@@ -742,8 +742,10 @@ class ColorPickerField_UxmlSerializedData:
     dataSourceTypeString_UxmlAttributeFlags: int
     bindings_UxmlAttributeFlags: int
     buttonEditIcon: int
+    hasBtnReset: int
     m_needToValidate: int
     buttonEditIcon_UxmlAttributeFlags: int
+    hasBtnReset_UxmlAttributeFlags: int
     m_needToValidate_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
@@ -5512,6 +5514,74 @@ class TextInputToValidate_UxmlSerializedData:
     minLength_UxmlAttributeFlags: int
     maxLength_UxmlAttributeFlags: int
     placeholderText_UxmlAttributeFlags: int
+    references: ManagedReferencesRegistry
+
+class TextInputWithSearchList_UxmlSerializedData:
+    uxmlAssetId: int
+    name: str
+    bindings: list[managedRefArrayItem]
+    tooltip: str
+    dataSourcePathString: str
+    dataSourceTypeString: str
+    dataSourceUnityObject: PPtr[Object]
+    viewDataKey: str
+    pickingMode: int
+    usageHints: int
+    languageDirection: int
+    tabIndex: int
+    focusable: int
+    enabledSelf: int
+    name_UxmlAttributeFlags: int
+    enabledSelf_UxmlAttributeFlags: int
+    viewDataKey_UxmlAttributeFlags: int
+    pickingMode_UxmlAttributeFlags: int
+    tooltip_UxmlAttributeFlags: int
+    usageHints_UxmlAttributeFlags: int
+    tabIndex_UxmlAttributeFlags: int
+    focusable_UxmlAttributeFlags: int
+    languageDirection_UxmlAttributeFlags: int
+    dataSourceUnityObject_UxmlAttributeFlags: int
+    dataSourcePathString_UxmlAttributeFlags: int
+    dataSourceTypeString_UxmlAttributeFlags: int
+    bindings_UxmlAttributeFlags: int
+    gapValueFromEditor: int
+    hasShadow: int
+    gapValueFromEditor_UxmlAttributeFlags: int
+    hasShadow_UxmlAttributeFlags: int
+    bindingPath: str
+    bindingPath_UxmlAttributeFlags: int
+    textInputStyle: int
+    isCollapsed: int
+    isMultiline: int
+    contentType: int
+    isNumbersOnly: int
+    isPassword: int
+    icon: int
+    hasEraseButton: int
+    customRegex: str
+    errorText: str
+    maxLength: int
+    strictMaxLength: int
+    displayInfos: int
+    placeholderText: str
+    isReadOnly: int
+    textInputStyle_UxmlAttributeFlags: int
+    isCollapsed_UxmlAttributeFlags: int
+    isMultiline_UxmlAttributeFlags: int
+    contentType_UxmlAttributeFlags: int
+    isNumbersOnly_UxmlAttributeFlags: int
+    isPassword_UxmlAttributeFlags: int
+    icon_UxmlAttributeFlags: int
+    hasEraseButton_UxmlAttributeFlags: int
+    customRegex_UxmlAttributeFlags: int
+    errorText_UxmlAttributeFlags: int
+    maxLength_UxmlAttributeFlags: int
+    strictMaxLength_UxmlAttributeFlags: int
+    displayInfos_UxmlAttributeFlags: int
+    placeholderText_UxmlAttributeFlags: int
+    isReadOnly_UxmlAttributeFlags: int
+    canDisplayNoResultList: int
+    canDisplayNoResultList_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
 class TextMeshPro(MonoBehaviour):

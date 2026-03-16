@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ServerCommunity(OpenAPIIntEnum):
 	FrenchSpeaking = 0
 	EnglishSpeaking = 1

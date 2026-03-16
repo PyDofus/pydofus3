@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ActionId(OpenAPIIntEnum):
 	NoOperation = 0
 	CharacterChangeMap = 2
@@ -316,7 +315,7 @@ class ActionId(OpenAPIIntEnum):
 	CharacterReadBook = 620
 	CharacterSummonMonster = 621
 	GotoHouse = 622
-	CharacterSummonMonsterGroup = 623
+	CharacterSummonMonsters = 623
 	CharacterUnlearnGuildspell = 624
 	ResetStats = 625
 	CharacterResetCharacs = 626
@@ -1002,4 +1001,6 @@ class ActionId(OpenAPIIntEnum):
 	CharacterDeboostAllDamageMultiplierPercent = 4042
 	CharacterSetRaidHealth = 4050
 	CharacterSumRaidHealth = 4051
+	CharacterSummonMonsterGroup = 4057
+	CharacterSoulMonster = 4058
 

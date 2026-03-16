@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class FilmGrainType(OpenAPIIntEnum):
 	Thin1 = 0
 	Thin2 = 1

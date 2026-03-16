@@ -296,5 +296,3 @@ AssetsTools.NET/**/obj/
 __pycache__
 output
 script
-pydofus3/extractor/Enum.py
-pydofus3/extractor/serialize

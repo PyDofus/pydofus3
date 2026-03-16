@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class QuestObjectiveParametersData(MyBaseModel):
 	numParams: int
 	parameter0: int

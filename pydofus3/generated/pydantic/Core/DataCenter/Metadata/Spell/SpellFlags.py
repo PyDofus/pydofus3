@@ -1,6 +1,5 @@
-from typing import Annotated
 from pydofus3.not_generated.base import FlagBaseModel
-
+from typing import Annotated
 
 class SpellFlags(FlagBaseModel):
 	VerboseCast : Annotated[bool,1]

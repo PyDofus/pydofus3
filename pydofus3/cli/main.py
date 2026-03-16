@@ -18,18 +18,19 @@ logging.basicConfig(
 app = typer.Typer(pretty_exceptions_enable=False, no_args_is_help=True)
 app.add_typer(data_app, name='data', help='extract dofus data')
 
-# disable for the moment
-# @app.command()
-# def pydantic(
-#         dumpcs: Annotated[Path, typer.Argument(exists=True, help='dump.cs file')] = DEFAULT_OUTPUT / 'dummyDLL/dump.cs',
-#         output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_GENERATED,
-#         ):
-#     """
-#     generate pydantic model from dump.cs
-#     """
-#     from pydofus3.extractor.serialize import Serialize
-#
-#     Serialize.pydantic_generator(dumpcs, {'Ankama.Dofus.Core.DataCenter', 'AleCore'}, output)
+@app.command()
+def pydantic(
+        dofus_path: Annotated[Path, typer.Argument(help='dofus game path', resolve_path=True, exists=True)] = DEFAULT_DOFUS,
+        output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_GENERATED,
+        ):
+    """
+    generate pydantic model and enum
+    """
+    from pydofus3.extractor.dump_cs.main import redux
+    from pydofus3.tools import get_unity_version
+
+    version = get_unity_version(dofus_path)
+    redux(dofus_path, output / 'dummyDLL', version, code_gen=True)
 
 
 @app.command()
@@ -76,31 +77,18 @@ def dumpcs(
             Path, typer.Argument(help='dofus game path', resolve_path=True, exists=True)] = DEFAULT_DOFUS,
         output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_OUTPUT,
         ida_script: Annotated[bool, typer.Option(help='add ida script')] = False,
+        dump_cs: Annotated[bool, typer.Option(help='dump.cs')] = False,
+        dll: Annotated[bool, typer.Option(help='dll')] = False,
+        codegen: Annotated[bool, typer.Option(help='generate code')] = False,
         ):
     """
-    dump dump.cs with il2cpp inspector redux
+    modify il2cpp inspector redux that can also generate python code
     """
     from pydofus3.extractor.dump_cs.main import redux
     from pydofus3.tools import get_unity_version
 
     version = get_unity_version(dofus_path)
-    redux(dofus_path, output / 'dummyDLL', version, ida_script=ida_script)
-
-# disable for the moment
-# @app.command()
-# def enum(
-#         output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_OUTPUT,
-#         language: Annotated[Language, typer.Argument(help='language')] = Language.python,
-#         dump_path: Annotated[Path, typer.Option(help='dump.cs path', resolve_path=True, exists=True)] = DEFAULT_OUTPUT
-#                                                                                                         / 'dummyDLL/dump.cs',
-#         ):
-#     """
-#     Generate unity enum from dump.cs
-#     """
-#
-#     from pydofus3.extractor.Enum import generate_enums
-#
-#     generate_enums(dump_path, output, language)
+    redux(dofus_path, output / 'dummyDLL', version, ida_script=ida_script, dumpcs=dump_cs, dll=dll, code_gen=codegen)
 
 
 @app.command()
@@ -170,7 +158,6 @@ def process(
     from pydofus3.extractor.data.main import UnityExtractor
     from pydofus3.extractor.data.typetree.stub_typetree import StubTypeTree
     from pydofus3.extractor.i18n import extract_i18n
-    # from pydofus3.extractor.serialize import Serialize
     from pydofus3.extractor.dump_cs.main import redux
     from pydofus3.not_generated.i18n import i18n_dict
     from pydofus3.tools import group_file_by_catalog, get_unity_version
@@ -179,7 +166,6 @@ def process(
     import UnityPy
 
     dofus_path = output / 'dofus_unity'
-    target = {'Ankama.Dofus.Core.DataCenter', 'AleCore'}
 
     files_change = orjson.loads((dofus_path / 'change.json').read_bytes())
     files = set(dofus_path / f for f in files_change['new'] + files_change['change'])
@@ -187,14 +173,21 @@ def process(
     version = get_unity_version(dofus_path)
     UnityPy.config.FALLBACK_UNITY_VERSION = version
 
-
-    # Serialize.pydantic_generator(output / 'dummyDLL/dump.cs', target, output_generated) # disable for the moment
+    redux(dofus_path, output / 'dummyDLL', version, code_gen=True)
     if any('I18n' in str(f) for f in files) or TypeData.Data in grouped_files:
         i18n_dict.update(extract_i18n(dofus_path / TypeDataOther.I18n, output / TypeDataOther.I18n))
 
+    for key, value in grouped_files.items(): # skin and bone in priority to update skin data
+        conf = UnityExtractorOptionConfig(output=output, files=value)
+        if key == TypeData.Picto_Items:
+            conf.force_texture2d = True
+        elif key not in [TypeData.Skins, TypeData.Bones]:
+            continue
+        UnityExtractor(dofus_path, key, conf).extract()
+
     for key, value in grouped_files.items():
         conf = UnityExtractorOptionConfig(output=output, files=value)
-        if key in [TypeData.Map_Textures_Effects, TypeData.Picto_UI, TypeData.Picto_Items, TypeData.Picto_Spells,
+        if key in [TypeData.Map_Textures_Effects, TypeData.Picto_UI, TypeData.Picto_Spells,
                    TypeData.Picto_Monsters, TypeData.Picto_Worldmaps]:  # fmt: skip
             conf.force_texture2d = True
         elif key in [TypeData.Map_Textures1, TypeData.Map_Textures2]:
@@ -205,15 +198,14 @@ def process(
             conf.process_datacenter, conf.load_all_files = True, True
         elif key == TypeData.aa:
             conf.sprite_rect_size = True
-        elif key not in [TypeData.Skins, TypeData.Bones]:
+        else:
             continue
         UnityExtractor(dofus_path, key, conf).extract()
     if audio_files := [i for i in files if i.suffix == '.bank']:
         extract_audio(audio_files, output / TypeDataOther.Audio)
     StubTypeTree(dofus_path, output_generated, grouped_files)
-    # generate_enums(output / 'dummyDLL/dump.cs', output_generated) # disable for the moment
     Processor().db_dump()
-    redux(dofus_path, output / 'dummyDLL', version, ida_script=False)
+    redux(dofus_path, output / 'dummyDLL', version, dll=True, dumpcs=True)
     protodec(output / 'dummyDLL', output / 'proto')
 
 

@@ -1,7 +1,7 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ItemGid(OpenAPIIntEnum):
+	UnknownItemGid = 666
 	Soulstone = 7010
 	SignatureRune = 7508
 	DragoturkeyBreedingBook = 7805
@@ -14,12 +14,11 @@ class ItemGid(OpenAPIIntEnum):
 	TeleportationModule = 14552
 	Nugget = 14635
 	SandsRose = 15263
-	BreachFragments = 20292
-	BebemothReflect = 20968
-	KokokoRecycler = 17207
 	FairTradeRecycler = 17166
 	CollectiveRecycler = 17167
-	PacifyCristal = 27631
-	InhibCristal = 27632
-	UnknownItemGid = 666
+	KokokoRecycler = 17207
+	BreachFragments = 20292
+	BebemothReflect = 20968
+	InhibCristal = 27631
+	PacifyCristal = 27632
 

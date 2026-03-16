@@ -1,7 +1,6 @@
 from pydofus3.generated.pydantic.AleCore.Parameters.NoiseModifierParameters import NoiseModifierParameters
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class MapNoiseModifierConfiguration(MyBaseModel):
 	noiseModifierParameters: NoiseModifierParameters
 

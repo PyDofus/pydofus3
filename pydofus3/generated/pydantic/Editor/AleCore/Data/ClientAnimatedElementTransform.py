@@ -4,8 +4,7 @@ from pydofus3.generated.pydantic.AleCore.Utils.ObjectDisplayBehaviour import Obj
 from pydofus3.generated.pydantic.Editor.AleCore.Data.ElementType import ElementType
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Transform2D import Transform2D
 from pydofus3.not_generated.base import MyBaseModel
-
-from typing import Union, Annotated
+from typing import Annotated, Union
 
 class ClientAnimatedElementTransform(MyBaseModel):
 	gfxId: int

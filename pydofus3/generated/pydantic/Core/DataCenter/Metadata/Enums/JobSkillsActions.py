@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class JobSkillsActions(OpenAPIIntEnum):
 	Other = 0
 	Resource = 1

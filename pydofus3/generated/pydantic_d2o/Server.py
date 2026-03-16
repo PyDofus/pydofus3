@@ -3,3 +3,5 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Server.ServerData impo
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Server.ServerGameTypeData import ServerGameTypeData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Server.ServerLangData import ServerLangData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Server.ServerPopulationData import ServerPopulationData
+
+__all__ =["ServerCommunityData", "ServerData", "ServerGameTypeData", "ServerLangData", "ServerPopulationData"]

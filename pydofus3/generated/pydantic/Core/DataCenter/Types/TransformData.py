@@ -1,6 +1,5 @@
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
 
 class TransformData(MyBaseModel):
 	x: float_nan

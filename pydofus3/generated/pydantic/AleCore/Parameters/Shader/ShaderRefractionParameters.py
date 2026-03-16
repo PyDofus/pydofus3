@@ -2,11 +2,13 @@ from pydantic import Field
 from pydofus3.generated.pydantic.AleCore.Data.AleColor import AleColor
 from pydofus3.generated.pydantic.AleCore.Data.AleVector2 import AleVector2
 from pydofus3.generated.pydantic.AleCore.Data.UVModes import UVModes
-from pydofus3.generated.pydantic.AleCore.Parameters.Shader.IShaderParameters import IShaderParameters
 from pydofus3.not_generated.base import float_nan
-from typing import Union, Annotated
+from pydofus3.not_generated.base import MyBaseModel
+from typing import Annotated, Union
+from typing import ClassVar
 
-class ShaderRefractionParameters(IShaderParameters):
+class ShaderRefractionParameters(MyBaseModel):
+	TYPE: ClassVar[str] = "Refraction"
 	noiseTexID: int
 	noiseTexUVMode: Annotated[Union[UVModes, int], Field(union_mode='left_to_right')]
 	noiseTexTiling: AleVector2

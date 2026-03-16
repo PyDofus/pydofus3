@@ -1,6 +1,8 @@
-from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.IStagingEffect import IStagingEffect
+from pydofus3.not_generated.base import MyBaseModel
+from typing import ClassVar
 
-class ChangePlaylistStagingEffect(IStagingEffect):
+class ChangePlaylistStagingEffect(MyBaseModel):
+	TYPE: ClassVar[str] = "ChangePlaylist"
 	musicPlaylist: str
 	ambiantPlaylist: str
 

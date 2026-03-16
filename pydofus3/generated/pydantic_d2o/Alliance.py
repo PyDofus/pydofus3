@@ -5,3 +5,5 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Alliance.AllianceRight
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Alliance.AllianceTagData import AllianceTagData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Alliance.AllianceTagTypeData import AllianceTagTypeData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Alliance.KothRoleData import KothRoleData
+
+__all__ =["AllianceRankData", "AllianceRankNameSuggestionData", "AllianceRightData", "AllianceRightGroupData", "AllianceTagData", "AllianceTagTypeData", "KothRoleData"]

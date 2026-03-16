@@ -1,13 +1,11 @@
 from pydantic import Field
-from pydofus3.generated.pydantic.Core.DataCenter.Interfaces.IAdminSelectionEntryType import IAdminSelectionEntryType
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Item.ItemData import ItemData
 from pydofus3.not_generated.base import D2oData
+from pydofus3.not_generated.i18n import i18n
+from typing import Annotated, Union
 from typing import ClassVar
 
-from pydofus3.not_generated.i18n import i18n
-from typing import Union, Annotated
-
-class ItemTypeData(IAdminSelectionEntryType, D2oData):
+class ItemTypeData(D2oData):
 	bundle_name: ClassVar[str] = "itemtypesdataroot"
 
 	id: int

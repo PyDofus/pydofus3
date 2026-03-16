@@ -1,10 +1,8 @@
-from pydofus3.generated.pydantic.Core.DataCenter.Interfaces.IAdminSelectionEntryType import IAdminSelectionEntryType
 from pydofus3.not_generated.base import D2oData
+from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
 
-from pydofus3.not_generated.i18n import i18n
-
-class SpellTypeData(IAdminSelectionEntryType, D2oData):
+class SpellTypeData(D2oData):
 	bundle_name: ClassVar[str] = "spelltypesdataroot"
 
 	id: int

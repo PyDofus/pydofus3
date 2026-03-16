@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class StagingExclusivityResolveMethodEnum(OpenAPIIntEnum):
 	FastForward = 0
 	Stop = 1

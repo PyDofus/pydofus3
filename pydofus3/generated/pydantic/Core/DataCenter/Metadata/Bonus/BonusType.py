@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class BonusType(OpenAPIIntEnum):
 	MonsterXp = 1
 	JobXp = 2

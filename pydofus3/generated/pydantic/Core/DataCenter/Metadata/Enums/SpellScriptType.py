@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class SpellScriptType(OpenAPIIntEnum):
 	Invalid = 0
 	OneOrTwoGfx = 1
@@ -11,4 +10,5 @@ class SpellScriptType(OpenAPIIntEnum):
 	Weapon = 7
 	Kamehameha = 8
 	NextGen = 9
+	Fallback = 255
 

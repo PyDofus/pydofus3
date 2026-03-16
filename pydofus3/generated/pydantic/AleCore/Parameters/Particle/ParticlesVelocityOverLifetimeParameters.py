@@ -3,8 +3,7 @@ from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCur
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurveHideMode import AleMinMaxCurveHideMode
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemSimulationSpaceRestricted import AleParticleSystemSimulationSpaceRestricted
 from pydofus3.not_generated.base import MyBaseModel
-
-from typing import Union, Annotated
+from typing import Annotated, Union
 
 class ParticlesVelocityOverLifetimeParameters(MyBaseModel):
 	linearVelocityMode: int

@@ -1,7 +1,7 @@
-from pydofus3.generated.pydantic.Core.DataCenter.Interfaces.IRectangle import IRectangle
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
 
-class Rectangle(IRectangle):
+class Rectangle(MyBaseModel):
 	x: float_nan
 	y: float_nan
 	width: float_nan

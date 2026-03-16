@@ -1,16 +1,16 @@
-from pydofus3.generated.pydantic.Core.DataCenter.Interfaces.IAdminSelectionEntry import IAdminSelectionEntry
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.AnimFunMonsterData import AnimFunMonsterData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterDropData import MonsterDropData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterFlags import MonsterFlags
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterGlobalDropData import MonsterGlobalDropData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterGradeData import MonsterGradeData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterSoulData import MonsterSoulData
 from pydofus3.not_generated.base import D2oData
+from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import WrappedList
+from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
 
-from pydofus3.not_generated.base import WrappedList
-from pydofus3.not_generated.base import float_nan
-from pydofus3.not_generated.i18n import i18n
-
-class MonsterData(IAdminSelectionEntry, D2oData):
+class MonsterData(D2oData):
 	bundle_name: ClassVar[str] = "monstersdataroot"
 
 	m_flags: MonsterFlags
@@ -23,6 +23,7 @@ class MonsterData(IAdminSelectionEntry, D2oData):
 	animFunList: list[AnimFunMonsterData]
 	drops: list[MonsterDropData]
 	temporisDrops: list[MonsterDropData]
+	globalDrops: list[MonsterGlobalDropData]
 	subareas: list[int]
 	spells: list[int]
 	spellGrades: list[str]
@@ -39,4 +40,6 @@ class MonsterData(IAdminSelectionEntry, D2oData):
 	aggressiveAttackDelay: int
 	scaleGradeRef: int
 	characRatios: list[WrappedList[float_nan]]
+	isBounty: bool
+	souls: list[MonsterSoulData]
 

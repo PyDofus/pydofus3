@@ -1,3 +1,5 @@
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.LivingObjects.LivingObjectSkinMoodsData import LivingObjectSkinMoodsData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.LivingObjects.SpeakingItemTextData import SpeakingItemTextData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.LivingObjects.SpeakingItemTriggerData import SpeakingItemTriggerData
+
+__all__ =["LivingObjectSkinMoodsData", "SpeakingItemTextData", "SpeakingItemTriggerData"]

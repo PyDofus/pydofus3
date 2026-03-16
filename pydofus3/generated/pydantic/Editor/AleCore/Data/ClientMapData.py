@@ -16,7 +16,6 @@ from pydofus3.generated.pydantic.Editor.AleCore.Data.MaterialData import Materia
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.StagingSequence import StagingSequence
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class ClientMapData(MyBaseModel):
 	topNeighbourId: int
 	bottomNeighbourId: int

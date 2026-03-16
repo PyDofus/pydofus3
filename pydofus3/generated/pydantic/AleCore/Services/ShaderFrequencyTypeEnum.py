@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ShaderFrequencyTypeEnum(OpenAPIIntEnum):
 	Translation = 0
 	TranslationNoise = 1

@@ -1,9 +1,7 @@
-from pydofus3.generated.pydantic.Core.DataCenter.Interfaces.IWorldEventData import IWorldEventData
 from pydofus3.not_generated.base import D2oData
 from typing import ClassVar
 
-
-class WorldEventWorldBossesData(IWorldEventData, D2oData):
+class WorldEventWorldBossesData(D2oData):
 	bundle_name: ClassVar[str] = "worldeventsworldbossesdataroot"
 
 	monsterList: list[int]

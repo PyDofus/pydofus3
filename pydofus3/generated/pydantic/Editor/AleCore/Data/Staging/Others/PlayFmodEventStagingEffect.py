@@ -1,8 +1,9 @@
 from pydofus3.generated.pydantic.AleCore.Data.AleConstantOrCurve import AleConstantOrCurve
-from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.IStagingEffect import IStagingEffect
+from pydofus3.not_generated.base import MyBaseModel
+from typing import ClassVar
 
-class PlayFmodEventStagingEffect(IStagingEffect):
-	UpdatePosition: System.Action[AleCore.Data.AleVector2]
+class PlayFmodEventStagingEffect(MyBaseModel):
+	TYPE: ClassVar[str] = "PlayFmodEvent"
 	fmodEvent: str
 	xPosition: AleConstantOrCurve
 	yPosition: AleConstantOrCurve

@@ -1,1 +1,3 @@
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Popup.PopupInformationData import PopupInformationData
+
+__all__ =["PopupInformationData"]

@@ -1,9 +1,7 @@
 from pydofus3.not_generated.base import D2oData
-from typing import ClassVar
-
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
+from typing import ClassVar
 
 class WorldEventRewardData(D2oData):
 	bundle_name: ClassVar[str] = "worldeventsrewardsdataroot"
@@ -22,6 +20,7 @@ class WorldEventRewardData(D2oData):
 	guildPoints: int
 	isForTeam: bool
 	order: int
+
 	class ItemAndQuantity(MyBaseModel):
 		itemId: int
 		quantity: int

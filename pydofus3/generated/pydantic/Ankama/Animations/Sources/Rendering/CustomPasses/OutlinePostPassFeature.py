@@ -1,0 +1,8 @@
+from pydofus3.generated.pydantic.Ankama.Animations.Sources.Rendering.CustomPasses.OutlinePostPassSettings import OutlinePostPassSettings
+from pydofus3.not_generated.unity import RenderPassEvent
+from pydofus3.not_generated.unity import ScriptableRendererFeature
+
+class OutlinePostPassFeature(ScriptableRendererFeature):
+	renderPassEvent: RenderPassEvent
+	outlinePostSettings: OutlinePostPassSettings
+

@@ -1,6 +1,8 @@
-from pydofus3.generated.pydantic.AleCore.Parameters.Shader.IShaderParameters import IShaderParameters
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
+from typing import ClassVar
 
-class ShaderDepthAlphaClipParameters(IShaderParameters):
+class ShaderDepthAlphaClipParameters(MyBaseModel):
+	TYPE: ClassVar[str] = "Surrounded Object"
 	alphaClip: float_nan
 

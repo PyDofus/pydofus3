@@ -1,3 +1,5 @@
+from enum import IntFlag
+
 from pydantic import BaseModel
 
 from pydofus3.not_generated.base import OpenAPIIntEnum
@@ -7,34 +9,57 @@ class Vector2Int(BaseModel):
     x: int
     y: int
 
-
 class Color32(BaseModel):
     r: int
     g: int
     b: int
     a: int
 
-
 class Vector3(BaseModel):
     x: float
     y: float
     z: float
 
-
 class Vector2(BaseModel):
     x: float
     y: float
 
+class float2(BaseModel):
+    x: float
+    y: float
+
+class Color(BaseModel):
+    r: float
+    g: float
+    b: float
+    a: float
+
+class Quaternion(BaseModel):
+    x: float
+    y: float
+    z: float
+    w: float
+
+
+class Vector4(BaseModel):
+    X: float
+    Y: float
+    Z: float
+    W: float
+
+class Rect(BaseModel):
+    x: float
+    y: float
+    width: float
+    height: float
 
 class Material(BaseModel):
     m_FileID: int
     m_PathID: int
 
-
 class ParticleSystem(BaseModel):
     m_FileID: int
     m_PathID: int
-
 
 class BlendMode(OpenAPIIntEnum):
     Zero = 0
@@ -87,3 +112,38 @@ class BlendOp(OpenAPIIntEnum):
     HSLSaturation = 33
     HSLColor = 34
     HSLLuminosity = 35
+
+class SortingCriteria(IntFlag):
+    None_ = 0
+    SortingLayer = 1
+    RenderQueue = 2
+    BackToFront = 4
+    QuantizedFrontToBack = 8
+    OptimizeStateChanges = 16
+    CommonTransparent = 23
+    CanvasOrder = 32
+    CommonOpaque = 59
+    RendererPriority = 64
+
+class RenderPassEvent(OpenAPIIntEnum):
+    BeforeRendering = 0
+    BeforeRenderingShadows = 50
+    AfterRenderingShadows = 100
+    BeforeRenderingPrePasses = 150
+    AfterRenderingPrePasses = 200
+    BeforeRenderingGbuffer = 210
+    AfterRenderingGbuffer = 220
+    BeforeRenderingDeferredLights = 230
+    AfterRenderingDeferredLights = 240
+    BeforeRenderingOpaques = 250
+    AfterRenderingOpaques = 300
+    BeforeRenderingSkybox = 350
+    AfterRenderingSkybox = 400
+    BeforeRenderingTransparents = 450
+    AfterRenderingTransparents = 500
+    BeforeRenderingPostProcessing = 550
+    AfterRenderingPostProcessing = 600
+    AfterRendering = 1000
+
+class ScriptableRendererFeature(BaseModel):
+    m_Active: bool

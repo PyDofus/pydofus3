@@ -3,8 +3,7 @@ from pydofus3.generated.pydantic.AleCore.Data.EffectShape import EffectShape
 from pydofus3.generated.pydantic.AleCore.Data.EffectsSortingLayer import EffectsSortingLayer
 from pydofus3.generated.pydantic.AleCore.Parameters.TransformParameters import TransformParameters
 from pydofus3.not_generated.base import MyBaseModel
-
-from typing import Union, Annotated
+from typing import Annotated, Union
 
 class ScreenAreaEffectParameters(MyBaseModel):
 	transform: TransformParameters

@@ -4,10 +4,9 @@ from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCur
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurveHideMode import AleMinMaxCurveHideMode
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxGradient import AleMinMaxGradient
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemSimulationSpace import AleParticleSystemSimulationSpace
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
-from typing import Union, Annotated
+from pydofus3.not_generated.base import MyBaseModel
+from typing import Annotated, Union
 
 class ParticlesMainParameters(MyBaseModel):
 	duration: float_nan

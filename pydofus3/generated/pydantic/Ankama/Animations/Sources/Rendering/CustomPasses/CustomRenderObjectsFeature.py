@@ -1,0 +1,8 @@
+from pydofus3.generated.pydantic.Ankama.Animations.Sources.Rendering.CustomPasses.CustomRenderObjectsPassSettings import CustomRenderObjectsPassSettings
+from pydofus3.not_generated.unity import RenderPassEvent
+from pydofus3.not_generated.unity import ScriptableRendererFeature
+
+class CustomRenderObjectsFeature(ScriptableRendererFeature):
+	renderPassEvent: RenderPassEvent
+	renderObjectsSettings: CustomRenderObjectsPassSettings
+

@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class BonusCriterionType(OpenAPIIntEnum):
 	Area = 1
 	SubArea = 2

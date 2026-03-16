@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class AlmanaxCalendarCategory(OpenAPIIntEnum):
 	Special = 2
 	Floating = 3

@@ -2,9 +2,8 @@ from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemRenderMode import
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemRenderSpace import AleParticleSystemRenderSpace
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemSortMode import AleParticleSystemSortMode
 from pydofus3.generated.pydantic.AleCore.Data.AleVector3 import AleVector3
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
 
 class ParticlesRendererParameters(MyBaseModel):
 	renderMode: AleParticleSystemRenderMode

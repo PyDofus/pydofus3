@@ -3,8 +3,7 @@ from pydofus3.generated.pydantic.AleCore.Data.AleColor import AleColor
 from pydofus3.generated.pydantic.AleCore.Utils.ObjectDisplayBehaviour import ObjectDisplayBehaviour
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Transform2D import Transform2D
 from pydofus3.not_generated.base import MyBaseModel
-
-from typing import Union, Annotated
+from typing import Annotated, Union
 
 class ClientElementTransform(MyBaseModel):
 	gfxId: int

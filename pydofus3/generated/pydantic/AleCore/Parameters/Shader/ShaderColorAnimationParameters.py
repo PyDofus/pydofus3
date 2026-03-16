@@ -2,11 +2,13 @@ from pydantic import Field
 from pydofus3.generated.pydantic.AleCore.Data.AleColor import AleColor
 from pydofus3.generated.pydantic.AleCore.Data.AleVector2 import AleVector2
 from pydofus3.generated.pydantic.AleCore.Data.ShaderAnimationCurveType import ShaderAnimationCurveType
-from pydofus3.generated.pydantic.AleCore.Parameters.Shader.IShaderParameters import IShaderParameters
 from pydofus3.not_generated.base import float_nan
-from typing import Union, Annotated
+from pydofus3.not_generated.base import MyBaseModel
+from typing import Annotated, Union
+from typing import ClassVar
 
-class ShaderColorAnimationParameters(IShaderParameters):
+class ShaderColorAnimationParameters(MyBaseModel):
+	TYPE: ClassVar[str] = "Color Animation"
 	animationCurveType: Annotated[Union[ShaderAnimationCurveType, int], Field(union_mode='left_to_right')]
 	finalColor: AleColor
 	isFinalColorLinkedToMapNoiseModifier: bool

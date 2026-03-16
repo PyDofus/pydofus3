@@ -1,7 +1,7 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class StatId(OpenAPIIntEnum):
+	Unknown = -1
 	HitPoints = 0
 	ActionPoints = 1
 	StatsPoints = 3

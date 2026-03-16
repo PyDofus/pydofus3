@@ -1,7 +1,8 @@
 from pydofus3.not_generated.base import MyBaseModel
-
+from typing import ClassVar
 
 class BoundScriptUsageData(MyBaseModel):
+	SerialSequenceGroup: ClassVar[int] = 0
 	id: int
 	order: int
 	scriptId: int

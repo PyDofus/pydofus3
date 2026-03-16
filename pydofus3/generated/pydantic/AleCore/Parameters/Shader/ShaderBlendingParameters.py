@@ -1,6 +1,8 @@
-from pydofus3.generated.pydantic.AleCore.Parameters.Shader.IShaderParameters import IShaderParameters
+from pydofus3.not_generated.base import MyBaseModel
+from typing import ClassVar
 
-class ShaderBlendingParameters(IShaderParameters):
+class ShaderBlendingParameters(MyBaseModel):
+	TYPE: ClassVar[str] = "Blending"
 	sourceFactor: int
 	blendOperation: int
 	destinationFactor: int

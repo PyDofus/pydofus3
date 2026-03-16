@@ -3,13 +3,13 @@ from tqdm import tqdm
 
 from pydofus3.tools import SingletonMeta
 from pydofus3.extractor.data.loader import load_d2o
-from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Challenge, Characteristic, Collection, Communication, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Scenarios, Seasons, Server, Social, Sound, Spell, TreasureHunt, World
+from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Challenge, Characteristic, Collection, Communication, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
 
 class Datacenter(metaclass=SingletonMeta):
     def __init__(self, empty: bool = False):
         self.empty = empty
         if not empty:
-            self.progress = tqdm(total=187)
+            self.progress = tqdm(total=198)
         
         self.AlignmentGiftData = self.load_d2o(Alignment.AlignmentGiftData)
         self.AlignmentOrderData = self.load_d2o(Alignment.AlignmentOrderData)
@@ -36,6 +36,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.AppearanceData = self.load_d2o(Appearance.AppearanceData)
         self.CreatureBoneOverrideData = self.load_d2o(Appearance.CreatureBoneOverrideData)
         self.CreatureBoneTypeData = self.load_d2o(Appearance.CreatureBoneTypeData)
+        self.IdleData = self.load_d2o(Appearance.IdleData)
         self.OrnamentData = self.load_d2o(Appearance.OrnamentData)
         self.RiderBoneData = self.load_d2o(Appearance.RiderBoneData)
         self.SkinMappingData = self.load_d2o(Appearance.SkinMappingData)
@@ -55,6 +56,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.BreachWorldMapCoordinateData = self.load_d2o(Breach.BreachWorldMapCoordinateData)
         self.BreachWorldMapSectorData = self.load_d2o(Breach.BreachWorldMapSectorData)
         
+        self.BodyData = self.load_d2o(Breed.BodyData)
         self.BreedData = self.load_d2o(Breed.BreedData)
         self.BreedRoleData = self.load_d2o(Breed.BreedRoleData)
         self.HeadData = self.load_d2o(Breed.HeadData)
@@ -117,6 +119,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.InfiniteDreamIntensityData = self.load_d2o(InfiniteDreams.InfiniteDreamIntensityData)
         self.InfiniteDreamRewardActionData = self.load_d2o(InfiniteDreams.InfiniteDreamRewardActionData)
         self.InfiniteDreamRewardData = self.load_d2o(InfiniteDreams.InfiniteDreamRewardData)
+        self.InfiniteDreamTrialData = self.load_d2o(InfiniteDreams.InfiniteDreamTrialData)
         
         self.InteractiveData = self.load_d2o(Interactive.InteractiveData)
         self.SignsData = self.load_d2o(Interactive.SignsData)
@@ -153,6 +156,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.MonsterData = self.load_d2o(Monster.MonsterData)
         self.MonsterMiniBossData = self.load_d2o(Monster.MonsterMiniBossData)
         self.MonsterRaceData = self.load_d2o(Monster.MonsterRaceData)
+        self.MonsterSoulData = self.load_d2o(Monster.MonsterSoulData)
         self.MonsterSuperRaceData = self.load_d2o(Monster.MonsterSuperRaceData)
         
         self.MountBehaviorData = self.load_d2o(Mount.MountBehaviorData)
@@ -193,6 +197,12 @@ class Datacenter(metaclass=SingletonMeta):
         self.QuestStepData = self.load_d2o(Quest.QuestStepData)
         self.QuestStepRewardData = self.load_d2o(Quest.QuestStepRewardData)
         
+        self.PaddockGaugesData = self.load_d2o(Ride.PaddockGaugesData)
+        self.PaddocksData = self.load_d2o(Ride.PaddocksData)
+        self.RideGaugesData = self.load_d2o(Ride.RideGaugesData)
+        self.RideSpeciesData = self.load_d2o(Ride.RideSpeciesData)
+        self.RidesData = self.load_d2o(Ride.RidesData)
+        
         self.FightScenarioData = self.load_d2o(Scenarios.FightScenarioData)
         
         self.ArenaLeagueSeasonData = self.load_d2o(Seasons.ArenaLeagueSeasonData)
@@ -211,6 +221,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.SoundBoneData = self.load_d2o(Sound.SoundBoneData)
         
         self.SpellBombData = self.load_d2o(Spell.SpellBombData)
+        self.SpellBombWallData = self.load_d2o(Spell.SpellBombWallData)
         self.SpellData = self.load_d2o(Spell.SpellData)
         self.SpellLevelData = self.load_d2o(Spell.SpellLevelData)
         self.SpellPairData = self.load_d2o(Spell.SpellPairData)
@@ -218,6 +229,8 @@ class Datacenter(metaclass=SingletonMeta):
         self.SpellStateData = self.load_d2o(Spell.SpellStateData)
         self.SpellTypeData = self.load_d2o(Spell.SpellTypeData)
         self.SpellVariantData = self.load_d2o(Spell.SpellVariantData)
+        
+        self.AuctionHouseData = self.load_d2o(TradeCenter.AuctionHouseData)
         
         self.LegendaryTreasureHuntData = self.load_d2o(TreasureHunt.LegendaryTreasureHuntData)
         self.PointOfInterestData = self.load_d2o(TreasureHunt.PointOfInterestData)

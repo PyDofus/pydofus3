@@ -4,9 +4,11 @@ from pydofus3.generated.pydantic.AleCore.Utils.ObjectDisplayBehaviour import Obj
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.MaterialStagingEffect import MaterialStagingEffect
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.StagingEvolutiveVar import StagingEvolutiveVar
 from pydofus3.not_generated.base import float_nan
-from typing import Union, Annotated
+from typing import Annotated, Union
+from typing import ClassVar
 
 class NoAnimAlphaStagingEffect(MaterialStagingEffect):
+	TYPE: ClassVar[str] = "NoAnimColor"
 	effectDisplay: Annotated[Union[ObjectDisplayBehaviour, int], Field(union_mode='left_to_right')]
 	alpha: StagingEvolutiveVar[float_nan]
 	color: StagingEvolutiveVar[AleColor]

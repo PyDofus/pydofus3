@@ -1,9 +1,8 @@
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCurve
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxGradient import AleMinMaxGradient
 from pydofus3.generated.pydantic.AleCore.Data.AleParticleSystemTrailTextureMode import AleParticleSystemTrailTextureMode
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
 
 class ParticlesTrailsParameters(MyBaseModel):
 	trailsRatio: float_nan

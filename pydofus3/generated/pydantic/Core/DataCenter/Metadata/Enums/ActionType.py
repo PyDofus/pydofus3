@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class ActionType(OpenAPIIntEnum):
 	Caracteristics = 0
 	Damages = 2

@@ -2,7 +2,6 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellScriptMainP
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellScriptPortalsStageParams import SpellScriptPortalsStageParams
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class SpellScriptStageParams(MyBaseModel):
 	main: SpellScriptMainPortalsStageParams
 	portals: SpellScriptPortalsStageParams

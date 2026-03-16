@@ -1,0 +1,17 @@
+from fastapi import FastAPI
+from pydofus3.generated.datacenter import Datacenter
+from pydofus3.generated.pydantic_d2o import {{ class_name.keys() | join(', ') }}
+
+data = Datacenter()
+app = FastAPI()
+
+# @formatter:off
+{%- for key, vals in class_name.items() %}
+{%- for val in vals %}
+@app.get("/{{ val.name }}", tags=["{{ key }}"])
+async def {{ val.name}}() -> list[{{ key }}.{{ val.name }}]:
+    return data.{{ val.name }}
+
+{%- endfor %}
+{%- endfor %}
+# @formatter:on

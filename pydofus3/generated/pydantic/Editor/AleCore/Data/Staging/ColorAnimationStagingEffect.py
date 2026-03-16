@@ -3,8 +3,10 @@ from pydofus3.generated.pydantic.AleCore.Data.AleVector2 import AleVector2
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.MaterialStagingEffect import MaterialStagingEffect
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.StagingEvolutiveVar import StagingEvolutiveVar
 from pydofus3.not_generated.base import float_nan
+from typing import ClassVar
 
 class ColorAnimationStagingEffect(MaterialStagingEffect):
+	TYPE: ClassVar[str] = "ColorAnimation"
 	finalColor: StagingEvolutiveVar[AleColor]
 	alpha: StagingEvolutiveVar[float_nan]
 	frequency: StagingEvolutiveVar[float_nan]

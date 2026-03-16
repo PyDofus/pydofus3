@@ -1,5 +1,4 @@
 from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.i18n import i18n
 
 class PopupButtonData(MyBaseModel):

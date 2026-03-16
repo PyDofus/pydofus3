@@ -1,6 +1,6 @@
 from pydofus3.not_generated.base import MyBaseModel
-
+from typing import ClassVar
 
 class JsonConverterUtils(MyBaseModel):
-	pass
+	OldSource: ClassVar[bool] = False
 

@@ -1,9 +1,8 @@
-from typing import Annotated
 from pydofus3.not_generated.base import FlagBaseModel
-
+from typing import Annotated
 
 class ShaderVariantBitfield(FlagBaseModel):
-	NONE : Annotated[bool,0]
+	None_ : Annotated[bool,0]
 	CustomFramerate : Annotated[bool,1]
 	AlphaClip : Annotated[bool,2]
 	ColorAnimationFeature : Annotated[bool,4]

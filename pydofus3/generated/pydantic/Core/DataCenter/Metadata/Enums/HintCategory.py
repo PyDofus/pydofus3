@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class HintCategory(OpenAPIIntEnum):
 	Temples = 1
 	BidHouse = 2

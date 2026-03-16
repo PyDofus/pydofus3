@@ -4,9 +4,11 @@ from pydofus3.generated.pydantic.AleCore.Data.AleVector4 import AleVector4
 from pydofus3.generated.pydantic.AleCore.Data.UVModes import UVModes
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.MaterialStagingEffect import MaterialStagingEffect
 from pydofus3.generated.pydantic.Editor.AleCore.Data.Staging.StagingEvolutiveVar import StagingEvolutiveVar
-from typing import Union, Annotated
+from typing import Annotated, Union
+from typing import ClassVar
 
 class DistortionStagingEffect(MaterialStagingEffect):
+	TYPE: ClassVar[str] = "Distortion"
 	noiseTexTiling: StagingEvolutiveVar[AleVector2]
 	noiseTexOffset: StagingEvolutiveVar[AleVector2]
 	uvMode: Annotated[Union[UVModes, int], Field(union_mode='left_to_right')]

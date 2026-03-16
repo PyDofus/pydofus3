@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class BreachReward(OpenAPIIntEnum):
 	CurrencyBudget = 0
 	CurrencyFragments = 1

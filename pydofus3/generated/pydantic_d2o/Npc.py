@@ -4,3 +4,5 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Npc.NpcDialogSkinData 
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Npc.NpcMessageData import NpcMessageData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Npc.TaxCollectorFirstnameData import TaxCollectorFirstnameData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Npc.TaxCollectorNameData import TaxCollectorNameData
+
+__all__ =["NpcActionData", "NpcData", "NpcDialogSkinData", "NpcMessageData", "TaxCollectorFirstnameData", "TaxCollectorNameData"]

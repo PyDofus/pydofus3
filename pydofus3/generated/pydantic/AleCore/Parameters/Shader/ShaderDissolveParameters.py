@@ -3,11 +3,13 @@ from pydofus3.generated.pydantic.AleCore.Data.AleColor import AleColor
 from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCurve
 from pydofus3.generated.pydantic.AleCore.Data.AleVector2 import AleVector2
 from pydofus3.generated.pydantic.AleCore.Data.ShaderAnimationCurveType import ShaderAnimationCurveType
-from pydofus3.generated.pydantic.AleCore.Parameters.Shader.IShaderParameters import IShaderParameters
 from pydofus3.not_generated.base import float_nan
-from typing import Union, Annotated
+from pydofus3.not_generated.base import MyBaseModel
+from typing import Annotated, Union
+from typing import ClassVar
 
-class ShaderDissolveParameters(IShaderParameters):
+class ShaderDissolveParameters(MyBaseModel):
+	TYPE: ClassVar[str] = "Dissolve"
 	dissolveTexID: int
 	dissolveTexTiling: AleVector2
 	dissolveTexOffset: AleVector2

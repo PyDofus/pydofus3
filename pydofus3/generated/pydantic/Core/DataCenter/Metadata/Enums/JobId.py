@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class JobId(OpenAPIIntEnum):
 	Base = 1
 	Lumberjack = 2
@@ -22,4 +21,5 @@ class JobId(OpenAPIIntEnum):
 	Costumagus = 64
 	Handyman = 65
 	Craftmagus = 74
+	Breeder = 79
 

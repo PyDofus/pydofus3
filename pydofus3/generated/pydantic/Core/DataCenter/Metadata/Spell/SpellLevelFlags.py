@@ -1,6 +1,5 @@
-from typing import Annotated
 from pydofus3.not_generated.base import FlagBaseModel
-
+from typing import Annotated
 
 class SpellLevelFlags(FlagBaseModel):
 	CastInLine : Annotated[bool,1]
@@ -16,4 +15,5 @@ class SpellLevelFlags(FlagBaseModel):
 	NeedVisibleEntity : Annotated[bool,1024]
 	NeedCellWithoutPortal : Annotated[bool,2048]
 	PortalProjectionForbidden : Annotated[bool,4096]
+	ProportionalDiagonal : Annotated[bool,8192]
 

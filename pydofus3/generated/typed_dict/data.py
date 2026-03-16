@@ -2087,8 +2087,16 @@ class ServerPopulationData(TypedDict):
 class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerPopulationData]
 
+class ServerSeasonData(TypedDict):
+    uid: int
+    nameId: str
+    beginning: float
+    closure: float
+    resetDate: float
+    flagObjectId: int
+
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: dict[str, Any]
+    objectsById: dict[str, ServerSeasonData]
 
 class ServersDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerData]
@@ -2221,6 +2229,17 @@ class SpellBombData(TypedDict):
     wallId: int
     instantSpellId: int
     comboCoeff: int
+
+class SpellBombWallData(TypedDict):
+    id: int
+    spellId: int
+    color: int
+    linear: int
+    minHop: int
+    maxHop: int
+
+class SpellBombWallsDataRoot(MonoBehaviour):
+    objectsById: dict[str, SpellBombWallData]
 
 class SpellBombsDataRoot(MonoBehaviour):
     objectsById: dict[str, SpellBombData]

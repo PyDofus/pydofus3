@@ -1,0 +1,28 @@
+from pydantic import BaseModel
+from tqdm import tqdm
+
+from pydofus3.tools import SingletonMeta
+from pydofus3.extractor.data.loader import load_d2o
+from pydofus3.generated.pydantic_d2o import {{ class_name.keys() | join(', ') }}
+
+class Datacenter(metaclass=SingletonMeta):
+    def __init__(self, empty: bool = False):
+        self.empty = empty
+        if not empty:
+            self.progress = tqdm(total={{ total }})
+        {% for key, vals in class_name.items() %}{% for val in vals %}
+        self.{{ val.name }} = self.load_d2o({{ key }}.{{ val.name }}){% endfor %}
+        {% endfor %}
+        if not empty:
+            self.progress.close()
+
+    def load_d2o[T: BaseModel](self, d2o_class: type[T]) -> list[T]:
+        if self.empty:
+            return []
+        self.progress.set_postfix(d2o=d2o_class.__name__)
+        self.progress.update()
+        try:
+            return list(load_d2o(d2o_class).values())
+        except Exception:
+            tqdm.write(f"Error loading {d2o_class.__name__}")
+            return []

@@ -1,7 +1,6 @@
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Monster.MonsterDropCoefficientData import MonsterDropCoefficientData
-from pydofus3.not_generated.base import MyBaseModel
-
 from pydofus3.not_generated.base import float_nan
+from pydofus3.not_generated.base import MyBaseModel
 
 class MonsterDropData(MyBaseModel):
 	dropId: int

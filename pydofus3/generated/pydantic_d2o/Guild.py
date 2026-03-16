@@ -12,3 +12,5 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Guild.GuildRightGroupD
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Guild.GuildShopBoostData import GuildShopBoostData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Guild.GuildTagData import GuildTagData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Guild.GuildTagTypeData import GuildTagTypeData
+
+__all__ =["EmblemBackgroundData", "EmblemSymbolCategoryData", "EmblemSymbolData", "GuildChestTabData", "GuildHallData", "GuildHallThemeData", "GuildLevelRewardData", "GuildRankData", "GuildRankNameSuggestionData", "GuildRightData", "GuildRightGroupData", "GuildShopBoostData", "GuildTagData", "GuildTagTypeData"]

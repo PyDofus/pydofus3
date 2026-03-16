@@ -1,6 +1,5 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-
 class Skills(OpenAPIIntEnum):
 	LockHouse = 81
 	BuyHouse = 97
@@ -10,8 +9,6 @@ class Skills(OpenAPIIntEnum):
 	MageShoes = 164
 	MageTailor = 166
 	MageJewel = 168
-	AccessPaddock = 175
-	BuyPaddock = 176
 	SellPaddock = 177
 	ModifyPaddockPrice = 178
 	ShatterItem = 181

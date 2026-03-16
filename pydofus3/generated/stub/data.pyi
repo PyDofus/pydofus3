@@ -2242,8 +2242,16 @@ class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerPopulationData]
     references: ManagedReferencesRegistry
 
+class ServerSeasonData:
+    uid: int
+    nameId: str
+    beginning: float
+    closure: float
+    resetDate: float
+    flagObjectId: int
+
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: MetadataDictionaryContainer
+    objectsById: MetadataDictionaryContainer[ServerSeasonData]
     references: ManagedReferencesRegistry
 
 class ServersDataRoot(MonoBehaviour):
@@ -2390,6 +2398,18 @@ class SpellBombData:
     wallId: int
     instantSpellId: int
     comboCoeff: int
+
+class SpellBombWallData:
+    id: int
+    spellId: int
+    color: int
+    linear: int
+    minHop: int
+    maxHop: int
+
+class SpellBombWallsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[SpellBombWallData]
+    references: ManagedReferencesRegistry
 
 class SpellBombsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[SpellBombData]

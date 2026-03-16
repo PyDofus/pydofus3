@@ -3,7 +3,6 @@ from pydofus3.generated.pydantic.AleCore.Data.AleMinMaxCurve import AleMinMaxCur
 from pydofus3.generated.pydantic.AleCore.Data.AleVector2Int import AleVector2Int
 from pydofus3.not_generated.base import MyBaseModel
 
-
 class ParticleSpritesheetParameters(MyBaseModel):
 	tiles: AleVector2Int
 	frameOverTime: AleMinMaxCurve
