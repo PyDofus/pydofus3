@@ -76,8 +76,9 @@ class Processor:
             for key, value in tqdm((data_to_add.copy() or self.data).items(), desc="custom table"):
                 for index, series in value.items():
                     if series.dtype == "object" and isinstance(series.iloc[0], list):
-                        no_empty = series[series.str.len() > 0]
-                        if no_empty.size > 0 and isinstance(no_empty.iloc[0][0], dict):
+                        if (no_empty := series[series.str.len() > 0]).size == 0:
+                            continue
+                        if isinstance(no_empty.iloc[0][0], dict):
                             new_name = f"custom_{key}_{index}"
                             table = (
                                     value[[index, "id"] if "id" in value.columns else [index]]
@@ -88,12 +89,39 @@ class Processor:
                             df = pd.DataFrame(table[index].to_list())
                             if "id" in table.columns:
                                 df = df.join(table.add_suffix("_back", axis=1)["id_back"])
-                                if new_name not in db_settings.relation:
-                                    db_settings.relation[new_name] = dict()
-                                db_settings.relation[new_name]['id_back'] = key
+                                self.add_id_back(new_name, key)
                             data_to_add[new_name] = df
+                        elif isinstance(no_empty.iloc[0][0], list):
+                            find_elem = self.find_nested_elem(no_empty)
+                            if isinstance(find_elem, dict):
+                                new_name = f"customArray_{key}_{index}"
+                                value["index"] = value[index].apply(lambda x: list(range(len(x))))
+                                table = (
+                                        value[[index, "id", "index"] if "id" in value.columns else [index]]
+                                        .explode([index, "index"])
+                                        .dropna()
+                                        .reset_index(drop=True)
+                                )
+                                if 'id' in table.columns:
+                                    table.rename(columns={"id": "id_back"}, inplace=True)
+                                    self.add_id_back(new_name, key)
+                                data_to_add[new_name] = table
         self.data.update(data_to_add)
         return self
+
+    @staticmethod
+    def add_id_back(relation_name:str, key:str)->None:
+        if relation_name not in db_settings.relation:
+            db_settings.relation[relation_name] = dict()
+        db_settings.relation[relation_name]['id_back'] = key
+
+    @staticmethod
+    def find_nested_elem(value: pd.Series) -> Any:
+        for outer in value:
+            for inner in outer:
+                if len(inner) > 0:
+                    return inner[0]
+        return None
 
     @staticmethod
     def col_split(table: pd.DataFrame, split_conf: list[str], key2: str):
@@ -104,6 +132,9 @@ class Processor:
         :param key2: name of column to split
         :return: dataframe with new column
         """
+        if table[key2].dtype == "str":
+            table[key2] = table[key2].str.strip().replace('', None).dropna().map(lambda x: list(map(int, x.split(','))))
+
         for counter, name in enumerate(split_conf, start=1):
             table[name] = table[key2].apply(lambda x: x[counter])
         table[key2] = table[key2].apply(lambda x: x[0])
@@ -118,14 +149,16 @@ class Processor:
             if table_name in self.data:
                 for field, many in value.items():
                     columns = [many.key_id_table1, field] + many.key_sup
-                    table = (
-                            self.data[table_name][columns]
+                    table =  self.data[table_name][columns]
+                    if many.split_on:
+                        table[field] = table[field].str.strip().replace('',None).str.split(many.split_on)
+                    table = (table
                             .rename(columns={many.key_id_table1: table_name + "Id"})
                             .explode(columns[1:])
                             .dropna()
                     )
                     table = self.col_split(table, many.split, field) if many.split else table.astype({field: "int64"})
-                    self.data[f"many_{table_name}_{many.table2}_{field}"] = table
+                    self.data[f"many_{table_name}_{many.table}_{field}"] = table
             else:
                 print(f"{table_name} not found in data")
         return self

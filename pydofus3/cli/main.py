@@ -21,7 +21,7 @@ app.add_typer(data_app, name='data', help='extract dofus data')
 @app.command()
 def pydantic(
         dofus_path: Annotated[Path, typer.Argument(help='dofus game path', resolve_path=True, exists=True)] = DEFAULT_DOFUS,
-        output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_GENERATED,
+        output: Annotated[Path|None, typer.Option(help='output folder')] = None,
         ):
     """
     generate pydantic model and enum
@@ -30,7 +30,8 @@ def pydantic(
     from pydofus3.tools import get_unity_version
 
     version = get_unity_version(dofus_path)
-    redux(dofus_path, output / 'dummyDLL', version, code_gen=True)
+    output = output if output is not None else DEFAULT_OUTPUT
+    redux(dofus_path, output, version,generated_code_in_output=output is not None, code_gen=True)
 
 
 @app.command()
@@ -76,6 +77,7 @@ def dumpcs(
         dofus_path: Annotated[
             Path, typer.Argument(help='dofus game path', resolve_path=True, exists=True)] = DEFAULT_DOFUS,
         output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_OUTPUT,
+        code_gen_in_output: Annotated[bool, typer.Option(help='generate code in output folder')] = False,
         ida_script: Annotated[bool, typer.Option(help='add ida script')] = False,
         dump_cs: Annotated[bool, typer.Option(help='dump.cs')] = False,
         dll: Annotated[bool, typer.Option(help='dll')] = False,
@@ -86,9 +88,8 @@ def dumpcs(
     """
     from pydofus3.extractor.dump_cs.main import redux
     from pydofus3.tools import get_unity_version
-
     version = get_unity_version(dofus_path)
-    redux(dofus_path, output / 'dummyDLL', version, ida_script=ida_script, dumpcs=dump_cs, dll=dll, code_gen=codegen)
+    redux(dofus_path, output / 'dummyDLL', version,generated_code_in_output=code_gen_in_output, ida_script=ida_script, dumpcs=dump_cs, dll=dll, code_gen=codegen)
 
 
 @app.command()
@@ -203,10 +204,10 @@ def process(
         UnityExtractor(dofus_path, key, conf).extract()
     if audio_files := [i for i in files if i.suffix == '.bank']:
         extract_audio(audio_files, output / TypeDataOther.Audio)
-    StubTypeTree(dofus_path, output_generated, grouped_files)
-    Processor().db_dump()
     redux(dofus_path, output / 'dummyDLL', version, dll=True, dumpcs=True)
     protodec(output / 'dummyDLL', output / 'proto')
+    StubTypeTree(dofus_path, output_generated, grouped_files)
+    Processor().db_dump()
 
 
 @app.command()

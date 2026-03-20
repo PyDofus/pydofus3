@@ -322,14 +322,14 @@
     "Core.DataCenter.Metadata.Quest.TreasureHunt.PointOfInterestData": [
       "nameId"
     ],
-    "Core.DataCenter.Metadata.Quest.Ride.PaddocksData": [
+    "Core.DataCenter.Metadata.Ride.PaddocksData": [
       "nameId"
     ],
-    "Core.DataCenter.Metadata.Quest.Ride.RidesData": [
-      "nameId",
-      "colorId"
+    "Core.DataCenter.Metadata.Ride.RideSpeciesData": [
+      "nameId"
     ],
-    "Core.DataCenter.Metadata.Quest.Ride.RideSpeciesData": [
+    "Core.DataCenter.Metadata.Ride.RidesData": [
+      "colorId",
       "nameId"
     ],
     "Core.DataCenter.Metadata.Scenarios.FightScenarioData": [
@@ -416,7 +416,7 @@
     "Optional": "from typing import Optional",
     "Any": "from typing import Any",
     "Iterable": "from typing import Iterable",
-    "float_nan": "from pydofus3.not_generated.base import float_nan",
+    "float_nan": "from pydofus3.not_generated.base import float_nan"
   },
   "unityEngineMapping": ["Rect","Color32", "Vector2Int", "Vector3", "Vector2", "Material", "ParticleSystem", "BlendMode", "BlendOp", "float2", "Color", "Quaternion","Vector4","SortingCriteria","RenderPassEvent","ScriptableRendererFeature"],
   "wrappedMapping": {

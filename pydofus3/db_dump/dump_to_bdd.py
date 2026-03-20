@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy import create_engine, text
 from tqdm import tqdm
-
 from pydofus3.config import settings
 from .config import db_settings
 
@@ -81,10 +80,10 @@ class BDD:
     def _create_relation_many(self) -> None:
         for table1, value in tqdm(self.config.relation_many_many.items(), desc="bdd add many many"):
             for many_col, many in value.items():
-                table = f"many_{table1}_{many.table2}_{many_col}"
+                table = f"many_{table1}_{many.table}_{many_col}"
                 constraint_name_1 = f"fk_{table1}_{table}"
-                constraint_name_2 = f"fk_{table}_{many.table2}"
-                statement = f"{self.foreign_key_sql(table, constraint_name_1, f"{table1}Id", table1, many.key_id_table1)};{self.foreign_key_sql(table, constraint_name_2, many_col, many.table2, many.key_id_table2)}"
+                constraint_name_2 = f"fk_{table}_{many.table}"
+                statement = f"{self.foreign_key_sql(table, constraint_name_1, f"{table1}Id", table1, many.key_id_table1)};{self.foreign_key_sql(table, constraint_name_2, many_col, many.table, many.key_id_table2)}"
                 with self.engine.begin() as conn:
                     try:
                         conn.exec_driver_sql(statement)

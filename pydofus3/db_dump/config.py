@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 from pydantic_settings import (
     BaseSettings,
     PydanticBaseSettingsSource,
@@ -14,9 +14,15 @@ CONFIG_PATH = Path(__file__).parent / "conf.json"
 class ManyData(BaseModel):
     key_id_table1: str = "id"
     key_id_table2: str = "id"
-    table2: str
-    key_sup: list[str] = []
-    split: list[str] = []
+    table: str
+    key_sup: list[str] = []    # add a column to join table
+    split: list[str] = []      # split field to multiple columns, use the element of this list a column name
+    split_on: str|None = None  # split on the given value
+
+    @model_validator(mode='before')
+    @classmethod
+    def before_validate(cls, data):
+        return {'table': data} if isinstance(data, str) else data
 
 
 class DBSettings(BaseSettings):

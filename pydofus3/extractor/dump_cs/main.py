@@ -12,20 +12,19 @@ image_return_line = re.compile(r'\n^// Image', flags=re.MULTILINE)
 using_pattern = re.compile(r'^using [\w._]*;\n', flags=re.MULTILINE)
 
 
-def redux(game_path: Path, output: Path, unity_version: str, code_gen:bool=False,dll:bool=False, dumpcs:bool=False ,ida_script: bool = False) -> None:
+def redux(game_path: Path, output: Path, unity_version: str,generated_code_in_output:bool=False , code_gen:bool=False,dll:bool=False, dumpcs:bool=False,ida_script: bool = False) -> None:
     """
     dump with il2cpp inspector redux
     """
 
     if not code_gen and not dumpcs and not ida_script and not dll:
         code_gen = True
-        ida_script = True
         dumpcs = True
         dll = True
 
     output.mkdir(exist_ok=True, parents=True)
     dumper_path = Path(__file__).parent / 'redux/CodeGen.dll'
-    generated_code_path = Path(__file__).parent.parent.parent / 'generated'
+    generated_code_path = (output if generated_code_in_output else Path(__file__).parent.parent.parent) / 'generated'
     if not (metadata_path := next(game_path.rglob('**/global-metadata.dat'))):
         raise FileNotFoundError('global-metadata.dat not found')
     if not (il2cpp_path := next(game_path.glob('GameAssembly.*'))):
@@ -36,11 +35,12 @@ def redux(game_path: Path, output: Path, unity_version: str, code_gen:bool=False
         cmd.extend(['--dll-out', output/'DummyDll'])
     if dumpcs:
         cmd.extend(['--cs-out', output/'dump.cs'])
+    if ida_script:
+        cmd.extend(['--py-out', output/'il2cpp.py', '--json-out',output/'metadata.json','--cpp-out', output/'cpp'])
     if code_gen:
         cmd.extend(['--py-generated-out', generated_code_path/'pydantic', '--py-enum-out', generated_code_path/'GeneratedEnum',
            '--config', Path(__file__).parent/'config.json'])
-    if ida_script:
-        cmd.extend(['--py-out', 'il2cpp.py'])
+
     subprocess.run(cmd)
     if ida_script:
         old = '-target x86_64-pc-linux -x c++ -D_IDACLANG_=1'
