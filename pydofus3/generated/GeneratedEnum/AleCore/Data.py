@@ -83,13 +83,11 @@ class ShaderVariantBitfield(IntFlag):
 	RefractionUvModeFeatureScreenSpace = 16777216
 	RefractionUvModeFeatureWorldSpace = 33554432
 	RefractionUvModeFeatureNormal = 67108864
-	DissolveFeatureNo = 134217728
 	DissolveFeatureNormal = 268435456
 	DissolveFeatureParticle = 536870912
 	DissolveAnimationTypeFixed = 1073741824
 	DissolveAnimationTypePingPong = 2147483648
 	DissolveAnimationTypeLoop = 4294967296
-	EmissiveFeatureNo = 8589934592
 	EmissiveFeatureNormal = 17179869184
 	EmissiveFeatureParticle = 34359738368
 	WindSensitiveFeature = 68719476736
@@ -99,7 +97,6 @@ class ShaderVariantBitfield(IntFlag):
 	Animator2D = 1099511627776
 	UseCustomisationColor = 2199023255552
 	UseColorEffects = 4398046511104
-	FlashBlendModeNone = 8796093022208
 	FlashBlendModeMultiply = 17592186044416
 	FlashBlendModeScreen = 35184372088832
 	FlashBlendModeInvert = 70368744177664

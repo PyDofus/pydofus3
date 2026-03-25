@@ -136,7 +136,10 @@ class Processor:
             table[key2] = table[key2].str.strip().replace('', None).dropna().map(lambda x: list(map(int, x.split(','))))
 
         for counter, name in enumerate(split_conf, start=1):
-            table[name] = table[key2].apply(lambda x: x[counter])
+            try:
+                table[name] = table[key2].apply(lambda x: x[counter])
+            except:
+                print(1)
         table[key2] = table[key2].apply(lambda x: x[0])
         return table
 

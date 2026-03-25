@@ -57,7 +57,6 @@ BASE_TYPE_MAP: dict[str, str] = {
         'TypelessData': 'bytes',
         }
 
-# todo use il2cpphelper for fully automated mapping
 
 interface_mapping = {
         'IClientInteractiveElement': ['ClientInteractiveAnimatedElementTransform', 'ClientInteractiveElementTransform'],

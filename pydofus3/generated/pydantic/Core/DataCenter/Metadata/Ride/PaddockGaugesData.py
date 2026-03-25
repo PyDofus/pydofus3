@@ -8,5 +8,4 @@ class PaddockGaugesData(D2oData):
 	id: int
 	name: str
 	tierMaxValues: list[PaddockTierData]
-	m_tierMaxValuesDictionary: dict[int, int]
 

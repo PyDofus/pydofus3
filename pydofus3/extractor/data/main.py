@@ -210,10 +210,11 @@ class UnityExtractor:
     def export_game_object(self, obj: ObjectReader[GameObject], output: Path) -> set[tuple[str, int]]:
         output.write_bytes(orjson.dumps(obj.read_typetree(), option=orjson.OPT_INDENT_2))
         exported = {(obj.assets_file.name, obj.path_id)}
-        game_obj = obj.read()
-        for ref_id, ref in crawl_obj(game_obj).items():
+        for ref_id, ref in crawl_obj(obj).items():
+            if ref.type == ClassIDType.GameObject:
+                continue
             exported_tuple = (ref.assetsfile.name, ref_id)
-            if exported_tuple in exported or ref.type == ClassIDType.GameObject:
+            if exported_tuple in exported:
                 continue
             try:
                 exported.update(self.extract_obj(ref.deref(), output / str(ref.path_id)))

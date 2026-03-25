@@ -1,5 +1,5 @@
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.OptionalFeatures.ProgressingAchievementSeasonData import ProgressingAchievementSeasonData
-from pydofus3.generated.pydantic.Core.DataCenter.MetadataRoot import MetadataRoot
+from pydofus3.not_generated.base import MetadataRoot
 
 class ProgressingAchievementSeasonsDataRoot(MetadataRoot[ProgressingAchievementSeasonData]):
 	pass
