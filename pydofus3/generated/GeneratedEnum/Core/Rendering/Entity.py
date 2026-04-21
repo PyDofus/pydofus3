@@ -1,13 +1,13 @@
 from enum import IntFlag
 
 class EntityQuery:
-	class uf(IntFlag):
-		czih = 0
-		czii = 1
-		czij = 2
-		czik = 4
-		czil = 8
-		czim = 16
-		czin = 32
-		czio = 255
+	class ug(IntFlag):
+		czrf = 0
+		czrg = 1
+		czrh = 2
+		czri = 4
+		czrj = 8
+		czrk = 16
+		czrl = 32
+		czrm = 255
 

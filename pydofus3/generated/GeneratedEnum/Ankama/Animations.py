@@ -2,55 +2,55 @@ from enum import IntEnum
 from enum import IntFlag
 
 class Animation:
-	class grz(IntFlag):
-		dtic = 0
-		dtid = 1
-		dtie = 2
-		dtif = 4
-		dtig = 8
-		dtih = 16
-		dtii = 32
-		dtij = 64
-		dtik = 128
+	class gsd(IntFlag):
+		dtrt = 0
+		dtru = 1
+		dtrv = 2
+		dtrw = 4
+		dtrx = 8
+		dtry = 16
+		dtrz = 32
+		dtsa = 64
+		dtsb = 128
 
-	class gsa(IntEnum):
-		dtil = 0
-		dtim = 1
-		dtin = 2
-		dtio = 4
-		dtip = 8
-		dtiq = 16
-		dtir = 32
-		dtis = 64
-		dtit = 128
+	class gse(IntEnum):
+		dtsc = 0
+		dtsd = 1
+		dtse = 2
+		dtsf = 4
+		dtsg = 8
+		dtsh = 16
+		dtsi = 32
+		dtsj = 64
+		dtsk = 128
 
-	class gsb(IntFlag):
-		dtiu = 0
-		dtiv = 1
-		dtiw = 2
-		dtix = 4
+	class gsf(IntFlag):
+		dtsl = 0
+		dtsm = 1
+		dtsn = 2
+		dtso = 4
 
-	class gsc(IntEnum):
-		dtiy = 0
-		dtiz = 1
-		dtja = 2
-		dtjb = 3
-		dtjc = 4
-		dtjd = 5
-		dtje = 6
-		dtjf = 7
-		dtjg = 8
-		dtjh = 9
-		dtji = 10
-		dtjj = 11
-		dtjk = 12
-		dtjl = 13
-		dtjm = 14
-		dtjn = 15
+	class gsg(IntEnum):
+		dtsp = 0
+		dtsq = 1
+		dtsr = 2
+		dtss = 3
+		dtst = 4
+		dtsu = 5
+		dtsv = 6
+		dtsw = 7
+		dtsx = 8
+		dtsy = 9
+		dtsz = 10
+		dtta = 11
+		dttb = 12
+		dttc = 13
+		dttd = 14
+		dtte = 15
 
 class Animator2D:
-	class gse(IntEnum):
-		dtjy = 0
-		dtjz = 1
-		dtka = 2
+	class gsi(IntEnum):
+		dttp = 0
+		dttq = 1
+		dttr = 2
 

@@ -331,16 +331,30 @@ class UnityExtractor:
         for anim in bone_data['animations']:
             (output / f'{anim["name"]}.dat').write_bytes(bytes(anim['dataBytes']))
             del anim['dataBytes']
+        if self.config.no_big_int:
+            del bone_data['m_GameObject']
+            del bone_data['m_Script']
+            del bone_data['boneAsset']
+            for i in bone_data['animations']:
+                del i['data']
+            for i in bone_data['graphics']:
+                del i['asset']
+
         (output / 'bone.json').write_bytes(orjson.dumps(bone_data))
 
-    @staticmethod
-    def extract_skin(skin_data: dict, obj: ObjectReader[MonoBehaviour], output: Path):
+    def extract_skin(self, skin_data: dict, obj: ObjectReader[MonoBehaviour], output: Path):
         output.mkdir(exist_ok=True, parents=True)
         for texture_ref in skin_data['textures']:
             texture_path = texture_ref['m_PathID']
             if texture_path in obj.assets_file.files:
                 texture = obj.assets_file.files[texture_path].read()
                 save_img(output / f'{texture_path}.png', get_image_from_texture2d(texture, False))
+        if self.config.no_big_int:
+            del skin_data['m_GameObject']
+            del skin_data['m_Script']
+            for i in skin_data['textures']:
+                i['m_PathID'] = str(i['m_PathID'])
+
         (output / 'skin.json').write_bytes(orjson.dumps(skin_data))
 
     @staticmethod

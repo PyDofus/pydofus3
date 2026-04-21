@@ -6,7 +6,7 @@ class QualityModifier(IntEnum):
 	Big = 2
 
 class UIUtils:
-	class my(IntEnum):
-		cwoj = 0
-		cwok = 1
+	class mz(IntEnum):
+		cwxg = 0
+		cwxh = 1
 

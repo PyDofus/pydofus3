@@ -43,6 +43,7 @@ def main(
     force_gc_collect: Annotated[
         bool, typer.Option(help='Force garbage collection after each file (recommended for map textures)')
     ] = False,
+    no_big_int: Annotated[bool, typer.Option(help="remove big int exported data")]=False
 ):
     """
     Common command parameters
@@ -62,6 +63,7 @@ def main(
             process_datacenter=process_datacenter,
             load_all_files=load_all_files,
             force_gc_collect=force_gc_collect,
+            no_big_int=no_big_int
         )
     }
 

@@ -62,7 +62,7 @@ def ornament(
     Ornament(dofus_path).save_all(output)
 
 
-@app.command(deprecated=True)
+@app.command()
 def proto(output: Annotated[Path, typer.Argument(help='output folder')] = DEFAULT_OUTPUT):
     """
     generate proto (deprecated)
@@ -182,7 +182,9 @@ def process(
         conf = UnityExtractorOptionConfig(output=output, files=value)
         if key == TypeData.Picto_Items:
             conf.force_texture2d = True
-        elif key not in [TypeData.Skins, TypeData.Bones]:
+        elif key in [TypeData.Skins, TypeData.Bones]:
+            conf.no_big_int = True
+        else:
             continue
         UnityExtractor(dofus_path, key, conf).extract()
 

@@ -1,4 +1,4 @@
-from pydofus3.generated.pydantic.gsd import gsd
+from pydofus3.generated.pydantic.gsh import gsh
 from pydofus3.not_generated.base import FlagBaseModel
 from pydofus3.not_generated.base import MyBaseModel
 from pydofus3.not_generated.base import OpenAPIIntEnum
@@ -10,51 +10,51 @@ class Animation(MyBaseModel):
 	boneId: str
 	dataBytes: list[int]
 	bounds: Rect
-	instance: gsd
+	instance: gsh
 
-	class grz(FlagBaseModel):
-		dtic : Annotated[bool,0]
-		dtid : Annotated[bool,1]
-		dtie : Annotated[bool,2]
-		dtif : Annotated[bool,4]
-		dtig : Annotated[bool,8]
-		dtih : Annotated[bool,16]
-		dtii : Annotated[bool,32]
-		dtij : Annotated[bool,64]
-		dtik : Annotated[bool,128]
+	class gsd(FlagBaseModel):
+		dtrt : Annotated[bool,0]
+		dtru : Annotated[bool,1]
+		dtrv : Annotated[bool,2]
+		dtrw : Annotated[bool,4]
+		dtrx : Annotated[bool,8]
+		dtry : Annotated[bool,16]
+		dtrz : Annotated[bool,32]
+		dtsa : Annotated[bool,64]
+		dtsb : Annotated[bool,128]
 
-	class gsa(OpenAPIIntEnum):
-		dtil = 0
-		dtim = 1
-		dtin = 2
-		dtio = 4
-		dtip = 8
-		dtiq = 16
-		dtir = 32
-		dtis = 64
-		dtit = 128
+	class gse(OpenAPIIntEnum):
+		dtsc = 0
+		dtsd = 1
+		dtse = 2
+		dtsf = 4
+		dtsg = 8
+		dtsh = 16
+		dtsi = 32
+		dtsj = 64
+		dtsk = 128
 
-	class gsb(FlagBaseModel):
-		dtiu : Annotated[bool,0]
-		dtiv : Annotated[bool,1]
-		dtiw : Annotated[bool,2]
-		dtix : Annotated[bool,4]
+	class gsf(FlagBaseModel):
+		dtsl : Annotated[bool,0]
+		dtsm : Annotated[bool,1]
+		dtsn : Annotated[bool,2]
+		dtso : Annotated[bool,4]
 
-	class gsc(OpenAPIIntEnum):
-		dtiy = 0
-		dtiz = 1
-		dtja = 2
-		dtjb = 3
-		dtjc = 4
-		dtjd = 5
-		dtje = 6
-		dtjf = 7
-		dtjg = 8
-		dtjh = 9
-		dtji = 10
-		dtjj = 11
-		dtjk = 12
-		dtjl = 13
-		dtjm = 14
-		dtjn = 15
+	class gsg(OpenAPIIntEnum):
+		dtsp = 0
+		dtsq = 1
+		dtsr = 2
+		dtss = 3
+		dtst = 4
+		dtsu = 5
+		dtsv = 6
+		dtsw = 7
+		dtsx = 8
+		dtsy = 9
+		dtsz = 10
+		dtta = 11
+		dttb = 12
+		dttc = 13
+		dttd = 14
+		dtte = 15
 

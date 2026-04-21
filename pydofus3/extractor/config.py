@@ -21,3 +21,4 @@ class UnityExtractorOptionConfig:
     process_datacenter: bool = False
     load_all_files: bool = False
     force_gc_collect: bool = False
+    no_big_int:bool = False

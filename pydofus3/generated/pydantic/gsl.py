@@ -1,5 +1,6 @@
-from pydofus3.not_generated.base import MyBaseModel
+from pydofus3.not_generated.base import OpenAPIIntEnum
 
-class gsl(MyBaseModel):
-	pass
+class gsl(OpenAPIIntEnum):
+	dtvx = 0
+	dtvy = 1
 

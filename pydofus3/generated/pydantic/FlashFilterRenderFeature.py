@@ -54,30 +54,30 @@ class FlashFilterRenderFeature(ScriptableRendererFeature):
 		height: int
 		textureTaken: bool
 
-	class grw(OpenAPIIntEnum):
-		dtfv = 0
-		dtfw = 1
-		dtfx = 2
-		dtfy = 3
-		dtfz = 4
+	class gsa(OpenAPIIntEnum):
+		dtpm = 0
+		dtpn = 1
+		dtpo = 2
+		dtpp = 3
+		dtpq = 4
 
 	class FlashFilterPass(MyBaseModel):
 		class FinalBlitVertex(MyBaseModel):
 			pos: Vector2
 			uv: Vector2
 
-		class grx(MyBaseModel):
-			dtga: ClassVar[str] = "FlashFilterPass"
-			dtgb: ClassVar[str] = "FilterActions.Composite"
-			dtgc: ClassVar[str] = "FilterActions.Blur"
-			dtgd: ClassVar[str] = "FilterActions.GlowDropShadow"
-			dtge: ClassVar[str] = "FilterActions.Stencil"
-			dtgf: ClassVar[str] = "FilterActions.ColorMatrix"
-			dtgg: ClassVar[str] = "CompositeMeshToTarget"
-			dtgh: ClassVar[str] = "Copy Bounds"
-			dtgi: ClassVar[str] = "Apply Mask"
-			dtgj: ClassVar[str] = "Glow"
-			dtgk: ClassVar[str] = "DropShadow"
-			dtgl: ClassVar[str] = "Blur"
-			dtgm: ClassVar[str] = "ColorMatrix"
+		class gsb(MyBaseModel):
+			dtpr: ClassVar[str] = "FlashFilterPass"
+			dtps: ClassVar[str] = "FilterActions.Composite"
+			dtpt: ClassVar[str] = "FilterActions.Blur"
+			dtpu: ClassVar[str] = "FilterActions.GlowDropShadow"
+			dtpv: ClassVar[str] = "FilterActions.Stencil"
+			dtpw: ClassVar[str] = "FilterActions.ColorMatrix"
+			dtpx: ClassVar[str] = "CompositeMeshToTarget"
+			dtpy: ClassVar[str] = "Copy Bounds"
+			dtpz: ClassVar[str] = "Apply Mask"
+			dtqa: ClassVar[str] = "Glow"
+			dtqb: ClassVar[str] = "DropShadow"
+			dtqc: ClassVar[str] = "Blur"
+			dtqd: ClassVar[str] = "ColorMatrix"
 
