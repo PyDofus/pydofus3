@@ -22,3 +22,6 @@ class UnityExtractorOptionConfig:
     load_all_files: bool = False
     force_gc_collect: bool = False
     no_big_int:bool = False
+    indent: bool = False
+    skin_png: bool = False
+    skin_webp: bool = False

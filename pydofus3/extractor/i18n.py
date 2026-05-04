@@ -6,8 +6,9 @@ from struct import Struct
 from typing import TypedDict
 
 import orjson
-from Sbr import BinaryReader, EnumStructBase
 from tqdm import tqdm
+
+from pydofus3.binaryReader import BinaryReader
 
 
 class I18N(TypedDict):
@@ -24,18 +25,18 @@ def read(i18n_dir: Path | str) -> dict[int, I18N]:
     read dofus i18n binary files
     """
     if isinstance(i18n_dir, str):
-        i18n_dir = Path(i18n_dir)
-    i18n: dict[int, dict[str, str]] = defaultdict(dict)
+        i18n_dir: Path = Path(i18n_dir)
+    i18n = defaultdict[int, dict[str, str]](dict)
     for file in tqdm(list(i18n_dir.rglob('*.bin')), desc='load i18n'):
         with file.open('rb') as f:
             reader = BinaryReader(f)
-            reader.str(reader.u8)  # can't be used, always fr
+            reader.read_str(reader.u8())  # can't be used, always fr
             lang = file.stem
-            text = reader.read_struct(Struct(f'<{EnumStructBase.u32 * reader.u32 * 2}'))
-            text_ui = reader.read_struct(Struct(f'<{f"{EnumStructBase.u64}{EnumStructBase.u32}" * reader.u32}'))
+            text = reader.read_struct(Struct(f'<{"I" * reader.u32() * 2}'))
+            text_ui = reader.read_struct(Struct(f'<{"QI" * reader.u32()}'))
 
             for key, pos in batched(chain(text, text_ui), 2):
-                i18n[key][lang] = reader.offset(pos).str(reader.read_varint())
+                i18n[key][lang] = reader.offset(pos).read_str(reader.read_varint())
     return {
             k: {
                     'id': k,

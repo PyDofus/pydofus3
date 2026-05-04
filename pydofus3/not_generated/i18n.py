@@ -1,6 +1,9 @@
 from functools import wraps
+from pathlib import Path
+from typing import cast
 
 from pydantic import BaseModel, model_validator
+
 from pydofus3.config import check_game_path, settings
 from pydofus3.enum_data import TypeDataOther
 from pydofus3.extractor.i18n import read
@@ -32,7 +35,7 @@ class i18n(BaseModel):
 def _load_i18n():
     global i18n_dict
     if not i18n_dict:
-        i18n_dict = read(settings.game_path / TypeDataOther.I18n)
+        i18n_dict = read(cast(Path,settings.game_path) / TypeDataOther.I18n)  # ty:ignore[invalid-assignment]
 
 
 def check_i18n(f):

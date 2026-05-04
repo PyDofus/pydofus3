@@ -2,7 +2,7 @@
 process d2o before upload to bdd
 """
 from collections import defaultdict
-from typing import Self, Any
+from typing import Any, Self
 
 import numpy as np
 import orjson
@@ -26,7 +26,7 @@ class Processor:
         :param language:  i18n language
         """
         self.language: str = language
-        self.dtype: dict[str, dict[str, Any]] = defaultdict(dict)
+        self.dtype = defaultdict[str, dict[str, Any]](dict)
         self.data: dict[str, pd.DataFrame] = self.process()
 
     def process(self) -> dict[str, pd.DataFrame]:
@@ -34,13 +34,15 @@ class Processor:
         load all d2o file present in a dir
         :return: dict with d2o name as key and Dataframe of d2o content as value
         """
+        if (extract_dir:=settings.extract_dir) is None:
+            raise ValueError("extract_dir not set")
         data = {
                 data['m_Name'].removesuffix("DataRoot"): pd.DataFrame.from_dict(data['objectsById'], orient="index")
-                for path_file in tqdm(list((settings.extract_dir / TypeData.Data).iterdir()), desc="load d2o")
+                for path_file in tqdm(list((extract_dir / TypeData.Data).iterdir()), desc="load d2o")
                 if not path_file.stem == "catalog" and (data := orjson.loads(path_file.read_bytes()))
                 }
         data['i18n'] = pd.DataFrame.from_dict(
-            orjson.loads((settings.extract_dir / TypeDataOther.I18n / 'i18n.json').read_bytes()).values())
+            orjson.loads((extract_dir / TypeDataOther.I18n / 'i18n.json').read_bytes()).values())
         self.dtype['i18n'] = {'id': NUMERIC}
         return data
 
@@ -50,7 +52,7 @@ class Processor:
         :return: return Processor object with data updated
         """
         for value in self.data.values():
-            if not 'id' in value.columns:
+            if 'id' not in value.columns:
                 value.insert(0, 'id', value.index.astype("Int64"))
         return self
 
@@ -136,10 +138,7 @@ class Processor:
             table[key2] = table[key2].str.strip().replace('', None).dropna().map(lambda x: list(map(int, x.split(','))))
 
         for counter, name in enumerate(split_conf, start=1):
-            try:
-                table[name] = table[key2].apply(lambda x: x[counter])
-            except:
-                print(1)
+            table[name] = table[key2].apply(lambda x: x[counter])
         table[key2] = table[key2].apply(lambda x: x[0])
         return table
 
@@ -177,7 +176,7 @@ class Processor:
         return self
 
     def class_extract(self) -> Self:
-        for key, value in tqdm(self.data.items(), desc="type_class"):
+        for value in tqdm(self.data.values(), desc="type_class"):
             if 'type_class' in value.columns:
                 value['class'] = value.pop('type_class').apply(lambda x: x['class'])
         return self
@@ -188,7 +187,7 @@ class Processor:
             for col in value.columns:
                 data = value[col].iloc[0] if len(value) > 0 else None
                 if isinstance(data, dict) and len(data) == 6 and set(data) == i18n_key:
-                    if not key in db_settings.relation:
+                    if key not in db_settings.relation:
                         db_settings.relation[key] = {}
                     id_i18n_name = f"{col}_"
                     db_settings.relation[key][id_i18n_name] = 'i18n'

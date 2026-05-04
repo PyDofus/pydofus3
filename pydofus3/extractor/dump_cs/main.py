@@ -25,9 +25,9 @@ def redux(game_path: Path, output: Path, unity_version: str,generated_code_in_ou
     output.mkdir(exist_ok=True, parents=True)
     dumper_path = Path(__file__).parent / 'redux/CodeGen.dll'
     generated_code_path = (output if generated_code_in_output else Path(__file__).parent.parent.parent) / 'generated'
-    if not (metadata_path := next(game_path.rglob('**/global-metadata.dat'))):
+    if not (metadata_path := next(game_path.rglob('global-metadata.dat'))):
         raise FileNotFoundError('global-metadata.dat not found')
-    if not (il2cpp_path := next(game_path.glob('GameAssembly.*'))):
+    if not (il2cpp_path := next(game_path.rglob('GameAssembly.*'))):
         raise FileNotFoundError('GameAssembly not found')
     cmd = ['dotnet', dumper_path, '-i', il2cpp_path.resolve(), '-m', metadata_path.resolve(), '--unity-version',
            unity_version, '-n', '--select-outputs']

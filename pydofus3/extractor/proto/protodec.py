@@ -1,9 +1,10 @@
 import re
 import subprocess
 from pathlib import Path
-from proto_schema_parser.parser import Parser
+
+from proto_schema_parser.ast import File, Import, Message, OneOf
 from proto_schema_parser.generator import Generator
-from proto_schema_parser.ast import Import, Message, OneOf, File
+from proto_schema_parser.parser import Parser
 
 content_regex = re.compile(r'(google\.protobuf\.Any )\w+( =)')
 

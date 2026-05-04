@@ -11,14 +11,15 @@ from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, ClassVar, Pattern
 
-import UnityPy
 import numpy as np
-from PIL import Image
-from UnityPy.enums import ClassIDType
+import UnityPy
 from moviepy import CompositeVideoClip, ImageClip, ImageSequenceClip, VideoClip, concatenate_videoclips
-from pydofus3.enum_data import TypeData
-from pydofus3.extractor.data.tools import BetterContainer
+from PIL import Image
 from tqdm import tqdm
+from UnityPy.enums import ClassIDType
+
+from pydofus3.enum_data import TypeData, get_data_path
+from pydofus3.extractor.data.tools import BetterContainer
 
 if TYPE_CHECKING:
     from pydofus3.generated.stub.aa_standalonewindows64 import OrnamentInfo, Vector4f
@@ -100,8 +101,7 @@ class PartElement:
                     for obj in objs
                     ]
         else:
-            texture = assets[0].read().image
-            texture = self.resize(texture)
+            texture = self.resize(assets[0].read().image)
             self.assets = [texture]
 
     def resize(self, img: Image.Image) -> Image.Image:
@@ -124,8 +124,8 @@ class PartElement:
             fps = len(np_images) / self.duration
             clip = ImageSequenceClip(np_images, fps=fps)
             # keep displaying the last frame if it ends before the other part
-            if clip.duration < duration:
-                last_frame = ImageClip(np_images[-1]).with_duration(duration - clip.duration)
+            if clip.duration < duration:  # ty:ignore[unsupported-operator]
+                last_frame = ImageClip(np_images[-1]).with_duration(duration - clip.duration)  # ty:ignore[unsupported-operator]
                 clip = concatenate_videoclips([clip, last_frame])
 
         return clip.with_start(self.start)
@@ -133,21 +133,21 @@ class PartElement:
     @staticmethod
     def get_part(o: OrnamentInfo, part: PartName, container: BetterContainer) -> PartElement:
         if part == PartName.BACKGROUND:
-            part = PartElement(part, o.m_backgroundPath)
+            element = PartElement(part, o.m_backgroundPath)
         elif part == PartName.TOP:
-            part = PartElement(part, o.m_topElementPath, o.m_topElementPosition, o.m_animationDuration.y,
+            element = PartElement(part, o.m_topElementPath, o.m_topElementPosition, o.m_animationDuration.y,
                                o.m_animationStartDelay.y)  # fmt: off
         elif part == PartName.BOTTOM:
-            part = PartElement(part, o.m_bottomElementPath, o.m_bottomElementPosition, o.m_animationDuration.w,
+            element = PartElement(part, o.m_bottomElementPath, o.m_bottomElementPosition, o.m_animationDuration.w,
                                o.m_animationStartDelay.w)  # fmt: off
         elif part == PartName.LEFT:
-            part = PartElement(part, o.m_leftElementPath, o.m_leftElementPosition, o.m_animationDuration.x,
+            element = PartElement(part, o.m_leftElementPath, o.m_leftElementPosition, o.m_animationDuration.x,
                                o.m_animationStartDelay.x, o.m_leftElementAnchor)  # fmt: off
         elif part == PartName.RIGHT:
-            part = PartElement(part, o.m_rightElementPath, o.m_rightElementPosition, o.m_animationDuration.z,
+            element = PartElement(part, o.m_rightElementPath, o.m_rightElementPosition, o.m_animationDuration.z,
                                o.m_animationStartDelay.z, o.m_rightElementAnchor)  # fmt: off
-        part._load_asset(o.m_isAnimated, container)
-        return part
+        element._load_asset(o.m_isAnimated, container)
+        return element
 
     @staticmethod
     def get_parts_element(data: OrnamentInfo, container: BetterContainer) -> list[PartElement]:
@@ -172,6 +172,8 @@ class PartElement:
             img = part.assets[0]
             if part.part_name == PartName.BACKGROUND:
                 x, y = 0, 0
+            elif part.position is None:
+                continue
             elif part.part_name == PartName.TOP:
                 x = (background_img.width - img.width) / 2 + part.position.x
                 y = 4 - part.position.w - img.height
@@ -197,8 +199,8 @@ class Ornament:
     pattern_data: ClassVar[Pattern] = re.compile(r'Assets/Content/Ornaments/Data/ornament_(\d+)\.asset')
 
     def __init__(self, game_path: Path) -> None:
-        aa = game_path / TypeData.aa
-        picto_ui = game_path / TypeData.Picto_UI
+        aa = get_data_path(game_path, TypeData.aa)
+        picto_ui = get_data_path(game_path, TypeData.Picto_UI)
 
         if (aa_ornament := next(aa.rglob('Standalone*/ornaments_assets_all.bundle'), None)) is None:
             raise FileNotFoundError('ornaments_assets_all.bundle not found')
@@ -211,7 +213,7 @@ class Ornament:
     def data(self) -> dict[int, OrnamentInfo]:
         return {
                 int(match.group(1)): obj.read()
-                for key, obj in self.env.files[self.aa_ornament].container.items()
+                for key, obj in self.env.files[self.aa_ornament].container.items()  # ty:ignore[unresolved-attribute]
                 if (match := self.pattern_data.fullmatch(key))
                 }
 

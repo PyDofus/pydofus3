@@ -42,7 +42,10 @@ def process_references(data: dict) -> None:
 
 
 def get_monoscript(obj: ObjectReader[MonoBehaviour]) -> ObjectReader[MonoScript] | None:
-    script_type = obj.assets_file.script_types[obj.serialized_type.script_type_index]
+    serialized_type = obj.serialized_type
+    if serialized_type is None:
+        return None
+    script_type = obj.assets_file.script_types[serialized_type.script_type_index]
     if script_type.local_serialized_file_index == 0:
         return obj.assets_file.objects[script_type.local_identifier_in_file]
     else:

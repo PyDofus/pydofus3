@@ -3,7 +3,16 @@ from pathlib import Path
 from typing import Iterable
 
 import UnityPy
-from fpng_py import fpng_encode_image_to_file
+
+from pydofus3.enum_data import TypeData, get_data_path
+
+try:
+    from fpng_py import fpng_encode_image_to_file
+    _HAS_FPNG = True
+except ImportError:
+    _HAS_FPNG = False
+    fpng_encode_image_to_file = None  # ty:ignore[invalid-assignment]
+
 from PIL import Image
 from UnityPy.config import UnityVersionFallbackWarning
 
@@ -33,7 +42,7 @@ def save_img(output: Path, img: Image.Image) -> None:
     if output.suffix not in ['.png', '.jpg']:
         ext = '.png' if img.mode in ['RGBA', 'RGB'] else '.jpg'
         output = output.with_suffix(ext)
-    if output.suffix == '.png':
+    if output.suffix == '.png' and _HAS_FPNG:
         w, h = img.size
         fpng_encode_image_to_file(str(output), img.tobytes(), w, h, len(img.mode))
     else:
@@ -81,19 +90,21 @@ def get_unity_version(game_data: Path|None) -> str:
     :return: unity version
     get unity version
     """
-    if game_data:
-        try:
-            if game_data.is_dir():
-                env = UnityPy.load(str(game_data / 'Dofus_Data/level0'))
-                return env.file.unity_version
-        except (AttributeError, UnityVersionFallbackWarning):
-            print(f"can't read unity version from level0 {game_data}, use default value {settings.unity_fallback_version}")
+    if game_data is None or not game_data.is_dir():
+        return settings.unity_fallback_version
+
+    try:
+        path = get_data_path(game_data, TypeData.Dofus_Data)
+        env = UnityPy.load(str(path/'level0'))
+        return env.file.unity_version  # ty:ignore[unresolved-attribute]
+    except (AttributeError, UnityVersionFallbackWarning):
+        print(f"can't read unity version from level0 {game_data}, use default value {settings.unity_fallback_version}")
     return settings.unity_fallback_version
 
 
-def set_unity_version(game_data: Path) -> None:
+def set_unity_version(game_data: Path|None) -> None:
     """
     set unitypy fallback unity version with the unity version of the game
     :param game_data: game_data folder
     """
-    UnityPy.config.FALLBACK_UNITY_VERSION = get_unity_version(game_data)
+    UnityPy.config.FALLBACK_UNITY_VERSION = get_unity_version(game_data)  # ty:ignore[possibly-missing-submodule]
