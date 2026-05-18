@@ -12,7 +12,7 @@ DEFAULT_GENERATED = Path(__file__).parent.parent / 'generated'
 logging.basicConfig(
     filename='python.log',
     filemode='a',
-    level=logging.INFO,
+    level=logging.WARNING,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 )
 
@@ -248,6 +248,7 @@ def process(
         elif key in [TypeData.Skins, TypeData.Bones]:
             conf.no_big_int = True
             conf.skin_png = True
+            conf.skin_webp = True
         else:
             continue
         UnityExtractor(dofus_path, key, conf).extract()

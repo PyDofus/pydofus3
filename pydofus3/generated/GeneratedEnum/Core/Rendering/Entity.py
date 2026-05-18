@@ -2,12 +2,12 @@ from enum import IntFlag
 
 class EntityQuery:
 	class ug(IntFlag):
-		czrf = 0
-		czrg = 1
-		czrh = 2
-		czri = 4
-		czrj = 8
-		czrk = 16
-		czrl = 32
-		czrm = 255
+		czwa = 0
+		czwb = 1
+		czwc = 2
+		czwd = 4
+		czwe = 8
+		czwf = 16
+		czwg = 32
+		czwh = 255
 

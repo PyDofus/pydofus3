@@ -1,5 +1,6 @@
-from pydofus3.not_generated.base import MyBaseModel
+from pydofus3.not_generated.base import OpenAPIIntEnum
 
-class gso(MyBaseModel):
-	pass
+class gso(OpenAPIIntEnum):
+	duas = 0
+	duat = 1
 

@@ -13,10 +13,10 @@ class RefractionRendererFeature(ScriptableRendererFeature):
 		renderingLayerMask: Annotated[Union[ShaderConstants.RenderingLayerIDs, int], Field(union_mode='left_to_right')]
 		shaderPassIndex: int
 
-	class gtd(MyBaseModel):
-		class gtb(MyBaseModel):
+	class gtg(MyBaseModel):
+		class gte(MyBaseModel):
 			pass
 
-		class gtc(MyBaseModel):
+		class gtf(MyBaseModel):
 			pass
 

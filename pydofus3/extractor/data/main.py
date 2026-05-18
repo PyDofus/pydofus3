@@ -340,15 +340,14 @@ class UnityExtractor:
 
     def extract_skin(self, skin_data: dict, obj: ObjectReader[MonoBehaviour], output: Path):
         output.mkdir(exist_ok=True, parents=True)
+        skin_data['textures'] = [t for t in skin_data['textures'] if t['m_PathID'] in obj.assets_file.files]
         for nb, texture_ref in enumerate(skin_data['textures']):
-            texture_path = texture_ref['m_PathID']
-            if texture_path in obj.assets_file.files:
-                texture = obj.assets_file.files[texture_path].read()
-                img = get_image_from_texture2d(texture, False)
-                if self.config.skin_png or not self.config.skin_webp:
-                    save_img(output / f'{nb}.png', img)
-                if self.config.skin_webp:
-                    img.save(output/ f'{nb}.webp')
+            texture = obj.assets_file.files[texture_ref['m_PathID']].read()
+            img = get_image_from_texture2d(texture, False)
+            if self.config.skin_png or not self.config.skin_webp:
+                save_img(output / f'{nb}.png', img)
+            if self.config.skin_webp:
+                img.save(output/ f'{nb}.webp')
 
         if self.config.no_big_int:
             del skin_data['m_GameObject']

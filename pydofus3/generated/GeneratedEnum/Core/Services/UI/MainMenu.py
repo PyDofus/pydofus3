@@ -1,31 +1,31 @@
 from enum import IntEnum
 
 class BannerMenu:
-	class fdd(IntEnum):
-		dmpt = 1
-		dmpu = 2
-		dmpv = 3
-		dmpw = 4
-		dmpx = 5
-		dmpy = 6
-		dmpz = 7
-		dmqa = 8
-		dmqb = 9
-		dmqc = 10
-		dmqd = 11
-		dmqe = 13
-		dmqf = 14
-		dmqg = 15
-		dmqh = 16
-		dmqi = 17
-		dmqj = 18
-		dmqk = 19
-		dmql = 20
-		dmqm = 21
-		dmqn = 22
-		dmqo = 2147483647
+	class fdg(IntEnum):
+		dmuo = 1
+		dmup = 2
+		dmuq = 3
+		dmur = 4
+		dmus = 5
+		dmut = 6
+		dmuu = 7
+		dmuv = 8
+		dmuw = 9
+		dmux = 10
+		dmuy = 11
+		dmuz = 13
+		dmva = 14
+		dmvb = 15
+		dmvc = 16
+		dmvd = 17
+		dmve = 18
+		dmvf = 19
+		dmvg = 20
+		dmvh = 21
+		dmvi = 22
+		dmvj = 2147483647
 
-	class fde(IntEnum):
-		dmqp = 0
-		dmqq = 1
+	class fdh(IntEnum):
+		dmvk = 0
+		dmvl = 1
 

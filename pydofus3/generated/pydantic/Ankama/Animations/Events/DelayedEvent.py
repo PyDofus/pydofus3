@@ -4,12 +4,12 @@ from pydofus3.not_generated.base import OpenAPIIntEnum
 from typing import Annotated, Union
 
 class DelayedEvent(MyBaseModel):
-	type: Annotated[Union[gst, int], Field(union_mode='left_to_right')]
+	type: Annotated[Union[gsw, int], Field(union_mode='left_to_right')]
 
-	class gst(OpenAPIIntEnum):
-		dtxb = 0
-		dtxc = 1
-		dtxd = 2
-		dtxe = 3
-		dtxf = 4
+	class gsw(OpenAPIIntEnum):
+		dubw = 0
+		dubx = 1
+		duby = 2
+		dubz = 3
+		duca = 4
 

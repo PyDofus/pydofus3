@@ -10,11 +10,11 @@ class DofusOptionsContainer:
 		Right = 1
 
 class RoleplayOptionsContainer:
-	class ftb(IntEnum):
-		dpzz = 0
-		dqaa = 1
+	class fte(IntEnum):
+		dqeu = 0
+		dqev = 1
 
-	class ftc(IntEnum):
-		dqab = 0
-		dqac = 1
+	class ftf(IntEnum):
+		dqew = 0
+		dqex = 1
 

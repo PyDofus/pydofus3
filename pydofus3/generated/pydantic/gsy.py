@@ -1,6 +1,6 @@
 from pydofus3.not_generated.base import MyBaseModel
 
-class OutlinePrepass(MyBaseModel):
-	class gtd(MyBaseModel):
+class gsy(MyBaseModel):
+	class gsx(MyBaseModel):
 		pass
 

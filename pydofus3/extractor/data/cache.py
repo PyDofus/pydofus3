@@ -13,8 +13,11 @@ def process_character_cache(output:Path)->None:
     output_file.parent.mkdir(exist_ok=True, parents=True)
     output_file.write_bytes(orjson.dumps(result))
 
-def update_character_cache(grouped_file:  dict[str, list[Path]], output)-> None:
+def update_character_cache(grouped_file:  dict[str, list[Path]], output :Path)-> None:
     cache_file = (output / TypeData.Bones).parent / "table.json"
+    if not cache_file.is_file():
+        process_character_cache(output)
+        return
     cache_data = orjson.loads(cache_file.read_bytes())
     time_now = int(time.time())
     for type_ in (TypeData.Skins, TypeData.Bones):

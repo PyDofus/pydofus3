@@ -1,5 +1,5 @@
 from pydofus3.not_generated.base import MyBaseModel
 
-class gst(MyBaseModel):
+class gsu(MyBaseModel):
 	pass
 

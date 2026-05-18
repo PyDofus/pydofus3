@@ -1,5 +1,6 @@
 from pydofus3.not_generated.base import MyBaseModel
 
 class gtc(MyBaseModel):
-	pass
+	class gtb(MyBaseModel):
+		pass
 
