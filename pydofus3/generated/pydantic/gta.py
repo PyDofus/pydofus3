@@ -3,5 +3,5 @@ from pydofus3.not_generated.unity import Color
 
 class gta(MyBaseModel):
 	class gsz(MyBaseModel):
-		ducm: Color
+		dujl: Color
 

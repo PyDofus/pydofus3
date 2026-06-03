@@ -1003,4 +1003,5 @@ class ActionId(OpenAPIIntEnum):
 	CharacterSumRaidHealth = 4051
 	CharacterSummonMonsterGroup = 4057
 	CharacterSoulMonster = 4058
+	EffectRoleplayScenarioValue = 4063
 

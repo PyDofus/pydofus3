@@ -8,9 +8,10 @@ class GuildHouses:
 
 class GuildLogBook:
 	class LogbookNewsEnum(IntEnum):
-		None_ = -1
 		GeneralNews = 0
-		ChestNews = 1
+		MissionNews = 1
+		RaidNews = 2
+		ChestNews = 3
 
 class GuildMissions:
 	class MissionSortType(IntEnum):
@@ -39,6 +40,10 @@ class GuildShopUi:
 		Delay = 4
 
 	class TabEnum(IntEnum):
+		Bonuses = 0
+		Raids = 1
+
+	class SubTabEnum(IntEnum):
 		ForSale = 0
 		Acquired = 1
 

@@ -11,10 +11,10 @@ class ActionsMapsManager:
 		Fight = 5
 		QuickSlot = 6
 		Misc = 7
-		TutorialStep1 = 8
-		TutorialStep6 = 9
-		TutorialStep8 = 10
-		TutorialStep12 = 11
+		TutorialStep11 = 8
+		TutorialStep12 = 9
+		TutorialStep15A = 10
+		TutorialStep15B = 11
 
 	class ActionsMapsFlags(IntFlag):
 		Common = 1
@@ -25,4 +25,8 @@ class ActionsMapsManager:
 		Fight = 32
 		QuickSlot = 64
 		Misc = 128
+		TutorialStep11 = 256
+		TutorialStep12 = 512
+		tutorialStep15A = 1024
+		tutorialStep15B = 2048
 

@@ -1,5 +1,12 @@
 from enum import IntEnum
 
+class AdventureSubTab(IntEnum):
+	None_ = -1
+	Collection = 0
+	TemporisTab = 1
+	Dofus = 2
+	Suggestions = 3
+
 class GameCollectionTabUI:
 	class FilterEnum(IntEnum):
 		All = 0
@@ -68,11 +75,4 @@ class GuideBookImageHorizontalAlignEnum(IntEnum):
 class GuideBookImageVerticalAlignEnum(IntEnum):
 	Top = 0
 	Bottom = 1
-
-class GuidebookSubTab(IntEnum):
-	None_ = -1
-	Collection = 0
-	TemporisTab = 1
-	Suggestions = 2
-	GameGuide = 3
 

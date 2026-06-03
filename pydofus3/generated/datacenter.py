@@ -3,13 +3,13 @@ from tqdm import tqdm
 
 from pydofus3.tools import SingletonMeta
 from pydofus3.extractor.data.loader import load_d2o
-from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Challenge, Characteristic, Collection, Communication, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
+from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Card, Challenge, Characteristic, Collection, Communication, Constant, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Lobby, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Raid, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
 
 class Datacenter(metaclass=SingletonMeta):
     def __init__(self, empty: bool = False):
         self.empty = empty
         if not empty:
-            self.progress = tqdm(total=198)
+            self.progress = tqdm(total=207)
         
         self.AlignmentGiftData = self.load_d2o(Alignment.AlignmentGiftData)
         self.AlignmentOrderData = self.load_d2o(Alignment.AlignmentOrderData)
@@ -63,6 +63,8 @@ class Datacenter(metaclass=SingletonMeta):
         
         self.CalendarEventData = self.load_d2o(Calendar.CalendarEventData)
         
+        self.CardBackgroundData = self.load_d2o(Card.CardBackgroundData)
+        
         self.ChallengeData = self.load_d2o(Challenge.ChallengeData)
         
         self.CharacteristicCategoryData = self.load_d2o(Characteristic.CharacteristicCategoryData)
@@ -77,6 +79,8 @@ class Datacenter(metaclass=SingletonMeta):
         self.NamingRuleData = self.load_d2o(Communication.NamingRuleData)
         self.SmileyData = self.load_d2o(Communication.SmileyData)
         self.SmileyPackData = self.load_d2o(Communication.SmileyPackData)
+        
+        self.ConstantData = self.load_d2o(Constant.ConstantData)
         
         self.DocumentData = self.load_d2o(Document.DocumentData)
         
@@ -144,6 +148,9 @@ class Datacenter(metaclass=SingletonMeta):
         self.SpeakingItemTextData = self.load_d2o(LivingObjects.SpeakingItemTextData)
         self.SpeakingItemTriggerData = self.load_d2o(LivingObjects.SpeakingItemTriggerData)
         
+        self.LobbyTagData = self.load_d2o(Lobby.LobbyTagData)
+        self.LobbyTypeData = self.load_d2o(Lobby.LobbyTypeData)
+        
         self.CharacterXpMappingData = self.load_d2o(Misc.CharacterXpMappingData)
         self.ChoiceData = self.load_d2o(Misc.ChoiceData)
         self.LuaFormulaData = self.load_d2o(Misc.LuaFormulaData)
@@ -184,6 +191,7 @@ class Datacenter(metaclass=SingletonMeta):
         
         self.ActivitySuggestionCategoryData = self.load_d2o(Progression.ActivitySuggestionCategoryData)
         self.ActivitySuggestionData = self.load_d2o(Progression.ActivitySuggestionData)
+        self.DofusProgressionData = self.load_d2o(Progression.DofusProgressionData)
         self.FeatureDescriptionData = self.load_d2o(Progression.FeatureDescriptionData)
         
         self.AchievementCategoryData = self.load_d2o(Quest.AchievementCategoryData)
@@ -196,6 +204,11 @@ class Datacenter(metaclass=SingletonMeta):
         self.QuestObjectiveTypeData = self.load_d2o(Quest.QuestObjectiveTypeData)
         self.QuestStepData = self.load_d2o(Quest.QuestStepData)
         self.QuestStepRewardData = self.load_d2o(Quest.QuestStepRewardData)
+        
+        self.GuildRaidData = self.load_d2o(Raid.GuildRaidData)
+        self.GuildRaidsGoalData = self.load_d2o(Raid.GuildRaidsGoalData)
+        self.GuildRaidsGroupData = self.load_d2o(Raid.GuildRaidsGroupData)
+        self.GuildRaidsReward = self.load_d2o(Raid.GuildRaidsReward)
         
         self.PaddockGaugesData = self.load_d2o(Ride.PaddockGaugesData)
         self.PaddocksData = self.load_d2o(Ride.PaddocksData)

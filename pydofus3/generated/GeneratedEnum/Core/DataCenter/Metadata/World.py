@@ -30,4 +30,5 @@ class MapInformationFlags(IntFlag):
 	IsTransition = 33554432
 	MapHasTemplate = 67108864
 	HasPublicPaddock = 134217728
+	ForbidOverlayCharactersMode = 268435456
 

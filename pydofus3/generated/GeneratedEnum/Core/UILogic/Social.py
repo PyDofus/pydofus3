@@ -18,12 +18,6 @@ class FriendsUI:
 		Friend = 1
 		Blocked = 2
 
-class SocialBaseUI:
-	class TitleTabs(IntEnum):
-		Friend = 0
-		Guild = 1
-		Alliance = 2
-
 class SocialGroupCardUI:
 	class TagType(IntEnum):
 		Interest = 1

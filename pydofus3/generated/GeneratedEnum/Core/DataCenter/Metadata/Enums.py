@@ -341,15 +341,6 @@ class Skills(IntEnum):
 	Chinq = 397
 	Minouki = 398
 
-class SocialTab(IntEnum):
-	LastOpenedID = -1
-	FriendsID = 0
-	GuildID = 1
-	AllianceID = 2
-	SpouseID = 3
-	GuildDirectoryID = 4
-	AllianceDirectoryID = 5
-
 class Spells(IntEnum):
 	StateRooted = 6
 	StateCarried = 8

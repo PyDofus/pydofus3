@@ -2,20 +2,9 @@ from pydofus3.not_generated.base import MyBaseModel
 from pydofus3.not_generated.base import OpenAPIIntEnum
 from pydofus3.not_generated.unity import BlendMode
 from pydofus3.not_generated.unity import BlendOp
-from typing import ClassVar
 
 class AleShaderUtils(MyBaseModel):
-	HighlightCoef: ClassVar[str] = "_HighlightCoef"
-	HighlightAdd: ClassVar[str] = "_HighlightAdd"
-
-	class RenderingLayerMask(OpenAPIIntEnum):
-		DEFAULT = 1
-		REFRACTION = 2
-		INLINE = 4
-		OUTLINE = 8
-		WAVE = 16
-
-	class ShaderTypeEnum(OpenAPIIntEnum):
+	class ShaderFeatureTypeEnum(OpenAPIIntEnum):
 		All = 0
 		Blending = 1
 		CustomFramerate = 2

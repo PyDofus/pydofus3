@@ -9,4 +9,6 @@ class CustomRenderObjectsPassSettings(MyBaseModel):
 	sortingCriteria: SortingCriteria
 	renderingLayerMask: Annotated[Union[ShaderConstants.RenderingLayerIDs, int], Field(union_mode='left_to_right')]
 	shaderTagIds: list[str]
+	isOverdrawPass: bool
+	nbMaxOverdraw: int
 

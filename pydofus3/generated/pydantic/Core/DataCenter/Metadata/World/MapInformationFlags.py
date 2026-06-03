@@ -31,4 +31,5 @@ class MapInformationFlags(FlagBaseModel):
 	IsTransition : Annotated[bool,33554432]
 	MapHasTemplate : Annotated[bool,67108864]
 	HasPublicPaddock : Annotated[bool,134217728]
+	ForbidOverlayCharactersMode : Annotated[bool,268435456]
 

@@ -6,4 +6,5 @@ class AuctionHouseData(D2oData):
 
 	id: int
 	typeId: int
+	allowedQuantities: list[int]
 

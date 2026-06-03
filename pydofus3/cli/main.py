@@ -165,12 +165,13 @@ def audio(
             )
         ),
     ] = None,
+    audio_manager: Annotated[bool, typer.Option(help="extract and process audio manager")] = False
 ):
     """
     Extract event names and metadata from FMOD .bank audio files.
     """
     from pydofus3.enum_data import get_data_other_path
-    from pydofus3.extractor.audio.audio import extract_audio
+    from pydofus3.extractor.audio.audio import extract_audio, process_audio_manager
 
     from .data_extract import read_file_change
 
@@ -183,6 +184,8 @@ def audio(
             raise typer.Exit(code=1)
         banks = list(path_audio.glob('*.bank'))
     extract_audio(banks, output / TypeDataOther.Audio)
+    if audio_manager:
+        process_audio_manager(output, dofus_path)
 
 
 @app.command()

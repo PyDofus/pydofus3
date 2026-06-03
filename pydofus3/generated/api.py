@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydofus3.generated.datacenter import Datacenter
-from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Challenge, Characteristic, Collection, Communication, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
+from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Card, Challenge, Characteristic, Collection, Communication, Constant, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Lobby, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Raid, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
 
 data = Datacenter()
 app = FastAPI()
@@ -132,6 +132,9 @@ async def HeadData() -> list[Breed.HeadData]:
 @app.get("/CalendarEventData", tags=["Calendar"])
 async def CalendarEventData() -> list[Calendar.CalendarEventData]:
     return data.CalendarEventData
+@app.get("/CardBackgroundData", tags=["Card"])
+async def CardBackgroundData() -> list[Card.CardBackgroundData]:
+    return data.CardBackgroundData
 @app.get("/ChallengeData", tags=["Challenge"])
 async def ChallengeData() -> list[Challenge.ChallengeData]:
     return data.ChallengeData
@@ -165,6 +168,9 @@ async def SmileyData() -> list[Communication.SmileyData]:
 @app.get("/SmileyPackData", tags=["Communication"])
 async def SmileyPackData() -> list[Communication.SmileyPackData]:
     return data.SmileyPackData
+@app.get("/ConstantData", tags=["Constant"])
+async def ConstantData() -> list[Constant.ConstantData]:
+    return data.ConstantData
 @app.get("/DocumentData", tags=["Document"])
 async def DocumentData() -> list[Document.DocumentData]:
     return data.DocumentData
@@ -327,6 +333,12 @@ async def SpeakingItemTextData() -> list[LivingObjects.SpeakingItemTextData]:
 @app.get("/SpeakingItemTriggerData", tags=["LivingObjects"])
 async def SpeakingItemTriggerData() -> list[LivingObjects.SpeakingItemTriggerData]:
     return data.SpeakingItemTriggerData
+@app.get("/LobbyTagData", tags=["Lobby"])
+async def LobbyTagData() -> list[Lobby.LobbyTagData]:
+    return data.LobbyTagData
+@app.get("/LobbyTypeData", tags=["Lobby"])
+async def LobbyTypeData() -> list[Lobby.LobbyTypeData]:
+    return data.LobbyTypeData
 @app.get("/CharacterXpMappingData", tags=["Misc"])
 async def CharacterXpMappingData() -> list[Misc.CharacterXpMappingData]:
     return data.CharacterXpMappingData
@@ -426,6 +438,9 @@ async def ActivitySuggestionCategoryData() -> list[Progression.ActivitySuggestio
 @app.get("/ActivitySuggestionData", tags=["Progression"])
 async def ActivitySuggestionData() -> list[Progression.ActivitySuggestionData]:
     return data.ActivitySuggestionData
+@app.get("/DofusProgressionData", tags=["Progression"])
+async def DofusProgressionData() -> list[Progression.DofusProgressionData]:
+    return data.DofusProgressionData
 @app.get("/FeatureDescriptionData", tags=["Progression"])
 async def FeatureDescriptionData() -> list[Progression.FeatureDescriptionData]:
     return data.FeatureDescriptionData
@@ -459,6 +474,18 @@ async def QuestStepData() -> list[Quest.QuestStepData]:
 @app.get("/QuestStepRewardData", tags=["Quest"])
 async def QuestStepRewardData() -> list[Quest.QuestStepRewardData]:
     return data.QuestStepRewardData
+@app.get("/GuildRaidData", tags=["Raid"])
+async def GuildRaidData() -> list[Raid.GuildRaidData]:
+    return data.GuildRaidData
+@app.get("/GuildRaidsGoalData", tags=["Raid"])
+async def GuildRaidsGoalData() -> list[Raid.GuildRaidsGoalData]:
+    return data.GuildRaidsGoalData
+@app.get("/GuildRaidsGroupData", tags=["Raid"])
+async def GuildRaidsGroupData() -> list[Raid.GuildRaidsGroupData]:
+    return data.GuildRaidsGroupData
+@app.get("/GuildRaidsReward", tags=["Raid"])
+async def GuildRaidsReward() -> list[Raid.GuildRaidsReward]:
+    return data.GuildRaidsReward
 @app.get("/PaddockGaugesData", tags=["Ride"])
 async def PaddockGaugesData() -> list[Ride.PaddockGaugesData]:
     return data.PaddockGaugesData

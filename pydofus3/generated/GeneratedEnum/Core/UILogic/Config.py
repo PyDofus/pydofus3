@@ -37,6 +37,7 @@ class OptionCategoryId(IntEnum):
 	InternalNotification = 29
 	NotificationGeneral = 30
 	InternalNotificationSuccessQuest = 31
+	ExternalNotificationGroupSearch = 32
 	Common = 40
 	Menu = 41
 	Tooltip = 42

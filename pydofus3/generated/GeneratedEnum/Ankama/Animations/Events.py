@@ -1,10 +1,10 @@
 from enum import IntEnum
 
 class DelayedEvent:
-	class gsw(IntEnum):
-		dubw = 0
-		dubx = 1
-		duby = 2
-		dubz = 3
-		duca = 4
+	class hbg(IntEnum):
+		ebgr = 0
+		ebgs = 1
+		ebgt = 2
+		ebgu = 3
+		ebgv = 4
 

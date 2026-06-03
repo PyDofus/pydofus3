@@ -27,4 +27,5 @@ class EnumTab(IntEnum):
 	ALLIANCE_BULLETIN_TAB = 24
 	ALLIANCE_DIRECTORY_TAB = 25
 	ForgettableSpellsUI = 26
+	Dofus = 27
 

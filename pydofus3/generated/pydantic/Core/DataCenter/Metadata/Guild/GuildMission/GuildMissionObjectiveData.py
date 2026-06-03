@@ -23,5 +23,7 @@ class GuildMissionObjectiveData(D2oData):
 	minLevel: int
 	intensity: int
 	stage: int
+	seedId: int
 	objectId: int
+	quests: list[int]
 

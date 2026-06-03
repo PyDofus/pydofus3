@@ -324,6 +324,7 @@ class ArenaLeaguesDataRoot(MonoBehaviour):
 class AuctionHouseData(TypedDict):
     id: int
     typeId: int
+    allowedQuantities: list[int]
 
 class AuctionHousesDataRoot(MonoBehaviour):
     objectsById: dict[str, AuctionHouseData]
@@ -490,6 +491,15 @@ class CalendarEventData(TypedDict):
 class CalendarEventsDataRoot(MonoBehaviour):
     objectsById: dict[str, CalendarEventData]
 
+class CardBackgroundData(TypedDict):
+    id: int
+    nameId: int
+    isDefault: int
+    picture: str
+
+class CardBackgroundsDataRoot(MonoBehaviour):
+    objectsById: dict[str, CardBackgroundData]
+
 class ChallengeData(TypedDict):
     id: int
     nameId: int
@@ -546,6 +556,7 @@ class ChatChannelsDataRoot(MonoBehaviour):
 class ChoiceData(TypedDict):
     id: int
     choiceNameId: int
+    parentId: int
     duration: int
     options: list[ChoiceOptionData]
 
@@ -614,6 +625,13 @@ class CompanionSpellsDataRoot(MonoBehaviour):
 class CompanionsDataRoot(MonoBehaviour):
     objectsById: dict[str, CompanionData]
 
+class ConstantData(TypedDict):
+    id: int
+    value: str
+
+class ConstantsDataRoot(MonoBehaviour):
+    objectsById: dict[str, ConstantData]
+
 class CreatureBoneOverrideData(TypedDict):
     boneId: int
     creatureBoneId: int
@@ -653,6 +671,35 @@ class DocumentData(TypedDict):
 class DocumentsDataRoot(MonoBehaviour):
     objectsById: dict[str, DocumentData]
 
+class DofusProgressionData(TypedDict):
+    id: int
+    nameId: int
+    descriptionId: int
+    gfxId: str
+    backgroundColor: str
+    minLevel: int
+    maxLevel: int
+    prerequisites: list[DofusProgressionRequiredStepData]
+    steps: list[DofusProgressionStepData]
+    order: int
+    isPrimordial: int
+    isEvent: int
+
+class DofusProgressionRequiredStepData(TypedDict):
+    order: int
+    value: int
+    type: int
+    hideObjectives: int
+
+class DofusProgressionStepData(TypedDict):
+    order: int
+    value: int
+    type: int
+    hideObjectives: int
+
+class DofusProgressionsDataRoot(MonoBehaviour):
+    objectsById: dict[str, DofusProgressionData]
+
 class DungeonData(TypedDict):
     id: int
     nameId: int
@@ -660,6 +707,14 @@ class DungeonData(TypedDict):
     mapIds: list[int]
     entranceMapId: int
     exitMapId: int
+    minLevel: int
+    difficulty: int
+    availableInAutomaticGroupSearch: int
+    availableInLobby: int
+    availableOnKeyring: int
+    requiredObjects: list[RequiredObject]
+    achievements: list[int]
+    bosses: list[int]
 
 class DungeonsDataRoot(MonoBehaviour):
     objectsById: dict[str, DungeonData]
@@ -680,6 +735,7 @@ class EffectData(TypedDict):
     theoreticalDescriptionId: str
     theoreticalPattern: int
     showInSet: int
+    parametersFixed: int
     bonusType: int
     useInFight: int
     effectPriority: int
@@ -927,6 +983,7 @@ class GuildMissionData(TypedDict):
     activityPoint: int
     token: int
     objectives: list[int]
+    rankId: int
 
 class GuildMissionGradeData(TypedDict):
     id: int
@@ -972,7 +1029,9 @@ class GuildMissionObjectiveData(TypedDict):
     minLevel: int
     intensity: int
     stage: int
+    seedId: int
     objectId: int
+    quests: list[int]
 
 class GuildMissionObjectivesDataRoot(MonoBehaviour):
     objectsById: dict[str, GuildMissionObjectiveData]
@@ -980,7 +1039,7 @@ class GuildMissionObjectivesDataRoot(MonoBehaviour):
 class GuildMissionRankData(TypedDict):
     id: int
     nameId: int
-    grades: list[int]
+    descriptionId: int
 
 class GuildMissionRanksDataRoot(MonoBehaviour):
     objectsById: dict[str, GuildMissionRankData]
@@ -994,6 +1053,73 @@ class GuildMissionSuperCategoryData(TypedDict):
 
 class GuildMissionsDataRoot(MonoBehaviour):
     objectsById: dict[str, GuildMissionData]
+
+class GuildRaidData(TypedDict):
+    id: int
+    nameId: int
+    descriptionId: int
+    duration: int
+    playerHealth: int
+    minPlayers: int
+    maxPlayers: int
+    groups: list[int]
+    goals: list[int]
+    variables: list[GuildRaidsVariablesData]
+    maxScore: int
+    price: int
+    canFinish: int
+    canRestart: int
+    type: int
+
+class GuildRaidsDataRoot(MonoBehaviour):
+    objectsById: dict[str, GuildRaidData]
+
+class GuildRaidsGoalData(TypedDict):
+    id: int
+    raidId: int
+    nameId: int
+    value: int
+    requisiteForDisplay: list[int]
+    impactProgress: int
+    score: int
+
+class GuildRaidsGoalsDataRoot(MonoBehaviour):
+    objectsById: dict[str, GuildRaidsGoalData]
+
+class GuildRaidsGroupData(TypedDict):
+    id: int
+    raidId: int
+    nameId: int
+    descriptionId: int
+    minPlayers: int
+    maxPlayers: int
+
+class GuildRaidsGroupsDataRoot(MonoBehaviour):
+    objectsById: dict[str, GuildRaidsGroupData]
+
+class GuildRaidsReward(TypedDict):
+    id: int
+    raidId: int
+    descriptionId: int
+    kamas: int
+    experience: int
+    score: int
+    order: int
+    rewards: list[GuildRaidsRewardsItemData]
+
+class GuildRaidsRewardsDataRoot(MonoBehaviour):
+    objectsById: dict[str, GuildRaidsReward]
+
+class GuildRaidsRewardsItemData(TypedDict):
+    gid: int
+    quantity: int
+
+class GuildRaidsVariablesData(TypedDict):
+    id: int
+    raidId: int
+    icon: str
+    nameId: int
+    descriptionId: int
 
 class GuildRankData(TypedDict):
     id: int
@@ -1315,6 +1441,24 @@ class LivingObjectSkinMoodsData(TypedDict):
 
 class LivingObjectSkinsMoodsDataRoot(MonoBehaviour):
     objectsById: dict[str, LivingObjectSkinMoodsData]
+
+class LobbyTagData(TypedDict):
+    id: int
+    nameId: int
+    concurrentTags: list[int]
+
+class LobbyTagsDataRoot(MonoBehaviour):
+    objectsById: dict[str, LobbyTagData]
+
+class LobbyTypeData(TypedDict):
+    id: int
+    nameId: int
+    tags: list[int]
+    minMember: int
+    maxMember: int
+
+class LobbyTypesDataRoot(MonoBehaviour):
+    objectsById: dict[str, LobbyTypeData]
 
 class LuaFormulaData(TypedDict):
     formula: str
@@ -1640,6 +1784,10 @@ class NpcDialogSkinData(TypedDict):
 class NpcDialogSkinsDataRoot(MonoBehaviour):
     objectsById: dict[str, NpcDialogSkinData]
 
+class NpcMapIdPairData(TypedDict):
+    mapId: int
+    npcId: int
+
 class NpcMessageData(TypedDict):
     id: int
     messageId: str
@@ -1777,6 +1925,7 @@ class QuestData(TypedDict):
     nameId: int
     categoryId: int
     repeatType: int
+    type: int
     repeatLimit: int
     isDungeonQuest: int
     levelMin: int
@@ -1786,6 +1935,7 @@ class QuestData(TypedDict):
     startCriterion: str
     followable: int
     isEvent: int
+    startPosition: list[NpcMapIdPairData]
 
 class QuestObjectiveBringItemToNpcData(TypedDict):
     id: int
@@ -1977,6 +2127,10 @@ class ReferencedObject(TypedDict):
 class ReferencedObjectData(TypedDict):
     pass
 
+class RequiredObject(TypedDict):
+    id: int
+    quantity: int
+
 class RideFoodData(TypedDict):
     gid: int
     typeId: int
@@ -2087,16 +2241,8 @@ class ServerPopulationData(TypedDict):
 class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerPopulationData]
 
-class ServerSeasonData(TypedDict):
-    uid: int
-    nameId: str
-    beginning: float
-    closure: float
-    resetDate: float
-    flagObjectId: int
-
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: dict[str, ServerSeasonData]
+    objectsById: dict[str, Any]
 
 class ServersDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerData]
@@ -2275,6 +2421,8 @@ class SpellLevelData(TypedDict):
     maxStack: int
     maxCastPerTurn: int
     maxCastPerTarget: int
+    maxGlobalCastPerTurn: int
+    maxGlobalCastPerTarget: int
     minCastInterval: int
     initialCooldown: int
     globalCooldown: int

@@ -7,5 +7,5 @@ class GuildMissionRankData(D2oData):
 
 	id: int
 	nameId: i18n
-	grades: list[int]
+	descriptionId: int
 

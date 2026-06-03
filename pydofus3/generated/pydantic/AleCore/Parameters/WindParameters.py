@@ -19,12 +19,8 @@ class WindParameters(MyBaseModel):
 	swingNoiseDirection: AleVector2
 	swingNoiseDirectionMultiplier: float_nan
 	swingAmplitudeMultiplierCursor: float_nan
-	swingAmplitudeCurvePower: float_nan
-	swingFrequencyCurvePower: float_nan
 	mainWindAmplitudeMultiplier: float_nan
 	mainWindFrequencyMultiplier: float_nan
 	swingFrequencyMultiplier: float_nan
 	swingAmplitudeMultiplier: float_nan
-	minimumSwingAmplitude: float_nan
-	windSwingNoiseSpeed: AleVector2
 

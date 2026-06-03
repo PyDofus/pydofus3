@@ -345,6 +345,7 @@ class ArenaLeaguesDataRoot(MonoBehaviour):
 class AuctionHouseData:
     id: int
     typeId: int
+    allowedQuantities: list[int]
 
 class AuctionHousesDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[AuctionHouseData]
@@ -523,6 +524,16 @@ class CalendarEventsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[CalendarEventData]
     references: ManagedReferencesRegistry
 
+class CardBackgroundData:
+    id: int
+    nameId: int
+    isDefault: int
+    picture: str
+
+class CardBackgroundsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[CardBackgroundData]
+    references: ManagedReferencesRegistry
+
 class ChallengeData:
     id: int
     nameId: int
@@ -584,6 +595,7 @@ class ChatChannelsDataRoot(MonoBehaviour):
 class ChoiceData:
     id: int
     choiceNameId: int
+    parentId: int
     duration: int
     options: list[ChoiceOptionData]
 
@@ -658,6 +670,14 @@ class CompanionsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[CompanionData]
     references: ManagedReferencesRegistry
 
+class ConstantData:
+    id: int
+    value: str
+
+class ConstantsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[ConstantData]
+    references: ManagedReferencesRegistry
+
 class CreatureBoneOverrideData:
     boneId: int
     creatureBoneId: int
@@ -701,6 +721,36 @@ class DocumentsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[DocumentData]
     references: ManagedReferencesRegistry
 
+class DofusProgressionData:
+    id: int
+    nameId: int
+    descriptionId: int
+    gfxId: str
+    backgroundColor: str
+    minLevel: int
+    maxLevel: int
+    prerequisites: list[DofusProgressionRequiredStepData]
+    steps: list[DofusProgressionStepData]
+    order: int
+    isPrimordial: int
+    isEvent: int
+
+class DofusProgressionRequiredStepData:
+    order: int
+    value: int
+    type: int
+    hideObjectives: int
+
+class DofusProgressionStepData:
+    order: int
+    value: int
+    type: int
+    hideObjectives: int
+
+class DofusProgressionsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[DofusProgressionData]
+    references: ManagedReferencesRegistry
+
 class DungeonData:
     id: int
     nameId: int
@@ -708,6 +758,14 @@ class DungeonData:
     mapIds: list[int]
     entranceMapId: int
     exitMapId: int
+    minLevel: int
+    difficulty: int
+    availableInAutomaticGroupSearch: int
+    availableInLobby: int
+    availableOnKeyring: int
+    requiredObjects: list[RequiredObject]
+    achievements: list[int]
+    bosses: list[int]
 
 class DungeonsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[DungeonData]
@@ -729,6 +787,7 @@ class EffectData:
     theoreticalDescriptionId: str
     theoreticalPattern: int
     showInSet: int
+    parametersFixed: int
     bonusType: int
     useInFight: int
     effectPriority: int
@@ -993,6 +1052,7 @@ class GuildMissionData:
     activityPoint: int
     token: int
     objectives: list[int]
+    rankId: int
 
 class GuildMissionGradeData:
     id: int
@@ -1041,7 +1101,9 @@ class GuildMissionObjectiveData:
     minLevel: int
     intensity: int
     stage: int
+    seedId: int
     objectId: int
+    quests: list[int]
 
 class GuildMissionObjectivesDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[GuildMissionObjectiveData]
@@ -1050,7 +1112,7 @@ class GuildMissionObjectivesDataRoot(MonoBehaviour):
 class GuildMissionRankData:
     id: int
     nameId: int
-    grades: list[int]
+    descriptionId: int
 
 class GuildMissionRanksDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[GuildMissionRankData]
@@ -1067,6 +1129,77 @@ class GuildMissionSuperCategoryData:
 class GuildMissionsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[GuildMissionData]
     references: ManagedReferencesRegistry
+
+class GuildRaidData:
+    id: int
+    nameId: int
+    descriptionId: int
+    duration: int
+    playerHealth: int
+    minPlayers: int
+    maxPlayers: int
+    groups: list[int]
+    goals: list[int]
+    variables: list[GuildRaidsVariablesData]
+    maxScore: int
+    price: int
+    canFinish: int
+    canRestart: int
+    type: int
+
+class GuildRaidsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[GuildRaidData]
+    references: ManagedReferencesRegistry
+
+class GuildRaidsGoalData:
+    id: int
+    raidId: int
+    nameId: int
+    value: int
+    requisiteForDisplay: list[int]
+    impactProgress: int
+    score: int
+
+class GuildRaidsGoalsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[GuildRaidsGoalData]
+    references: ManagedReferencesRegistry
+
+class GuildRaidsGroupData:
+    id: int
+    raidId: int
+    nameId: int
+    descriptionId: int
+    minPlayers: int
+    maxPlayers: int
+
+class GuildRaidsGroupsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[GuildRaidsGroupData]
+    references: ManagedReferencesRegistry
+
+class GuildRaidsReward:
+    id: int
+    raidId: int
+    descriptionId: int
+    kamas: int
+    experience: int
+    score: int
+    order: int
+    rewards: list[GuildRaidsRewardsItemData]
+
+class GuildRaidsRewardsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[GuildRaidsReward]
+    references: ManagedReferencesRegistry
+
+class GuildRaidsRewardsItemData:
+    gid: int
+    quantity: int
+
+class GuildRaidsVariablesData:
+    id: int
+    raidId: int
+    icon: str
+    nameId: int
+    descriptionId: int
 
 class GuildRankData:
     id: int
@@ -1421,6 +1554,26 @@ class LivingObjectSkinsMoodsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[LivingObjectSkinMoodsData]
     references: ManagedReferencesRegistry
 
+class LobbyTagData:
+    id: int
+    nameId: int
+    concurrentTags: list[int]
+
+class LobbyTagsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[LobbyTagData]
+    references: ManagedReferencesRegistry
+
+class LobbyTypeData:
+    id: int
+    nameId: int
+    tags: list[int]
+    minMember: int
+    maxMember: int
+
+class LobbyTypesDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[LobbyTypeData]
+    references: ManagedReferencesRegistry
+
 class LuaFormulaData:
     formula: str
 
@@ -1767,6 +1920,10 @@ class NpcDialogSkinsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[NpcDialogSkinData]
     references: ManagedReferencesRegistry
 
+class NpcMapIdPairData:
+    mapId: int
+    npcId: int
+
 class NpcMessageData:
     id: int
     messageId: str
@@ -1916,6 +2073,7 @@ class QuestData:
     nameId: int
     categoryId: int
     repeatType: int
+    type: int
     repeatLimit: int
     isDungeonQuest: int
     levelMin: int
@@ -1925,6 +2083,7 @@ class QuestData:
     startCriterion: str
     followable: int
     isEvent: int
+    startPosition: list[NpcMapIdPairData]
 
 class QuestObjectiveBringItemToNpcData:
     id: int
@@ -2123,6 +2282,10 @@ class ReferencedObject:
 class ReferencedObjectData:
     pass
 
+class RequiredObject:
+    id: int
+    quantity: int
+
 class RideFoodData:
     gid: int
     typeId: int
@@ -2242,16 +2405,8 @@ class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerPopulationData]
     references: ManagedReferencesRegistry
 
-class ServerSeasonData:
-    uid: int
-    nameId: str
-    beginning: float
-    closure: float
-    resetDate: float
-    flagObjectId: int
-
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: MetadataDictionaryContainer[ServerSeasonData]
+    objectsById: MetadataDictionaryContainer
     references: ManagedReferencesRegistry
 
 class ServersDataRoot(MonoBehaviour):
@@ -2446,6 +2601,8 @@ class SpellLevelData:
     maxStack: int
     maxCastPerTurn: int
     maxCastPerTarget: int
+    maxGlobalCastPerTurn: int
+    maxGlobalCastPerTarget: int
     minCastInterval: int
     initialCooldown: int
     globalCooldown: int

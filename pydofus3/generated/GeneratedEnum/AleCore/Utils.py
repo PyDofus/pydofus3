@@ -1,14 +1,7 @@
 from enum import IntEnum
 
 class AleShaderUtils:
-	class RenderingLayerMask(IntEnum):
-		DEFAULT = 1
-		REFRACTION = 2
-		INLINE = 4
-		OUTLINE = 8
-		WAVE = 16
-
-	class ShaderTypeEnum(IntEnum):
+	class ShaderFeatureTypeEnum(IntEnum):
 		All = 0
 		Blending = 1
 		CustomFramerate = 2

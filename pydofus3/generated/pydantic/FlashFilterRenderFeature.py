@@ -55,11 +55,11 @@ class FlashFilterRenderFeature(ScriptableRendererFeature):
 		textureTaken: bool
 
 	class gsd(OpenAPIIntEnum):
-		dtuh = 0
-		dtui = 1
-		dtuj = 2
-		dtuk = 3
-		dtul = 4
+		dubg = 0
+		dubh = 1
+		dubi = 2
+		dubj = 3
+		dubk = 4
 
 	class FlashFilterPass(MyBaseModel):
 		class FinalBlitVertex(MyBaseModel):
@@ -67,17 +67,17 @@ class FlashFilterRenderFeature(ScriptableRendererFeature):
 			uv: Vector2
 
 		class gse(MyBaseModel):
-			dtum: ClassVar[str] = "FlashFilterPass"
-			dtun: ClassVar[str] = "FilterActions.Composite"
-			dtuo: ClassVar[str] = "FilterActions.Blur"
-			dtup: ClassVar[str] = "FilterActions.GlowDropShadow"
-			dtuq: ClassVar[str] = "FilterActions.Stencil"
-			dtur: ClassVar[str] = "FilterActions.ColorMatrix"
-			dtus: ClassVar[str] = "CompositeMeshToTarget"
-			dtut: ClassVar[str] = "Copy Bounds"
-			dtuu: ClassVar[str] = "Apply Mask"
-			dtuv: ClassVar[str] = "Glow"
-			dtuw: ClassVar[str] = "DropShadow"
-			dtux: ClassVar[str] = "Blur"
-			dtuy: ClassVar[str] = "ColorMatrix"
+			dubl: ClassVar[str] = "FlashFilterPass"
+			dubm: ClassVar[str] = "FilterActions.Composite"
+			dubn: ClassVar[str] = "FilterActions.Blur"
+			dubo: ClassVar[str] = "FilterActions.GlowDropShadow"
+			dubp: ClassVar[str] = "FilterActions.Stencil"
+			dubq: ClassVar[str] = "FilterActions.ColorMatrix"
+			dubr: ClassVar[str] = "CompositeMeshToTarget"
+			dubs: ClassVar[str] = "Copy Bounds"
+			dubt: ClassVar[str] = "Apply Mask"
+			dubu: ClassVar[str] = "Glow"
+			dubv: ClassVar[str] = "DropShadow"
+			dubw: ClassVar[str] = "Blur"
+			dubx: ClassVar[str] = "ColorMatrix"
 

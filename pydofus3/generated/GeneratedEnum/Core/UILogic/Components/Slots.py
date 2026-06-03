@@ -81,11 +81,6 @@ class Tile:
 		icon = 2
 		none = 3
 
-	class TileFavorite(IntEnum):
-		favoriteTrue = 0
-		favoriteFalse = 1
-		none = 2
-
 	class TileGhost(IntEnum):
 		ghostTrue = 0
 		ghostFalse = 1
@@ -100,7 +95,8 @@ class Tile:
 		acquiredModerate = 1
 		acquiredFalse = 2
 		partial = 3
-		none = 4
+		hidden = 4
+		none = 5
 
 	class TileRarity(IntEnum):
 		None_ = 0

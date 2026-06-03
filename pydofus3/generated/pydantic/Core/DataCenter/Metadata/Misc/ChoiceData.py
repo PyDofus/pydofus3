@@ -8,6 +8,7 @@ class ChoiceData(D2oData):
 
 	id: int
 	choiceNameId: i18n
+	parentId: int
 	duration: int
 	options: list[ChoiceOptionData]
 

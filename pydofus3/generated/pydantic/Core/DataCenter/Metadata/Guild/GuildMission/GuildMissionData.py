@@ -14,4 +14,5 @@ class GuildMissionData(D2oData):
 	activityPoint: int
 	token: int
 	objectives: list[int]
+	rankId: int
 

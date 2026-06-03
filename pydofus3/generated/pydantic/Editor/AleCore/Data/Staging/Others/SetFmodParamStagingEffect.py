@@ -6,6 +6,5 @@ from typing import ClassVar
 class SetFmodParamStagingEffect(MyBaseModel):
 	TYPE: ClassVar[str] = "SetFmodParam"
 	paramName: str
-	startValue: float_nan
 	endValue: StagingEvolutiveVar[float_nan]
 

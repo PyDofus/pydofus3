@@ -21,6 +21,7 @@ class EffectData(D2oData):
 	theoreticalDescriptionId: i18n
 	theoreticalPattern: int
 	showInSet: bool
+	parametersFixed: bool
 	bonusType: int
 	useInFight: bool
 	effectPriority: int

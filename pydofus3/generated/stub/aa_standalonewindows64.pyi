@@ -785,6 +785,17 @@ class ColorSquare_UxmlSerializedData:
     bindings_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
+class ColorableData:
+    colorSource: int
+    backElementPath: str
+    backElementPosition: Vector4f
+    frontElementPath: str
+    frontElementPosition: Vector4f
+    elementAnchor: int
+
+class ColorableElements:
+    colorableElementData: list[ColorableData]
+
 class Combobox_UxmlSerializedData:
     uxmlAssetId: int
     name: str
@@ -1786,6 +1797,7 @@ class DofusUISettings(MonoBehaviour):
     cosmeticTitleLineRef: AssetReferenceVisualTreeAsset
     cosmeticOrnamentLineRef: AssetReferenceVisualTreeAsset
     cosmeticItemLineRef: AssetReferenceVisualTreeAsset
+    jobPlayerCardTooltipItemRef: AssetReferenceVisualTreeAsset
     matingResultLineRef: AssetReferenceVisualTreeAsset
     effectFeedLineRef: AssetReferenceVisualTreeAsset
     jobSkillsItemRef: AssetReferenceVisualTreeAsset
@@ -1823,10 +1835,20 @@ class DofusUISettings(MonoBehaviour):
     crafterlistElementRef: AssetReferenceVisualTreeAsset
     spectatorTeamsElementRef: AssetReferenceVisualTreeAsset
     timelineFighterRef: AssetReferenceVisualTreeAsset
+    playerEffectLineRef: AssetReferenceVisualTreeAsset
     companionElementRef: AssetReferenceVisualTreeAsset
     guildPaddockLineRef: AssetReferenceVisualTreeAsset
     guildPaddockInfoLineRef: AssetReferenceVisualTreeAsset
     guildMissionCardRef: AssetReferenceVisualTreeAsset
+    guildRaidItemRef: AssetReferenceVisualTreeAsset
+    guildRaidMemberItemRef: AssetReferenceVisualTreeAsset
+    raidFinalScoreItemRef: AssetReferenceVisualTreeAsset
+    raidObjectiveItemRef: AssetReferenceVisualTreeAsset
+    raidTrackingMembersGroupItemRef: AssetReferenceVisualTreeAsset
+    partyRaidMemberItemRef: AssetReferenceVisualTreeAsset
+    raidTrackingObjectiveItemRef: AssetReferenceVisualTreeAsset
+    raidTrackingObjectiveGroupItemRef: AssetReferenceVisualTreeAsset
+    raidVariableItemRef: AssetReferenceVisualTreeAsset
     guildLevelRewardsItemRef: AssetReferenceVisualTreeAsset
     guildMissionSubscriberItemRef: AssetReferenceVisualTreeAsset
     paddockMountListRef: AssetReferenceVisualTreeAsset
@@ -1929,16 +1951,28 @@ class DofusUISettings(MonoBehaviour):
     experienceAndAchievementLadderLineRef: AssetReferenceVisualTreeAsset
     infiniteDreamLadderLineRef: AssetReferenceVisualTreeAsset
     effectFilterRef: AssetReferenceVisualTreeAsset
+    lobbyLineRef: AssetReferenceVisualTreeAsset
+    lobbyApplicantLineRef: AssetReferenceVisualTreeAsset
+    lobbyApplicantLineMiniRef: AssetReferenceVisualTreeAsset
+    dungeonLineRef: AssetReferenceVisualTreeAsset
+    dungeonSuccessLineRef: AssetReferenceVisualTreeAsset
+    achievementCheckboxRef: AssetReferenceVisualTreeAsset
+    tagCheckboxRef: AssetReferenceVisualTreeAsset
     figmaComponentDataRef: AssetReferenceScriptableObject
     figmaStyleDataRef: AssetReferenceScriptableObject
+    dofusTileRef: AssetReferenceVisualTreeAsset
+    progressObjectiveLineRef: AssetReferenceVisualTreeAsset
     smallRideLineRef: AssetReferenceVisualTreeAsset
     extractionRideRef: AssetReferenceVisualTreeAsset
     fillGaugeLineRef: AssetReferenceVisualTreeAsset
     fillGaugeResultLineRef: AssetReferenceVisualTreeAsset
     geneticRideItemRef: AssetReferenceVisualTreeAsset
     rideParentItemRef: AssetReferenceVisualTreeAsset
+    playerInfoLadderLineRef: AssetReferenceVisualTreeAsset
+    playerCardBackgroundTileRef: AssetReferenceVisualTreeAsset
     popUpDefaultRef: AssetReferenceVisualTreeAsset
     popUpImageRef: AssetReferenceVisualTreeAsset
+    popUpImageVerticalRef: AssetReferenceVisualTreeAsset
     popUpInputRef: AssetReferenceVisualTreeAsset
     popUpInputComboboxRef: AssetReferenceVisualTreeAsset
     popUpLockedRef: AssetReferenceVisualTreeAsset
@@ -1949,6 +1983,7 @@ class DofusUISettings(MonoBehaviour):
     popUpTextOverImageRef: AssetReferenceVisualTreeAsset
     popUpPasswordRef: AssetReferenceVisualTreeAsset
     popUpAdministrableRef: AssetReferenceVisualTreeAsset
+    popUpLightReportRef: AssetReferenceVisualTreeAsset
     challengeGridSlotRef: AssetReferenceVisualTreeAsset
     articleCompositionSlotRef: AssetReferenceVisualTreeAsset
     shopMultipleChoiceReferenceRef: AssetReferenceVisualTreeAsset
@@ -3049,12 +3084,14 @@ class GenericFilterCategory_UxmlSerializedData:
     isActivated: int
     sectionHeaderDepth: int
     sectionHeaderStyle: int
+    title: str
     icon: int
     canBeOpened_UxmlAttributeFlags: int
     openButtonOnly_UxmlAttributeFlags: int
     isActivated_UxmlAttributeFlags: int
     sectionHeaderDepth_UxmlAttributeFlags: int
     sectionHeaderStyle_UxmlAttributeFlags: int
+    title_UxmlAttributeFlags: int
     icon_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
@@ -4006,6 +4043,10 @@ class OrnamentInfo(MonoBehaviour):
     m_rightElementPath: str
     m_rightElementPosition: Vector4f
     m_rightElementAnchor: int
+    m_topColorable: ColorableElements
+    m_bottomColorable: ColorableElements
+    m_leftColorable: ColorableElements
+    m_rightColorable: ColorableElements
     m_hasKolizeumPicto: int
     m_kolizeumElementPosition: Vector4f
     m_isAnimated: int
@@ -4469,12 +4510,14 @@ class SectionHeader_UxmlSerializedData:
     isActivated: int
     sectionHeaderDepth: int
     sectionHeaderStyle: int
+    title: str
     icon: int
     canBeOpened_UxmlAttributeFlags: int
     openButtonOnly_UxmlAttributeFlags: int
     isActivated_UxmlAttributeFlags: int
     sectionHeaderDepth_UxmlAttributeFlags: int
     sectionHeaderStyle_UxmlAttributeFlags: int
+    title_UxmlAttributeFlags: int
     icon_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
@@ -5776,7 +5819,6 @@ class Tile_UxmlSerializedData:
     dragged: int
     withBackground: int
     colorStyle: int
-    showFavorite: int
     showLink: int
     showCounter: int
     showIndicator: int
@@ -5798,7 +5840,6 @@ class Tile_UxmlSerializedData:
     dragged_UxmlAttributeFlags: int
     withBackground_UxmlAttributeFlags: int
     colorStyle_UxmlAttributeFlags: int
-    showFavorite_UxmlAttributeFlags: int
     showLink_UxmlAttributeFlags: int
     showCounter_UxmlAttributeFlags: int
     showIndicator_UxmlAttributeFlags: int
@@ -5839,8 +5880,10 @@ class TileList_UxmlSerializedData:
     bindings_UxmlAttributeFlags: int
     tileSize: int
     tileCount: int
+    isCentered: int
     tileSize_UxmlAttributeFlags: int
     tileCount_UxmlAttributeFlags: int
+    isCentered_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
 class TitleScreenBackgroundParallax(MonoBehaviour):

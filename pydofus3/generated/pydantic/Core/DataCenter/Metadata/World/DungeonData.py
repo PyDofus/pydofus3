@@ -1,3 +1,4 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.World.RequiredObject import RequiredObject
 from pydofus3.not_generated.base import D2oData
 from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
@@ -11,4 +12,12 @@ class DungeonData(D2oData):
 	mapIds: list[int]
 	entranceMapId: int
 	exitMapId: int
+	minLevel: int
+	difficulty: int
+	availableInAutomaticGroupSearch: bool
+	availableInLobby: bool
+	availableOnKeyring: bool
+	requiredObjects: list[RequiredObject]
+	achievements: list[int]
+	bosses: list[int]
 

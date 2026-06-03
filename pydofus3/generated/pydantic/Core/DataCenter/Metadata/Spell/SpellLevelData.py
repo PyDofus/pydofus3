@@ -19,6 +19,8 @@ class SpellLevelData(D2oData):
 	maxStack: int
 	maxCastPerTurn: int
 	maxCastPerTarget: int
+	maxGlobalCastPerTurn: int
+	maxGlobalCastPerTarget: int
 	minCastInterval: int
 	initialCooldown: int
 	globalCooldown: int

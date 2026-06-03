@@ -1,6 +1,17 @@
 from enum import IntEnum
 from enum import IntFlag
 
+class DisplayOptions(IntFlag):
+	None_ = 0
+	Ping = 1
+	Class = 2
+	Entity = 4
+	VitalGauges = 8
+	VitalValues = 16
+	States = 32
+	HpBarExactHp = 64
+	All = 4294967295
+
 class TextTooltipBuilder:
 	class TextTooltipStyleEnum(IntEnum):
 		Normal = 0

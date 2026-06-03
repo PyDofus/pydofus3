@@ -1004,6 +1004,7 @@ class ActionId(IntEnum):
 	CharacterSumRaidHealth = 4051
 	CharacterSummonMonsterGroup = 4057
 	CharacterSoulMonster = 4058
+	EffectRoleplayScenarioValue = 4063
 
 class EffectInstanceData:
 	class UndefinedValues(IntEnum):
