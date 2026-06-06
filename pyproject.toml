@@ -5,18 +5,18 @@ description = ""
 readme = "README.md"
 requires-python = '>=3.14'
 dependencies = [
-    "fastapi[standard]>=0.136.1",
+    "fastapi[standard]>=0.136.3",
     "moviepy>=2.2.1",
-    "numpy>=2.4.4",
-    "orjson>=3.11.8",
-    "pandas>=3.0.2",
+    "numpy>=2.4.6",
+    "orjson>=3.11.9",
+    "pandas>=3.0.3",
     "proto-schema-parser>=2.1.0",
     "psycopg>=3.3.4",
-    "pydantic>=2.13.3",
-    "pydantic-settings>=2.14.0",
-    "sqlalchemy>=2.0.49",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.1",
+    "sqlalchemy>=2.0.50",
     "tqdm>=4.67.3",
-    "typer>=0.25.1",
+    "typer>=0.26.6",
     "unitypy>=1.25.0",
 ]
 
@@ -27,6 +27,9 @@ pydofus3 = "pydofus3.cli.main:app"
 fpng = [
     "fpng-py @ git+https://github.com/K0lb3/fpng_py.git@a826a55f682cead912d05eb0bad52f857b4bc726",
 ]
+
+[tool.uv]
+exclude-newer = "3 days"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12"]
@@ -45,5 +48,5 @@ docstring-code-format = true
 
 [dependency-groups]
 dev = [
-    "polars>=1.40.1",
+    "polars>=1.41.2",
 ]
