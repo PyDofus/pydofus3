@@ -296,3 +296,6 @@ AssetsTools.NET/**/obj/
 __pycache__
 output
 script
+CLAUDE.md
+.agents
+.claude

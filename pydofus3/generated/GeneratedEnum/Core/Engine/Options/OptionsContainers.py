@@ -10,11 +10,11 @@ class DofusOptionsContainer:
 		Right = 1
 
 class RoleplayOptionsContainer:
-	class gcb(IntEnum):
-		dxmo = 0
-		dxmp = 1
+	class gcd(IntEnum):
+		dxdj = 0
+		dxdk = 1
 
-	class gcc(IntEnum):
-		dxmq = 0
-		dxmr = 1
+	class gce(IntEnum):
+		dxdl = 0
+		dxdm = 1
 

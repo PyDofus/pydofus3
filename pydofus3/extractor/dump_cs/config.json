@@ -1,5 +1,7 @@
 {
   "i18nMapping": {
+    "Core.DataCenter.Metadata.Card.CardBackgroundData": ["nameId"],
+    "Core.DataCenter.Metadata.Progression.DofusProgressionData": ["nameId", "descriptionId"],
     "Core.DataCenter.Metadata.Alignment.AlignmentGiftData": [
       "nameId"
     ],
@@ -149,6 +151,13 @@
       "descriptionId",
       "nameId"
     ],
+    "Core.DataCenter.Metadata.Lobby.LobbyTagData": ["nameId"],
+    "Core.DataCenter.Metadata.Lobby.LobbyTypeData": ["nameId"],
+    "Core.DataCenter.Metadata.Guild.Raid.GuildRaidData": ["nameId", "descriptionId"],
+    "Core.DataCenter.Metadata.Guild.Raid.GuildRaidsVariablesData": ["nameId", "descriptionId"],
+    "Core.DataCenter.Metadata.Guild.Raid.GuildRaidsGoalData": ["nameId"],
+    "Core.DataCenter.Metadata.Guild.Raid.GuildRaidsGroupData": ["nameId", "descriptionId"],
+    "Core.DataCenter.Metadata.Guild.Raid.GuildRaidsReward": ["descriptionId"],
     "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionActivityData": [
       "nameId"
     ],
@@ -162,7 +171,7 @@
       "descriptionId"
     ],
     "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionRankData": [
-      "nameId"
+      "nameId","descriptionId"
     ],
     "Core.DataCenter.Metadata.Guild.GuildMission.GuildMissionSuperCategoryData": [
       "nameId"

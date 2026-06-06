@@ -10,7 +10,7 @@ class MaterialDescriptor(MyBaseModel):
 	textureRequestId: int
 	maskFlags: Annotated[Union[FlashMaskState, int], Field(union_mode='left_to_right')]
 	maskRef: int
-	blendMode: Annotated[Union[Animation.hat, int], Field(union_mode='left_to_right')]
+	blendMode: Annotated[Union[Animation.hav, int], Field(union_mode='left_to_right')]
 	colorMatrix: list[Vector4]
 	renderQueue: int
 	customisationColors: list[Color]

@@ -1,4 +1,5 @@
 from pydofus3.not_generated.base import D2oData
+from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
 
 class GuildRaidsGroupData(D2oData):
@@ -6,8 +7,8 @@ class GuildRaidsGroupData(D2oData):
 
 	id: int
 	raidId: int
-	nameId: int
-	descriptionId: int
+	nameId: i18n
+	descriptionId: i18n
 	minPlayers: int
 	maxPlayers: int
 

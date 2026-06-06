@@ -38,8 +38,7 @@ def pydantic(
     from pydofus3.tools import get_unity_version
 
     version = get_unity_version(dofus_path)
-    output = output if output is not None else DEFAULT_OUTPUT
-    redux(dofus_path, output, version, generated_code_in_output=output is not None, code_gen=True)
+    redux(dofus_path, output if output is not None else DEFAULT_OUTPUT, version, generated_code_in_output=output is not None, code_gen=True)
 
 
 @app.command()

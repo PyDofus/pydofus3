@@ -1,5 +1,6 @@
-from pydofus3.not_generated.base import MyBaseModel
+from pydofus3.not_generated.base import OpenAPIIntEnum
 
-class hba(MyBaseModel):
-	pass
+class hba(OpenAPIIntEnum):
+	eawj = 0
+	eawk = 1
 

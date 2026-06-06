@@ -4,12 +4,12 @@ from pydofus3.not_generated.base import OpenAPIIntEnum
 from typing import Annotated, Union
 
 class DelayedEvent(MyBaseModel):
-	type: Annotated[Union[hbg, int], Field(union_mode='left_to_right')]
+	type: Annotated[Union[hbi, int], Field(union_mode='left_to_right')]
 
-	class hbg(OpenAPIIntEnum):
-		ebgr = 0
-		ebgs = 1
-		ebgt = 2
-		ebgu = 3
-		ebgv = 4
+	class hbi(OpenAPIIntEnum):
+		eaxn = 0
+		eaxo = 1
+		eaxp = 2
+		eaxq = 3
+		eaxr = 4
 

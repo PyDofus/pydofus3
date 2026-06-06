@@ -1,6 +1,6 @@
 from pydantic import Field
 from pydofus3.generated.pydantic.Ankama.Animations.Rendering.ShaderConstants import ShaderConstants
-from pydofus3.generated.pydantic.hbs import hbs
+from pydofus3.generated.pydantic.hbu import hbu
 from pydofus3.not_generated.base import MyBaseModel
 from pydofus3.not_generated.unity import RenderPassEvent
 from pydofus3.not_generated.unity import ScriptableRendererFeature
@@ -11,14 +11,14 @@ class RefractionRendererFeature(ScriptableRendererFeature):
 
 	class RefractionPassSettings(MyBaseModel):
 		renderPassEvent: RenderPassEvent
-		renderFeatureType: Annotated[Union[hbs.hbr, int], Field(union_mode='left_to_right')]
+		renderFeatureType: Annotated[Union[hbu.hbt, int], Field(union_mode='left_to_right')]
 		renderingLayerMask: Annotated[Union[ShaderConstants.RenderingLayerIDs, int], Field(union_mode='left_to_right')]
 		shaderPassIndex: int
 
-	class hbq(MyBaseModel):
-		class hbo(MyBaseModel):
+	class hbs(MyBaseModel):
+		class hbq(MyBaseModel):
 			pass
 
-		class hbp(MyBaseModel):
+		class hbr(MyBaseModel):
 			pass
 

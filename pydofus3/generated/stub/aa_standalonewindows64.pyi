@@ -1835,7 +1835,6 @@ class DofusUISettings(MonoBehaviour):
     crafterlistElementRef: AssetReferenceVisualTreeAsset
     spectatorTeamsElementRef: AssetReferenceVisualTreeAsset
     timelineFighterRef: AssetReferenceVisualTreeAsset
-    playerEffectLineRef: AssetReferenceVisualTreeAsset
     companionElementRef: AssetReferenceVisualTreeAsset
     guildPaddockLineRef: AssetReferenceVisualTreeAsset
     guildPaddockInfoLineRef: AssetReferenceVisualTreeAsset

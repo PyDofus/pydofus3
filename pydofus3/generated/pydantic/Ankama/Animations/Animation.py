@@ -1,4 +1,4 @@
-from pydofus3.generated.pydantic.hau import hau
+from pydofus3.generated.pydantic.haw import haw
 from pydofus3.not_generated.base import FlagBaseModel
 from pydofus3.not_generated.base import MyBaseModel
 from pydofus3.not_generated.base import OpenAPIIntEnum
@@ -10,51 +10,51 @@ class Animation(MyBaseModel):
 	boneId: str
 	dataBytes: list[int]
 	bounds: Rect
-	instance: hau
-
-	class haq(FlagBaseModel):
-		ebbj : Annotated[bool,0]
-		ebbk : Annotated[bool,1]
-		ebbl : Annotated[bool,2]
-		ebbm : Annotated[bool,4]
-		ebbn : Annotated[bool,8]
-		ebbo : Annotated[bool,16]
-		ebbp : Annotated[bool,32]
-		ebbq : Annotated[bool,64]
-		ebbr : Annotated[bool,128]
-
-	class har(OpenAPIIntEnum):
-		ebbs = 0
-		ebbt = 1
-		ebbu = 2
-		ebbv = 4
-		ebbw = 8
-		ebbx = 16
-		ebby = 32
-		ebbz = 64
-		ebca = 128
+	instance: haw
 
 	class has(FlagBaseModel):
-		ebcb : Annotated[bool,0]
-		ebcc : Annotated[bool,1]
-		ebcd : Annotated[bool,2]
-		ebce : Annotated[bool,4]
+		easf : Annotated[bool,0]
+		easg : Annotated[bool,1]
+		eash : Annotated[bool,2]
+		easi : Annotated[bool,4]
+		easj : Annotated[bool,8]
+		eask : Annotated[bool,16]
+		easl : Annotated[bool,32]
+		easm : Annotated[bool,64]
+		easn : Annotated[bool,128]
 
 	class hat(OpenAPIIntEnum):
-		ebcf = 0
-		ebcg = 1
-		ebch = 2
-		ebci = 3
-		ebcj = 4
-		ebck = 5
-		ebcl = 6
-		ebcm = 7
-		ebcn = 8
-		ebco = 9
-		ebcp = 10
-		ebcq = 11
-		ebcr = 12
-		ebcs = 13
-		ebct = 14
-		ebcu = 15
+		easo = 0
+		easp = 1
+		easq = 2
+		easr = 4
+		eass = 8
+		east = 16
+		easu = 32
+		easv = 64
+		easw = 128
+
+	class hau(FlagBaseModel):
+		easx : Annotated[bool,0]
+		easy : Annotated[bool,1]
+		easz : Annotated[bool,2]
+		eata : Annotated[bool,4]
+
+	class hav(OpenAPIIntEnum):
+		eatb = 0
+		eatc = 1
+		eatd = 2
+		eate = 3
+		eatf = 4
+		eatg = 5
+		eath = 6
+		eati = 7
+		eatj = 8
+		eatk = 9
+		eatl = 10
+		eatm = 11
+		eatn = 12
+		eato = 13
+		eatp = 14
+		eatq = 15
 

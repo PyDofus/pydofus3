@@ -1,4 +1,5 @@
 from pydofus3.not_generated.base import D2oData
+from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
 
 class GuildRaidsGoalData(D2oData):
@@ -6,7 +7,7 @@ class GuildRaidsGoalData(D2oData):
 
 	id: int
 	raidId: int
-	nameId: int
+	nameId: i18n
 	value: int
 	requisiteForDisplay: list[int]
 	impactProgress: bool

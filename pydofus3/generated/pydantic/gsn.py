@@ -1,8 +1,5 @@
-from pydofus3.not_generated.base import OpenAPIIntEnum
+from pydofus3.not_generated.base import MyBaseModel
 
-class gsn(OpenAPIIntEnum):
-	duhn = 0
-	duho = 1
-	duhp = 2
-	duhq = 3
+class gsn(MyBaseModel):
+	pass
 

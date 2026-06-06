@@ -115,6 +115,7 @@
       "entranceMapId": "MapsInformation",
       "exitMapId": "MapsInformation"
     },
+    "custom_Dungeons_requiredObjects": {"id": "Items"},
     "Effects": {
       "characteristic": "Characteristics",
       "oppositeId": "Effects"
@@ -169,7 +170,8 @@
     },
     "GuildMissions": {
       "gradeId": "GuildMissionGrades",
-      "superCategoryId": "GuildMissionSuperCategories"
+      "superCategoryId": "GuildMissionSuperCategories",
+      "rankId": "GuildMissionRanks"
     },
     "custom_GuildRightGroups_rights": {
       "groupId": "GuildRightGroups"
@@ -327,6 +329,20 @@
     },
     "Quests": {
       "categoryId": "QuestCategories"
+    },
+    "custom_Quests_startPosition": {"mapId":  "MapsInformation", "npcId": "Npcs"},
+    "GuildRaidsGoals": {
+      "raidId": "GuildRaids"
+    },
+    "GuildRaidsGroups": {
+      "raidId": "GuildRaids"
+    },
+    "GuildRaidsRewards": {
+      "raidId": "GuildRaids"
+    },
+    "custom_GuildRaidsRewards_rewards": {"gid": "Items"},
+    "custom_GuildRaids_variables": {
+      "raidId": "GuildRaids"
     },
     "custom_RandomDropGroups_randomDropItems": {
       "itemId": "Items"
@@ -493,17 +509,22 @@
       "incompatibleChallenges": "Challenges"
     },
     "Dungeons": {
-      "mapIds": "MapsInformation"
+      "mapIds": "MapsInformation",
+      "bosses": "Monsters",
+      "achievements": "Achievements"
     },
     "Effects": {
       "actionFiltersId": "ActionFilters"
     },
     "GuildMissionObjectives": {
-      "familyMonsters": "Monsters"
+      "familyMonsters": "Monsters",
+      "quests": "Quests"
     },
     "InfiniteDreamRewards": {
       "actions": "InfiniteDreamRewardActions"
     },
+    "LobbyTags": {"concurrentTags": "LobbyTags"},
+    "LobbyTypes": {"tags": "LobbyTags"},
     "Items": {
       "dropMonsterIds": "Monsters",
       "dropTemporisMonsterIds": "Monsters",
@@ -629,6 +650,9 @@
       "mapList": "MapsInformation",
       "monsterList": "Monsters",
       "subareaList": "SubAreas"
+    },
+    "GuildRaidsGoals": {
+      "requisiteForDisplay": "GuildRaidsGoals"
     }
   }
 }

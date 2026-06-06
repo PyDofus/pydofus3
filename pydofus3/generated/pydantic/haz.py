@@ -1,5 +1,8 @@
-from pydofus3.not_generated.base import MyBaseModel
+from pydofus3.not_generated.base import OpenAPIIntEnum
 
-class haz(MyBaseModel):
-	pass
+class haz(OpenAPIIntEnum):
+	eawf = 0
+	eawg = 1
+	eawh = 2
+	eawi = 3
 
