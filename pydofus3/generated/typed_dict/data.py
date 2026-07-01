@@ -1097,6 +1097,24 @@ class GuildRaidsGroupData(TypedDict):
 class GuildRaidsGroupsDataRoot(MonoBehaviour):
     objectsById: dict[str, GuildRaidsGroupData]
 
+class GuildRaidsLaddersRewardData(TypedDict):
+    id: int
+    raidId: int
+    position: list[int]
+    percentage: int
+    ornaments: list[int]
+    titles: list[int]
+    guildExperience: int
+    items: list[GuildRaidsLaddersRewardItem]
+    order: int
+
+class GuildRaidsLaddersRewardItem(TypedDict):
+    objectId: int
+    quantity: int
+
+class GuildRaidsLaddersRewardsDataRoot(MonoBehaviour):
+    objectsById: dict[str, GuildRaidsLaddersRewardData]
+
 class GuildRaidsReward(TypedDict):
     id: int
     raidId: int
@@ -2241,8 +2259,16 @@ class ServerPopulationData(TypedDict):
 class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerPopulationData]
 
+class ServerSeasonData(TypedDict):
+    uid: int
+    nameId: str
+    beginning: float
+    closure: float
+    resetDate: float
+    flagObjectId: int
+
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: dict[str, Any]
+    objectsById: dict[str, ServerSeasonData]
 
 class ServersDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerData]

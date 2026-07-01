@@ -702,7 +702,6 @@ class SequenceEventStagingEffect(TypedDict):
 
 class SetFmodParamStagingEffect(TypedDict):
     paramName: str
-    startValue: float
     endValue: StagingEvolutiveVar
 
 class ShaderBlendingParameters(TypedDict):
@@ -913,7 +912,6 @@ class ShaderWaveParameters(TypedDict):
     waveTexID: int
 
 class ShaderWindParameters(TypedDict):
-    isWindSensitive: int
     bendCenter: AleVector2
     worldSpaceBendCenter: AleVector4
     bendStart: AleVector2
@@ -922,8 +920,6 @@ class ShaderWindParameters(TypedDict):
     bendAxeMultiplier: float
     flexibility: float
     shouldSwing: int
-    windSwingNoiseSpeedCoef: float
-    windSwingNoiseAmplitude: float
     parentParameters: list[ShaderWindParentParameters]
 
 class ShaderWindParentParameters(TypedDict):
@@ -1067,14 +1063,10 @@ class WindParameters(TypedDict):
     swingNoiseDirection: AleVector2
     swingNoiseDirectionMultiplier: float
     swingAmplitudeMultiplierCursor: float
-    swingAmplitudeCurvePower: float
-    swingFrequencyCurvePower: float
     mainWindAmplitudeMultiplier: float
     mainWindFrequencyMultiplier: float
     swingFrequencyMultiplier: float
     swingAmplitudeMultiplier: float
-    minimumSwingAmplitude: float
-    windSwingNoiseSpeed: AleVector2
 
 class managedRefArrayItem(TypedDict):
     rid: int

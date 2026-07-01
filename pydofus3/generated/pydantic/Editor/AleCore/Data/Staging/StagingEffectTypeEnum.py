@@ -16,7 +16,8 @@ class StagingEffectTypeEnum(OpenAPIIntEnum):
 	StopLocalizedFmodEvents = 12
 	ChangePlaylist = 13
 	SetFmodParam = 14
-	SequenceEvent = 15
-	NoAnimColor = 16
-	ShowMapAnimatedElement = 17
+	SetFmodSnapshot = 15
+	SequenceEvent = 16
+	NoAnimColor = 17
+	ShowMapAnimatedElement = 18
 

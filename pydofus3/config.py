@@ -1,8 +1,10 @@
-from functools import wraps
+from functools import wraps, cached_property
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import PostgresDsn
+
+from pydofus3.extractor.version import GameVersion
 
 
 class Settings(BaseSettings):
@@ -30,6 +32,11 @@ class Settings(BaseSettings):
             path=self.db_name,
             )
 
+    @cached_property
+    def version(self) -> GameVersion|None:
+        if self.game_path:
+            return GameVersion.load_game_version(self.game_path)
+        return None
 
 settings = Settings()
 

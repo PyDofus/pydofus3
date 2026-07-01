@@ -25,4 +25,5 @@ class ShaderVariantBitfield(FlagBaseModel):
 	UseMapNoiseModifier : Annotated[bool,4503599627370496]
 	WavesEnabled : Annotated[bool,72057594037927936]
 	WaveSensitiveFeature : Annotated[bool,144115188075855872]
+	TextureOffsetFeature : Annotated[bool,288230376151711744]
 

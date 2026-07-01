@@ -115,7 +115,9 @@
       "entranceMapId": "MapsInformation",
       "exitMapId": "MapsInformation"
     },
-    "custom_Dungeons_requiredObjects": {"id": "Items"},
+    "custom_Dungeons_requiredObjects": {
+      "id": "Items"
+    },
     "Effects": {
       "characteristic": "Characteristics",
       "oppositeId": "Effects"
@@ -330,9 +332,18 @@
     "Quests": {
       "categoryId": "QuestCategories"
     },
-    "custom_Quests_startPosition": {"mapId":  "MapsInformation", "npcId": "Npcs"},
+    "custom_Quests_startPosition": {
+      "mapId": "MapsInformation",
+      "npcId": "Npcs"
+    },
     "GuildRaidsGoals": {
       "raidId": "GuildRaids"
+    },
+    "GuildRaidsLaddersRewards": {
+      "raidId": "GuildRaids"
+    },
+    "custom_GuildRaidsLaddersRewards_items": {
+      "objectId": "Items"
     },
     "GuildRaidsGroups": {
       "raidId": "GuildRaids"
@@ -340,7 +351,9 @@
     "GuildRaidsRewards": {
       "raidId": "GuildRaids"
     },
-    "custom_GuildRaidsRewards_rewards": {"gid": "Items"},
+    "custom_GuildRaidsRewards_rewards": {
+      "gid": "Items"
+    },
     "custom_GuildRaids_variables": {
       "raidId": "GuildRaids"
     },
@@ -523,8 +536,12 @@
     "InfiniteDreamRewards": {
       "actions": "InfiniteDreamRewardActions"
     },
-    "LobbyTags": {"concurrentTags": "LobbyTags"},
-    "LobbyTypes": {"tags": "LobbyTags"},
+    "LobbyTags": {
+      "concurrentTags": "LobbyTags"
+    },
+    "LobbyTypes": {
+      "tags": "LobbyTags"
+    },
     "Items": {
       "dropMonsterIds": "Monsters",
       "dropTemporisMonsterIds": "Monsters",
@@ -653,6 +670,10 @@
     },
     "GuildRaidsGoals": {
       "requisiteForDisplay": "GuildRaidsGoals"
+    },
+    "GuildRaidsLaddersRewards": {
+      "ornaments": "Ornaments",
+      "titles": "Titles"
     }
   }
 }

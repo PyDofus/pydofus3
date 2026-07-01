@@ -1,6 +1,6 @@
 from pydofus3.not_generated.base import OpenAPIIntEnum
 
-class hbc(OpenAPIIntEnum):
-	eaga = 0
-	eagb = 1
+class hbq(OpenAPIIntEnum):
+	eaxz = 0
+	eaya = 1
 

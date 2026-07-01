@@ -76,7 +76,8 @@ class MusicState(IntFlag):
 
 class Playstation5PlatformSettings:
 	class SDKVersion(IntEnum):
-		SDK11 = 0
+		SDK12 = 0
+		SDK13 = 1
 
 class SampleRate(IntEnum):
 	PlatformDefault = 0

@@ -7,12 +7,11 @@ class AchievementsUI:
 
 class EncyclopediaBaseUi:
 	class TitleTabs(IntEnum):
-		Guide = 0
-		Bestiary = 1
-		Equipment = 2
-		Consumables = 3
-		Resources = 4
-		Skin = 5
+		Bestiary = 0
+		Equipment = 1
+		Consumables = 2
+		Resources = 3
+		Skin = 4
 
 class ProgressRewardCategory(IntEnum):
 	Top = 0

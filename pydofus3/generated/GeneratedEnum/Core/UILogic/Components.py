@@ -5,7 +5,20 @@ class AnswerType(IntEnum):
 	RepeatedQuest = 1
 	Quest = 2
 	QuestBack = 3
-	Fight = 4
+	QuestBackRepeated = 4
+	QuestBackMain = 5
+	QuestBackPrimordial = 6
+	QuestBackInitiation = 7
+	QuestBackEventMain = 8
+	QuestBackEvent = 9
+	QuestBackEventRepeatable = 10
+	Fight = 11
+	EventRepeatableQuest = 12
+	EventQuest = 13
+	EventMainQuest = 14
+	MainQuest = 15
+	PrimordialQuest = 16
+	IntroductionQuest = 17
 
 class AreaChartElement:
 	class AxisLabelMode(IntEnum):

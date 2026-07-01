@@ -198,6 +198,51 @@ def open_api(
 
     generate_openapi(output)
 
+@app.command()
+def version(
+        output: Annotated[Path, typer.Argument(help='Root output folder.')] = DEFAULT_OUTPUT,
+        dofus_path: Annotated[
+            Path, typer.Argument(help='Path to the Dofus game folder.', resolve_path=True, exists=True)
+        ] = DEFAULT_DOFUS,
+):
+    """
+    export version in output folder. (usefull for d3-ts-renderer)
+    """
+    from pydofus3.extractor.version import GameVersion
+    from pydofus3.enum_data import TypeData
+    GameVersion.export(dofus_path, (output/ TypeData.aa).parent / "version.json")
+
+
+@app.command()
+def character_cache(
+    output: Annotated[Path, typer.Argument(help='Root output folder.')] = DEFAULT_OUTPUT,
+    dofus_path: Annotated[
+        Path, typer.Argument(help='Path to the Dofus game folder.', resolve_path=True, exists=True)
+    ] = DEFAULT_DOFUS,
+    file_change: Annotated[
+        Path | None,
+        typer.Option(
+            help=(
+                "Either a list of relative paths, or a dict with keys 'new', 'change', 'remove'. "
+                'Paths are relative to DOFUS_PATH.'
+            )
+        ),
+    ] = None,
+):
+    """
+    generate or update character cache json (usefull for d3-ts-renderer).
+    If you don't pass file_change it will check all file and will be slower
+    """
+    from pydofus3.cli.data_extract import read_file_change
+    from pydofus3.tools import group_file_by_catalog
+    from pydofus3.extractor.data.cache import update_character_cache, process_character_cache
+
+    if file_change and file_change.exists():
+        files = set(dofus_path/ i for i in read_file_change(file_change))
+        grouped_files = group_file_by_catalog(files, dofus_path)
+        update_character_cache(grouped_files, output)
+    else:
+        process_character_cache(output)
 
 @app.command()
 def process(
@@ -232,6 +277,7 @@ def process(
     from pydofus3.extractor.proto.protodec import protodec
     from pydofus3.not_generated.i18n import i18n_dict
     from pydofus3.tools import get_unity_version, group_file_by_catalog
+    from pydofus3.extractor.version import GameVersion
 
     files_change = orjson.loads((dofus_path / 'change.json').read_bytes())
     files = set(dofus_path / f for f in files_change['new'] + files_change['change'])
@@ -272,6 +318,7 @@ def process(
             continue
         UnityExtractor(dofus_path, key, conf).extract()
     update_character_cache(grouped_files, output)
+    GameVersion.export(dofus_path, (output/ TypeData.aa).parent / "version.json")
     if audio_files := [i for i in files if i.suffix == '.bank']:
         extract_audio(audio_files, output / TypeDataOther.Audio)
         process_audio_manager(output, dofus_path)

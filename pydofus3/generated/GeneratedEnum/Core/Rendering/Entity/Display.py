@@ -2,15 +2,15 @@ from enum import IntEnum
 
 class EntityDisplay:
 	class EntityVisibilityOverrideType(IntEnum):
-		dgqi = 0
-		dgqj = 1
-		dgqk = 2
-		dgql = 3
-		dgqm = 4
-		dgqn = 5
+		dgqe = 0
+		dgqf = 1
+		dgqg = 2
+		dgqh = 3
+		dgqi = 4
+		dgqj = 5
 
-	class xu(IntEnum):
-		dgqy = 0
-		dgqz = 1
-		dgra = 2
+	class xt(IntEnum):
+		dgqu = 0
+		dgqv = 1
+		dgqw = 2
 

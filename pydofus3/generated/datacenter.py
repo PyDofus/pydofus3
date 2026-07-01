@@ -9,7 +9,7 @@ class Datacenter(metaclass=SingletonMeta):
     def __init__(self, empty: bool = False):
         self.empty = empty
         if not empty:
-            self.progress = tqdm(total=207)
+            self.progress = tqdm(total=208)
         
         self.AlignmentGiftData = self.load_d2o(Alignment.AlignmentGiftData)
         self.AlignmentOrderData = self.load_d2o(Alignment.AlignmentOrderData)
@@ -208,6 +208,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.GuildRaidData = self.load_d2o(Raid.GuildRaidData)
         self.GuildRaidsGoalData = self.load_d2o(Raid.GuildRaidsGoalData)
         self.GuildRaidsGroupData = self.load_d2o(Raid.GuildRaidsGroupData)
+        self.GuildRaidsLaddersRewardData = self.load_d2o(Raid.GuildRaidsLaddersRewardData)
         self.GuildRaidsReward = self.load_d2o(Raid.GuildRaidsReward)
         
         self.PaddockGaugesData = self.load_d2o(Ride.PaddockGaugesData)

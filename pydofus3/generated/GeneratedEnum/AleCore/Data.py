@@ -79,6 +79,7 @@ class ShaderVariantBitfield(IntFlag):
 	UseMapNoiseModifier = 4503599627370496
 	WavesEnabled = 72057594037927936
 	WaveSensitiveFeature = 144115188075855872
+	TextureOffsetFeature = 288230376151711744
 
 class UVModes(IntEnum):
 	Normal = 0

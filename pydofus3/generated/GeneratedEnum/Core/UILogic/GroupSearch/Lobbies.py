@@ -33,10 +33,11 @@ class LobbyTab:
 		NotOwnedQuests = 2
 		AlreadyAchievedSuccess = 4
 		AnnounceFull = 8
-		Accepted = 16
-		Pending = 32
-		Suspended = 64
-		Rejected = 128
+		Paid = 16
+		Accepted = 32
+		Pending = 64
+		Suspended = 128
+		Rejected = 256
 		All = 4294967295
 
 	class SortingCriteria(IntEnum):

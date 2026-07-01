@@ -6,6 +6,7 @@ class AdventureSubTab(IntEnum):
 	TemporisTab = 1
 	Dofus = 2
 	Suggestions = 3
+	GameGuide = 4
 
 class GameCollectionTabUI:
 	class FilterEnum(IntEnum):

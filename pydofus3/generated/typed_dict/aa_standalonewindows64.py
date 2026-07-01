@@ -1251,6 +1251,7 @@ class DofusChatTextField_UxmlSerializedData(TypedDict):
     doubleClickSelectsWord: int
     tripleClickSelectsLine: int
     emojiFallbackSupport: int
+    hideSoftKeyboard: int
     hideMobileInput: int
     autoCorrection: int
     maxLength_UxmlAttributeFlags: int
@@ -1266,6 +1267,7 @@ class DofusChatTextField_UxmlSerializedData(TypedDict):
     doubleClickSelectsWord_UxmlAttributeFlags: int
     tripleClickSelectsLine_UxmlAttributeFlags: int
     emojiFallbackSupport_UxmlAttributeFlags: int
+    hideSoftKeyboard_UxmlAttributeFlags: int
     hideMobileInput_UxmlAttributeFlags: int
     keyboardType_UxmlAttributeFlags: int
     autoCorrection_UxmlAttributeFlags: int
@@ -1946,6 +1948,7 @@ class DofusUISettings(MonoBehaviour):
     worldEventLadderFilterRef: AssetReferenceVisualTreeAsset
     worldEventLadderLineRef: AssetReferenceVisualTreeAsset
     koliLadderLineRef: AssetReferenceVisualTreeAsset
+    raidLadderLineRef: AssetReferenceVisualTreeAsset
     experienceAndAchievementLadderLineRef: AssetReferenceVisualTreeAsset
     infiniteDreamLadderLineRef: AssetReferenceVisualTreeAsset
     effectFilterRef: AssetReferenceVisualTreeAsset
@@ -1970,7 +1973,7 @@ class DofusUISettings(MonoBehaviour):
     playerCardBackgroundTileRef: AssetReferenceVisualTreeAsset
     popUpDefaultRef: AssetReferenceVisualTreeAsset
     popUpImageRef: AssetReferenceVisualTreeAsset
-    popUpImageVerticalRef: AssetReferenceVisualTreeAsset
+    popUpActionWarningRef: AssetReferenceVisualTreeAsset
     popUpInputRef: AssetReferenceVisualTreeAsset
     popUpInputComboboxRef: AssetReferenceVisualTreeAsset
     popUpLockedRef: AssetReferenceVisualTreeAsset
@@ -4195,7 +4198,9 @@ class PortraitRanking_UxmlSerializedData(TypedDict):
     dataSourceTypeString_UxmlAttributeFlags: int
     bindings_UxmlAttributeFlags: int
     ranking: int
+    isSocialGroup: int
     ranking_UxmlAttributeFlags: int
+    isSocialGroup_UxmlAttributeFlags: int
 
 class PresetsManagerOutfit_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
@@ -5354,6 +5359,7 @@ class TextField_UxmlSerializedData(TypedDict):
     doubleClickSelectsWord: int
     tripleClickSelectsLine: int
     emojiFallbackSupport: int
+    hideSoftKeyboard: int
     hideMobileInput: int
     autoCorrection: int
     maxLength_UxmlAttributeFlags: int
@@ -5369,6 +5375,7 @@ class TextField_UxmlSerializedData(TypedDict):
     doubleClickSelectsWord_UxmlAttributeFlags: int
     tripleClickSelectsLine_UxmlAttributeFlags: int
     emojiFallbackSupport_UxmlAttributeFlags: int
+    hideSoftKeyboard_UxmlAttributeFlags: int
     hideMobileInput_UxmlAttributeFlags: int
     keyboardType_UxmlAttributeFlags: int
     autoCorrection_UxmlAttributeFlags: int
@@ -5419,8 +5426,12 @@ class TextInput_UxmlSerializedData(TypedDict):
     hasEraseButton: int
     customRegex: str
     errorText: str
+    errorCondition: int
+    minLength: int
     maxLength: int
     strictMaxLength: int
+    minValue: int
+    maxValue: int
     displayInfos: int
     placeholderText: str
     isReadOnly: int
@@ -5434,8 +5445,12 @@ class TextInput_UxmlSerializedData(TypedDict):
     hasEraseButton_UxmlAttributeFlags: int
     customRegex_UxmlAttributeFlags: int
     errorText_UxmlAttributeFlags: int
+    errorCondition_UxmlAttributeFlags: int
+    minLength_UxmlAttributeFlags: int
     maxLength_UxmlAttributeFlags: int
     strictMaxLength_UxmlAttributeFlags: int
+    minValue_UxmlAttributeFlags: int
+    maxValue_UxmlAttributeFlags: int
     displayInfos_UxmlAttributeFlags: int
     placeholderText_UxmlAttributeFlags: int
     isReadOnly_UxmlAttributeFlags: int
@@ -5539,8 +5554,12 @@ class TextInputWithSearchList_UxmlSerializedData(TypedDict):
     hasEraseButton: int
     customRegex: str
     errorText: str
+    errorCondition: int
+    minLength: int
     maxLength: int
     strictMaxLength: int
+    minValue: int
+    maxValue: int
     displayInfos: int
     placeholderText: str
     isReadOnly: int
@@ -5554,8 +5573,12 @@ class TextInputWithSearchList_UxmlSerializedData(TypedDict):
     hasEraseButton_UxmlAttributeFlags: int
     customRegex_UxmlAttributeFlags: int
     errorText_UxmlAttributeFlags: int
+    errorCondition_UxmlAttributeFlags: int
+    minLength_UxmlAttributeFlags: int
     maxLength_UxmlAttributeFlags: int
     strictMaxLength_UxmlAttributeFlags: int
+    minValue_UxmlAttributeFlags: int
+    maxValue_UxmlAttributeFlags: int
     displayInfos_UxmlAttributeFlags: int
     placeholderText_UxmlAttributeFlags: int
     isReadOnly_UxmlAttributeFlags: int

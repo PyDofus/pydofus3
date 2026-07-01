@@ -1176,6 +1176,25 @@ class GuildRaidsGroupsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[GuildRaidsGroupData]
     references: ManagedReferencesRegistry
 
+class GuildRaidsLaddersRewardData:
+    id: int
+    raidId: int
+    position: list[int]
+    percentage: int
+    ornaments: list[int]
+    titles: list[int]
+    guildExperience: int
+    items: list[GuildRaidsLaddersRewardItem]
+    order: int
+
+class GuildRaidsLaddersRewardItem:
+    objectId: int
+    quantity: int
+
+class GuildRaidsLaddersRewardsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[GuildRaidsLaddersRewardData]
+    references: ManagedReferencesRegistry
+
 class GuildRaidsReward:
     id: int
     raidId: int
@@ -2405,8 +2424,16 @@ class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerPopulationData]
     references: ManagedReferencesRegistry
 
+class ServerSeasonData:
+    uid: int
+    nameId: str
+    beginning: float
+    closure: float
+    resetDate: float
+    flagObjectId: int
+
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: MetadataDictionaryContainer
+    objectsById: MetadataDictionaryContainer[ServerSeasonData]
     references: ManagedReferencesRegistry
 
 class ServersDataRoot(MonoBehaviour):

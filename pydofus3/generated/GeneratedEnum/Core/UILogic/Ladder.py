@@ -14,6 +14,8 @@ class BaseLadderTabUI[T]:
 		Intensity = 9
 		Wave = 10
 		GlobalTurn = 11
+		Score = 12
+		Duration = 13
 
 class LadderUI:
 	class LadderTabs(IntEnum):
@@ -22,6 +24,7 @@ class LadderUI:
 		Achievement = 2
 		WorldEvents = 3
 		InfiniteDream = 4
+		Raids = 5
 
 class WorldEventsLadderTabUI:
 	class WorldEventLadderSortType(IntEnum):

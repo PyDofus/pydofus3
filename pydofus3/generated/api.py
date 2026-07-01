@@ -483,6 +483,9 @@ async def GuildRaidsGoalData() -> list[Raid.GuildRaidsGoalData]:
 @app.get("/GuildRaidsGroupData", tags=["Raid"])
 async def GuildRaidsGroupData() -> list[Raid.GuildRaidsGroupData]:
     return data.GuildRaidsGroupData
+@app.get("/GuildRaidsLaddersRewardData", tags=["Raid"])
+async def GuildRaidsLaddersRewardData() -> list[Raid.GuildRaidsLaddersRewardData]:
+    return data.GuildRaidsLaddersRewardData
 @app.get("/GuildRaidsReward", tags=["Raid"])
 async def GuildRaidsReward() -> list[Raid.GuildRaidsReward]:
     return data.GuildRaidsReward

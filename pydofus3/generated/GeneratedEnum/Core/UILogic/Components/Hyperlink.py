@@ -89,5 +89,6 @@ class HyperlinkType(IntEnum):
 	playerCard = 80
 	foldChat = 81
 	openRaid = 82
+	lobby = 83
 	unknown = 1000
 

@@ -19,8 +19,8 @@ class RenderState(MyBaseModel):
 	customisationIndex: int
 	childrenRecursiveCount: int
 	alpha: int
-	maskFlags: Animation.hau
-	blendMode: Annotated[Union[Animation.hav, int], Field(union_mode='left_to_right')]
+	maskFlags: Animation.hbk
+	blendMode: Annotated[Union[Animation.hbl, int], Field(union_mode='left_to_right')]
 	colorMatrix: list[Vector4]
 	flashFilters: FlashFilters
 

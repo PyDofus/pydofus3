@@ -2,9 +2,9 @@ from pydofus3.generated.pydantic.Ankama.Animations.Sources.Rendering.CustomPasse
 from pydofus3.not_generated.base import MyBaseModel
 from pydofus3.not_generated.unity import Color
 
-class hbo(MyBaseModel):
-	eahv: CustomRenderObjectsPassSettings
+class hcc(MyBaseModel):
+	eazu: CustomRenderObjectsPassSettings
 
-	class hbn(MyBaseModel):
-		eahu: Color
+	class hcb(MyBaseModel):
+		eazt: Color
 
