@@ -55,7 +55,7 @@ Install the `pydofus3` CLI as a globally-available tool, isolated in its own
 environment:
 
 ```sh
-uv tool install git+ssh://git@github.com/PyDofus/pydofus3.git
+uv tool install git+https://git@github.com/PyDofus/pydofus3.git
 pydofus3 --help
 ```
 
@@ -70,7 +70,7 @@ uv tool upgrade pydofus3
 If you want to import `pydofus3` from your own code add it as a dependency:
 
 ```sh
-uv add "git+ssh://git@github.com/PyDofus/pydofus3.git" --raw
+uv add "git+https://git@github.com/PyDofus/pydofus3.git" --raw
 ```
 
 Then run the CLI from the project's environment:
@@ -102,10 +102,10 @@ Install it via the optional `[fpng]` extra:
 
 ```sh
 # CLI tool install
-uv tool install "git+ssh://git@github.com/PyDofus/pydofus3.git[fpng]"
+uv tool install "git+https://git@github.com/PyDofus/pydofus3.git[fpng]"
 
 # Or as a project dependency
-uv add "git+ssh://git@github.com/PyDofus/pydofus3.git[fpng]" --raw
+uv add "git+https://git@github.com/PyDofus/pydofus3.git[fpng]" --raw
 ```
 
 ---
