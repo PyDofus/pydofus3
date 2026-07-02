@@ -166,7 +166,7 @@ class UnityExtractor:
 
     def _need_script(self)-> bool:
         return (self.config.add_script or self.config.type_tree or self.config.process_datacenter
-                or self.type_folder in {TypeData.Bones, TypeData.Skins, TypeData.Animations})
+                or self.type_folder in {TypeData.Bones, TypeData.Skins, TypeData.Animations, TypeDataMac.Bones, TypeDataMac.Skins, TypeData.Animations})
 
     def export_mono_behaviour(self, obj: ObjectReader[MonoBehaviour], output: Path) -> set[tuple[str, int]]:
         data = obj.parse_as_dict()
