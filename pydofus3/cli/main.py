@@ -76,7 +76,7 @@ def ornament(
     from pydofus3.tools import set_unity_version
 
     set_unity_version(dofus_path)
-    Ornament(dofus_path).save_all(output/ TypeDataOther.Ornament)
+    Ornament(dofus_path).full_process(output)
 
 
 @app.command()
