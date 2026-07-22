@@ -2,7 +2,7 @@ from pydofus3.generated.pydantic.Ankama.Animations.Rendering.Animator2DRenderer 
 from pydofus3.generated.pydantic.Ankama.Animations.Rendering.EvaluatedAnimationFrame import EvaluatedAnimationFrame
 from pydofus3.generated.pydantic.Ankama.Animations.Rendering.MaterialDescriptor import MaterialDescriptor
 from pydofus3.generated.pydantic.Ankama.Animations.Rendering.RenderState import RenderState
-from pydofus3.generated.pydantic.hbu import hbu
+from pydofus3.generated.pydantic.hcd import hcd
 from pydofus3.not_generated.base import MyBaseModel
 from typing import Optional
 
@@ -19,7 +19,7 @@ class Animator2DCustomisableRenderer(Animator2DRenderer):
 		lastRenderedIndex: int
 		maskDepth: int
 		currentMaterialIdentifier: Optional[MaterialDescriptor]
-		namedTransforms: hbu
+		namedTransforms: hcd
 		isMaskNode: bool
 		renderer: Animator2DCustomisableRenderer
 

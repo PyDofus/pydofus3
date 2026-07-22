@@ -9,6 +9,7 @@ class DisplayOptions(IntFlag):
 	VitalGauges = 8
 	VitalValues = 16
 	States = 32
+	VitalPercent = 64
 	All = 4294967295
 
 class TextTooltipBuilder:

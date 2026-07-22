@@ -1,5 +1,5 @@
 from pydofus3.not_generated.base import MyBaseModel
 
-class hca(MyBaseModel):
+class hcu(MyBaseModel):
 	pass
 

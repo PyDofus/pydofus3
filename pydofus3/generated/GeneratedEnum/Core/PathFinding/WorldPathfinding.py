@@ -1,13 +1,13 @@
 from enum import IntEnum
 
 class Transition:
-	class fyr(IntEnum):
-		dwll = 0
-		dwlm = 1
-		dwln = 2
-		dwlo = 4
-		dwlp = 8
-		dwlq = 16
-		dwlr = 32
-		dwls = 64
+	class fyy(IntEnum):
+		dwuo = 0
+		dwup = 1
+		dwuq = 2
+		dwur = 4
+		dwus = 8
+		dwut = 16
+		dwuu = 32
+		dwuv = 64
 

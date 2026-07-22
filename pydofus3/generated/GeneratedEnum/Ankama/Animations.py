@@ -2,55 +2,55 @@ from enum import IntEnum
 from enum import IntFlag
 
 class Animation:
-	class hbi(IntFlag):
-		eatv = 0
-		eatw = 1
-		eatx = 2
-		eaty = 4
-		eatz = 8
-		eaua = 16
-		eaub = 32
-		eauc = 64
-		eaud = 128
+	class hbr(IntFlag):
+		ebde = 0
+		ebdf = 1
+		ebdg = 2
+		ebdh = 4
+		ebdi = 8
+		ebdj = 16
+		ebdk = 32
+		ebdl = 64
+		ebdm = 128
 
-	class hbj(IntEnum):
-		eaue = 0
-		eauf = 1
-		eaug = 2
-		eauh = 4
-		eaui = 8
-		eauj = 16
-		eauk = 32
-		eaul = 64
-		eaum = 128
+	class hbs(IntEnum):
+		ebdn = 0
+		ebdo = 1
+		ebdp = 2
+		ebdq = 4
+		ebdr = 8
+		ebds = 16
+		ebdt = 32
+		ebdu = 64
+		ebdv = 128
 
-	class hbk(IntFlag):
-		eaun = 0
-		eauo = 1
-		eaup = 2
-		eauq = 4
+	class hbt(IntFlag):
+		ebdw = 0
+		ebdx = 1
+		ebdy = 2
+		ebdz = 4
 
-	class hbl(IntEnum):
-		eaur = 0
-		eaus = 1
-		eaut = 2
-		eauu = 3
-		eauv = 4
-		eauw = 5
-		eaux = 6
-		eauy = 7
-		eauz = 8
-		eava = 9
-		eavb = 10
-		eavc = 11
-		eavd = 12
-		eave = 13
-		eavf = 14
-		eavg = 15
+	class hbu(IntEnum):
+		ebea = 0
+		ebeb = 1
+		ebec = 2
+		ebed = 3
+		ebee = 4
+		ebef = 5
+		ebeg = 6
+		ebeh = 7
+		ebei = 8
+		ebej = 9
+		ebek = 10
+		ebel = 11
+		ebem = 12
+		eben = 13
+		ebeo = 14
+		ebep = 15
 
 class Animator2D:
-	class hbn(IntEnum):
-		eavr = 0
-		eavs = 1
-		eavt = 2
+	class hbw(IntEnum):
+		ebfa = 0
+		ebfb = 1
+		ebfc = 2
 

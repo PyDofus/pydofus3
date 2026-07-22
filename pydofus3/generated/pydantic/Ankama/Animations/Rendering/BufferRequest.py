@@ -1,9 +1,9 @@
 from pydofus3.generated.pydantic.Ankama.Animations.Animator2D import Animator2D
-from pydofus3.generated.pydantic.hbm import hbm
+from pydofus3.generated.pydantic.hbv import hbv
 from pydofus3.not_generated.base import MyBaseModel
 
 class BufferRequest(MyBaseModel):
 	target: Animator2D
-	animation: hbm
+	animation: hbv
 	id: int
 

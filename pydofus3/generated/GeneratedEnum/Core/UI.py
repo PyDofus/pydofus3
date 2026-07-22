@@ -7,6 +7,6 @@ class QualityModifier(IntEnum):
 
 class UIUtils:
 	class om(IntEnum):
-		ddkp = 0
-		ddkq = 1
+		ddtj = 0
+		ddtk = 1
 
