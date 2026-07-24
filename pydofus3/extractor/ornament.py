@@ -3,39 +3,59 @@ render dofus ornaments
 """
 
 from __future__ import annotations
+from UnityPy.classes import Sprite
 
 import re
+from collections import defaultdict
 from dataclasses import dataclass, field
 from enum import IntEnum, StrEnum
 from functools import cached_property
 from pathlib import Path
-from typing import TYPE_CHECKING, ClassVar, Pattern, TypedDict
+from typing import TYPE_CHECKING, ClassVar, Pattern
 
+import UnityPy
 import numpy as np
 import orjson
-import UnityPy
-from moviepy import CompositeVideoClip, ImageClip, ImageSequenceClip, VideoClip, concatenate_videoclips
 from PIL import Image, ImageChops
-from tqdm import tqdm
 from UnityPy.enums import ClassIDType
-from collections import defaultdict
+from moviepy import CompositeVideoClip, ImageClip, ImageSequenceClip, VideoClip, concatenate_videoclips
+from pydantic import BaseModel, TypeAdapter
+from tqdm import tqdm
 
-from pydofus3.enum_data import TypeData, get_data_path, TypeDataOther
+from pydofus3.enum_data import TypeData, TypeDataOther, get_data_path
 from pydofus3.extractor.data.tools import BetterContainer
 
 if TYPE_CHECKING:
     from pydofus3.generated.stub.aa_standalonewindows64 import OrnamentInfo, Vector4f
 
 
-class Pivot(TypedDict):
+class Vec2F(BaseModel):
     x: float
     y: float
 
 
-class WingPart(TypedDict):
+class WingPart(BaseModel):
     w: float
     h: float
-    pivot: Pivot
+    pivot: Vec2F
+
+
+class WingsPivot(BaseModel):
+    WingsTop: WingPart | None = None
+    WingsBot: WingPart | None = None
+
+class SheetMeta(BaseModel):
+    sheet: tuple[int, int]
+    frame: tuple[float, float]
+    frames: list[tuple[float, float]]
+
+
+WingsPivotData = dict[int, WingsPivot]
+SheetMetaData = dict[str, SheetMeta]
+
+WINGS_PIVOT_ADAPTER: TypeAdapter[WingsPivotData] = TypeAdapter(WingsPivotData)
+SHEET_META_ADAPTER: TypeAdapter[SheetMetaData] = TypeAdapter(SheetMetaData)
+
 
 class AnchorType(IntEnum):
     TOP = 0
@@ -139,7 +159,8 @@ class PartElement:
                 for img in self.assets
             ]
 
-    def resize(self, img: Image.Image) -> Image.Image:
+    @staticmethod
+    def resize(img: Image.Image) -> Image.Image:
         return img.resize((int(img.width * 0.5), int(img.height * 0.5)))
 
     def anchor_offset(self, background: Image.Image, height: int | None = None) -> float:
@@ -321,19 +342,19 @@ class Ornament:
         }
 
     @cached_property
-    def wings_pivot_data(self) -> dict[int, dict[str, WingPart]]:
-        result: defaultdict[int,  dict[str, WingPart]] = defaultdict(dict)
+    def wings_pivot_data(self) -> WingsPivotData:
+        parts: defaultdict[int, WingsPivot] = defaultdict(WingsPivot)
         for key, obj in self.env.files[self.aa_ornament].container.items():  # ty:ignore[unresolved-attribute]
             if obj.type != ClassIDType.Sprite or not(match:= self.pattern_wings.fullmatch(key)):
                 continue
             obj_ = obj.read_typetree()
-            result[int(match.group(2))][match.group(1)] = {"w": obj_['m_Rect']['width'], "h": obj_['m_Rect']['height'], "pivot":obj_['m_Pivot']}
-        return result
+            setattr(parts[int(match.group(2))], match.group(1), WingPart(w=obj_['m_Rect']['width'], h=obj_['m_Rect']['height'], pivot=obj_['m_Pivot']))
+        return parts
 
     def save_wings_pivot(self, output :Path):
         file_path = output/ TypeData.aa / "Assets/Content/Ornaments/Data/wing.json"
         file_path.parent.mkdir(exist_ok=True, parents=True)
-        file_path.write_bytes(orjson.dumps(self.wings_pivot_data, option=orjson.OPT_NON_STR_KEYS))
+        file_path.write_bytes(WINGS_PIVOT_ADAPTER.dump_json(self.wings_pivot_data, exclude_defaults=True))
 
     def _load_wing_image(self, name: str) -> Image.Image | None:
         key = f'Assets/Content/Ornaments/Textures/Wings/{name}.png'
@@ -348,18 +369,15 @@ class Ornament:
         content_h = self.WINGS_CONTENT_MIN_HEIGHT
 
         meta = self.wings_pivot_data.get(index)
-        if not meta or 'WingsTop' not in meta or (top_img := self._load_wing_image(f'WingsTop_{index}')) is None:
+        if not meta or not (top := meta.WingsTop) or (top_img := self._load_wing_image(f'WingsTop_{index}')) is None:
             raise FileNotFoundError(f'WingsTop_{index} not found')
 
-        top = meta['WingsTop']
-        tw, th = int(top['w'] * scale), int(top['h'] * scale)
+        tw, th = int(top.w * scale), int(top.h * scale)
         top_img = top_img.resize((tw, th))
-        top_y = top['pivot']['y'] * th
+        top_y = top.pivot.y * th
 
-        bot = meta.get('WingsBot')
-        bot_img = self._load_wing_image(f'WingsBot_{index}') if bot else None
-        if bot is not None and bot_img is not None:
-            bw, bh = int(bot['w'] * scale), int(bot['h'] * scale)
+        if (bot:= meta.WingsBot) is not None and (bot_img:= self._load_wing_image(f'WingsBot_{index}')) is not None:
+            bw, bh = int(bot.w * scale), int(bot.h * scale)
             bot_img = bot_img.resize((bw, bh))
         else:
             bot_img = None
@@ -370,7 +388,7 @@ class Ornament:
 
         placements: list[tuple[Image.Image, Bbox]] = [(top_img, Bbox(int(cx - tw / 2), int(top_y), tw, th))]
         if bot_img is not None and bot is not None:
-            bot_y = th + content_h - (1 - bot['pivot']['y']) * bh
+            bot_y = th + content_h - (1 - bot.pivot.y) * bh
             placements.append((bot_img, Bbox(int(cx - bw / 2), int(bot_y), bw, bh)))
 
         max_bbox = Bbox.compute_max_bbox([b for _, b in placements])
@@ -427,11 +445,11 @@ class Ornament:
         for key, obj in self.env.container.items():
             if obj.type == ClassIDType.Sprite and key.startswith(prefix):
                 by_container[key].append(obj)
-        meta: dict[str, dict] = {}
+        meta: SheetMetaData = {}
         for key, objs in by_container.items():
             if len(objs) < 2:
                 continue
-            sprites = [o.read() for o in objs]
+            sprites : list[Sprite] = [o.read() for o in objs]
             sprites.sort(key=lambda s: int(s.m_Name.split('_')[-1]))
             sheet: Image.Image = sprites[0].m_RD.texture.read().image
             stem = key.removeprefix(prefix).removesuffix('.png')
@@ -439,12 +457,12 @@ class Ornament:
             dest.parent.mkdir(exist_ok=True, parents=True)
             sheet.save(dest)
             rect = sprites[0].m_Rect
-            meta[stem] = {
-                'sheet': [sheet.width, sheet.height],
-                'frame': [rect.width, rect.height],
-                'frames': [[s.m_Rect.x, sheet.height - s.m_Rect.y - s.m_Rect.height] for s in sprites],
-            }
-        (output / 'animated.json').write_bytes(orjson.dumps(meta))
+            meta[stem] = SheetMeta(
+                sheet=(sheet.width, sheet.height),
+                frame=(rect.width, rect.height),
+                frames=[(s.m_Rect.x, sheet.height - s.m_Rect.y - s.m_Rect.height) for s in sprites],
+            )
+        (output / 'animated.json').write_bytes(SHEET_META_ADAPTER.dump_json(meta))
 
     def save_borders(self, output: Path | str) -> None:
         prefix = 'Assets/Content/Ornaments/Textures/'
