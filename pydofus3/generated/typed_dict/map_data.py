@@ -258,6 +258,53 @@ class ClientInteractiveElementTransform(TypedDict):
     m_interactionId: int
     shaderOutlineParameters: ShaderOutlineParameters
 
+class ClientInteractiveMapAnimatedElement(TypedDict):
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
+    cellId: int
+    playAnimation: int
+    playAnimStatic: int
+    playerGuildCustomisable: int
+    requiresServerUpdate: int
+    minDelay: int
+    maxDelay: int
+    isStagingTarget: int
+    stagingId: str
+    background: int
+    displayOrder: int
+
+class ClientInteractiveMapElement(TypedDict):
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
+    isBoundingBox: int
+
+class ClientMapAnimatedElement(TypedDict):
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
+    cellId: int
+    playAnimation: int
+    playAnimStatic: int
+    playerGuildCustomisable: int
+    requiresServerUpdate: int
+    minDelay: int
+    maxDelay: int
+    isStagingTarget: int
+    stagingId: str
+    background: int
+    displayOrder: int
+
 class ClientMapData(TypedDict):
     topNeighbourId: int
     bottomNeighbourId: int
@@ -287,6 +334,14 @@ class ClientMapData(TypedDict):
     mapNoiseModifierConfiguration: MapNoiseModifierConfiguration
     stagingSequences: list[StagingSequence]
     localizedSounds: list[LocalizedSound]
+
+class ClientMapElement(TypedDict):
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
 
 class ClientParticlesParameters(TypedDict):
     id: str
@@ -733,10 +788,7 @@ class ShaderCustomFramerateParameters(TypedDict):
 
 class ShaderData(TypedDict):
     shaderParameters: list[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]
-    gfxId: int
-    unique: int
-    isStagingTarget: int
-    stagingId: str
+    shaderVariant: int
 
 class ShaderDepthAlphaClipParameters(TypedDict):
     alphaClip: float

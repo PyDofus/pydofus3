@@ -1,35 +1,35 @@
 from enum import IntEnum
 
 class BannerMenu:
-	class fmn(IntEnum):
-		duax = 1
-		duay = 2
-		duaz = 3
-		duba = 4
-		dubb = 5
-		dubc = 6
-		dubd = 7
-		dube = 8
-		dubf = 9
-		dubg = 10
-		dubh = 11
-		dubi = 12
-		dubj = 13
-		dubk = 14
-		dubl = 15
-		dubm = 16
-		dubn = 17
-		dubo = 18
-		dubp = 19
-		dubq = 20
-		dubr = 21
-		dubs = 22
-		dubt = 23
-		dubu = 24
-		dubv = 25
-		dubw = 2147483647
+	class fmr(IntEnum):
+		dttp = 1
+		dttq = 2
+		dttr = 3
+		dtts = 4
+		dttt = 5
+		dttu = 6
+		dttv = 7
+		dttw = 8
+		dttx = 9
+		dtty = 10
+		dttz = 11
+		dtua = 12
+		dtub = 13
+		dtuc = 14
+		dtud = 15
+		dtue = 16
+		dtuf = 17
+		dtug = 18
+		dtuh = 19
+		dtui = 20
+		dtuj = 21
+		dtuk = 22
+		dtul = 23
+		dtum = 24
+		dtun = 25
+		dtuo = 2147483647
 
-	class fmo(IntEnum):
-		dubx = 0
-		duby = 1
+	class fms(IntEnum):
+		dtup = 0
+		dtuq = 1
 

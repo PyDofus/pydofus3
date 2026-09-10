@@ -1,8 +1,8 @@
 from enum import IntEnum
 
 class DirectionArrow:
-	class gmf(IntEnum):
-		dxyo = -1
-		dxyp = 0
-		dxyq = 1
+	class gmj(IntEnum):
+		dxrf = -1
+		dxrg = 0
+		dxrh = 1
 

@@ -627,7 +627,8 @@ class CompanionsDataRoot(MonoBehaviour):
 
 class ConstantData(TypedDict):
     id: int
-    value: str
+    defaultValue: str
+    valueByServer: list[ServerValueData]
 
 class ConstantsDataRoot(MonoBehaviour):
     objectsById: dict[str, ConstantData]
@@ -2269,6 +2270,10 @@ class ServerSeasonData(TypedDict):
 
 class ServerSeasonsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerSeasonData]
+
+class ServerValueData(TypedDict):
+    id: int
+    value: str
 
 class ServersDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerData]

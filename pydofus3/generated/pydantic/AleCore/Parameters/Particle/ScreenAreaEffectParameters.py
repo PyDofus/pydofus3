@@ -14,6 +14,5 @@ class ScreenAreaEffectParameters(MyBaseModel):
 	placeEffectOnCell: bool
 	cellID: int
 	mapID: int
-	weight: int
 	isRenderedAfterTransparents: bool
 

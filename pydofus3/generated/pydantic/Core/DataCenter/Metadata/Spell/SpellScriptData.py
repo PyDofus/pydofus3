@@ -7,6 +7,7 @@ from typing import ClassVar
 class SpellScriptData(D2oData):
 	bundle_name: ClassVar[str] = "spellscriptsdataroot"
 
+	AnimArme: ClassVar[str] = "AnimArme"
 	rawParams: str
 	type: Annotated[Union[SpellScriptType, int], Field(union_mode='left_to_right')]
 

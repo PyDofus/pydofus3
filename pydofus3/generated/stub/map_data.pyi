@@ -247,6 +247,55 @@ class ClientInteractiveElementTransform:
     m_interactionId: int
     shaderOutlineParameters: managedReference[ShaderOutlineParameters]
 
+class ClientInteractiveMapAnimatedElement:
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
+    cellId: int
+    playAnimation: int
+    playAnimStatic: int
+    playerGuildCustomisable: int
+    requiresServerUpdate: int
+    minDelay: int
+    maxDelay: int
+    isStagingTarget: int
+    stagingId: str
+    background: int
+    displayOrder: int
+    references: ManagedReferencesRegistry
+
+class ClientInteractiveMapElement:
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
+    isBoundingBox: int
+    references: ManagedReferencesRegistry
+
+class ClientMapAnimatedElement:
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
+    cellId: int
+    playAnimation: int
+    playAnimStatic: int
+    playerGuildCustomisable: int
+    requiresServerUpdate: int
+    minDelay: int
+    maxDelay: int
+    isStagingTarget: int
+    stagingId: str
+    background: int
+    displayOrder: int
+
 class ClientMapData:
     topNeighbourId: int
     bottomNeighbourId: int
@@ -276,6 +325,14 @@ class ClientMapData:
     mapNoiseModifierConfiguration: managedReference[MapNoiseModifierConfiguration]
     stagingSequences: list[managedRefArrayItem[StagingSequence]]
     localizedSounds: list[LocalizedSound]
+
+class ClientMapElement:
+    position: AleVector2
+    rotation: float
+    scale: AleVector2
+    color: AleColor
+    gfxId: int
+    displayBehaviour: int
 
 class ClientParticlesParameters:
     id: str
@@ -729,10 +786,7 @@ class ShaderCustomFramerateParameters:
 
 class ShaderData:
     shaderParameters: list[managedRefArrayItem[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]]
-    gfxId: int
-    unique: int
-    isStagingTarget: int
-    stagingId: str
+    shaderVariant: int
     references: ManagedReferencesRegistry
 
 class ShaderDepthAlphaClipParameters:

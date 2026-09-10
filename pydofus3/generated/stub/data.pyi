@@ -672,7 +672,8 @@ class CompanionsDataRoot(MonoBehaviour):
 
 class ConstantData:
     id: int
-    value: str
+    defaultValue: str
+    valueByServer: list[ServerValueData]
 
 class ConstantsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ConstantData]
@@ -2435,6 +2436,10 @@ class ServerSeasonData:
 class ServerSeasonsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerSeasonData]
     references: ManagedReferencesRegistry
+
+class ServerValueData:
+    id: int
+    value: str
 
 class ServersDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerData]

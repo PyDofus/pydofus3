@@ -1,9 +1,9 @@
 from enum import IntEnum
 
 class TacticalDebugCell:
-	class uz(IntEnum):
-		dgkr = 0
-		dgks = 1
-		dgkt = 2
-		dgku = 3
+	class va(IntEnum):
+		dgcy = 0
+		dgcz = 1
+		dgda = 2
+		dgdb = 3
 

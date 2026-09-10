@@ -5,17 +5,10 @@ class TooltipBuilderFlags(IntFlag):
 	None_ = 0
 	BringToFront = 1
 	AutoHide = 2
-	DirectionalArrow = 4
-	AllowRefresh = 8
-	KeepOnZoom = 16
-	Collisions = 32
-	ScreenCollision = 64
-	InsertLayer = 128
-	IgnoreHideAll = 256
-	ReplacePrevious = 512
-	GroupByEntityNeighbors = 1024
-	SyncWithTarget = 2048
-	SyncWithZoom = 4096
+	KeepOnZoom = 4
+	ScreenCollision = 8
+	InsertLayer = 16
+	IgnoreHideAll = 32
 	All = 4294967295
 
 class TooltipPositioning:

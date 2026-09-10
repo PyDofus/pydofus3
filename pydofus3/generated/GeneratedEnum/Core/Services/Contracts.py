@@ -2,11 +2,11 @@ from enum import IntEnum
 
 class DisconnectionReason:
 	class Reason(IntEnum):
-		drsk = 0
-		drsl = 1
-		drsm = 2
-		drsn = 3
-		drso = 4
-		drsp = 5
-		drsq = 6
+		drky = 0
+		drkz = 1
+		drla = 2
+		drlb = 3
+		drlc = 4
+		drld = 5
+		drle = 6
 

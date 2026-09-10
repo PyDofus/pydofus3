@@ -5,8 +5,3 @@ class QualityModifier(IntEnum):
 	Small = 1
 	Big = 2
 
-class UIUtils:
-	class om(IntEnum):
-		ddtj = 0
-		ddtk = 1
-

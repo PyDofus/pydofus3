@@ -1,7 +1,7 @@
 from enum import IntEnum
 
 class PreSequencesStageType(IntEnum):
-	dzsl = 0
-	dzsm = 1
-	dzsn = 2
+	dzlc = 0
+	dzld = 1
+	dzle = 2
 
