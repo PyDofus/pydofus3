@@ -173,23 +173,6 @@ class AtlasDictionary:
     m_keys: list[int]
     m_values: list[AleRect]
 
-class ClientAnimatedElementTransform:
-    gfxId: int
-    cellId: int
-    playAnimation: int
-    playAnimStatic: int
-    playerGuildCustomisable: int
-    isStagingTarget: int
-    stagingId: str
-    minDelay: int
-    maxDelay: int
-    requiresServerUpdate: int
-    transform: Transform2D
-    type: int
-    color: AleColor
-    innerCellRenderOrder: int
-    displayBehaviour: int
-
 class ClientCellData:
     cellNumber: int
     speed: int
@@ -198,23 +181,14 @@ class ClientCellData:
     linkedZone: int
     mov: int
     los: int
-    nonWalkableDuringFight: int
-    nonWalkableDuringRP: int
     farmCell: int
     visible: int
     havenbagCell: int
     roleplayMonstersMovementBlocked: int
-    floor: int
+    altitude: int
     red: int
     blue: int
     arrow: int
-
-class ClientElementTransform:
-    gfxId: int
-    color: AleColor
-    transform: Transform2D
-    materialIndex: int
-    displayBehaviour: int
 
 class ClientInteractiveAnimatedElementTransform:
     gfxId: int
@@ -246,6 +220,7 @@ class ClientInteractiveElementTransform:
     innerCellRenderOrder: int
     m_interactionId: int
     shaderOutlineParameters: managedReference[ShaderOutlineParameters]
+    references: ManagedReferencesRegistry
 
 class ClientInteractiveMapAnimatedElement:
     position: AleVector2
@@ -277,6 +252,19 @@ class ClientInteractiveMapElement:
     isBoundingBox: int
     references: ManagedReferencesRegistry
 
+class ClientIsometricMergedMapElements:
+    mapElements: list[managedRefArrayItem[ClientMapElement]]
+    materialIndex: int
+    shaderVariantIndex: int
+    isStagingTarget: int
+    stagingId: str
+    uniqueMaterialInstance: int
+    displayOrder: int
+    hasWind: int
+    hasWave: int
+    hasAtlasVertex: int
+    cellId: int
+
 class ClientMapAnimatedElement:
     position: AleVector2
     rotation: float
@@ -296,35 +284,33 @@ class ClientMapAnimatedElement:
     background: int
     displayOrder: int
 
-class ClientMapData:
+class ClientMapData(MonoBehaviour):
+    id: int
     topNeighbourId: int
     bottomNeighbourId: int
     leftNeighbourId: int
     rightNeighbourId: int
     backgroundColor: AleColor
     playlistSet: PlaylistSet
-    backgroundElements: list[ClientElementTransform]
-    sortableElements: list[ClientSortableElementTransform]
-    foregroundElements: list[ClientElementTransform]
-    animatedElements: list[ClientAnimatedElementTransform]
-    refractionElements: list[ClientElementTransform]
-    interactiveElements: list[managedRefArrayItem[Union[ClientInteractiveAnimatedElementTransform| ClientInteractiveElementTransform]]]
-    boundingBoxes: list[ClientInteractiveElementTransform]
-    particlesParameters: list[ClientParticlesParameters]
-    foregroundMaterialData: MaterialData
+    backgroundMapElements: list[ClientMergedMapElements]
+    middlegroundMapElements: list[ClientIsometricMergedMapElements]
+    foregroundMapElements: list[ClientMergedMapElements]
+    mapAnimatedElements: list[managedRefArrayItem]
     backgroundMaterialData: MaterialData
-    sortableMaterialData: MaterialData
+    middlegroundMaterialData: MaterialData
+    foregroundMaterialData: MaterialData
+    particlesShaderData: list[managedRefArrayItem[ShaderData]]
+    shaderVariants: list[int]
+    particlesParameters: list[ClientParticlesParameters]
     cellsData: list[ClientCellData]
     topArrowCellList: list[int]
     leftArrowCellList: list[int]
     bottomArrowCellList: list[int]
     rightArrowCellList: list[int]
-    mapWindConfiguration: managedReference[MapWindConfiguration]
-    mapPostProcessConfiguration: managedReference[MapPostProcessConfiguration]
-    mapWaveConfiguration: managedReference[MapWaveConfiguration]
-    mapNoiseModifierConfiguration: managedReference[MapNoiseModifierConfiguration]
+    mapEffectsConfigurations: MapEffectsConfigurations
     stagingSequences: list[managedRefArrayItem[StagingSequence]]
     localizedSounds: list[LocalizedSound]
+    references: ManagedReferencesRegistry
 
 class ClientMapElement:
     position: AleVector2
@@ -334,16 +320,34 @@ class ClientMapElement:
     gfxId: int
     displayBehaviour: int
 
-class ClientParticlesParameters:
-    id: str
+class ClientMergedMapElements:
+    mapElements: list[managedRefArrayItem[ClientMapElement]]
     materialIndex: int
-    trailMaterialIndex: int
-    transform: TransformParameters
-    layer: int
-    cellId: int
-    renderOrder: int
+    shaderVariantIndex: int
     isStagingTarget: int
     stagingId: str
+    uniqueMaterialInstance: int
+    displayOrder: int
+    hasWind: int
+    hasWave: int
+    hasAtlasVertex: int
+
+class ClientParticlesParameters:
+    id: str
+    gfxId: int
+    materialIndex: int
+    materialIsStagingTarget: int
+    materialStagingId: str
+    trailGfxId: int
+    trailMaterialIndex: int
+    trailMaterialIsStagingTarget: int
+    trailMaterialStagingId: str
+    layer: int
+    displayOrder: int
+    cellId: int
+    isStagingTarget: int
+    stagingId: str
+    transform: TransformParameters
     particlesMainParameters: ParticlesMainParameters
     particlesModulesParameters: ParticlesModulesParameters
     particlesEmissionParameters: ParticlesEmissionParameters
@@ -358,15 +362,6 @@ class ClientParticlesParameters:
     particlesRendererParameters: ParticlesRendererParameters
     particlesSubEmittersParameters: ParticlesSubEmittersParameters
     soundParameters: ParticlesSoundParameters
-
-class ClientSortableElementTransform:
-    gfxId: int
-    color: AleColor
-    transform: Transform2D
-    materialIndex: int
-    displayBehaviour: int
-    cellId: int
-    innerCellRenderOrder: int
 
 class ColorAnimationStagingEffect:
     material: PPtr[Material]
@@ -426,6 +421,12 @@ class LocalizedSound:
 class ManagedReferencesRegistry:
     version: int
     RefIds: list[ReferencedObject]
+
+class MapEffectsConfigurations:
+    mapWindConfiguration: managedReference[MapWindConfiguration]
+    mapPostProcessConfiguration: managedReference[MapPostProcessConfiguration]
+    mapWaveConfiguration: managedReference[MapWaveConfiguration]
+    mapNoiseModifierConfiguration: managedReference[MapNoiseModifierConfiguration]
 
 class MapElementsDictionary:
     m_keys: list[int]

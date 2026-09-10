@@ -185,23 +185,6 @@ class AnimatedElement(TypedDict):
 
 type AtlasDictionary = dict[int, AleRect]
 
-class ClientAnimatedElementTransform(TypedDict):
-    gfxId: int
-    cellId: int
-    playAnimation: int
-    playAnimStatic: int
-    playerGuildCustomisable: int
-    isStagingTarget: int
-    stagingId: str
-    minDelay: int
-    maxDelay: int
-    requiresServerUpdate: int
-    transform: Transform2D
-    type: int
-    color: AleColor
-    innerCellRenderOrder: int
-    displayBehaviour: int
-
 class ClientCellData(TypedDict):
     cellNumber: int
     speed: int
@@ -210,23 +193,14 @@ class ClientCellData(TypedDict):
     linkedZone: int
     mov: int
     los: int
-    nonWalkableDuringFight: int
-    nonWalkableDuringRP: int
     farmCell: int
     visible: int
     havenbagCell: int
     roleplayMonstersMovementBlocked: int
-    floor: int
+    altitude: int
     red: int
     blue: int
     arrow: int
-
-class ClientElementTransform(TypedDict):
-    gfxId: int
-    color: AleColor
-    transform: Transform2D
-    materialIndex: int
-    displayBehaviour: int
 
 class ClientInteractiveAnimatedElementTransform(TypedDict):
     gfxId: int
@@ -286,6 +260,19 @@ class ClientInteractiveMapElement(TypedDict):
     displayBehaviour: int
     isBoundingBox: int
 
+class ClientIsometricMergedMapElements(TypedDict):
+    mapElements: list[ClientMapElement]
+    materialIndex: int
+    shaderVariantIndex: int
+    isStagingTarget: int
+    stagingId: str
+    uniqueMaterialInstance: int
+    displayOrder: int
+    hasWind: int
+    hasWave: int
+    hasAtlasVertex: int
+    cellId: int
+
 class ClientMapAnimatedElement(TypedDict):
     position: AleVector2
     rotation: float
@@ -305,33 +292,30 @@ class ClientMapAnimatedElement(TypedDict):
     background: int
     displayOrder: int
 
-class ClientMapData(TypedDict):
+class ClientMapData(MonoBehaviour):
+    id: int
     topNeighbourId: int
     bottomNeighbourId: int
     leftNeighbourId: int
     rightNeighbourId: int
     backgroundColor: AleColor
     playlistSet: PlaylistSet
-    backgroundElements: list[ClientElementTransform]
-    sortableElements: list[ClientSortableElementTransform]
-    foregroundElements: list[ClientElementTransform]
-    animatedElements: list[ClientAnimatedElementTransform]
-    refractionElements: list[ClientElementTransform]
-    interactiveElements: list[Union[ClientInteractiveAnimatedElementTransform| ClientInteractiveElementTransform]]
-    boundingBoxes: list[ClientInteractiveElementTransform]
-    particlesParameters: list[ClientParticlesParameters]
-    foregroundMaterialData: MaterialData
+    backgroundMapElements: list[ClientMergedMapElements]
+    middlegroundMapElements: list[ClientIsometricMergedMapElements]
+    foregroundMapElements: list[ClientMergedMapElements]
+    mapAnimatedElements: list[managedRefArrayItem]
     backgroundMaterialData: MaterialData
-    sortableMaterialData: MaterialData
+    middlegroundMaterialData: MaterialData
+    foregroundMaterialData: MaterialData
+    particlesShaderData: list[ShaderData]
+    shaderVariants: list[int]
+    particlesParameters: list[ClientParticlesParameters]
     cellsData: list[ClientCellData]
     topArrowCellList: list[int]
     leftArrowCellList: list[int]
     bottomArrowCellList: list[int]
     rightArrowCellList: list[int]
-    mapWindConfiguration: MapWindConfiguration
-    mapPostProcessConfiguration: MapPostProcessConfiguration
-    mapWaveConfiguration: MapWaveConfiguration
-    mapNoiseModifierConfiguration: MapNoiseModifierConfiguration
+    mapEffectsConfigurations: MapEffectsConfigurations
     stagingSequences: list[StagingSequence]
     localizedSounds: list[LocalizedSound]
 
@@ -343,16 +327,34 @@ class ClientMapElement(TypedDict):
     gfxId: int
     displayBehaviour: int
 
-class ClientParticlesParameters(TypedDict):
-    id: str
+class ClientMergedMapElements(TypedDict):
+    mapElements: list[ClientMapElement]
     materialIndex: int
-    trailMaterialIndex: int
-    transform: TransformParameters
-    layer: int
-    cellId: int
-    renderOrder: int
+    shaderVariantIndex: int
     isStagingTarget: int
     stagingId: str
+    uniqueMaterialInstance: int
+    displayOrder: int
+    hasWind: int
+    hasWave: int
+    hasAtlasVertex: int
+
+class ClientParticlesParameters(TypedDict):
+    id: str
+    gfxId: int
+    materialIndex: int
+    materialIsStagingTarget: int
+    materialStagingId: str
+    trailGfxId: int
+    trailMaterialIndex: int
+    trailMaterialIsStagingTarget: int
+    trailMaterialStagingId: str
+    layer: int
+    displayOrder: int
+    cellId: int
+    isStagingTarget: int
+    stagingId: str
+    transform: TransformParameters
     particlesMainParameters: ParticlesMainParameters
     particlesModulesParameters: ParticlesModulesParameters
     particlesEmissionParameters: ParticlesEmissionParameters
@@ -367,15 +369,6 @@ class ClientParticlesParameters(TypedDict):
     particlesRendererParameters: ParticlesRendererParameters
     particlesSubEmittersParameters: ParticlesSubEmittersParameters
     soundParameters: ParticlesSoundParameters
-
-class ClientSortableElementTransform(TypedDict):
-    gfxId: int
-    color: AleColor
-    transform: Transform2D
-    materialIndex: int
-    displayBehaviour: int
-    cellId: int
-    innerCellRenderOrder: int
 
 class ColorAnimationStagingEffect(TypedDict):
     material: PPtr
@@ -435,6 +428,12 @@ class LocalizedSound(TypedDict):
 class ManagedReferencesRegistry(TypedDict):
     version: int
     RefIds: list[ReferencedObject]
+
+class MapEffectsConfigurations(TypedDict):
+    mapWindConfiguration: MapWindConfiguration
+    mapPostProcessConfiguration: MapPostProcessConfiguration
+    mapWaveConfiguration: MapWaveConfiguration
+    mapNoiseModifierConfiguration: MapNoiseModifierConfiguration
 
 type MapElementsDictionary = dict[int, managedRefArrayItem]
 
