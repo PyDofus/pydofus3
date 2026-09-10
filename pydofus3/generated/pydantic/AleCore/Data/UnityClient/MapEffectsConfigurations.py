@@ -1,0 +1,12 @@
+from pydofus3.generated.pydantic.AleCore.Parameters.MapNoiseModifierConfiguration import MapNoiseModifierConfiguration
+from pydofus3.generated.pydantic.AleCore.Parameters.MapPostProcessConfiguration import MapPostProcessConfiguration
+from pydofus3.generated.pydantic.AleCore.Parameters.MapWaveConfiguration import MapWaveConfiguration
+from pydofus3.generated.pydantic.AleCore.Parameters.MapWindConfiguration import MapWindConfiguration
+from pydofus3.not_generated.base import MyBaseModel
+
+class MapEffectsConfigurations(MyBaseModel):
+	mapWindConfiguration: MapWindConfiguration
+	mapPostProcessConfiguration: MapPostProcessConfiguration
+	mapWaveConfiguration: MapWaveConfiguration
+	mapNoiseModifierConfiguration: MapNoiseModifierConfiguration
+

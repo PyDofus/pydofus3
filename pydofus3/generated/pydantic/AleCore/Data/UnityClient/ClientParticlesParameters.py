@@ -1,0 +1,51 @@
+from pydantic import Field
+from pydofus3.generated.pydantic.AleCore.Data.UnityClient.ClientLayer import ClientLayer
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesColorOverLifetimeParameters import ParticlesColorOverLifetimeParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesEmissionParameters import ParticlesEmissionParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesMainParameters import ParticlesMainParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesModulesParameters import ParticlesModulesParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesNoiseParameters import ParticlesNoiseParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticleSpritesheetParameters import ParticleSpritesheetParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesRendererParameters import ParticlesRendererParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesRotationOverLifetimeParameters import ParticlesRotationOverLifetimeParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesShapeParameters import ParticlesShapeParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesSizeOverLifetimeParameters import ParticlesSizeOverLifetimeParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesSoundParameters import ParticlesSoundParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesSubEmittersParameters import ParticlesSubEmittersParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesTrailsParameters import ParticlesTrailsParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.Particle.ParticlesVelocityOverLifetimeParameters import ParticlesVelocityOverLifetimeParameters
+from pydofus3.generated.pydantic.AleCore.Parameters.TransformParameters import TransformParameters
+from pydofus3.not_generated.base import MyBaseModel
+from typing import Annotated, Union
+
+class ClientParticlesParameters(MyBaseModel):
+	id: str
+	gfxId: int
+	materialIndex: int
+	materialIsStagingTarget: bool
+	materialStagingId: str
+	trailGfxId: int
+	trailMaterialIndex: int
+	trailMaterialIsStagingTarget: bool
+	trailMaterialStagingId: str
+	layer: Annotated[Union[ClientLayer, int], Field(union_mode='left_to_right')]
+	displayOrder: int
+	cellId: int
+	isStagingTarget: bool
+	stagingId: str
+	transform: TransformParameters
+	particlesMainParameters: ParticlesMainParameters
+	particlesModulesParameters: ParticlesModulesParameters
+	particlesEmissionParameters: ParticlesEmissionParameters
+	particlesShapeParameters: ParticlesShapeParameters
+	particlesVelocityOverLifetimeParameters: ParticlesVelocityOverLifetimeParameters
+	particlesColorOverLifetimeParameters: ParticlesColorOverLifetimeParameters
+	particlesSizeOverLifetimeParameters: ParticlesSizeOverLifetimeParameters
+	particlesRotationOverLifetimeParameters: ParticlesRotationOverLifetimeParameters
+	particlesNoiseParameters: ParticlesNoiseParameters
+	particleSpritesheetParameters: ParticleSpritesheetParameters
+	particlesTrailsParameters: ParticlesTrailsParameters
+	particlesRendererParameters: ParticlesRendererParameters
+	particlesSubEmittersParameters: ParticlesSubEmittersParameters
+	soundParameters: ParticlesSoundParameters
+

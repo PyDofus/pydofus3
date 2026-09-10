@@ -1,0 +1,5 @@
+from pydofus3.generated.pydantic.AleCore.Data.UnityClient.ClientMapAnimatedElement import ClientMapAnimatedElement
+
+class ClientInteractiveMapAnimatedElement(ClientMapAnimatedElement):
+	pass
+

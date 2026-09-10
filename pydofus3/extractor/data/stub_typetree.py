@@ -237,7 +237,7 @@ class StubTypeTree:
         self.stubs = {}
         self.import_ = set()
         files, base_folder = self.get_files(input_data)
-        self.monoscript_env = UnityPy.load(str(next(base_folder.glob('*monoscripts*'), None)))
+        self.monoscript_env = UnityPy.load(*[str(i) for i in base_folder.glob('*monoscripts*')])
         game_content = self.game_content_dir
         if str(game_content) not in str(base_folder):
             game_content = game_content.parent  # aa
