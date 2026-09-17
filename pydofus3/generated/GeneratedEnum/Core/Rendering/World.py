@@ -1,6 +1,16 @@
 from enum import IntEnum
 
 class FloorElement:
+	class ul(IntEnum):
+		dfux = 0
+		dfuy = 1
+		dfuz = 2
+		dfva = 3
+		dfvb = 4
+		dfvc = 5
+		dfvd = 6
+		dfve = 7
+
 	class um(IntEnum):
 		dfvf = 0
 		dfvg = 1

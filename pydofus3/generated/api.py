@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydofus3.generated.datacenter import Datacenter
-from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Card, Challenge, Characteristic, Collection, Communication, Constant, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Lobby, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Raid, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
+from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Anomaly, Appearance, Arena, Bonus, Breach, Breed, Calendar, Card, Challenge, Characteristic, Collection, Communication, Constant, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Lobby, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Raid, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
 
 data = Datacenter()
 app = FastAPI()
@@ -60,6 +60,9 @@ async def AlterationCategoryData() -> list[Alterations.AlterationCategoryData]:
 @app.get("/AlterationData", tags=["Alterations"])
 async def AlterationData() -> list[Alterations.AlterationData]:
     return data.AlterationData
+@app.get("/AnomalyData", tags=["Anomaly"])
+async def AnomalyData() -> list[Anomaly.AnomalyData]:
+    return data.AnomalyData
 @app.get("/AppearanceData", tags=["Appearance"])
 async def AppearanceData() -> list[Appearance.AppearanceData]:
     return data.AppearanceData
@@ -174,6 +177,9 @@ async def ConstantData() -> list[Constant.ConstantData]:
 @app.get("/DocumentData", tags=["Document"])
 async def DocumentData() -> list[Document.DocumentData]:
     return data.DocumentData
+@app.get("/DocumentTypeData", tags=["Document"])
+async def DocumentTypeData() -> list[Document.DocumentTypeData]:
+    return data.DocumentTypeData
 @app.get("/ActionFilterData", tags=["Effect"])
 async def ActionFilterData() -> list[Effect.ActionFilterData]:
     return data.ActionFilterData
@@ -264,6 +270,9 @@ async def HavenbagThemeData() -> list[House.HavenbagThemeData]:
 @app.get("/HouseData", tags=["House"])
 async def HouseData() -> list[House.HouseData]:
     return data.HouseData
+@app.get("/InfiniteDreamDropPoolData", tags=["InfiniteDreams"])
+async def InfiniteDreamDropPoolData() -> list[InfiniteDreams.InfiniteDreamDropPoolData]:
+    return data.InfiniteDreamDropPoolData
 @app.get("/InfiniteDreamIntensityData", tags=["InfiniteDreams"])
 async def InfiniteDreamIntensityData() -> list[InfiniteDreams.InfiniteDreamIntensityData]:
     return data.InfiniteDreamIntensityData

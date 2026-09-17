@@ -55,8 +55,9 @@ class SocialMembersSortEnum(IntEnum):
 	SortByBreed = 5
 	SortBySuccess = 6
 	SortByGuildatons = 7
-	SortByKohRole = 8
-	SortByNuggets = 9
+	SortByNote = 8
+	SortByKohRole = 9
+	SortByNuggets = 10
 
 class SocialRecruitmentUI:
 	class TagType(IntEnum):

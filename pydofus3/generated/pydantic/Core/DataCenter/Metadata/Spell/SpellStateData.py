@@ -1,3 +1,4 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellStateEffectsData import SpellStateEffectsData
 from pydofus3.not_generated.base import D2oData
 from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
@@ -7,6 +8,7 @@ class SpellStateData(D2oData):
 
 	id: int
 	nameId: i18n
+	descriptionId: int
 	preventsSpellCast: bool
 	preventsFight: bool
 	isSilent: bool
@@ -16,7 +18,7 @@ class SpellStateData(D2oData):
 	invulnerable: bool
 	cantSwitchPosition: bool
 	incurable: bool
-	effectsIds: list[int]
+	effects: list[SpellStateEffectsData]
 	icon: str
 	iconVisibilityMask: int
 	invulnerableMelee: bool
@@ -25,4 +27,5 @@ class SpellStateData(D2oData):
 	cantBeTackled: bool
 	displayTurnRemaining: bool
 	isMainState: bool
+	spellLevelId: int
 

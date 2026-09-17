@@ -42,4 +42,5 @@ class MonsterData(D2oData):
 	characRatios: list[WrappedList[float_nan]]
 	isBounty: bool
 	souls: list[MonsterSoulData]
+	achievements: list[int]
 

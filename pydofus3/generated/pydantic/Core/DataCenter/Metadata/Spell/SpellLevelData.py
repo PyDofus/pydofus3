@@ -26,6 +26,7 @@ class SpellLevelData(D2oData):
 	globalCooldown: int
 	minPlayerLevel: int
 	statesCriterion: str
+	ignorePrisonGlyph: bool
 	effects: list[EffectInstanceDice]
 	criticalEffect: list[EffectInstanceDice]
 	previewZones: list[PreviewSpellZoneDescr]

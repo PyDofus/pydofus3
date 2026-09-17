@@ -1,10 +1,5 @@
 from enum import IntEnum
 
-class BuffsFightUI:
-	class BuffUiEnumTabs(IntEnum):
-		Spells = 0
-		Summary = 1
-
 class FightResultResumeTab:
 	class SectionEnum(IntEnum):
 		Winner = 0

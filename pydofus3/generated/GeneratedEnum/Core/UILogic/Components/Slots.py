@@ -81,21 +81,12 @@ class Tile:
 		icon = 2
 		none = 3
 
-	class TileGhost(IntEnum):
-		ghostTrue = 0
-		ghostFalse = 1
-		none = 2
-
-	class TileSelected(IntEnum):
-		selectedTrue = 0
-		none = 1
-
 	class TileAcquired(IntEnum):
 		acquiredTrue = 0
 		acquiredModerate = 1
 		acquiredFalse = 2
-		partial = 3
-		hidden = 4
+		acquiredPartial = 3
+		acquiredHidden = 4
 		none = 5
 
 	class TileRarity(IntEnum):

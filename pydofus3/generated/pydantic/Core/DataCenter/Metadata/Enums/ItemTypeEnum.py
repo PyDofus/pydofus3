@@ -52,6 +52,7 @@ class ItemTypeEnum(OpenAPIIntEnum):
 	MuldoCertificate = 196
 	Receipt = 197
 	CosmeticCostume = 199
+	Invisible = 203
 	MountPotion = 206
 	FlyhornCertificate = 207
 	PetFood = 209
@@ -99,4 +100,6 @@ class ItemTypeEnum(OpenAPIIntEnum):
 	DragoTurkey = 331
 	Muldo = 332
 	FlyHorn = 333
+	SmithmagicSliver = 335
+	SmithmagicGem = 336
 

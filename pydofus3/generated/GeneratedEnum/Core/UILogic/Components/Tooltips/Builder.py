@@ -10,6 +10,7 @@ class DisplayOptions(IntFlag):
 	VitalValues = 16
 	States = 32
 	VitalPercent = 64
+	Erosion = 128
 	All = 4294967295
 
 class TextTooltipBuilder:

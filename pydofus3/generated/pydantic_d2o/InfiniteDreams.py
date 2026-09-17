@@ -1,6 +1,7 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamDropPoolData import InfiniteDreamDropPoolData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamIntensityData import InfiniteDreamIntensityData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamRewardActionData import InfiniteDreamRewardActionData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamRewardData import InfiniteDreamRewardData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.InfiniteDreams.InfiniteDreamTrialData import InfiniteDreamTrialData
 
-__all__ =["InfiniteDreamIntensityData", "InfiniteDreamRewardActionData", "InfiniteDreamRewardData", "InfiniteDreamTrialData"]
+__all__ =["InfiniteDreamDropPoolData", "InfiniteDreamIntensityData", "InfiniteDreamRewardActionData", "InfiniteDreamRewardData", "InfiniteDreamTrialData"]

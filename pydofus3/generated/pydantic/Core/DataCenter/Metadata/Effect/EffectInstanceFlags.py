@@ -8,4 +8,6 @@ class EffectInstanceFlags(FlagBaseModel):
 	VisibleOnTerrain : Annotated[bool,8]
 	ForClientOnly : Annotated[bool,16]
 	Trigger : Annotated[bool,32]
+	GroundMarkVisible : Annotated[bool,64]
+	GroundMarkVisibleOnlyAlly : Annotated[bool,128]
 

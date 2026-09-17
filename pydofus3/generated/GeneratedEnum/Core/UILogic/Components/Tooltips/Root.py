@@ -64,4 +64,7 @@ class TooltipType(IntEnum):
 	HyperlinkedText = 74
 	Dungeon = 75
 	LobbyApplicants = 76
+	MultilineText = 77
+	FightMark = 78
+	SpellState = 79
 

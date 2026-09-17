@@ -51,11 +51,6 @@ class CartDetailRequestOneOf:
 		CartDetailUpdateDofusCharacterPioneerServerRequest = 8
 		CartDetailRestoreDofusCharacterRequest = 9
 
-class CartEstimatedTotalOneOf:
-	class DiscriminatorEnum(IntEnum):
-		NonVirtualCartEstimatedTotal = 1
-		VirtualCartEstimatedTotal = 2
-
 class CartPaymentModeOneOf:
 	class DiscriminatorEnum(IntEnum):
 		CartVirtualPaymentMode = 1
@@ -76,17 +71,27 @@ class ChosenReferenceContextOneOf:
 	class DiscriminatorEnum(IntEnum):
 		GameActionReferenceContext = 1
 
+class CodeOneOf:
+	class DiscriminatorEnum(IntEnum):
+		PromotionCode = 1
+		CreatorCode = 2
+		InvalidCode = 3
+
 class Device(IntEnum):
 	DESKTOP = 1
 	TABLET = 2
 	MOBILE = 3
+
+class EstimatedTotalOneOf:
+	class DiscriminatorEnum(IntEnum):
+		NonVirtualEstimatedTotal = 1
+		VirtualEstimatedTotal = 2
 
 class Language(IntEnum):
 	En = 1
 	Es = 2
 	Fr = 3
 	Pt = 4
-	De = 5
 
 class MediaOneOf:
 	class DiscriminatorEnum(IntEnum):
@@ -205,11 +210,6 @@ class PromoteTargetOneOf:
 		CATEGORY = 1
 		ARTICLE = 2
 
-class PromotionCodeOneOf:
-	class DiscriminatorEnum(IntEnum):
-		ValidPromotionCode = 1
-		InvalidValidPromotionCode = 2
-
 class PromotionDiscountOneOf:
 	class DiscriminatorEnum(IntEnum):
 		PromotionDiscountOfferedArticles = 1
@@ -243,12 +243,19 @@ class ShopKey(IntEnum):
 	WAVENMOBILE = 6
 	ZAAP = 7
 	ZAAPMOBILE = 8
+	KROSMAGAINGAME = 9
+	KROSMAGAMOBILE = 10
+	TACTILEWARS2MOBILE = 11
 
 class SortOneOf:
 	class DiscriminatorEnum(IntEnum):
 		RelevanceSort = 1
 		NonVirtualPriceSort = 2
 		VirtualPriceSort = 3
+
+class StockStatus(IntEnum):
+	INSTOCK = 1
+	OUTOFSTOCK = 2
 
 class VirtualPaymentModeId(IntEnum):
 	GO = 1

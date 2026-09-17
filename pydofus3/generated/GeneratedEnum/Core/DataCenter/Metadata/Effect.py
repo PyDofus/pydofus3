@@ -255,9 +255,13 @@ class ActionId(IntEnum):
 	FightAddTrapCastingSpell = 400
 	FightAddGlyphCastingSpell = 401
 	FightAddGlyphCastingSpellEndturn = 402
+	FightAddAuraOnTarget = 403
+	FightDisableAura = 404
 	FightKillAndSummon = 405
 	CharacterDispellSpell = 406
 	CharacterLifePointsWinNoBoost = 407
+	FightActivateAura = 408
+	FightRemoveAura = 409
 	CharacterBoostApAttack = 410
 	CharacterDeboostApAttack = 411
 	CharacterBoostMpAttack = 412
@@ -280,6 +284,9 @@ class ActionId(IntEnum):
 	CharacterDeboostAirDamages = 429
 	CharacterBoostNeutralDamages = 430
 	CharacterDeboostNeutralDamages = 431
+	FightIncreaseAuraSize = 432
+	FightDecreaseAuraSize = 433
+	FightModifyAuraArea = 434
 	CharacterActionPointsStealNoEvade = 440
 	CharacterMovementPointsStealNoEvade = 441
 	ExchangeCraftOpen = 502
@@ -321,7 +328,7 @@ class ActionId(IntEnum):
 	ResetStats = 625
 	CharacterResetCharacs = 626
 	CharacterSummonMonsterGroupSetMap = 627
-	CharacterSummonMonsterGroupDynamic = 628
+	CharacterSummonMonsterDynamic = 628
 	CharacterLearnSpell = 629
 	CharacterSendInformationText = 630
 	UnusedAction631 = 631
@@ -663,6 +670,8 @@ class ActionId(IntEnum):
 	CharacterBoostDeboostActionPointsSteal = 1441
 	CharacterBoostDeboostMovementPointsStealNoEvade = 1442
 	CharacterBoostDeboostMovementPointsSteal = 1443
+	EquipedWeaponChangeEffect = 1700
+	RemoveEquipedWeaponChangeEffect = 1701
 	EnableControlEntityByFightOwner = 2010
 	DisableControlEntityByFightOwner = 2011
 	TargetExecuteSpellOnSourceGlobalLimitation = 2017
@@ -893,6 +902,7 @@ class ActionId(IntEnum):
 	CasterIncreaseScore = 3105
 	CasterDecreaseScore = 3106
 	ChangeEntityTeam = 3107
+	ItemResetWeaponEffects = 3185
 	BoostWeaponRangeMax = 3281
 	BoostWeaponRangeable = 3282
 	BoostWeaponApCost = 3285
@@ -917,7 +927,7 @@ class ActionId(IntEnum):
 	ExecuteSpellScriptUsageOnTarget = 3793
 	CharacterAddColorSlot = 3794
 	CharacterAddAppearanceSlot = 3795
-	CharacterUnlockAppearance = 3796
+	CharacterUnlockFace = 3796
 	CharacterBoostMonsterDrop = 3797
 	CharacterBoostArenaToken = 3798
 	PlayAnimationOnPlayer = 3799
@@ -975,6 +985,7 @@ class ActionId(IntEnum):
 	AddStagingGroup = 4006
 	FightRemovePortalsOnCell = 4007
 	FightAddEnitityDamageScore = 4008
+	CharacterReplaceSpellsWithThoseOfAMonster = 4009
 	OpenDreamFountain = 4010
 	DreamFightWin = 4011
 	DreamFightLose = 4012
@@ -1002,9 +1013,24 @@ class ActionId(IntEnum):
 	CharacterDeboostAllDamageMultiplierPercent = 4042
 	CharacterSetRaidHealth = 4050
 	CharacterSumRaidHealth = 4051
+	CharacterResetSpellCooldown = 4052
+	RaidObject = 4053
+	ItemTeleportGuildHall = 4054
+	StopDrop = 4055
+	OpenPaddock = 4056
 	CharacterSummonMonsterGroup = 4057
 	CharacterSoulMonster = 4058
-	EffectRoleplayScenarioValue = 4063
+	CasterAdditionalTurn = 4059
+	CharacterUnlockCorpse = 4060
+	CharacterUnlockIdle = 4061
+	ConsumeRpScenarioObject = 4062
+	RolePlayScenarioValue = 4063
+	TpEntityOutFromGlyphPrison = 4068
+	EffectRideBreedGenderChoice = 4069
+	CharacterAddCounter = 4070
+	CharacterIncreaseCounter = 4071
+	CharacterDecreaseCounter = 4072
+	CharacterResetCounter = 4073
 
 class EffectInstanceData:
 	class UndefinedValues(IntEnum):
@@ -1018,4 +1044,6 @@ class EffectInstanceFlags(IntFlag):
 	VisibleOnTerrain = 8
 	ForClientOnly = 16
 	Trigger = 32
+	GroundMarkVisible = 64
+	GroundMarkVisibleOnlyAlly = 128
 

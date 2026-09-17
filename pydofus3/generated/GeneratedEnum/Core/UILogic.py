@@ -47,4 +47,6 @@ class CursorType(IntEnum):
 	One = 268435456
 	Two = 536870912
 	Three = 1073741824
+	Diving = 2147483648
+	Magnifier = 4294967296
 

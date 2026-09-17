@@ -1,5 +1,11 @@
 from enum import IntEnum
 
+class RetrieveConfirmationPopup:
+	class SortType(IntEnum):
+		None_ = 0
+		Name = 1
+		Quantity = 2
+
 class WebGiftMysteryBoxUi:
 	class MysteryBoxRarityEnum(IntEnum):
 		Common = 0

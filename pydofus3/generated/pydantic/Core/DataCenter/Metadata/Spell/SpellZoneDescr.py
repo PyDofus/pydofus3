@@ -21,7 +21,7 @@ class SpellZoneDescr(MyBaseModel):
 	damageDecreaseStepPercent: int
 	maxDamageDecreaseApplyCount: int
 	isStopAtTarget: bool
-	forcedDirection: bool
+	forcedDirection: int
 	includeCarried: bool
 	onlyAffectIfInSightLine: bool
 

@@ -16,4 +16,7 @@ class DocumentData(D2oData):
 	contentId: i18n
 	contentCSS: str
 	clientProperties: str
+	customBgCriterion: str
+	customBgTint: str
+	customBgIcon: str
 

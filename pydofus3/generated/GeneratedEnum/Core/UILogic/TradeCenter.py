@@ -19,6 +19,7 @@ class FilterCategoryType(IntEnum):
 	Set = 10
 	Colorable = 11
 	Possession = 12
+	Generation = 13
 
 class FilterComponentType(IntEnum):
 	None_ = -1

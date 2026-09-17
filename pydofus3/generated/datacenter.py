@@ -3,13 +3,13 @@ from tqdm import tqdm
 
 from pydofus3.tools import SingletonMeta
 from pydofus3.extractor.data.loader import load_d2o
-from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Appearance, Arena, Bonus, Breach, Breed, Calendar, Card, Challenge, Characteristic, Collection, Communication, Constant, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Lobby, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Raid, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
+from pydofus3.generated.pydantic_d2o import Alignment, Alliance, Almanax, Alterations, Anomaly, Appearance, Arena, Bonus, Breach, Breed, Calendar, Card, Challenge, Characteristic, Collection, Communication, Constant, Document, Effect, ExternalNotification, Feature, Guild, GuildMission, House, InfiniteDreams, Interactive, Item, Job, LivingObjects, Lobby, Misc, Monster, Mount, Notification, Npc, OptionalFeatures, Popup, Progression, Quest, Raid, Ride, Scenarios, Seasons, Server, Social, Sound, Spell, TradeCenter, TreasureHunt, World
 
 class Datacenter(metaclass=SingletonMeta):
     def __init__(self, empty: bool = False):
         self.empty = empty
         if not empty:
-            self.progress = tqdm(total=208)
+            self.progress = tqdm(total=211)
         
         self.AlignmentGiftData = self.load_d2o(Alignment.AlignmentGiftData)
         self.AlignmentOrderData = self.load_d2o(Alignment.AlignmentOrderData)
@@ -32,6 +32,8 @@ class Datacenter(metaclass=SingletonMeta):
         
         self.AlterationCategoryData = self.load_d2o(Alterations.AlterationCategoryData)
         self.AlterationData = self.load_d2o(Alterations.AlterationData)
+        
+        self.AnomalyData = self.load_d2o(Anomaly.AnomalyData)
         
         self.AppearanceData = self.load_d2o(Appearance.AppearanceData)
         self.CreatureBoneOverrideData = self.load_d2o(Appearance.CreatureBoneOverrideData)
@@ -83,6 +85,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.ConstantData = self.load_d2o(Constant.ConstantData)
         
         self.DocumentData = self.load_d2o(Document.DocumentData)
+        self.DocumentTypeData = self.load_d2o(Document.DocumentTypeData)
         
         self.ActionFilterData = self.load_d2o(Effect.ActionFilterData)
         self.EffectData = self.load_d2o(Effect.EffectData)
@@ -120,6 +123,7 @@ class Datacenter(metaclass=SingletonMeta):
         self.HavenbagThemeData = self.load_d2o(House.HavenbagThemeData)
         self.HouseData = self.load_d2o(House.HouseData)
         
+        self.InfiniteDreamDropPoolData = self.load_d2o(InfiniteDreams.InfiniteDreamDropPoolData)
         self.InfiniteDreamIntensityData = self.load_d2o(InfiniteDreams.InfiniteDreamIntensityData)
         self.InfiniteDreamRewardActionData = self.load_d2o(InfiniteDreams.InfiniteDreamRewardActionData)
         self.InfiniteDreamRewardData = self.load_d2o(InfiniteDreams.InfiniteDreamRewardData)

@@ -46,6 +46,7 @@ class SpellScriptGfxUsageParams(MyBaseModel):
 	isCurveFollowed: bool
 	isEntireSpellZone: bool
 	isContainedInSpellZone: bool
+	isAppearanceSimultaneous: bool
 	minScale: int
 	maxScale: int
 	isFromCaster: bool

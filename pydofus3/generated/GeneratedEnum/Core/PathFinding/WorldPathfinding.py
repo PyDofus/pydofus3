@@ -1,13 +1,13 @@
 from enum import IntEnum
 
 class Transition:
-	class fzc(IntEnum):
-		dwnf = 0
-		dwng = 1
-		dwnh = 2
-		dwni = 4
-		dwnj = 8
-		dwnk = 16
-		dwnl = 32
-		dwnm = 64
+	class enw(IntEnum):
+		dnkm = 0
+		dnkn = 1
+		dnko = 2
+		dnkp = 4
+		dnkq = 8
+		dnkr = 16
+		dnks = 32
+		dnkt = 64
 

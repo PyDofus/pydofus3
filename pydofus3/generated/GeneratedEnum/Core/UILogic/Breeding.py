@@ -21,9 +21,11 @@ class BreedingUi:
 		MountFullLove = 8
 		MountFertile = 9
 		MountFeconde = 10
-		MountSterile = 11
-		MountSenile = 12
-		MountNameless = 13
+		MountNonFeconde = 11
+		MountSterile = 12
+		MountSenile = 13
+		MountNonSenile = 14
+		MountNameless = 15
 
 class CloningUi:
 	class CloningDragAndDropErrorFlags(IntFlag):

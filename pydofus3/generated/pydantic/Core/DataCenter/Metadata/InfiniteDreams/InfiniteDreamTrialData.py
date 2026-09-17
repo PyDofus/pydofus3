@@ -12,4 +12,5 @@ class InfiniteDreamTrialData(D2oData):
 	achievementId: int
 	achievementIntensity: int
 	picture: str
+	dropPoolId: int
 

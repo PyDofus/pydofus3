@@ -21,6 +21,7 @@ class GuildRaidData(D2oData):
 	price: int
 	canFinish: bool
 	canRestart: bool
+	level: int
 	type: int
 
 	class GoalType(OpenAPIIntEnum):

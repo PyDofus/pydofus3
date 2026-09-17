@@ -1,6 +1,6 @@
 from pydofus3.not_generated.base import MyBaseModel
 
 class OutlinePrepass(MyBaseModel):
-	class hcs(MyBaseModel):
+	class hcg(MyBaseModel):
 		pass
 

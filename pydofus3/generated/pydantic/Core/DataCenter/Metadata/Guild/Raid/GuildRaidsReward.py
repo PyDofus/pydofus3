@@ -1,5 +1,6 @@
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Guild.Raid.GuildRaidsRewardsItemData import GuildRaidsRewardsItemData
 from pydofus3.not_generated.base import D2oData
+from pydofus3.not_generated.base import float_nan
 from pydofus3.not_generated.i18n import i18n
 from typing import ClassVar
 
@@ -9,8 +10,8 @@ class GuildRaidsReward(D2oData):
 	id: int
 	raidId: int
 	descriptionId: i18n
-	kamas: int
-	experience: int
+	kamasRatio: float_nan
+	experienceRatio: float_nan
 	score: int
 	order: int
 	rewards: list[GuildRaidsRewardsItemData]

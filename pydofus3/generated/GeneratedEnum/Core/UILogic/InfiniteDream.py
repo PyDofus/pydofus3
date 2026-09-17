@@ -1,6 +1,11 @@
 from enum import IntEnum
 from enum import IntFlag
 
+class DropListUi:
+	class SortType(IntEnum):
+		None_ = 0
+		Name = 1
+
 class InfiniteDreamBestiary:
 	class SortType(IntEnum):
 		none = 0

@@ -10,11 +10,11 @@ class DofusOptionsContainer:
 		Right = 1
 
 class RoleplayOptionsContainer:
-	class gcv(IntEnum):
-		dxfe = 0
-		dxff = 1
+	class gqz(IntEnum):
+		dztj = 0
+		dztk = 1
 
-	class gcw(IntEnum):
-		dxfg = 0
-		dxfh = 1
+	class gra(IntEnum):
+		dztl = 0
+		dztm = 1
 

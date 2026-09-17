@@ -1,5 +1,14 @@
 from enum import IntEnum
 
+class AuctionHouseEffectFilter:
+	class RideFertility(IntEnum):
+		Fertile = 0
+		Feconde = 1
+		NonFeconde = 2
+		Sterile = 3
+		NonSenile = 4
+		Senile = 5
+
 class AuctionHouseItemsList:
 	class ItemsSortingType(IntEnum):
 		Quantity = 0

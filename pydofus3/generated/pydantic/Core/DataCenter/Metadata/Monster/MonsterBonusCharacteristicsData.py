@@ -2,21 +2,49 @@ from pydofus3.not_generated.base import MyBaseModel
 
 class MonsterBonusCharacteristicsData(MyBaseModel):
 	lifePoints: int
+	actionPoints: int
+	movementPoints: int
+	rangeBonus: int
+	vitality: int
 	strength: int
-	wisdom: int
+	intelligence: int
 	chance: int
 	agility: int
-	intelligence: int
-	earthResistance: int
-	fireResistance: int
-	waterResistance: int
-	airResistance: int
-	neutralResistance: int
+	wisdom: int
+	damageBonus: int
+	percentDamageBonus: int
+	healBonus: int
+	trapDamageBonus: int
+	trapDamageBonusPercent: int
+	criticalDamageBonus: int
+	pushDamageBonus: int
+	earthDamageBonus: int
+	fireDamageBonus: int
+	waterDamageBonus: int
+	airDamageBonus: int
+	neutralDamageBonus: int
+	criticalHitBonus: int
+	apAttack: int
+	mpAttack: int
+	paLostDodge: int
+	mpLostDodge: int
+	reductionEarth: int
+	reductionWater: int
+	reductionFire: int
+	reductionAir: int
+	reductionNeutral: int
+	reductionEarthFlat: int
+	reductionAirFlat: int
+	reductionFireFlat: int
+	reductionWaterFlat: int
+	reductionNeutralFlat: int
+	criticalDamageReduction: int
+	pushDamageReduction: int
+	damageReflect: int
+	maxSummon: int
+	honoursPoints: int
+	initiativeBonus: int
+	tackleBonus: int
 	tackleEvade: int
-	tackleBlock: int
-	bonusEarthDamage: int
-	bonusFireDamage: int
-	bonusWaterDamage: int
-	bonusAirDamage: int
 	aPRemoval: int
 

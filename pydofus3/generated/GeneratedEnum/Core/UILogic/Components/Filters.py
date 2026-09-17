@@ -48,4 +48,5 @@ class SubFilterCategory(IntEnum):
 	Set = 9
 	Colorable = 10
 	Possession = 11
+	Generation = 12
 

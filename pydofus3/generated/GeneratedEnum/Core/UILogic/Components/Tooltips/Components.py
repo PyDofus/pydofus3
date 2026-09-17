@@ -12,11 +12,3 @@ class EffectAndDamageTooltipBlock:
 		Damages = 1
 		Status = 2
 
-	class EffectStyle(IntEnum):
-		BonusEffect = 0
-		MalusEffect = 1
-		NeutralEffect = 2
-		OverEffect = 3
-		ExoticEffect = 4
-		TheoreticalEffect = 5
-

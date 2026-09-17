@@ -48,6 +48,11 @@ class Characteristics(IntEnum):
 	VitalityID = 11
 	RangeID = 19
 	MovementPointID = 23
+	EarthID = 88
+	FireID = 89
+	WaterID = 90
+	AirID = 91
+	NeutralID = 92
 
 class ChatChannel(IntEnum):
 	General = 0
@@ -65,6 +70,15 @@ class ChatChannel(IntEnum):
 	Promotional = 12
 	Arena = 13
 	Community = 14
+
+class ElementId(IntEnum):
+	Undefined = -1
+	Neutral = 0
+	Earth = 1
+	Fire = 2
+	Water = 3
+	Air = 4
+	None_ = 5
 
 class EntityType(IntEnum):
 	Breed = 1
@@ -184,6 +198,7 @@ class ItemTypeEnum(IntEnum):
 	MuldoCertificate = 196
 	Receipt = 197
 	CosmeticCostume = 199
+	Invisible = 203
 	MountPotion = 206
 	FlyhornCertificate = 207
 	PetFood = 209
@@ -231,6 +246,8 @@ class ItemTypeEnum(IntEnum):
 	DragoTurkey = 331
 	Muldo = 332
 	FlyHorn = 333
+	SmithmagicSliver = 335
+	SmithmagicGem = 336
 
 class JobId(IntEnum):
 	Base = 1

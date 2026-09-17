@@ -123,4 +123,5 @@ class StatId(OpenAPIIntEnum):
 	DealtHealMultiplier = 143
 	AllDamageMultiplier = 150
 	PushDamagePercent = 158
+	StopDrop = 199
 

@@ -32,4 +32,5 @@ class EffectData(D2oData):
 	textIconReferenceId: int
 	effectTriggerDuration: int
 	actionFiltersId: list[int]
+	effectId: int
 

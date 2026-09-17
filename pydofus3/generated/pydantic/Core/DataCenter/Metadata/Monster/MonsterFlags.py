@@ -19,4 +19,6 @@ class MonsterFlags(FlagBaseModel):
 	UseRaceValues : Annotated[bool,16384]
 	SoulCaptureForbidden : Annotated[bool,32768]
 	HideInBestiary : Annotated[bool,65536]
+	CanMove : Annotated[bool,131072]
+	CanBeControlledByFightOwner : Annotated[bool,262144]
 

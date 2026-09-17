@@ -18,4 +18,6 @@ class MonsterFlags(IntFlag):
 	UseRaceValues = 16384
 	SoulCaptureForbidden = 32768
 	HideInBestiary = 65536
+	CanMove = 131072
+	CanBeControlledByFightOwner = 262144
 

@@ -185,6 +185,23 @@ class AnimatedElement(TypedDict):
 
 type AtlasDictionary = dict[int, AleRect]
 
+class ClientAnimatedElementTransform(TypedDict):
+    gfxId: int
+    cellId: int
+    playAnimation: int
+    playAnimStatic: int
+    playerGuildCustomisable: int
+    isStagingTarget: int
+    stagingId: str
+    minDelay: int
+    maxDelay: int
+    requiresServerUpdate: int
+    transform: Transform2D
+    type: int
+    color: AleColor
+    innerCellRenderOrder: int
+    displayBehaviour: int
+
 class ClientCellData(TypedDict):
     cellNumber: int
     speed: int
@@ -193,14 +210,23 @@ class ClientCellData(TypedDict):
     linkedZone: int
     mov: int
     los: int
+    nonWalkableDuringFight: int
+    nonWalkableDuringRP: int
     farmCell: int
     visible: int
     havenbagCell: int
     roleplayMonstersMovementBlocked: int
-    altitude: int
+    floor: int
     red: int
     blue: int
     arrow: int
+
+class ClientElementTransform(TypedDict):
+    gfxId: int
+    color: AleColor
+    transform: Transform2D
+    materialIndex: int
+    displayBehaviour: int
 
 class ClientInteractiveAnimatedElementTransform(TypedDict):
     gfxId: int
@@ -232,25 +258,6 @@ class ClientInteractiveElementTransform(TypedDict):
     m_interactionId: int
     shaderOutlineParameters: ShaderOutlineParameters
 
-class ClientInteractiveMapAnimatedElement(TypedDict):
-    position: AleVector2
-    rotation: float
-    scale: AleVector2
-    color: AleColor
-    gfxId: int
-    displayBehaviour: int
-    cellId: int
-    playAnimation: int
-    playAnimStatic: int
-    playerGuildCustomisable: int
-    requiresServerUpdate: int
-    minDelay: int
-    maxDelay: int
-    isStagingTarget: int
-    stagingId: str
-    background: int
-    displayOrder: int
-
 class ClientInteractiveMapElement(TypedDict):
     position: AleVector2
     rotation: float
@@ -258,20 +265,9 @@ class ClientInteractiveMapElement(TypedDict):
     color: AleColor
     gfxId: int
     displayBehaviour: int
+    <interactiveId>k__BackingField: int
+    <shaderOutlineParameters>k__BackingField: managedReference
     isBoundingBox: int
-
-class ClientIsometricMergedMapElements(TypedDict):
-    mapElements: list[ClientMapElement]
-    materialIndex: int
-    shaderVariantIndex: int
-    isStagingTarget: int
-    stagingId: str
-    uniqueMaterialInstance: int
-    displayOrder: int
-    hasWind: int
-    hasWave: int
-    hasAtlasVertex: int
-    cellId: int
 
 class ClientMapAnimatedElement(TypedDict):
     position: AleVector2
@@ -292,30 +288,33 @@ class ClientMapAnimatedElement(TypedDict):
     background: int
     displayOrder: int
 
-class ClientMapData(MonoBehaviour):
-    id: int
+class ClientMapData(TypedDict):
     topNeighbourId: int
     bottomNeighbourId: int
     leftNeighbourId: int
     rightNeighbourId: int
     backgroundColor: AleColor
     playlistSet: PlaylistSet
-    backgroundMapElements: list[ClientMergedMapElements]
-    middlegroundMapElements: list[ClientIsometricMergedMapElements]
-    foregroundMapElements: list[ClientMergedMapElements]
-    mapAnimatedElements: list[managedRefArrayItem]
-    backgroundMaterialData: MaterialData
-    middlegroundMaterialData: MaterialData
-    foregroundMaterialData: MaterialData
-    particlesShaderData: list[ShaderData]
-    shaderVariants: list[int]
+    backgroundElements: list[ClientElementTransform]
+    sortableElements: list[ClientSortableElementTransform]
+    foregroundElements: list[ClientElementTransform]
+    animatedElements: list[ClientAnimatedElementTransform]
+    refractionElements: list[ClientElementTransform]
+    interactiveElements: list[Union[ClientInteractiveAnimatedElementTransform| ClientInteractiveElementTransform]]
+    boundingBoxes: list[ClientInteractiveElementTransform]
     particlesParameters: list[ClientParticlesParameters]
+    foregroundMaterialData: MaterialData
+    backgroundMaterialData: MaterialData
+    sortableMaterialData: MaterialData
     cellsData: list[ClientCellData]
     topArrowCellList: list[int]
     leftArrowCellList: list[int]
     bottomArrowCellList: list[int]
     rightArrowCellList: list[int]
-    mapEffectsConfigurations: MapEffectsConfigurations
+    mapWindConfiguration: MapWindConfiguration
+    mapPostProcessConfiguration: MapPostProcessConfiguration
+    mapWaveConfiguration: MapWaveConfiguration
+    mapNoiseModifierConfiguration: MapNoiseModifierConfiguration
     stagingSequences: list[StagingSequence]
     localizedSounds: list[LocalizedSound]
 
@@ -327,34 +326,16 @@ class ClientMapElement(TypedDict):
     gfxId: int
     displayBehaviour: int
 
-class ClientMergedMapElements(TypedDict):
-    mapElements: list[ClientMapElement]
-    materialIndex: int
-    shaderVariantIndex: int
-    isStagingTarget: int
-    stagingId: str
-    uniqueMaterialInstance: int
-    displayOrder: int
-    hasWind: int
-    hasWave: int
-    hasAtlasVertex: int
-
 class ClientParticlesParameters(TypedDict):
     id: str
-    gfxId: int
     materialIndex: int
-    materialIsStagingTarget: int
-    materialStagingId: str
-    trailGfxId: int
     trailMaterialIndex: int
-    trailMaterialIsStagingTarget: int
-    trailMaterialStagingId: str
+    transform: TransformParameters
     layer: int
-    displayOrder: int
     cellId: int
+    renderOrder: int
     isStagingTarget: int
     stagingId: str
-    transform: TransformParameters
     particlesMainParameters: ParticlesMainParameters
     particlesModulesParameters: ParticlesModulesParameters
     particlesEmissionParameters: ParticlesEmissionParameters
@@ -369,6 +350,15 @@ class ClientParticlesParameters(TypedDict):
     particlesRendererParameters: ParticlesRendererParameters
     particlesSubEmittersParameters: ParticlesSubEmittersParameters
     soundParameters: ParticlesSoundParameters
+
+class ClientSortableElementTransform(TypedDict):
+    gfxId: int
+    color: AleColor
+    transform: Transform2D
+    materialIndex: int
+    displayBehaviour: int
+    cellId: int
+    innerCellRenderOrder: int
 
 class ColorAnimationStagingEffect(TypedDict):
     material: PPtr
@@ -428,12 +418,6 @@ class LocalizedSound(TypedDict):
 class ManagedReferencesRegistry(TypedDict):
     version: int
     RefIds: list[ReferencedObject]
-
-class MapEffectsConfigurations(TypedDict):
-    mapWindConfiguration: MapWindConfiguration
-    mapPostProcessConfiguration: MapPostProcessConfiguration
-    mapWaveConfiguration: MapWaveConfiguration
-    mapNoiseModifierConfiguration: MapNoiseModifierConfiguration
 
 type MapElementsDictionary = dict[int, managedRefArrayItem]
 
@@ -787,7 +771,10 @@ class ShaderCustomFramerateParameters(TypedDict):
 
 class ShaderData(TypedDict):
     shaderParameters: list[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]
-    shaderVariant: int
+    gfxId: int
+    unique: int
+    isStagingTarget: int
+    stagingId: str
 
 class ShaderDepthAlphaClipParameters(TypedDict):
     alphaClip: float

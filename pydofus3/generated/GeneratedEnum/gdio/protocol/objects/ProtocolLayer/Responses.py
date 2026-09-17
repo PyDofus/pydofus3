@@ -1,0 +1,8 @@
+from enum import IntEnum
+
+class HANDSHAKE_REASON_CODE(IntEnum):
+	OK = 0
+	ERROR = 1
+	VERSION_MISMATCH = 2
+	DUPLICATE_CLIENTUID = 3
+

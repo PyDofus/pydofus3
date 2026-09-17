@@ -173,6 +173,23 @@ class AtlasDictionary:
     m_keys: list[int]
     m_values: list[AleRect]
 
+class ClientAnimatedElementTransform:
+    gfxId: int
+    cellId: int
+    playAnimation: int
+    playAnimStatic: int
+    playerGuildCustomisable: int
+    isStagingTarget: int
+    stagingId: str
+    minDelay: int
+    maxDelay: int
+    requiresServerUpdate: int
+    transform: Transform2D
+    type: int
+    color: AleColor
+    innerCellRenderOrder: int
+    displayBehaviour: int
+
 class ClientCellData:
     cellNumber: int
     speed: int
@@ -181,14 +198,23 @@ class ClientCellData:
     linkedZone: int
     mov: int
     los: int
+    nonWalkableDuringFight: int
+    nonWalkableDuringRP: int
     farmCell: int
     visible: int
     havenbagCell: int
     roleplayMonstersMovementBlocked: int
-    altitude: int
+    floor: int
     red: int
     blue: int
     arrow: int
+
+class ClientElementTransform:
+    gfxId: int
+    color: AleColor
+    transform: Transform2D
+    materialIndex: int
+    displayBehaviour: int
 
 class ClientInteractiveAnimatedElementTransform:
     gfxId: int
@@ -220,27 +246,6 @@ class ClientInteractiveElementTransform:
     innerCellRenderOrder: int
     m_interactionId: int
     shaderOutlineParameters: managedReference[ShaderOutlineParameters]
-    references: ManagedReferencesRegistry
-
-class ClientInteractiveMapAnimatedElement:
-    position: AleVector2
-    rotation: float
-    scale: AleVector2
-    color: AleColor
-    gfxId: int
-    displayBehaviour: int
-    cellId: int
-    playAnimation: int
-    playAnimStatic: int
-    playerGuildCustomisable: int
-    requiresServerUpdate: int
-    minDelay: int
-    maxDelay: int
-    isStagingTarget: int
-    stagingId: str
-    background: int
-    displayOrder: int
-    references: ManagedReferencesRegistry
 
 class ClientInteractiveMapElement:
     position: AleVector2
@@ -249,21 +254,10 @@ class ClientInteractiveMapElement:
     color: AleColor
     gfxId: int
     displayBehaviour: int
+    <interactiveId>k__BackingField: int
+    <shaderOutlineParameters>k__BackingField: managedReference
     isBoundingBox: int
     references: ManagedReferencesRegistry
-
-class ClientIsometricMergedMapElements:
-    mapElements: list[managedRefArrayItem[ClientMapElement]]
-    materialIndex: int
-    shaderVariantIndex: int
-    isStagingTarget: int
-    stagingId: str
-    uniqueMaterialInstance: int
-    displayOrder: int
-    hasWind: int
-    hasWave: int
-    hasAtlasVertex: int
-    cellId: int
 
 class ClientMapAnimatedElement:
     position: AleVector2
@@ -284,33 +278,35 @@ class ClientMapAnimatedElement:
     background: int
     displayOrder: int
 
-class ClientMapData(MonoBehaviour):
-    id: int
+class ClientMapData:
     topNeighbourId: int
     bottomNeighbourId: int
     leftNeighbourId: int
     rightNeighbourId: int
     backgroundColor: AleColor
     playlistSet: PlaylistSet
-    backgroundMapElements: list[ClientMergedMapElements]
-    middlegroundMapElements: list[ClientIsometricMergedMapElements]
-    foregroundMapElements: list[ClientMergedMapElements]
-    mapAnimatedElements: list[managedRefArrayItem]
-    backgroundMaterialData: MaterialData
-    middlegroundMaterialData: MaterialData
-    foregroundMaterialData: MaterialData
-    particlesShaderData: list[managedRefArrayItem[ShaderData]]
-    shaderVariants: list[int]
+    backgroundElements: list[ClientElementTransform]
+    sortableElements: list[ClientSortableElementTransform]
+    foregroundElements: list[ClientElementTransform]
+    animatedElements: list[ClientAnimatedElementTransform]
+    refractionElements: list[ClientElementTransform]
+    interactiveElements: list[managedRefArrayItem[Union[ClientInteractiveAnimatedElementTransform| ClientInteractiveElementTransform]]]
+    boundingBoxes: list[ClientInteractiveElementTransform]
     particlesParameters: list[ClientParticlesParameters]
+    foregroundMaterialData: MaterialData
+    backgroundMaterialData: MaterialData
+    sortableMaterialData: MaterialData
     cellsData: list[ClientCellData]
     topArrowCellList: list[int]
     leftArrowCellList: list[int]
     bottomArrowCellList: list[int]
     rightArrowCellList: list[int]
-    mapEffectsConfigurations: MapEffectsConfigurations
+    mapWindConfiguration: managedReference[MapWindConfiguration]
+    mapPostProcessConfiguration: managedReference[MapPostProcessConfiguration]
+    mapWaveConfiguration: managedReference[MapWaveConfiguration]
+    mapNoiseModifierConfiguration: managedReference[MapNoiseModifierConfiguration]
     stagingSequences: list[managedRefArrayItem[StagingSequence]]
     localizedSounds: list[LocalizedSound]
-    references: ManagedReferencesRegistry
 
 class ClientMapElement:
     position: AleVector2
@@ -320,34 +316,16 @@ class ClientMapElement:
     gfxId: int
     displayBehaviour: int
 
-class ClientMergedMapElements:
-    mapElements: list[managedRefArrayItem[ClientMapElement]]
-    materialIndex: int
-    shaderVariantIndex: int
-    isStagingTarget: int
-    stagingId: str
-    uniqueMaterialInstance: int
-    displayOrder: int
-    hasWind: int
-    hasWave: int
-    hasAtlasVertex: int
-
 class ClientParticlesParameters:
     id: str
-    gfxId: int
     materialIndex: int
-    materialIsStagingTarget: int
-    materialStagingId: str
-    trailGfxId: int
     trailMaterialIndex: int
-    trailMaterialIsStagingTarget: int
-    trailMaterialStagingId: str
+    transform: TransformParameters
     layer: int
-    displayOrder: int
     cellId: int
+    renderOrder: int
     isStagingTarget: int
     stagingId: str
-    transform: TransformParameters
     particlesMainParameters: ParticlesMainParameters
     particlesModulesParameters: ParticlesModulesParameters
     particlesEmissionParameters: ParticlesEmissionParameters
@@ -362,6 +340,15 @@ class ClientParticlesParameters:
     particlesRendererParameters: ParticlesRendererParameters
     particlesSubEmittersParameters: ParticlesSubEmittersParameters
     soundParameters: ParticlesSoundParameters
+
+class ClientSortableElementTransform:
+    gfxId: int
+    color: AleColor
+    transform: Transform2D
+    materialIndex: int
+    displayBehaviour: int
+    cellId: int
+    innerCellRenderOrder: int
 
 class ColorAnimationStagingEffect:
     material: PPtr[Material]
@@ -421,12 +408,6 @@ class LocalizedSound:
 class ManagedReferencesRegistry:
     version: int
     RefIds: list[ReferencedObject]
-
-class MapEffectsConfigurations:
-    mapWindConfiguration: managedReference[MapWindConfiguration]
-    mapPostProcessConfiguration: managedReference[MapPostProcessConfiguration]
-    mapWaveConfiguration: managedReference[MapWaveConfiguration]
-    mapNoiseModifierConfiguration: managedReference[MapNoiseModifierConfiguration]
 
 class MapElementsDictionary:
     m_keys: list[int]
@@ -787,7 +768,10 @@ class ShaderCustomFramerateParameters:
 
 class ShaderData:
     shaderParameters: list[managedRefArrayItem[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]]
-    shaderVariant: int
+    gfxId: int
+    unique: int
+    isStagingTarget: int
+    stagingId: str
     references: ManagedReferencesRegistry
 
 class ShaderDepthAlphaClipParameters:

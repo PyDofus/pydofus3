@@ -1,10 +1,8 @@
-from pydofus3.generated.pydantic.Ankama.Animations.Sources.Rendering.CustomPasses.CustomRenderObjectsPassSettings import CustomRenderObjectsPassSettings
-from pydofus3.not_generated.base import MyBaseModel
-from pydofus3.not_generated.unity import Color
+from pydofus3.not_generated.base import OpenAPIIntEnum
 
-class hbo(MyBaseModel):
-	eahv: CustomRenderObjectsPassSettings
-
-	class hbn(MyBaseModel):
-		eahu: Color
+class hbo(OpenAPIIntEnum):
+	eapf = 0
+	eapg = 1
+	eaph = 2
+	eapi = 3
 

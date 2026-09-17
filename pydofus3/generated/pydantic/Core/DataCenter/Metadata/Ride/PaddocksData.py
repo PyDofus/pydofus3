@@ -7,4 +7,5 @@ class PaddocksData(D2oData):
 
 	id: int
 	nameId: i18n
+	skillId: int
 

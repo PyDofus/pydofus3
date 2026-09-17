@@ -7,4 +7,9 @@ class Characteristics(OpenAPIIntEnum):
 	VitalityID = 11
 	RangeID = 19
 	MovementPointID = 23
+	EarthID = 88
+	FireID = 89
+	WaterID = 90
+	AirID = 91
+	NeutralID = 92
 

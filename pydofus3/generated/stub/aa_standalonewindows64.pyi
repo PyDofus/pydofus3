@@ -45,36 +45,6 @@ class AnimTransform:
     tX: float
     tY: float
 
-class AnimatedDisplayerComponent_UxmlSerializedData:
-    uxmlAssetId: int
-    name: str
-    bindings: list[managedRefArrayItem]
-    tooltip: str
-    dataSourcePathString: str
-    dataSourceTypeString: str
-    dataSourceUnityObject: PPtr[Object]
-    viewDataKey: str
-    pickingMode: int
-    usageHints: int
-    languageDirection: int
-    tabIndex: int
-    focusable: int
-    enabledSelf: int
-    name_UxmlAttributeFlags: int
-    enabledSelf_UxmlAttributeFlags: int
-    viewDataKey_UxmlAttributeFlags: int
-    pickingMode_UxmlAttributeFlags: int
-    tooltip_UxmlAttributeFlags: int
-    usageHints_UxmlAttributeFlags: int
-    tabIndex_UxmlAttributeFlags: int
-    focusable_UxmlAttributeFlags: int
-    languageDirection_UxmlAttributeFlags: int
-    dataSourceUnityObject_UxmlAttributeFlags: int
-    dataSourcePathString_UxmlAttributeFlags: int
-    dataSourceTypeString_UxmlAttributeFlags: int
-    bindings_UxmlAttributeFlags: int
-    references: ManagedReferencesRegistry
-
 class AnimatedObjectDefinition(MonoBehaviour):
     defaultAnimationName: str
     defaultAnimationLoops: int
@@ -104,7 +74,6 @@ class Animator2D(MonoBehaviour):
     renderingMethod: int
     colorModifier: ColorRGBA
     sortingLayerIdInternal: int
-    sortingLayerNameInternal: str
     sortingOrderInternal: int
     overriddenFrameRate: int
     skin: PPtr[SkinAsset]
@@ -1690,7 +1659,10 @@ class DofusToggleButtonGroupCustom_UxmlSerializedData:
     references: ManagedReferencesRegistry
 
 class DofusTooltipsSettings(MonoBehaviour):
-    pass
+    m_defaultTooltipDuration: int
+    m_defaultCreateDelay: int
+    tooltipToUxmlMapping: EnumToUxmlDictionary
+    additionalTooltipToUxmlMapping: EnumToUxmlDictionary
 
 class DofusTweenerVisualElement_UxmlSerializedData:
     uxmlAssetId: int
@@ -2411,6 +2383,36 @@ class EncyclopediaFilterComponent_UxmlSerializedData:
     bindings_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
+class EntityDisplayer_UxmlSerializedData:
+    uxmlAssetId: int
+    name: str
+    bindings: list[managedRefArrayItem]
+    tooltip: str
+    dataSourcePathString: str
+    dataSourceTypeString: str
+    dataSourceUnityObject: PPtr[Object]
+    viewDataKey: str
+    pickingMode: int
+    usageHints: int
+    languageDirection: int
+    tabIndex: int
+    focusable: int
+    enabledSelf: int
+    name_UxmlAttributeFlags: int
+    enabledSelf_UxmlAttributeFlags: int
+    viewDataKey_UxmlAttributeFlags: int
+    pickingMode_UxmlAttributeFlags: int
+    tooltip_UxmlAttributeFlags: int
+    usageHints_UxmlAttributeFlags: int
+    tabIndex_UxmlAttributeFlags: int
+    focusable_UxmlAttributeFlags: int
+    languageDirection_UxmlAttributeFlags: int
+    dataSourceUnityObject_UxmlAttributeFlags: int
+    dataSourcePathString_UxmlAttributeFlags: int
+    dataSourceTypeString_UxmlAttributeFlags: int
+    bindings_UxmlAttributeFlags: int
+    references: ManagedReferencesRegistry
+
 class EntityMainStatItem_UxmlSerializedData:
     uxmlAssetId: int
     name: str
@@ -2507,6 +2509,9 @@ class EntityPortrait_UxmlSerializedData:
     hasBackground_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
+class EntitySprite(MonoBehaviour):
+    pass
+
 class EntityStatsGraph_UxmlSerializedData:
     uxmlAssetId: int
     name: str
@@ -2550,6 +2555,9 @@ class EntityStatsGraph_UxmlSerializedData:
     iconSize_UxmlAttributeFlags: int
     iconOffset_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
+
+class EnumToUxmlDictionary:
+    mapping: list[MappingEntry]
 
 class EquipmentComponentCharacter_UxmlSerializedData:
     uxmlAssetId: int
@@ -2991,7 +2999,7 @@ class FloorElement(MonoBehaviour):
     m_trapTwoOppositePoints: PPtr[Texture]
     m_trapTwoPoints: PPtr[Texture]
     m_trapU: PPtr[Texture]
-    meshRenderer: PPtr[MeshRenderer]
+    m_meshRenderer: PPtr[MeshRenderer]
     isMark: int
     m_text: PPtr
 
@@ -3666,6 +3674,7 @@ class InteractiveCellManager(MonoBehaviour):
     m_colorForDetailsCell: ColorRGBA
     m_cellDetailsText: PPtr[TextMeshPro]
     m_cellDetailsBlock: PPtr[Transform]
+    m_graphicCellsParent: PPtr[Transform]
 
 class KerningPair:
     m_FirstGlyph: int
@@ -3920,7 +3929,12 @@ class ManagedReferencesRegistry:
 
 class MapTransition(MonoBehaviour):
     m_transitionSpriteR: PPtr[SpriteRenderer]
-    transitionPrefs: PPtr[TransitionPrefScriptableObject]
+    m_currentEffect: int
+    transitionPrefs: list[PPtr[TransitionPrefScriptableObject]]
+
+class MappingEntry:
+    tooltipType: int
+    assetRef: AssetReferenceVisualTreeAsset
 
 class MarkPositionAdjustment:
     m_XPositionAdjustment: float
