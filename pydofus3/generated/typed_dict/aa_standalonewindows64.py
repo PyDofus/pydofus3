@@ -87,6 +87,35 @@ class AnimTransform(TypedDict):
     tX: float
     tY: float
 
+class AnimatedDisplayerComponent_UxmlSerializedData(TypedDict):
+    uxmlAssetId: int
+    name: str
+    bindings: list[managedRefArrayItem]
+    tooltip: str
+    dataSourcePathString: str
+    dataSourceTypeString: str
+    dataSourceUnityObject: PPtr
+    viewDataKey: str
+    pickingMode: int
+    usageHints: int
+    languageDirection: int
+    tabIndex: int
+    focusable: int
+    enabledSelf: int
+    name_UxmlAttributeFlags: int
+    enabledSelf_UxmlAttributeFlags: int
+    viewDataKey_UxmlAttributeFlags: int
+    pickingMode_UxmlAttributeFlags: int
+    tooltip_UxmlAttributeFlags: int
+    usageHints_UxmlAttributeFlags: int
+    tabIndex_UxmlAttributeFlags: int
+    focusable_UxmlAttributeFlags: int
+    languageDirection_UxmlAttributeFlags: int
+    dataSourceUnityObject_UxmlAttributeFlags: int
+    dataSourcePathString_UxmlAttributeFlags: int
+    dataSourceTypeString_UxmlAttributeFlags: int
+    bindings_UxmlAttributeFlags: int
+
 class AnimatedObjectDefinition(MonoBehaviour):
     defaultAnimationName: str
     defaultAnimationLoops: int
@@ -105,6 +134,12 @@ class Animation(TypedDict):
     dataBytes: list[int]
     bounds: Rectf
 
+class AnimationCurve(TypedDict):
+    m_Curve: list[Keyframe]
+    m_PreInfinity: int
+    m_PostInfinity: int
+    m_RotationOrder: int
+
 class AnimationGeometryVertex(TypedDict):
     pos: Vector3f
     uv: Vector2f
@@ -116,6 +151,7 @@ class Animator2D(MonoBehaviour):
     renderingMethod: int
     colorModifier: ColorRGBA
     sortingLayerIdInternal: int
+    sortingLayerNameInternal: str
     sortingOrderInternal: int
     overriddenFrameRate: int
     skin: PPtr
@@ -1096,12 +1132,16 @@ class Divider_UxmlSerializedData(TypedDict):
     dataSourcePathString_UxmlAttributeFlags: int
     dataSourceTypeString_UxmlAttributeFlags: int
     bindings_UxmlAttributeFlags: int
-    bindingPath: str
-    bindingPath_UxmlAttributeFlags: int
+    componentStyle: int
+    orientation: int
     text: str
+    inlineText: str
     diamond: int
     horizontalPadding: int
+    componentStyle_UxmlAttributeFlags: int
+    orientation_UxmlAttributeFlags: int
     text_UxmlAttributeFlags: int
+    inlineText_UxmlAttributeFlags: int
     diamond_UxmlAttributeFlags: int
     horizontalPadding_UxmlAttributeFlags: int
 
@@ -1189,9 +1229,11 @@ class DofusButtonCustom_UxmlSerializedData(TypedDict):
     icon: int
     mainStyle: int
     status: int
-    iconPosition: int
     size: int
+    iconPosition: int
     iconType: int
+    hasNotification: int
+    interactive: int
     enableRichText_UxmlAttributeFlags: int
     displayTooltipWhenElided_UxmlAttributeFlags: int
     text_UxmlAttributeFlags: int
@@ -1199,9 +1241,11 @@ class DofusButtonCustom_UxmlSerializedData(TypedDict):
     icon_UxmlAttributeFlags: int
     mainStyle_UxmlAttributeFlags: int
     status_UxmlAttributeFlags: int
-    iconPosition_UxmlAttributeFlags: int
     size_UxmlAttributeFlags: int
+    iconPosition_UxmlAttributeFlags: int
     iconType_UxmlAttributeFlags: int
+    hasNotification_UxmlAttributeFlags: int
+    interactive_UxmlAttributeFlags: int
 
 class DofusChatTextField_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
@@ -1452,7 +1496,6 @@ class DofusTab_UxmlSerializedData(TypedDict):
     bindingPath: str
     bindingPath_UxmlAttributeFlags: int
     enableRichText: int
-    applyLoc: int
     text: str
     imageUrl: str
     iconValue: int
@@ -1461,7 +1504,6 @@ class DofusTab_UxmlSerializedData(TypedDict):
     shortcutValues: str
     notificationState: int
     enableRichText_UxmlAttributeFlags: int
-    applyLoc_UxmlAttributeFlags: int
     text_UxmlAttributeFlags: int
     imageUrl_UxmlAttributeFlags: int
     iconValue_UxmlAttributeFlags: int
@@ -1659,10 +1701,7 @@ class DofusToggleButtonGroupCustom_UxmlSerializedData(TypedDict):
     gap_UxmlAttributeFlags: int
 
 class DofusTooltipsSettings(MonoBehaviour):
-    m_defaultTooltipDuration: int
-    m_defaultCreateDelay: int
-    tooltipToUxmlMapping: EnumToUxmlDictionary
-    additionalTooltipToUxmlMapping: EnumToUxmlDictionary
+    pass
 
 class DofusTweenerVisualElement_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
@@ -1779,8 +1818,6 @@ class DofusUISettings(MonoBehaviour):
     slaveFightDragWindowRef: AssetReferenceVisualTreeAsset
     slaveFightUiLineRef: AssetReferenceVisualTreeAsset
     turnAnnouncerFxRef: AssetReferenceVisualTreeAsset
-    spellBuffComponentRef: AssetReferenceVisualTreeAsset
-    buffTooltipPartRef: AssetReferenceVisualTreeAsset
     smithMagicItemHistoryRef: AssetReferenceVisualTreeAsset
     smithMagicItemEffectLineRef: AssetReferenceVisualTreeAsset
     cartographyTooltipElementRef: AssetReferenceVisualTreeAsset
@@ -1788,7 +1825,7 @@ class DofusUISettings(MonoBehaviour):
     shortcutItemRef: AssetReferenceVisualTreeAsset
     houseTooltipLineRef: AssetReferenceVisualTreeAsset
     monsterTooltipLineRef: AssetReferenceVisualTreeAsset
-    itemTooltipStatLineRef: AssetReferenceVisualTreeAsset
+    effectLineRef: AssetReferenceVisualTreeAsset
     probTooltipStatLineRef: AssetReferenceVisualTreeAsset
     bigInternalNotificationRef: AssetReferenceVisualTreeAsset
     itemTooltipBlockRef: AssetReferenceVisualTreeAsset
@@ -1825,11 +1862,11 @@ class DofusUISettings(MonoBehaviour):
     questTabObjectiveRef: AssetReferenceVisualTreeAsset
     presetTileRef: AssetReferenceVisualTreeAsset
     characterLineRef: AssetReferenceVisualTreeAsset
+    dropListLineRef: AssetReferenceVisualTreeAsset
     serverCardRef: AssetReferenceVisualTreeAsset
     serverLineRef: AssetReferenceVisualTreeAsset
     serverFilterRef: AssetReferenceVisualTreeAsset
     ankamaFriendLineRef: AssetReferenceVisualTreeAsset
-    fighterInfoStatValueLabelRef: AssetReferenceVisualTreeAsset
     socialGroupDirectoryItemRef: AssetReferenceVisualTreeAsset
     joinPartyMemberRef: AssetReferenceVisualTreeAsset
     damageElementRef: AssetReferenceVisualTreeAsset
@@ -1906,6 +1943,7 @@ class DofusUISettings(MonoBehaviour):
     DofusPlayerLineRef: AssetReferenceVisualTreeAsset
     characterStatsDetailedRef: AssetReferenceVisualTreeAsset
     companionStatsDetailedRef: AssetReferenceVisualTreeAsset
+    monsterBestiaryStatsDetailedRef: AssetReferenceVisualTreeAsset
     taxCollectorStatsDetailedRef: AssetReferenceVisualTreeAsset
     taxCollectorLineRef: AssetReferenceVisualTreeAsset
     entityStatsTwoColumnsRef: AssetReferenceVisualTreeAsset
@@ -1971,6 +2009,15 @@ class DofusUISettings(MonoBehaviour):
     rideParentItemRef: AssetReferenceVisualTreeAsset
     playerInfoLadderLineRef: AssetReferenceVisualTreeAsset
     playerCardBackgroundTileRef: AssetReferenceVisualTreeAsset
+    fighterInfoRef: AssetReferenceVisualTreeAsset
+    spellBuffComponentRef: AssetReferenceVisualTreeAsset
+    buffSummaryComponentRef: AssetReferenceVisualTreeAsset
+    buffSpellsBySourceComponentRef: AssetReferenceVisualTreeAsset
+    buffSpellListComponentRef: AssetReferenceVisualTreeAsset
+    buffSpellsMonsterComponentRef: AssetReferenceVisualTreeAsset
+    buffTooltipPartRef: AssetReferenceVisualTreeAsset
+    buffsWindowRef: AssetReferenceVisualTreeAsset
+    fightMarkTooltipRef: AssetReferenceVisualTreeAsset
     popUpDefaultRef: AssetReferenceVisualTreeAsset
     popUpImageRef: AssetReferenceVisualTreeAsset
     popUpActionWarningRef: AssetReferenceVisualTreeAsset
@@ -2026,6 +2073,8 @@ class DofusUISettings(MonoBehaviour):
     OneCursorRef: AssetReferenceTexture2D
     TwoCursorRef: AssetReferenceTexture2D
     ThreeCursorRef: AssetReferenceTexture2D
+    DivingCursorRef: AssetReferenceTexture2D
+    MagnifierCursorRef: AssetReferenceTexture2D
     slotStyleRef: AssetReferenceStyleSheet
     slotExtensionStyleRef: AssetReferenceStyleSheet
     tileStyleRef: AssetReferenceStyleSheet
@@ -2187,14 +2236,12 @@ class DropdownButton_UxmlSerializedData(TypedDict):
     buttonText: str
     buttonImageUrl: str
     buttonIcon: int
-    buttonIconPosition: int
     buttonIconSize: int
     buttonIconType: int
     dropdownContentMaxHeight: float
     buttonText_UxmlAttributeFlags: int
     buttonImageUrl_UxmlAttributeFlags: int
     buttonIcon_UxmlAttributeFlags: int
-    buttonIconPosition_UxmlAttributeFlags: int
     buttonIconSize_UxmlAttributeFlags: int
     buttonIconType_UxmlAttributeFlags: int
     dropdownContentMaxHeight_UxmlAttributeFlags: int
@@ -2374,35 +2421,6 @@ class EncyclopediaFilterComponent_UxmlSerializedData(TypedDict):
     dataSourceTypeString_UxmlAttributeFlags: int
     bindings_UxmlAttributeFlags: int
 
-class EntityDisplayer_UxmlSerializedData(TypedDict):
-    uxmlAssetId: int
-    name: str
-    bindings: list[managedRefArrayItem]
-    tooltip: str
-    dataSourcePathString: str
-    dataSourceTypeString: str
-    dataSourceUnityObject: PPtr
-    viewDataKey: str
-    pickingMode: int
-    usageHints: int
-    languageDirection: int
-    tabIndex: int
-    focusable: int
-    enabledSelf: int
-    name_UxmlAttributeFlags: int
-    enabledSelf_UxmlAttributeFlags: int
-    viewDataKey_UxmlAttributeFlags: int
-    pickingMode_UxmlAttributeFlags: int
-    tooltip_UxmlAttributeFlags: int
-    usageHints_UxmlAttributeFlags: int
-    tabIndex_UxmlAttributeFlags: int
-    focusable_UxmlAttributeFlags: int
-    languageDirection_UxmlAttributeFlags: int
-    dataSourceUnityObject_UxmlAttributeFlags: int
-    dataSourcePathString_UxmlAttributeFlags: int
-    dataSourceTypeString_UxmlAttributeFlags: int
-    bindings_UxmlAttributeFlags: int
-
 class EntityMainStatItem_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
     name: str
@@ -2496,9 +2514,6 @@ class EntityPortrait_UxmlSerializedData(TypedDict):
     hasOuterShadow_UxmlAttributeFlags: int
     hasBackground_UxmlAttributeFlags: int
 
-class EntitySprite(MonoBehaviour):
-    pass
-
 class EntityStatsGraph_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
     name: str
@@ -2541,9 +2556,6 @@ class EntityStatsGraph_UxmlSerializedData(TypedDict):
     thickness_UxmlAttributeFlags: int
     iconSize_UxmlAttributeFlags: int
     iconOffset_UxmlAttributeFlags: int
-
-class EnumToUxmlDictionary(TypedDict):
-    mapping: list[MappingEntry]
 
 class EquipmentComponentCharacter_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
@@ -2945,6 +2957,10 @@ class FigmaThemeScriptable(MonoBehaviour):
     m_figmaColorsData: list[FigmaThemeColorData]
 
 class FloorElement(MonoBehaviour):
+    floorElementType: int
+    isMark: int
+    meshRenderer: PPtr
+    m_defaultAndMarkMaterials: list[PPtr]
     m_spriteSummoned: PPtr
     m_spritePlayer: PPtr
     m_spriteBoss: PPtr
@@ -2979,8 +2995,8 @@ class FloorElement(MonoBehaviour):
     m_trapTwoOppositePoints: PPtr
     m_trapTwoPoints: PPtr
     m_trapU: PPtr
-    m_meshRenderer: PPtr
-    isMark: int
+    m_spawnCurve: AnimationCurve
+    m_despawnCurve: AnimationCurve
     m_text: PPtr
 
 class FontAssetCreationSettings(TypedDict):
@@ -3061,6 +3077,8 @@ class GenericFilterCategory_UxmlSerializedData(TypedDict):
     hasShadow_UxmlAttributeFlags: int
     bindingPath: str
     bindingPath_UxmlAttributeFlags: int
+    noBorder: int
+    hasButton2: int
     canBeOpened: int
     openButtonOnly: int
     isActivated: int
@@ -3068,6 +3086,8 @@ class GenericFilterCategory_UxmlSerializedData(TypedDict):
     sectionHeaderStyle: int
     title: str
     icon: int
+    noBorder_UxmlAttributeFlags: int
+    hasButton2_UxmlAttributeFlags: int
     canBeOpened_UxmlAttributeFlags: int
     openButtonOnly_UxmlAttributeFlags: int
     isActivated_UxmlAttributeFlags: int
@@ -3644,7 +3664,6 @@ class InteractiveCellManager(MonoBehaviour):
     m_colorForDetailsCell: ColorRGBA
     m_cellDetailsText: PPtr
     m_cellDetailsBlock: PPtr
-    m_graphicCellsParent: PPtr
 
 class KerningPair(TypedDict):
     m_FirstGlyph: int
@@ -3656,6 +3675,15 @@ class KerningPair(TypedDict):
 
 class KerningTable(TypedDict):
     kerningPairs: list[KerningPair]
+
+class Keyframe(TypedDict):
+    time: float
+    value: float
+    inSlope: float
+    outSlope: float
+    weightedMode: int
+    inWeight: float
+    outWeight: float
 
 class Label_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
@@ -3860,6 +3888,7 @@ class MagneticDragWindow_UxmlSerializedData(TypedDict):
     headerIconRight: int
     headerStyle: int
     headerSize: int
+    headerShowCloseButton: int
     dragPosition_UxmlAttributeFlags: int
     verticalResizable_UxmlAttributeFlags: int
     horizontalResizable_UxmlAttributeFlags: int
@@ -3871,6 +3900,7 @@ class MagneticDragWindow_UxmlSerializedData(TypedDict):
     headerIconRight_UxmlAttributeFlags: int
     headerStyle_UxmlAttributeFlags: int
     headerSize_UxmlAttributeFlags: int
+    headerShowCloseButton_UxmlAttributeFlags: int
     isMagnetic: int
     isMagneticForOthers: int
     allowSnapPreview: int
@@ -3896,12 +3926,7 @@ class ManagedReferencesRegistry(TypedDict):
 
 class MapTransition(MonoBehaviour):
     m_transitionSpriteR: PPtr
-    m_currentEffect: int
-    transitionPrefs: list[PPtr]
-
-class MappingEntry(TypedDict):
-    tooltipType: int
-    assetRef: AssetReferenceVisualTreeAsset
+    transitionPrefs: PPtr
 
 class MarkPositionAdjustment(TypedDict):
     m_XPositionAdjustment: float
@@ -3922,6 +3947,35 @@ class MarkToMarkAdjustmentRecord(TypedDict):
 class MaskableNode(TypedDict):
     name: str
     graphicSymbolId: str
+
+class MonsterBestiaryStatsDetailed_UxmlSerializedData(TypedDict):
+    uxmlAssetId: int
+    name: str
+    bindings: list[managedRefArrayItem]
+    tooltip: str
+    dataSourcePathString: str
+    dataSourceTypeString: str
+    dataSourceUnityObject: PPtr
+    viewDataKey: str
+    pickingMode: int
+    usageHints: int
+    languageDirection: int
+    tabIndex: int
+    focusable: int
+    enabledSelf: int
+    name_UxmlAttributeFlags: int
+    enabledSelf_UxmlAttributeFlags: int
+    viewDataKey_UxmlAttributeFlags: int
+    pickingMode_UxmlAttributeFlags: int
+    tooltip_UxmlAttributeFlags: int
+    usageHints_UxmlAttributeFlags: int
+    tabIndex_UxmlAttributeFlags: int
+    focusable_UxmlAttributeFlags: int
+    languageDirection_UxmlAttributeFlags: int
+    dataSourceUnityObject_UxmlAttributeFlags: int
+    dataSourcePathString_UxmlAttributeFlags: int
+    dataSourceTypeString_UxmlAttributeFlags: int
+    bindings_UxmlAttributeFlags: int
 
 class MultipleSlots_UxmlSerializedData(TypedDict):
     uxmlAssetId: int
@@ -4466,6 +4520,8 @@ class SectionHeader_UxmlSerializedData(TypedDict):
     hasShadow_UxmlAttributeFlags: int
     bindingPath: str
     bindingPath_UxmlAttributeFlags: int
+    noBorder: int
+    hasButton2: int
     canBeOpened: int
     openButtonOnly: int
     isActivated: int
@@ -4473,6 +4529,8 @@ class SectionHeader_UxmlSerializedData(TypedDict):
     sectionHeaderStyle: int
     title: str
     icon: int
+    noBorder_UxmlAttributeFlags: int
+    hasButton2_UxmlAttributeFlags: int
     canBeOpened_UxmlAttributeFlags: int
     openButtonOnly_UxmlAttributeFlags: int
     isActivated_UxmlAttributeFlags: int
@@ -4554,11 +4612,13 @@ class ShortcutFigs_UxmlSerializedData(TypedDict):
     text: str
     elementStyle: int
     elementColor: int
+    elementOrientation: int
     invertOrder: int
     shortcutValues_UxmlAttributeFlags: int
     text_UxmlAttributeFlags: int
     elementStyle_UxmlAttributeFlags: int
     elementColor_UxmlAttributeFlags: int
+    elementOrientation_UxmlAttributeFlags: int
     invertOrder_UxmlAttributeFlags: int
 
 class ShortcutInput_UxmlSerializedData(TypedDict):
@@ -5499,6 +5559,7 @@ class TextInputToValidate_UxmlSerializedData(TypedDict):
     minLength: int
     maxLength: int
     placeholderText: str
+    strictMaxLength: int
     textInputStyle_UxmlAttributeFlags: int
     buttonEditIcon_UxmlAttributeFlags: int
     buttonValidateIcon_UxmlAttributeFlags: int
@@ -5509,6 +5570,7 @@ class TextInputToValidate_UxmlSerializedData(TypedDict):
     minLength_UxmlAttributeFlags: int
     maxLength_UxmlAttributeFlags: int
     placeholderText_UxmlAttributeFlags: int
+    strictMaxLength_UxmlAttributeFlags: int
 
 class TextInputWithSearchList_UxmlSerializedData(TypedDict):
     uxmlAssetId: int

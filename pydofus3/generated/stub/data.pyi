@@ -290,6 +290,14 @@ class AnimFunNpcData:
     animWeight: int
     subAnimFunData: list[NestedAnimFunNpcData]
 
+class AnomaliesDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[AnomalyData]
+    references: ManagedReferencesRegistry
+
+class AnomalyData:
+    id: int
+    monsterId: int
+
 class AppearanceData:
     id: int
     type: int
@@ -717,6 +725,19 @@ class DocumentData:
     contentId: str
     contentCSS: str
     clientProperties: str
+    customBgCriterion: str
+    customBgTint: str
+    customBgIcon: str
+
+class DocumentTypeData:
+    id: int
+    behaviorTypeId: int
+    icon: str
+    clientProperties: str
+
+class DocumentTypesDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[DocumentTypeData]
+    references: ManagedReferencesRegistry
 
 class DocumentsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[DocumentData]
@@ -751,6 +772,10 @@ class DofusProgressionStepData:
 class DofusProgressionsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[DofusProgressionData]
     references: ManagedReferencesRegistry
+
+class DropData:
+    dropId: int
+    quantity: int
 
 class DungeonData:
     id: int
@@ -799,6 +824,7 @@ class EffectData:
     textIconReferenceId: int
     effectTriggerDuration: int
     actionFiltersId: list[int]
+    effectId: int
 
 class EffectInstanceData:
     m_flags: int
@@ -1146,6 +1172,7 @@ class GuildRaidData:
     price: int
     canFinish: int
     canRestart: int
+    level: int
     type: int
 
 class GuildRaidsDataRoot(MonoBehaviour):
@@ -1200,8 +1227,8 @@ class GuildRaidsReward:
     id: int
     raidId: int
     descriptionId: int
-    kamas: int
-    experience: int
+    kamasRatio: float
+    experienceRatio: float
     score: int
     order: int
     rewards: list[GuildRaidsRewardsItemData]
@@ -1386,6 +1413,14 @@ class IdlesDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[IdleData]
     references: ManagedReferencesRegistry
 
+class InfiniteDreamDropPoolData:
+    id: int
+    drops: list[DropData]
+
+class InfiniteDreamDropPoolsDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[InfiniteDreamDropPoolData]
+    references: ManagedReferencesRegistry
+
 class InfiniteDreamIntensitiesDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[InfiniteDreamIntensityData]
     references: ManagedReferencesRegistry
@@ -1429,6 +1464,7 @@ class InfiniteDreamTrialData:
     achievementId: int
     achievementIntensity: int
     picture: str
+    dropPoolId: int
 
 class InfiniteDreamTrialsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[InfiniteDreamTrialData]
@@ -1672,22 +1708,50 @@ class ModstersDataRoot(MonoBehaviour):
 
 class MonsterBonusCharacteristicsData:
     lifePoints: int
+    actionPoints: int
+    movementPoints: int
+    rangeBonus: int
+    vitality: int
     strength: int
-    wisdom: int
+    intelligence: int
     chance: int
     agility: int
-    intelligence: int
-    earthResistance: int
-    fireResistance: int
-    waterResistance: int
-    airResistance: int
-    neutralResistance: int
+    wisdom: int
+    damageBonus: int
+    percentDamageBonus: int
+    healBonus: int
+    trapDamageBonus: int
+    trapDamageBonusPercent: int
+    criticalDamageBonus: int
+    pushDamageBonus: int
+    earthDamageBonus: int
+    fireDamageBonus: int
+    waterDamageBonus: int
+    airDamageBonus: int
+    neutralDamageBonus: int
+    criticalHitBonus: int
+    apAttack: int
+    mpAttack: int
+    paLostDodge: int
+    mpLostDodge: int
+    reductionEarth: int
+    reductionWater: int
+    reductionFire: int
+    reductionAir: int
+    reductionNeutral: int
+    reductionEarthFlat: int
+    reductionAirFlat: int
+    reductionFireFlat: int
+    reductionWaterFlat: int
+    reductionNeutralFlat: int
+    criticalDamageReduction: int
+    pushDamageReduction: int
+    damageReflect: int
+    maxSummon: int
+    honoursPoints: int
+    initiativeBonus: int
+    tackleBonus: int
     tackleEvade: int
-    tackleBlock: int
-    bonusEarthDamage: int
-    bonusFireDamage: int
-    bonusWaterDamage: int
-    bonusAirDamage: int
     aPRemoval: int
 
 class MonsterData:
@@ -1720,6 +1784,7 @@ class MonsterData:
     characRatios: list[WrappedFloatList]
     isBounty: int
     souls: list[MonsterSoulData]
+    achievements: list[int]
 
 class MonsterDropCoefficientData:
     monsterId: int
@@ -1759,23 +1824,50 @@ class MonsterGradeData:
     lifePoints: int
     actionPoints: int
     movementPoints: int
+    rangeBonus: int
     vitality: int
-    paDodge: int
-    pmDodge: int
-    wisdom: int
-    earthResistance: int
-    airResistance: int
-    fireResistance: int
-    waterResistance: int
-    neutralResistance: int
-    gradeXp: int
-    damageReflect: int
     strength: int
     intelligence: int
     chance: int
     agility: int
+    wisdom: int
+    damageBonus: int
+    percentDamageBonus: int
+    healBonus: int
+    trapDamageBonus: int
+    trapDamageBonusPercent: int
+    criticalDamageBonus: int
+    pushDamageBonus: int
+    earthDamageBonus: int
+    fireDamageBonus: int
+    waterDamageBonus: int
+    airDamageBonus: int
+    neutralDamageBonus: int
+    criticalHitBonus: int
+    apAttack: int
+    mpAttack: int
+    paLostDodge: int
+    mpLostDodge: int
+    reductionEarth: int
+    reductionWater: int
+    reductionFire: int
+    reductionAir: int
+    reductionNeutral: int
+    reductionEarthFlat: int
+    reductionAirFlat: int
+    reductionFireFlat: int
+    reductionWaterFlat: int
+    reductionNeutralFlat: int
+    criticalDamageReduction: int
+    pushDamageReduction: int
+    damageReflect: int
+    maxSummon: int
+    honoursPoints: int
+    initiativeBonus: int
+    tackleBonus: int
+    tackleEvade: int
+    xp: int
     startingSpellId: int
-    bonusRange: int
 
 class MonsterMiniBossData:
     id: int
@@ -2001,6 +2093,7 @@ class PaddockTierData:
 class PaddocksData:
     id: int
     nameId: int
+    skillId: int
 
 class PaddocksDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[PaddocksData]
@@ -2425,16 +2518,8 @@ class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerPopulationData]
     references: ManagedReferencesRegistry
 
-class ServerSeasonData:
-    uid: int
-    nameId: str
-    beginning: float
-    closure: float
-    resetDate: float
-    flagObjectId: int
-
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: MetadataDictionaryContainer[ServerSeasonData]
+    objectsById: MetadataDictionaryContainer
     references: ManagedReferencesRegistry
 
 class ServerValueData:
@@ -2640,6 +2725,7 @@ class SpellLevelData:
     globalCooldown: int
     minPlayerLevel: int
     statesCriterion: str
+    ignorePrisonGlyph: int
     effects: list[EffectInstanceDice]
     criticalEffect: list[EffectInstanceDice]
     previewZones: list[PreviewSpellZoneDescr]
@@ -2669,6 +2755,7 @@ class SpellScriptsDataRoot(MonoBehaviour):
 class SpellStateData:
     id: int
     nameId: int
+    descriptionId: int
     preventsSpellCast: int
     preventsFight: int
     isSilent: int
@@ -2678,7 +2765,7 @@ class SpellStateData:
     invulnerable: int
     cantSwitchPosition: int
     incurable: int
-    effectsIds: list[int]
+    effects: list[SpellStateEffectsData]
     icon: str
     iconVisibilityMask: int
     invulnerableMelee: int
@@ -2687,6 +2774,11 @@ class SpellStateData:
     cantBeTackled: int
     displayTurnRemaining: int
     isMainState: int
+    spellLevelId: int
+
+class SpellStateEffectsData:
+    id: int
+    nameId: int
 
 class SpellStatesDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[SpellStateData]

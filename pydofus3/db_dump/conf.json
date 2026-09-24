@@ -1,5 +1,8 @@
 {
   "relation": {
+    "Anomalies": {
+      "monsterId" : "Monsters"
+    },
     "AchievementCategories": {
       "parentId": "AchievementCategories"
     },
@@ -429,6 +432,9 @@
       "spellBreed": "SpellTypes",
       "spellId": "Spells"
     },
+    "SpellStates": {
+      "spellLevelId": "SpellLevels"
+    },
     "custom_SpellLevels_criticalEffect": {
       "effectId": "Effects",
       "spellId": "Spells"
@@ -477,6 +483,12 @@
     "WorldEventsDungeons": {
       "dungeonId": "Dungeons",
       "dungeonMapIdTeleport": "MapsInformation"
+    },
+    "custom_InfiniteDreamDropPools_drops": {
+      "dropId": "Items"
+    },
+    "custom_SpellStates_effects": {
+      "id": "Effects"
     }
   },
   "relation_many_many": {
@@ -570,7 +582,8 @@
     "Monsters": {
       "incompatibleChallenges": "Challenges",
       "spells": "Spells",
-      "subareas": "SubAreas"
+      "subareas": "SubAreas",
+      "achievements": "Achievements"
     },
     "Npcs": {
       "actions": "NpcActions",
@@ -613,9 +626,6 @@
     "Skills": {
       "craftableItemIds": "Items",
       "modifiableItemTypeIds": "ItemTypes"
-    },
-    "SpellStates": {
-      "effectsIds": "Effects"
     },
     "SpellVariants": {
       "spellIds": "Spells"

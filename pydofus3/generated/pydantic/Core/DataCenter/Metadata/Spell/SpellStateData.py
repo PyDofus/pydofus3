@@ -8,7 +8,7 @@ class SpellStateData(D2oData):
 
 	id: int
 	nameId: i18n
-	descriptionId: int
+	descriptionId: i18n
 	preventsSpellCast: bool
 	preventsFight: bool
 	isSilent: bool

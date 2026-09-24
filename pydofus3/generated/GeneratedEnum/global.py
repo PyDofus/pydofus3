@@ -2556,6 +2556,12 @@ class fd(IntEnum):
 	dboo = 2
 	dbop = 3
 
+class ffu:
+	class oow(IntEnum):
+		dcwz = 0
+		dcxb = 1
+		dcxc = 2
+
 class ffz:
 	class ffy(IntEnum):
 		dtbj = 0
@@ -8968,6 +8974,7 @@ class mia(IntEnum):
 	fgit = 12
 	fgiu = 13
 	fgiv = 14
+	dcyq = 15
 
 class mij(IntFlag):
 	fglw = 0

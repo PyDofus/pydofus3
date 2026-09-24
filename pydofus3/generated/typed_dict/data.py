@@ -273,6 +273,13 @@ class AnimFunNpcData(TypedDict):
     animWeight: int
     subAnimFunData: list[NestedAnimFunNpcData]
 
+class AnomaliesDataRoot(MonoBehaviour):
+    objectsById: dict[str, AnomalyData]
+
+class AnomalyData(TypedDict):
+    id: int
+    monsterId: int
+
 class AppearanceData(TypedDict):
     id: int
     type: int
@@ -668,6 +675,18 @@ class DocumentData(TypedDict):
     contentId: str
     contentCSS: str
     clientProperties: str
+    customBgCriterion: str
+    customBgTint: str
+    customBgIcon: str
+
+class DocumentTypeData(TypedDict):
+    id: int
+    behaviorTypeId: int
+    icon: str
+    clientProperties: str
+
+class DocumentTypesDataRoot(MonoBehaviour):
+    objectsById: dict[str, DocumentTypeData]
 
 class DocumentsDataRoot(MonoBehaviour):
     objectsById: dict[str, DocumentData]
@@ -700,6 +719,10 @@ class DofusProgressionStepData(TypedDict):
 
 class DofusProgressionsDataRoot(MonoBehaviour):
     objectsById: dict[str, DofusProgressionData]
+
+class DropData(TypedDict):
+    dropId: int
+    quantity: int
 
 class DungeonData(TypedDict):
     id: int
@@ -747,6 +770,7 @@ class EffectData(TypedDict):
     textIconReferenceId: int
     effectTriggerDuration: int
     actionFiltersId: list[int]
+    effectId: int
 
 class EffectInstanceData(TypedDict):
     m_flags: int
@@ -1070,6 +1094,7 @@ class GuildRaidData(TypedDict):
     price: int
     canFinish: int
     canRestart: int
+    level: int
     type: int
 
 class GuildRaidsDataRoot(MonoBehaviour):
@@ -1120,8 +1145,8 @@ class GuildRaidsReward(TypedDict):
     id: int
     raidId: int
     descriptionId: int
-    kamas: int
-    experience: int
+    kamasRatio: float
+    experienceRatio: float
     score: int
     order: int
     rewards: list[GuildRaidsRewardsItemData]
@@ -1290,6 +1315,13 @@ class IdleData(TypedDict):
 class IdlesDataRoot(MonoBehaviour):
     objectsById: dict[str, IdleData]
 
+class InfiniteDreamDropPoolData(TypedDict):
+    id: int
+    drops: list[DropData]
+
+class InfiniteDreamDropPoolsDataRoot(MonoBehaviour):
+    objectsById: dict[str, InfiniteDreamDropPoolData]
+
 class InfiniteDreamIntensitiesDataRoot(MonoBehaviour):
     objectsById: dict[str, InfiniteDreamIntensityData]
 
@@ -1330,6 +1362,7 @@ class InfiniteDreamTrialData(TypedDict):
     achievementId: int
     achievementIntensity: int
     picture: str
+    dropPoolId: int
 
 class InfiniteDreamTrialsDataRoot(MonoBehaviour):
     objectsById: dict[str, InfiniteDreamTrialData]
@@ -1549,22 +1582,50 @@ class ModstersDataRoot(MonoBehaviour):
 
 class MonsterBonusCharacteristicsData(TypedDict):
     lifePoints: int
+    actionPoints: int
+    movementPoints: int
+    rangeBonus: int
+    vitality: int
     strength: int
-    wisdom: int
+    intelligence: int
     chance: int
     agility: int
-    intelligence: int
-    earthResistance: int
-    fireResistance: int
-    waterResistance: int
-    airResistance: int
-    neutralResistance: int
+    wisdom: int
+    damageBonus: int
+    percentDamageBonus: int
+    healBonus: int
+    trapDamageBonus: int
+    trapDamageBonusPercent: int
+    criticalDamageBonus: int
+    pushDamageBonus: int
+    earthDamageBonus: int
+    fireDamageBonus: int
+    waterDamageBonus: int
+    airDamageBonus: int
+    neutralDamageBonus: int
+    criticalHitBonus: int
+    apAttack: int
+    mpAttack: int
+    paLostDodge: int
+    mpLostDodge: int
+    reductionEarth: int
+    reductionWater: int
+    reductionFire: int
+    reductionAir: int
+    reductionNeutral: int
+    reductionEarthFlat: int
+    reductionAirFlat: int
+    reductionFireFlat: int
+    reductionWaterFlat: int
+    reductionNeutralFlat: int
+    criticalDamageReduction: int
+    pushDamageReduction: int
+    damageReflect: int
+    maxSummon: int
+    honoursPoints: int
+    initiativeBonus: int
+    tackleBonus: int
     tackleEvade: int
-    tackleBlock: int
-    bonusEarthDamage: int
-    bonusFireDamage: int
-    bonusWaterDamage: int
-    bonusAirDamage: int
     aPRemoval: int
 
 class MonsterData(TypedDict):
@@ -1597,6 +1658,7 @@ class MonsterData(TypedDict):
     characRatios: list[WrappedFloatList]
     isBounty: int
     souls: list[MonsterSoulData]
+    achievements: list[int]
 
 class MonsterDropCoefficientData(TypedDict):
     monsterId: int
@@ -1636,23 +1698,50 @@ class MonsterGradeData(TypedDict):
     lifePoints: int
     actionPoints: int
     movementPoints: int
+    rangeBonus: int
     vitality: int
-    paDodge: int
-    pmDodge: int
-    wisdom: int
-    earthResistance: int
-    airResistance: int
-    fireResistance: int
-    waterResistance: int
-    neutralResistance: int
-    gradeXp: int
-    damageReflect: int
     strength: int
     intelligence: int
     chance: int
     agility: int
+    wisdom: int
+    damageBonus: int
+    percentDamageBonus: int
+    healBonus: int
+    trapDamageBonus: int
+    trapDamageBonusPercent: int
+    criticalDamageBonus: int
+    pushDamageBonus: int
+    earthDamageBonus: int
+    fireDamageBonus: int
+    waterDamageBonus: int
+    airDamageBonus: int
+    neutralDamageBonus: int
+    criticalHitBonus: int
+    apAttack: int
+    mpAttack: int
+    paLostDodge: int
+    mpLostDodge: int
+    reductionEarth: int
+    reductionWater: int
+    reductionFire: int
+    reductionAir: int
+    reductionNeutral: int
+    reductionEarthFlat: int
+    reductionAirFlat: int
+    reductionFireFlat: int
+    reductionWaterFlat: int
+    reductionNeutralFlat: int
+    criticalDamageReduction: int
+    pushDamageReduction: int
+    damageReflect: int
+    maxSummon: int
+    honoursPoints: int
+    initiativeBonus: int
+    tackleBonus: int
+    tackleEvade: int
+    xp: int
     startingSpellId: int
-    bonusRange: int
 
 class MonsterMiniBossData(TypedDict):
     id: int
@@ -1859,6 +1948,7 @@ class PaddockTierData(TypedDict):
 class PaddocksData(TypedDict):
     id: int
     nameId: int
+    skillId: int
 
 class PaddocksDataRoot(MonoBehaviour):
     objectsById: dict[str, PaddocksData]
@@ -2260,16 +2350,8 @@ class ServerPopulationData(TypedDict):
 class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerPopulationData]
 
-class ServerSeasonData(TypedDict):
-    uid: int
-    nameId: str
-    beginning: float
-    closure: float
-    resetDate: float
-    flagObjectId: int
-
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: dict[str, ServerSeasonData]
+    objectsById: dict[str, Any]
 
 class ServerValueData(TypedDict):
     id: int
@@ -2459,6 +2541,7 @@ class SpellLevelData(TypedDict):
     globalCooldown: int
     minPlayerLevel: int
     statesCriterion: str
+    ignorePrisonGlyph: int
     effects: list[EffectInstanceDice]
     criticalEffect: list[EffectInstanceDice]
     previewZones: list[PreviewSpellZoneDescr]
@@ -2485,6 +2568,7 @@ class SpellScriptsDataRoot(MonoBehaviour):
 class SpellStateData(TypedDict):
     id: int
     nameId: int
+    descriptionId: int
     preventsSpellCast: int
     preventsFight: int
     isSilent: int
@@ -2494,7 +2578,7 @@ class SpellStateData(TypedDict):
     invulnerable: int
     cantSwitchPosition: int
     incurable: int
-    effectsIds: list[int]
+    effects: list[SpellStateEffectsData]
     icon: str
     iconVisibilityMask: int
     invulnerableMelee: int
@@ -2503,6 +2587,11 @@ class SpellStateData(TypedDict):
     cantBeTackled: int
     displayTurnRemaining: int
     isMainState: int
+    spellLevelId: int
+
+class SpellStateEffectsData(TypedDict):
+    id: int
+    nameId: int
 
 class SpellStatesDataRoot(MonoBehaviour):
     objectsById: dict[str, SpellStateData]

@@ -386,6 +386,10 @@
       "nameId"
     ],
     "Core.DataCenter.Metadata.Spell.SpellStateData": [
+      "nameId",
+      "descriptionId"
+    ],
+    "Core.DataCenter.Metadata.Spell.SpellStateEffectsData": [
       "nameId"
     ],
     "Core.DataCenter.Metadata.Spell.SpellTypeData": [

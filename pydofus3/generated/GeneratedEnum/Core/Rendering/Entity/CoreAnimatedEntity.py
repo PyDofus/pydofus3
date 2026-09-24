@@ -13,6 +13,7 @@ class AnimatedEntity:
 		dgol = 8
 		dgom = 9
 		dgon = 10
+		dctw = 11
 
 	class xd(IntEnum):
 		dgoo = 0
