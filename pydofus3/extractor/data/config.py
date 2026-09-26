@@ -17,6 +17,8 @@ class UnityExtractorOptionConfig:
     add_script: bool = False
     reference: bool = False
     force_object: bool = False
+    dependencies: bool = False
+    index: bool = False
     sprite_rect_size: bool = False
     process_datacenter: bool = False
     load_all_files: bool = False

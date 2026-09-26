@@ -12,15 +12,16 @@ import UnityPy
 from PIL import Image
 from tqdm import tqdm
 from UnityPy import Environment
-from UnityPy.classes import Font, GameObject, Mesh, MonoBehaviour, Shader, Sprite, TextAsset, Texture2D
+from UnityPy.classes import Font, GameObject, Material, Mesh, MonoBehaviour, Shader, Sprite, TextAsset, Texture2D
 from UnityPy.enums import ClassIDType
 from UnityPy.export.Texture2DConverter import get_image_from_texture2d
-from UnityPy.files import ObjectReader
+from UnityPy.files import ObjectReader, BundleFile
 from UnityPy.tools.extractor import crawl_obj
 
 from pydofus3.catalog import ContentCatalogData, load_catalog
 from pydofus3.enum_data import TypeData, TypeDataMac, TypeDataOther, adapt_path, get_data_other_path
 from pydofus3.extractor.data.config import UnityExtractorOptionConfig
+from pydofus3.extractor.data.references import annotate, dependencies, display_name, file_key, object_key, outgoing, read_tree, resolve
 from pydofus3.extractor.data.tools import get_monoscript, process_references
 from pydofus3.extractor.i18n import read as read_i18n
 from pydofus3.not_generated import i18n
@@ -41,6 +42,11 @@ class UnityExtractor:
         self.dofus_data: Path = dofus / Path(str(type_folder))
         self.files = self.config.files if self.config.files else list(self.dofus_data.iterdir())
         self.env: Environment | None = None
+        self.is_build_data = adapt_path(type_folder) == TypeData.Dofus_Data.value
+        self.requested: set[str] = {Path(i).name for i in self.files}
+        self.paths: dict[str, Path] = {}
+        self.index_objects: dict[str, dict] = {}
+        self.index_files: dict[str, dict] = {}
         if self.config.process_datacenter and not i18n.i18n_dict:
             i18n_path = get_data_other_path(self.dofus_path, TypeDataOther.I18n)
             if i18n_path and i18n_path.is_dir():
@@ -57,6 +63,7 @@ class UnityExtractor:
                 ClassIDType.Sprite: self.export_sprite,
                 ClassIDType.Texture2D: self.export_texture_2d,
                 ClassIDType.Font: self.export_font,
+                ClassIDType.Material: self.export_material,
                 ClassIDType.Shader: self.export_shader,
                 ClassIDType.Mesh: self.export_mesh,
                 ClassIDType.Renderer: self.export_mesh_render,
@@ -73,12 +80,14 @@ class UnityExtractor:
     def load_file(self) -> Generator[dict[str, dict[str, list[ObjectReader]]]]:
         monoscript = self.monoscript_paths()
         files = list(map(str, self.files))
+        extras = self.build_extras()
 
         if self.config.load_all_files:
             if monoscript:
                 files.extend(monoscript)
+            files.extend(i for i in extras if i not in files)
             self.env = env = UnityPy.load(*files)
-            yield self.build_container_dict(env)
+            yield self.containers(env, self.requested)
             return
 
         for file in tqdm(files, desc=f'Extract (container) {self.type_folder}'):
@@ -87,44 +96,191 @@ class UnityExtractor:
             self.env = env = UnityPy.load(str(file))
             if monoscript:
                 env.load_files(monoscript)
-            yield self.build_container_dict(env)
+            if others := [i for i in extras if i != str(file)]:
+                env.load_files(others)
+            yield self.containers(env, {Path(file).name})
+
+    def build_extras(self) -> list[str]:
+        """
+        player's own files (globalgamemanagers, resources, sharedassets, level ...)
+        """
+        if not self.is_build_data:
+            return []
+        names = ['globalgamemanagers', 'globalgamemanagers.assets', 'resources.assets']
+        found = [self.dofus_data / i for i in names]
+        found += sorted(self.dofus_data.glob('sharedassets*.assets')) + sorted(self.dofus_data.glob('level[0-9]*'))
+        return [str(i) for i in found if i.is_file() and i.suffix != '.resS']
+
+    def containers(self, env: Environment, requested: set[str]) -> dict[str, dict[str, list[ObjectReader]]]:
+        result = self.build_container_dict(env)
+        if self.is_build_data:
+            result.update(self.build_player_containers(env, requested))
+        return result
 
     def monoscript_paths(self) -> list[str] | None:
-        if self.config.add_script or self.config.type_tree or self.config.process_datacenter:
-            if script_bundles := self.dofus_data.glob('*monoscripts*bundle'):
+        if self.config.add_script or self.config.type_tree or self.config.process_datacenter or self.config.dependencies or self.config.index:
+            script_bundles = sorted(self.dofus_data.glob('*monoscripts*bundle')) or sorted(self.dofus_data.glob('*/*monoscripts*bundle'))
+            if script_bundles:
                 return [str(i) for i in script_bundles]
         return None
+
+    def container_entries(self, container: dict[str, dict[str, list[ObjectReader]]]) -> Generator[tuple[str, str, ObjectReader, Path]]:
+        """Each object a container exports, and where: ``(container, object name, object, output)``."""
+        for container_name, value in container.items():
+            use_sub_dir = True if (len(value) > 2 or (len(value) == 2 and '' not in value)) else False
+            if use_sub_dir and len(value) == 2 and all(len(objs) == 1 for objs in value.values()) and set(
+                    i.type for objs in value.values() for i in objs) == {ClassIDType.Sprite, ClassIDType.Texture2D}:
+                value = {k: v for k, v in value.items() if v[0].type == ClassIDType.Texture2D}
+                use_sub_dir = False
+            for obj_name, objs in value.items():
+                if use_sub_dir and obj_name == '':
+                    continue
+                if len(objs) == 2 and set(i.type for i in objs) == {ClassIDType.Sprite, ClassIDType.Texture2D}:
+                    obj = next(i for i in objs if i.type == ClassIDType.Texture2D)
+                else:
+                    obj = objs[0]
+                file_output = self.catalog.get_output_path(self.output_path, container_name) if self.catalog else self.output_path /container_name
+                if use_sub_dir:
+                    file_output /= obj_name
+                yield container_name, obj_name, obj, file_output
 
     def extract_container(self):
         for container in self.load_file():
             exported: set[tuple[str, int]] = set()
-            for container_name, value in tqdm(container.items(), desc='container', leave=False):
-                use_sub_dir = True if (len(value) > 2 or (len(value) == 2 and '' not in value)) else False
-                if use_sub_dir and len(value) == 2 and all(len(objs) == 1 for objs in value.values()) and set(
-                        i.type for objs in value.values() for i in objs) == {ClassIDType.Sprite, ClassIDType.Texture2D}:
-                    value = {k: v for k, v in value.items() if v[0].type == ClassIDType.Texture2D}
-                    use_sub_dir = False
-                for obj_name, objs in value.items():
-                    if use_sub_dir and obj_name == '':
-                        continue
-                    if len(objs) == 2 and set(i.type for i in objs) == {ClassIDType.Sprite, ClassIDType.Texture2D}:
-                        obj = next(i for i in objs if i.type == ClassIDType.Texture2D)
-                    else:
-                        obj = objs[0]
-                    if (obj.assets_file.name, obj.path_id) not in exported:
-                        file_output = self.catalog.get_output_path(self.output_path, container_name) if self.catalog else self.output_path /container_name
-                        if use_sub_dir:
-                            file_output /= obj_name
-                        file_output.parent.mkdir(parents=True, exist_ok=True)
-                        try:
-                            exported.update(self.extract_obj(obj, file_output))
-                        except Exception:
-                            file_name = obj.assets_file.parent.name if hasattr(obj.assets_file, 'parent') else None
-                            logger.exception(
-                                f'file {file_name} output {file_output} container {container_name} obj {obj_name} type {obj.type.name} extraction error'
-                                )
+            entries = list(self.container_entries(container))
+            if self.config.dependencies or self.config.index:
+                for _, _, obj, file_output in entries:
+                    self.register(obj, file_output)
+            planned = self.plan_dependencies(entries) if self.config.dependencies else []
+            for container_name, obj_name, obj, file_output in tqdm(entries, desc='container', leave=False):
+                if (obj.assets_file.name, obj.path_id) not in exported:
+                    file_output.parent.mkdir(parents=True, exist_ok=True)
+                    try:
+                        exported.update(self.extract_obj(obj, file_output))
+                    except Exception:
+                        file_name = getattr(getattr(obj.assets_file, 'parent', None), 'name', None)
+                        logger.exception(
+                            f'file {file_name} output {file_output} container {container_name} obj {obj_name} type {obj.type.name} extraction error'
+                            )
+            for obj, output in tqdm(planned, desc='dependencies', leave=False):
+                if (obj.assets_file.name, obj.path_id) not in exported:
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    try:
+                        exported.update(self.extract_obj(obj, output))
+                    except Exception:
+                        logger.exception(f'dependency {object_key(obj)} output {output} type {obj.type.name} extraction error')
+            if self.config.index:
+                self.index_env()
         if self.catalog:
             self.catalog.save(self.output_path / 'catalog.json')
+        if self.config.index:
+            self.write_index()
+
+    def plan_dependencies(self, entries: list[tuple[str, str, ObjectReader, Path]]) -> list[tuple[ObjectReader, Path]]:
+        """
+        for --deps option, what the exported containers reference and is not exported on its own
+        """
+        planned: list[tuple[ObjectReader, Path]] = []
+        used: dict[Path, set[str]] = defaultdict(set)
+        for _, _, root, file_output in tqdm(entries, desc='dependencies (plan)', leave=False):
+            folder = file_output.parent / f'{file_output.name}.deps'
+            try:
+                found = dependencies(root)
+            except Exception:
+                logger.exception(f'dependencies of {object_key(root)} ({file_output})')
+                continue
+            for group, obj in found:
+                if object_key(obj) in self.paths:
+                    continue
+                if obj.type == ClassIDType.MonoBehaviour and read_tree(obj) is None:
+                    logger.debug(f'dependency {object_key(obj)} not readable (no typetree): left out')
+                    continue
+                directory = folder / group if group else folder
+                names = used[directory]
+                name = display_name(obj)
+                if name.lower() in names:
+                    name = f'{name}_{obj.path_id}'
+                names.add(name.lower())
+                output = directory / name
+                self.register(obj, output)
+                planned.append((obj, output))
+        return planned
+
+    def register(self, obj: ObjectReader, output: Path) -> None:
+        """Keep where an object is written"""
+        if (path := self.planned_output(obj, output)) is not None:
+            self.paths[object_key(obj)] = path
+
+    def planned_output(self, obj: ObjectReader, output: Path) -> Path | None:
+        """The file an object's export writes to output"""
+        match obj.type:
+            case ClassIDType.Texture2D | ClassIDType.Sprite:
+                return output if output.suffix in ('.png', '.jpg') else output.with_suffix('.png')
+            case ClassIDType.Material:
+                return output if output.suffix else output.with_suffix('.json')
+            case ClassIDType.Mesh:
+                return output if output.suffix else output.with_suffix('.obj')
+            case ClassIDType.Font:
+                try:
+                    data = obj.parse_as_object().m_FontData
+                except Exception:
+                    logger.debug(f'font {object_key(obj)} not read', exc_info=True)
+                    return None
+                return output.with_suffix('.otf' if data and data[0:4] == b'OTTO' else '.ttf') if data else None
+            case ClassIDType.Shader | ClassIDType.MeshRenderer | ClassIDType.SkinnedMeshRenderer | ClassIDType.Renderer:
+                return None
+            case ClassIDType.MonoBehaviour if self.config.compress:
+                return output.with_name(output.name + '.zst')
+            case _:
+                return output
+
+    def annotate_references(self, data: dict, obj: ObjectReader) -> None:
+        if self.config.dependencies or self.config.index:
+            annotate(data, obj.assets_file, self.paths, self.output_path)
+
+    def index_env(self) -> None:
+        """Add the objects to the index"""
+        if not self.env:
+            return
+        for obj in tqdm(self.env.objects, desc='index', leave=False):
+            file = obj.assets_file
+            parent = getattr(file, 'parent', None)
+            source = parent.name if type(parent) == BundleFile else file.name
+            if Path(str(source)).name not in self.requested:
+                continue
+            name = file_key(file.name)
+            if name not in self.index_files:
+                self.index_files[name] = {
+                    'source': Path(str(source)).name,
+                    'externals': [file_key(i.name) for i in file.externals],
+                }
+            key = object_key(obj)
+            record: dict = {'type': obj.type.name, 'file': name}
+            try:
+                if object_name := obj.peek_name():
+                    record['name'] = object_name
+            except Exception:
+                logger.debug(f'name of {key} not read', exc_info=True)
+            if obj.type == ClassIDType.MonoBehaviour and (script := get_monoscript(obj)):
+                record['class'] = script.parse_as_dict().get('m_ClassName')
+            if obj.container:
+                record['container'] = obj.container
+            if (path := self.paths.get(key)) is not None:
+                record['path'] = path.relative_to(self.output_path).as_posix() if path.is_relative_to(self.output_path) else path.as_posix()
+            if refs := list(dict.fromkeys(ref for _, ref, _ in outgoing(obj))): # keep order
+                record['refs'] = refs
+            self.index_objects[key] = record
+
+    def write_index(self) -> None:
+        path = self.output_path / 'objects.json'
+        index = orjson.loads(path.read_bytes()) if path.exists() else {}
+        index = {
+            'files': {**index.get('files', {}), **self.index_files},
+            'objects': {**index.get('objects', {}), **self.index_objects},
+        }
+        path.parent.mkdir(parents=True, exist_ok=True)
+        option = orjson.OPT_INDENT_2 if self.config.indent else None
+        path.write_bytes(orjson.dumps(index, option=option))
 
     def extract_objects(self):
         exported: set[tuple[str, int]] = set()
@@ -135,7 +291,8 @@ class UnityExtractor:
         self.env = env  = UnityPy.load(*file)
 
         output_objects = self.output_path / 'objects_type'
-        for obj in tqdm(env.objects, desc='Bundle process (object)', leave=False):
+        entries: list[tuple[ObjectReader, Path]] = []
+        for obj in env.objects:
             try:
                 output_dir = output_objects / obj.type.name
                 name = str(obj.path_id)
@@ -145,11 +302,21 @@ class UnityExtractor:
                     name += f'_{obj_name}'
                 elif obj.type == ClassIDType.MonoBehaviour and (script := get_monoscript(obj)):
                     name += f'_{script.parse_as_dict()["m_ClassName"]}'
-                output_file = output_dir / name.replace('/', '_')
+                entries.append((obj, output_dir / name.replace('/', '_')))
+            except Exception:
+                logger.exception(f'file {file} id {obj.path_id} type {obj.type.name} extraction error')
+        if self.config.dependencies or self.config.index:
+            for obj, output_file in entries:
+                self.register(obj, output_file)
+        for obj, output_file in tqdm(entries, desc='Bundle process (object)', leave=False):
+            try:
                 output_file.parent.mkdir(parents=True, exist_ok=True)
                 exported.update(self.extract_obj(obj, output_file))
             except Exception:
                 logger.exception(f'file {file} id {obj.path_id} type {obj.type.name} extraction error')
+        if self.config.index:
+            self.index_env()
+            self.write_index()
 
     def extract_obj(self, obj: ObjectReader, output: Path) -> set[tuple[str, int]]:
         export_func = self.EXPORT_TYPES.get(obj.type)
@@ -158,7 +325,9 @@ class UnityExtractor:
         else:
             try:
                 option = orjson.OPT_INDENT_2 if self.config.indent else None
-                output.write_bytes(orjson.dumps(obj.read_typetree(), option=option))
+                data = obj.read_typetree()
+                self.annotate_references(data, obj)
+                output.write_bytes(orjson.dumps(data, option=option))
                 return {(obj.assets_file.name, obj.path_id)}
             except:
                 logger.warning(f'{output} {obj.type.name} not handled')
@@ -187,6 +356,9 @@ class UnityExtractor:
             del data['m_GameObject']
         elif self.config.reference:
             process_references(data)
+        if 'm_AtlasTextures' in data and 'm_FaceInfo' in data:
+            extracted.update(self.export_font_atlases(obj, data, output))
+        self.annotate_references(data, obj)
         json_data = orjson.dumps(data, option=orjson.OPT_NON_STR_KEYS)
         if self.config.compress:
             output = output.with_name(output.name + '.zst')
@@ -204,8 +376,12 @@ class UnityExtractor:
 
     def export_game_object(self, obj: ObjectReader[GameObject], output: Path) -> set[tuple[str, int]]:
         option = orjson.OPT_INDENT_2 if self.config.indent else None
-        output.write_bytes(orjson.dumps(obj.parse_as_dict(), option=option))
+        data = obj.parse_as_dict()
+        self.annotate_references(data, obj)
+        output.write_bytes(orjson.dumps(data, option=option))
         exported = {(obj.assets_file.name, obj.path_id)}
+        if self.config.dependencies:
+            return exported
         for ref_id, ref in crawl_obj(obj).items():
             if ref.type == ClassIDType.GameObject:
                 continue
@@ -262,6 +438,49 @@ class UnityExtractor:
             output = output.with_suffix(extension)
             output.write_bytes(bytes(data.m_FontData))
         return {(data.assets_file.name, data.object_reader.path_id)}
+
+    def export_material(self, obj: ObjectReader[Material], output: Path) -> set[tuple[str, int]]:
+        def to_dict(entries) -> dict:
+            return dict(entries.items() if isinstance(entries, dict) else entries)
+
+        data = obj.read_typetree()
+        properties = data.get('m_SavedProperties', {})
+        shader_name = None
+        if (pptr:=data.get('m_Shader')) and (shader := resolve(obj.assets_file, pptr.get('m_FileID', 0), pptr.get('m_PathID', 0))):
+            try:
+                parsed = shader.parse_as_object().m_ParsedForm
+                shader_name = parsed.m_Name if parsed else None
+            except Exception:
+                logger.warning(f'{output} shader name not read', exc_info=True)
+
+        data['shaderName'] = shader_name
+        data['m_Floats'] = to_dict(properties['m_Floats'])
+        data['m_Ints'] = to_dict(properties['m_Ints'])
+        data['m_Colors'] = to_dict(properties['m_Colors'])
+        data['m_TexEnvs'] = to_dict(properties['m_TexEnvs'])
+
+        self.annotate_references(data, obj)
+        if not output.suffix:
+            output = output.with_suffix('.json')
+        option = orjson.OPT_INDENT_2 if self.config.indent else None
+        output.write_bytes(orjson.dumps(data, option=option))
+        return {(obj.assets_file.name, obj.path_id)}
+
+    def export_font_atlases(self, obj: ObjectReader[MonoBehaviour], data: dict, output: Path) -> set[tuple[str, int]]:
+        exported: set[tuple[str, int]] = set()
+        for number, reference in enumerate(data.get('m_AtlasTextures') or []):
+            if not isinstance(reference, dict):
+                continue
+            texture = resolve(obj.assets_file, reference.get('m_FileID', 0), reference.get('m_PathID', 0))
+            if texture is None or object_key(texture) in self.paths:
+                continue
+            path = output.parent / f'{output.name}.atlas{number}.png'
+            try:
+                exported.update(self.export_texture_2d(texture, path))
+                self.paths[object_key(texture)] = path
+            except Exception:
+                logger.exception(f'{output} atlas {number} not exported')
+        return exported
 
     @staticmethod
     def export_shader(obj: ObjectReader[Shader], output: Path) -> set[tuple[str, int]]:
@@ -383,3 +602,35 @@ class UnityExtractor:
         if self.env:
             self.env = None
             gc.collect()
+
+    @staticmethod
+    def build_player_containers(env: Environment, names: set[str]) -> dict[str, dict[str, list[ObjectReader]]]:
+        wanted = {file_key(name) for name in names}
+        result: dict[str, dict[str, list[ObjectReader]]] = defaultdict(lambda: defaultdict(list))
+        scenes: list[str] = []
+        for obj in env.objects:
+            if obj.type == ClassIDType.ResourceManager:
+                for name, pptr in obj.read().m_Container:
+                    if file_key(pptr.assetsfile.name) in wanted:
+                        target = pptr.deref()
+                        result[f'Resources/{name}'][target.peek_name()].append(target)
+            elif obj.type == ClassIDType.BuildSettings:
+                scenes = list(obj.read_typetree().get('scenes', []))
+        for index, scene in enumerate(scenes):
+            level = f'level{index}'
+            if level not in wanted or (cab := env.cabs.get(level)) is None:
+                continue
+            for obj in cab.objects.values():
+                if obj.type != ClassIDType.GameObject:
+                    continue
+                # check if it is scene root
+                data = obj.read()
+                first = data.m_Component[0].component if data.m_Component else None
+                deref = first.deref() if first else None
+                if deref is None or deref.read().m_Father.m_PathID:
+                    continue
+                container = f'Scenes/{Path(scene).stem}/{display_name(obj)}'
+                if container in result:
+                    container += f'_{obj.path_id}'
+                result[container] = {data.m_Name: [obj]}
+        return result

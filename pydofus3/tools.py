@@ -42,7 +42,7 @@ def save_img(output: Path, img: Image.Image) -> None:
     if output.suffix not in ['.png', '.jpg']:
         ext = '.png' if img.mode in ['RGBA', 'RGB'] else '.jpg'
         output = output.with_suffix(ext)
-    if output.suffix == '.png' and _HAS_FPNG:
+    if output.suffix == '.png' and _HAS_FPNG and img.mode in ('RGB', 'RGBA'):
         w, h = img.size
         fpng_encode_image_to_file(str(output), img.tobytes(), w, h, len(img.mode))
     else:

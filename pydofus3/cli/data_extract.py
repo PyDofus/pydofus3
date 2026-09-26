@@ -42,6 +42,18 @@ def main(
             help='Extract every object in the bundle (default: only objects referenced by the catalog container).'
         ),
     ] = False,
+    deps: Annotated[
+        bool,
+        typer.Option(
+            help="extract object references that isn't extracted on its own"
+        ),
+    ] = False,
+    index: Annotated[
+        bool,
+        typer.Option(
+            help='Write json with path of each extracted file'
+        ),
+    ] = False,
     add_script: Annotated[
         bool, typer.Option(help='Embed the MonoScript class info inside each MonoBehaviour JSON.')
     ] = False,
@@ -76,6 +88,8 @@ def main(
         'add_script': add_script,
         'reference': process_reference,
         'force_object': force_object,
+        'dependencies': deps,
+        'index': index,
         'sprite_rect_size': sprite_rect,
         'process_datacenter': process_datacenter,
         'load_all_files': load_all_files,
@@ -106,6 +120,8 @@ def file(
 
     dofus_path = find_directory_containing_file(file_path, 'zaap.yml')
     catalog_path = find_directory_containing_file(file_path, 'catalog')
+    if dofus_path and not catalog_path and (file_path.parent / 'globalgamemanagers').is_file():
+        catalog_path = file_path.parent
     if not (catalog_path and dofus_path):
         typer.echo(f"Could not locate a Dofus install (zaap.yml + catalog) above {file_path}")
         raise typer.Exit(code=1)
@@ -196,6 +212,6 @@ def read_file_change(file_change: Path) -> list[str]:
     except orjson.JSONDecodeError:
         typer.echo('Error: file_change must be a valid JSON file')
         raise typer.Exit(code=1)
-    if 'new' in data and 'change' in data:
-        data = data['new'] + data['change']
+    if 'new' in data or 'change' in data:
+        data = data.get('new', []) + data.get('change',[])
     return data
