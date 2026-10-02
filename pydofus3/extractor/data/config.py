@@ -27,3 +27,4 @@ class UnityExtractorOptionConfig:
     indent: bool = False
     skin_png: bool = False
     skin_webp: bool = False
+    skin_dxt5: bool = False

@@ -25,7 +25,7 @@ from pydofus3.extractor.data.references import annotate, dependencies, display_n
 from pydofus3.extractor.data.tools import get_monoscript, process_references
 from pydofus3.extractor.i18n import read as read_i18n
 from pydofus3.not_generated import i18n
-from pydofus3.tools import save_img, set_unity_version
+from pydofus3.tools import texture_dds, save_img, set_unity_version
 
 logger = logging.getLogger(__name__)
 
@@ -562,11 +562,18 @@ class UnityExtractor:
         skin_data['textures'] = [t for t in skin_data['textures'] if t['m_PathID'] in obj.assets_file.files]
         for nb, texture_ref in enumerate(skin_data['textures']):
             texture = obj.assets_file.files[texture_ref['m_PathID']].read()
-            img = get_image_from_texture2d(texture, False)
-            if self.config.skin_png or not self.config.skin_webp:
-                save_img(output / f'{nb}.png', img)
-            if self.config.skin_webp:
-                img.save(output/ f'{nb}.webp')
+            png = self.config.skin_png or not (self.config.skin_webp or self.config.skin_dxt5)
+            if self.config.skin_dxt5:
+                if dds := texture_dds(texture):
+                    (output / f'{nb}.dds').write_bytes(dds)
+                else:
+                    png = True
+            if png or self.config.skin_webp:
+                img = get_image_from_texture2d(texture, False)
+                if png:
+                    save_img(output / f'{nb}.png', img)
+                if self.config.skin_webp:
+                    img.save(output/ f'{nb}.webp')
 
         if self.config.no_big_int:
             del skin_data['m_GameObject']

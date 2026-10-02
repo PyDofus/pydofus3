@@ -77,6 +77,7 @@ def main(
     indent: Annotated[bool, typer.Option(help='Pretty-print JSON outputs with indentation.')] = False,
     skin_png: Annotated[bool, typer.Option(help='Export skin textures as PNG (faster than WEBP)')] = False,
     skin_webp: Annotated[bool, typer.Option(help='Export skin textures as WEBP.')] = False,
+    skin_dxt5: Annotated[bool, typer.Option(help='Export skin textures as DDS')] = False,
 ):
     """
     Extract Dofus Unity asset bundles. Options here are shared by every subcommand.
@@ -97,7 +98,8 @@ def main(
         'no_big_int': no_big_int,
         'indent': indent,
         'skin_png': skin_png,
-        'skin_webp': skin_webp
+        'skin_webp': skin_webp,
+        'skin_dxt5': skin_dxt5,
     }
 
 

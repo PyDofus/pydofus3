@@ -173,6 +173,7 @@ Common options (see `pydofus3/cli/data_extract.py` for the full list):
 - `--force-gc-collect` — force GC after each file (useful for map textures)
 - `--skin-png` — export skin texture as PNG
 - `--skin-webp` — export skin texture as WebP (very slow but smaller files)
+- `--skin-dxt5` — export skin texture as DDS
 - `--deps` — export what each extracted object references and is not extracted on its own
 - `--index` — write `objects.json` with path of every extracted object
 
