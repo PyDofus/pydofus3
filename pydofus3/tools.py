@@ -1,8 +1,13 @@
+import struct
 from collections import defaultdict
 from pathlib import Path
 from typing import Iterable
 
 import UnityPy
+from UnityPy.enums import ClassIDType, TextureFormat
+from UnityPy.helpers.ContainerHelper import ContainerHelper
+from UnityPy.classes import Font, GameObject, Material, Mesh, MonoBehaviour, Shader, Sprite, TextAsset, Texture2D
+import texture2ddecoder
 
 from pydofus3.enum_data import TypeData, get_data_path
 
@@ -49,6 +54,40 @@ def save_img(output: Path, img: Image.Image) -> None:
         if output.suffix == '.jpg' and img.mode != 'RGB':
             img = img.convert('RGB')
         img.save(output)
+
+
+DDS_FORMATS = {
+    TextureFormat.DXT1: b'DXT1',
+    TextureFormat.DXT1Crunched: b'DXT1',
+    TextureFormat.DXT5: b'DXT5',
+    TextureFormat.DXT5Crunched: b'DXT5',
+}
+
+
+def texture_dds(texture: Texture2D) -> bytes | None:
+    """
+    the texture's first mip level as a DDS file
+    """
+    texture_format = TextureFormat(texture.m_TextureFormat)
+    fourcc = DDS_FORMATS.get(texture_format)
+    if fourcc is None or not texture.m_Width or not texture.m_Height:
+        return None
+    data = bytes(texture.get_image_data())
+    if 'Crunched' in texture_format.name:
+        data = texture2ddecoder.unpack_unity_crunch(data)
+    block_size = 8 if fourcc == b'DXT1' else 16
+    level_size = ((texture.m_Width + 3) // 4) * ((texture.m_Height + 3) // 4) * block_size
+    return dds_bytes(data[:level_size], texture.m_Width, texture.m_Height, fourcc)
+
+def dds_bytes(blocks: bytes, width: int, height: int, fourcc: bytes = b'DXT5') -> bytes:
+    """
+    wrap compressed blocks in a DDS file
+    """
+    flags = 0x1 | 0x2 | 0x4 | 0x1000 | 0x80000
+    header = struct.pack('<7I44x', 124, flags, height, width, len(blocks), 0, 1)
+    pixel_format = struct.pack('<2I4s5I', 32, 0x4, fourcc, 0, 0, 0, 0, 0)
+    caps = struct.pack('<4I4x', 0x1000, 0, 0, 0)
+    return b'DDS ' + header + pixel_format + caps + blocks
 
 
 def find_directory_containing_file(starting_path: Path, target_filename: str) -> Path | None:
@@ -108,3 +147,30 @@ def set_unity_version(game_data: Path|None) -> None:
     :param game_data: game_data folder
     """
     UnityPy.config.FALLBACK_UNITY_VERSION = get_unity_version(game_data)  # ty:ignore[possibly-missing-submodule]
+
+
+_preload_table_enabled = False
+
+
+def set_preload_table(enabled: bool) -> None:
+    """
+    enable or disable UnityPy (>= 1.25.3) preload table parsing.
+    """
+    global _preload_table_enabled
+    _preload_table_enabled = enabled
+
+
+def _patch_preload_table() -> None:
+    original = getattr(ContainerHelper, 'parse_preload_table', None)
+    if original is None or getattr(original, '_pydofus3_patched', False):
+        return
+
+    def parse_preload_table(self) -> None:
+        if _preload_table_enabled:
+            original(self)
+
+    parse_preload_table._pydofus3_patched = True  # ty:ignore[unresolved-attribute]
+    ContainerHelper.parse_preload_table = parse_preload_table
+
+
+_patch_preload_table()
