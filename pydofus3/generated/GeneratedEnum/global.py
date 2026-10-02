@@ -8959,6 +8959,7 @@ class mhz(IntEnum):
 	fghx = 17
 	fghy = 18
 	fghz = 20
+	dbwo = 21
 
 class mia(IntEnum):
 	fgij = 0
@@ -9008,29 +9009,29 @@ class mik(IntFlag):
 	fgmv = 32833
 
 class mim:
-	class mil(IntEnum):
-		fgmx = 0
-		fgmy = 1
-		fgmz = 2
-		fgna = 3
-		fgnb = 4
-		fgnc = 5
-		fgne = 6
-		fgnf = 7
-		fgng = 8
-		fgnh = 9
-		fgni = 10
-		fgnj = 11
-		fgnk = 12
-		fgnl = 13
-		fgnp = 14
-		fgnq = 15
-		fgnm = 16
-		fgnn = 17
-		fgnr = 18
-		fgno = 19
-		fgnd = 20
-		fgns = 21
+	class OptionalSlots(IntEnum):
+		Bandeau_ = 0
+		BandeauB_ = 1
+		Barbe_ = 2
+		Chapeau_ = 3
+		ChapeauB_ = 4
+		cheveux_ = 5
+		Custo_ = 6
+		Oreille_d_ = 7
+		Oreille_g_ = 8
+		Oreille_ = 9
+		Oreille_b_ = 10
+		Masque_ = 11
+		MasqueB_ = 12
+		NatteHaute_ = 13
+		Patte_d_ = 14
+		Patte_g_ = 15
+		Natte_ = 16
+		NatteB_ = 17
+		Patte_0 = 18
+		Natte_Basse_ = 19
+		Frange_ = 20
+		Tete_OL_ = 21
 
 class mio(IntFlag):
 	fgnu = 0

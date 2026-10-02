@@ -44,7 +44,7 @@ class EventInfo:
 
 class GameCoreScarlettPlatformSettings:
 	class GDKVersion(IntEnum):
-		GDK250400 = 0
+		GDK251002 = 251002
 
 class MusicCreationFlags(IntFlag):
 	None_ = 0
@@ -76,8 +76,7 @@ class MusicState(IntFlag):
 
 class Playstation5PlatformSettings:
 	class SDKVersion(IntEnum):
-		SDK12 = 0
-		SDK13 = 1
+		SDK13 = 13
 
 class SampleRate(IntEnum):
 	PlatformDefault = 0
@@ -100,7 +99,7 @@ class SpeakerMode(IntEnum):
 
 class SwitchPlatformSettings:
 	class SDKVersion(IntEnum):
-		SDK20 = 0
+		SDK22 = 22
 
 class ThreadAffinity(IntFlag):
 	Any = 0

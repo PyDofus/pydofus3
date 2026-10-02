@@ -8,7 +8,6 @@ from typing import Annotated
 class Animation(MyBaseModel):
 	name: str
 	boneId: str
-	dataBytes: list[int]
 	bounds: Rect
 	instance: hbk
 

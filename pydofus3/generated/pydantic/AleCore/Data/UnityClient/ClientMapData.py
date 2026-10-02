@@ -28,7 +28,6 @@ class ClientMapData(MyBaseModel):
 	middlegroundMaterialData: MaterialData
 	foregroundMaterialData: MaterialData
 	particlesShaderData: list[ShaderData]
-	shaderVariants: list[int]
 	particlesParameters: list[ClientParticlesParameters]
 	cellsData: list[ClientCellData]
 	topArrowCellList: list[int]

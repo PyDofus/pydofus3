@@ -3,5 +3,4 @@ from pydofus3.not_generated.base import MyBaseModel
 
 class ShaderData(MyBaseModel):
 	shaderParameters: list[IShaderParameters]
-	shaderVariant: int
 

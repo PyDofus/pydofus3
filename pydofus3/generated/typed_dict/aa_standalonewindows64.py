@@ -131,7 +131,6 @@ class AnimatedObjectDefinition(MonoBehaviour):
 class Animation(TypedDict):
     name: str
     data: PPtr
-    dataBytes: list[int]
     bounds: Rectf
 
 class AnimationCurve(TypedDict):
@@ -2958,6 +2957,7 @@ class FigmaThemeScriptable(MonoBehaviour):
 
 class FloorElement(MonoBehaviour):
     floorElementType: int
+    isHitboxSelection: int
     isMark: int
     meshRenderer: PPtr
     m_defaultAndMarkMaterials: list[PPtr]
