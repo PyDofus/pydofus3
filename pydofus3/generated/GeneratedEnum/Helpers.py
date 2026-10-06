@@ -1,16 +1,16 @@
 from enum import IntEnum
 
 class Direction(IntEnum):
-	ffym = -4
-	ffyn = -3
-	ffyo = -2
-	ffyp = -1
-	ffyq = 0
-	ffyr = 1
-	ffys = 2
-	ffyt = 3
-	ffyu = 4
-	ffyv = 5
-	ffyw = 6
-	ffyx = 7
+	fhlu = -4
+	fhlv = -3
+	fhlw = -2
+	fhlx = -1
+	fhly = 0
+	fhlz = 1
+	fhma = 2
+	fhmb = 3
+	fhmc = 4
+	fhmd = 5
+	fhme = 6
+	fhmf = 7
 

@@ -830,7 +830,7 @@ class EffectInstanceData:
     m_flags: int
     effectUid: int
     baseEffectId: int
-    effectId: int
+    actionId: int
     order: int
     targetId: int
     targetMask: str
@@ -850,7 +850,7 @@ class EffectInstanceDice:
     m_flags: int
     effectUid: int
     baseEffectId: int
-    effectId: int
+    actionId: int
     order: int
     targetId: int
     targetMask: str
@@ -2518,8 +2518,16 @@ class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerPopulationData]
     references: ManagedReferencesRegistry
 
+class ServerSeasonData:
+    uid: int
+    nameId: str
+    beginning: float
+    closure: float
+    resetDate: float
+    flagObjectId: int
+
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: MetadataDictionaryContainer
+    objectsById: MetadataDictionaryContainer[ServerSeasonData]
     references: ManagedReferencesRegistry
 
 class ServerValueData:

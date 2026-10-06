@@ -268,13 +268,12 @@ class ClientInteractiveMapElement(TypedDict):
 class ClientIsometricMergedMapElements(TypedDict):
     mapElements: list[ClientMapElement]
     materialIndex: int
-    shaderVariantIndex: int
     isStagingTarget: int
     stagingId: str
     uniqueMaterialInstance: int
     displayOrder: int
     hasWind: int
-    hasWave: int
+    hasRectangleMesh: int
     hasAtlasVertex: int
     cellId: int
 
@@ -313,7 +312,6 @@ class ClientMapData(MonoBehaviour):
     middlegroundMaterialData: MaterialData
     foregroundMaterialData: MaterialData
     particlesShaderData: list[ShaderData]
-    shaderVariants: list[int]
     particlesParameters: list[ClientParticlesParameters]
     cellsData: list[ClientCellData]
     topArrowCellList: list[int]
@@ -335,13 +333,12 @@ class ClientMapElement(TypedDict):
 class ClientMergedMapElements(TypedDict):
     mapElements: list[ClientMapElement]
     materialIndex: int
-    shaderVariantIndex: int
     isStagingTarget: int
     stagingId: str
     uniqueMaterialInstance: int
     displayOrder: int
     hasWind: int
-    hasWave: int
+    hasRectangleMesh: int
     hasAtlasVertex: int
 
 class ClientParticlesParameters(TypedDict):
@@ -792,7 +789,6 @@ class ShaderCustomFramerateParameters(TypedDict):
 
 class ShaderData(TypedDict):
     shaderParameters: list[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]
-    shaderVariant: int
 
 class ShaderDepthAlphaClipParameters(TypedDict):
     alphaClip: float

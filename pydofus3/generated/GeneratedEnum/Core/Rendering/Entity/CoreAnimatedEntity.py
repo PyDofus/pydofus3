@@ -2,28 +2,28 @@ from enum import IntEnum
 
 class AnimatedEntity:
 	class xc(IntEnum):
-		dgod = 0
-		dgoe = 1
-		dgof = 2
-		dgog = 3
-		dgoh = 4
-		dgoi = 5
-		dgoj = 6
-		dgok = 7
-		dgol = 8
-		dgom = 9
-		dgon = 10
-		dctw = 11
+		dhfy = 0
+		dhfz = 1
+		dhga = 2
+		dhgb = 3
+		dhgc = 4
+		dhgd = 5
+		dhge = 6
+		dhgf = 7
+		dhgg = 8
+		dhgh = 9
+		dhgi = 10
+		dhgj = 11
 
 	class xd(IntEnum):
-		dgoo = 0
-		dgop = 1
-		dgoq = 2
+		dhgk = 0
+		dhgl = 1
+		dhgm = 2
 
 	class xe(IntEnum):
-		dgor = 0
-		dgos = 1
-		dgot = 2
-		dgou = 3
-		dgov = 4
+		dhgn = 0
+		dhgo = 1
+		dhgp = 2
+		dhgq = 3
+		dhgr = 4
 

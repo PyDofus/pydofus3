@@ -776,7 +776,7 @@ class EffectInstanceData(TypedDict):
     m_flags: int
     effectUid: int
     baseEffectId: int
-    effectId: int
+    actionId: int
     order: int
     targetId: int
     targetMask: str
@@ -796,7 +796,7 @@ class EffectInstanceDice(TypedDict):
     m_flags: int
     effectUid: int
     baseEffectId: int
-    effectId: int
+    actionId: int
     order: int
     targetId: int
     targetMask: str
@@ -2350,8 +2350,16 @@ class ServerPopulationData(TypedDict):
 class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerPopulationData]
 
+class ServerSeasonData(TypedDict):
+    uid: int
+    nameId: str
+    beginning: float
+    closure: float
+    resetDate: float
+    flagObjectId: int
+
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: dict[str, Any]
+    objectsById: dict[str, ServerSeasonData]
 
 class ServerValueData(TypedDict):
     id: int

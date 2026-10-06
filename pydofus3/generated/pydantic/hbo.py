@@ -1,8 +1,5 @@
-from pydofus3.not_generated.base import OpenAPIIntEnum
+from pydofus3.not_generated.base import MyBaseModel
 
-class hbo(OpenAPIIntEnum):
-	eapf = 0
-	eapg = 1
-	eaph = 2
-	eapi = 3
+class hbo(MyBaseModel):
+	pass
 

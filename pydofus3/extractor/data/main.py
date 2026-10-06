@@ -544,7 +544,9 @@ class UnityExtractor:
         skin = obj.assets_file.files[bone_data['boneAsset']['m_PathID']].parse_as_dict()
         self.extract_skin(skin, obj, output)
         for anim in bone_data['animations']:
-            (output / f'{anim["name"]}.dat').write_bytes(bytes(anim['dataBytes']))
+            text_asset = obj.assets_file.files[anim['data']['m_PathID']]
+            obj = text_asset.parse_as_object()
+            (output / f'{anim["name"]}.dat').write_bytes(obj.m_Script.encode("utf-8", "surrogateescape"))
             del anim['dataBytes']
         if self.config.no_big_int:
             del bone_data['m_GameObject']

@@ -1,5 +1,6 @@
 from pydofus3.not_generated.base import MyBaseModel
 
 class hbx(MyBaseModel):
-	pass
+	class hbw(MyBaseModel):
+		pass
 

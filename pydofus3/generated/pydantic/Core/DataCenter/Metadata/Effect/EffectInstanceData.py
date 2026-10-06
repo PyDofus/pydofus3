@@ -11,7 +11,7 @@ class EffectInstanceData(MyBaseModel):
 	m_flags: EffectInstanceFlags
 	effectUid: int
 	baseEffectId: int
-	effectId: Annotated[Union[ActionId, int], Field(union_mode='left_to_right')]
+	actionId: Annotated[Union[ActionId, int], Field(union_mode='left_to_right')]
 	order: int
 	targetId: int
 	targetMask: str
