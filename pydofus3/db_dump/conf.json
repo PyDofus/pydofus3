@@ -55,7 +55,7 @@
       "categoryId": "AlterationCategories"
     },
     "custom_Alterations_possibleEffects": {
-      "effectId": "Effects"
+      "actionId": "Effects"
     },
     "Areas": {
       "superAreaId": "SuperAreas",
@@ -221,11 +221,11 @@
       "typeId": "ItemTypes"
     },
     "custom_Items_possibleEffects": {
-      "effectId": "Effects",
+      "actionId": "Effects",
       "spellId": "Spells"
     },
     "custom_customArray_ItemSets_effects_effects": {
-      "effectId": "Effects",
+      "actionId": "Effects",
       "spellId": "Spells"
     },
     "LegendaryTreasureHunts": {
@@ -292,7 +292,7 @@
       "familyId": "MountFamilies"
     },
     "custom_Mounts_effects": {
-      "effectId": "Effects"
+      "actionId": "Effects"
     },
     "NpcMessages": {
       "messageSkinId": "NpcDialogSkins"
@@ -436,11 +436,11 @@
       "spellLevelId": "SpellLevels"
     },
     "custom_SpellLevels_criticalEffect": {
-      "effectId": "Effects",
+      "actionId": "Effects",
       "spellId": "Spells"
     },
     "custom_SpellLevels_effects": {
-      "effectId": "Effects",
+      "actionId": "Effects",
       "spellId": "Spells"
     },
     "SpellVariants": {

@@ -351,10 +351,10 @@ class UnityExtractor:
                 return extracted
             elif data['m_Script'].get('m_AssemblyName') == 'Ankama.Dofus.Core.DataCenter' and self.config.process_datacenter:
                 data, output = self.extract_datacenter(data, output)
-        elif self.config.no_big_int:
+        if self.config.no_big_int:
             del data['m_Script']
             del data['m_GameObject']
-        elif self.config.reference:
+        if self.config.reference:
             process_references(data)
         if 'm_AtlasTextures' in data and 'm_FaceInfo' in data:
             extracted.update(self.export_font_atlases(obj, data, output))
