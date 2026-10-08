@@ -547,7 +547,6 @@ class UnityExtractor:
             text_asset = obj.assets_file.files[anim['data']['m_PathID']]
             obj = text_asset.parse_as_object()
             (output / f'{anim["name"]}.dat').write_bytes(obj.m_Script.encode("utf-8", "surrogateescape"))
-            del anim['dataBytes']
         if self.config.no_big_int:
             del bone_data['m_GameObject']
             del bone_data['m_Script']

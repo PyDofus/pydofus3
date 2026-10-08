@@ -13,7 +13,7 @@ def protodec(dummy_dll_path: Path, output_dir: Path = Path('output')):
     extract obfu proto with protodec
     """
     protodec_path = Path(__file__).parent / 'protodec/protodec.dll'
-    for f in dummy_dll_path.rglob('Ankama.Dofus.Protocol.*.dll'):
+    for f in dummy_dll_path.glob('DummyDll/Ankama.Dofus.Protocol.*.dll'):
         name = f.stem.split('.')[-1]
         subprocess.run(['dotnet', protodec_path, f, output_dir / f'{name}.proto'])
     if (game_proto:= (output_dir / 'Game.proto')).is_file():

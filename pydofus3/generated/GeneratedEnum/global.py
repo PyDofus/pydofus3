@@ -8926,38 +8926,6 @@ class mig:
 		fhui = 2
 		fhuj = 3
 
-class mii(IntEnum):
-	fhvr = -9
-	fhvq = -8
-	fhvp = -7
-	fhvo = -6
-	fhvn = -5
-	fhvm = -4
-	fhvl = -3
-	fhvk = -2
-	fhvj = -1
-	fhuo = 0
-	fhup = 1
-	fhuq = 2
-	fhur = 3
-	fhus = 4
-	fhut = 5
-	fhuu = 6
-	fhuv = 7
-	fhuw = 8
-	fhux = 9
-	fhuy = 10
-	fhuz = 11
-	fhva = 12
-	fhvb = 13
-	fhvc = 14
-	fhvd = 15
-	fhve = 16
-	fhvf = 17
-	fhvg = 18
-	fhvh = 20
-	fhvi = 21
-
 class mij(IntEnum):
 	fhvs = 0
 	fhvt = 1
@@ -9153,6 +9121,7 @@ class tw(IntEnum):
 class ur(IntEnum):
 	dgks = 0
 	dgkt = 1
+	dbwv = 2
 
 class vp:
 	class vo(IntEnum):
