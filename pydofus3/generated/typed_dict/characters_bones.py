@@ -38,7 +38,6 @@ class AnimatedObjectDefinition(MonoBehaviour):
 class Animation(TypedDict):
     name: str
     data: PPtr
-    dataBytes: list[int]
     bounds: Rectf
 
 class AnimationGeometryVertex(TypedDict):

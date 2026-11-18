@@ -1982,6 +1982,7 @@ class DofusUISettings(MonoBehaviour):
     breachRoomRef: AssetReferenceVisualTreeAsset
     breachRoomStartRef: AssetReferenceVisualTreeAsset
     breachRoomEndRef: AssetReferenceVisualTreeAsset
+    textShortcutTooltipLineRef: AssetReferenceVisualTreeAsset
     worldEventLadderFilterRef: AssetReferenceVisualTreeAsset
     worldEventLadderLineRef: AssetReferenceVisualTreeAsset
     koliLadderLineRef: AssetReferenceVisualTreeAsset

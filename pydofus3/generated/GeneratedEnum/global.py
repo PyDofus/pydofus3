@@ -9299,13 +9299,6 @@ class yi(IntEnum):
 	dhpf = 3
 	dhpg = 4
 
-class yq(IntEnum):
-	dhpr = 0
-	dhps = 1
-	dhpt = 2
-	dhpu = 3
-	dhpv = 4
-
 class zb:
 	class za(IntEnum):
 		dhrl = 0

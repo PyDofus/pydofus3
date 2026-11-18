@@ -26,7 +26,6 @@ class AnimatedObjectDefinition(MonoBehaviour):
 class Animation:
     name: str
     data: PPtr[TextAsset]
-    dataBytes: list[int]
     bounds: Rectf
 
 class AnimationGeometryVertex:

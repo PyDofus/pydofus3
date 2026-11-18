@@ -67,4 +67,5 @@ class TooltipType(IntEnum):
 	MultilineText = 77
 	FightMark = 78
 	SpellState = 79
+	TextShortcut = 80
 
