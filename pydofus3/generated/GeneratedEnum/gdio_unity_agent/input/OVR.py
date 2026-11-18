@@ -185,6 +185,8 @@ class OVRSupport:
 		None_ = -1
 		HandLeft = 0
 		HandRight = 1
+		XRHandLeft = 4
+		XRHandRight = 5
 
 	class ESupBoundaryVisibility(IntEnum):
 		NotSuppressed = 1

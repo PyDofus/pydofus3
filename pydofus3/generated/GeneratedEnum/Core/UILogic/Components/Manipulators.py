@@ -1,4 +1,11 @@
+from enum import IntEnum
 from enum import IntFlag
+
+class ElementDragger:
+	class AxisLock(IntEnum):
+		None_ = 0
+		Horizontal = 1
+		Vertical = 2
 
 class KeyUsages(IntFlag):
 	None_ = 0

@@ -42,9 +42,8 @@ class LobbyTab:
 
 	class SortingCriteria(IntEnum):
 		Type = 0
-		Description = 1
-		Date = 2
-		Group = 3
+		Date = 1
+		Group = 2
 
 class LobbyType(IntEnum):
 	None_ = 0
@@ -55,6 +54,7 @@ class LobbyType(IntEnum):
 	Archimonster = 5
 	Kolizeum = 6
 	InfiniteDream = 7
+	Anomaly = 8
 
 class State(IntEnum):
 	None_ = 0

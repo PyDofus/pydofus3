@@ -9,7 +9,7 @@ class Datacenter(metaclass=SingletonMeta):
     def __init__(self, empty: bool = False):
         self.empty = empty
         if not empty:
-            self.progress = tqdm(total=211)
+            self.progress = tqdm(total=215)
         
         self.AlignmentGiftData = self.load_d2o(Alignment.AlignmentGiftData)
         self.AlignmentOrderData = self.load_d2o(Alignment.AlignmentOrderData)
@@ -60,6 +60,7 @@ class Datacenter(metaclass=SingletonMeta):
         
         self.BodyData = self.load_d2o(Breed.BodyData)
         self.BreedData = self.load_d2o(Breed.BreedData)
+        self.BreedLineageData = self.load_d2o(Breed.BreedLineageData)
         self.BreedRoleData = self.load_d2o(Breed.BreedRoleData)
         self.HeadData = self.load_d2o(Breed.HeadData)
         
@@ -238,9 +239,12 @@ class Datacenter(metaclass=SingletonMeta):
         
         self.SoundBoneData = self.load_d2o(Sound.SoundBoneData)
         
+        self.HaloShapeData = self.load_d2o(Spell.HaloShapeData)
+        self.MarkData = self.load_d2o(Spell.MarkData)
         self.SpellBombData = self.load_d2o(Spell.SpellBombData)
         self.SpellBombWallData = self.load_d2o(Spell.SpellBombWallData)
         self.SpellData = self.load_d2o(Spell.SpellData)
+        self.SpellHaloData = self.load_d2o(Spell.SpellHaloData)
         self.SpellLevelData = self.load_d2o(Spell.SpellLevelData)
         self.SpellPairData = self.load_d2o(Spell.SpellPairData)
         self.SpellScriptData = self.load_d2o(Spell.SpellScriptData)

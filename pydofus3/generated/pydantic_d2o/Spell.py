@@ -1,6 +1,9 @@
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.HaloShapeData import HaloShapeData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.MarkData import MarkData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellBombData import SpellBombData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellBombWallData import SpellBombWallData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellData import SpellData
+from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellHaloData import SpellHaloData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellLevelData import SpellLevelData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellPairData import SpellPairData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellScriptData import SpellScriptData
@@ -8,4 +11,4 @@ from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellStateData i
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellTypeData import SpellTypeData
 from pydofus3.generated.pydantic.Core.DataCenter.Metadata.Spell.SpellVariantData import SpellVariantData
 
-__all__ =["SpellBombData", "SpellBombWallData", "SpellData", "SpellLevelData", "SpellPairData", "SpellScriptData", "SpellStateData", "SpellTypeData", "SpellVariantData"]
+__all__ =["HaloShapeData", "MarkData", "SpellBombData", "SpellBombWallData", "SpellData", "SpellHaloData", "SpellLevelData", "SpellPairData", "SpellScriptData", "SpellStateData", "SpellTypeData", "SpellVariantData"]

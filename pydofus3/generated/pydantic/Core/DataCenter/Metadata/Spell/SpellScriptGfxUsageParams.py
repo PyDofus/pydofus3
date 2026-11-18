@@ -11,6 +11,10 @@ from typing import ClassVar
 class SpellScriptGfxUsageParams(MyBaseModel):
 	DefaultType: ClassVar[Annotated[Union[SpellScriptGfxType, int], Field(union_mode='left_to_right')]] = Annotated[Union[SpellScriptGfxType, int], Field(union_mode='left_to_right')].Unknown
 	DefaultGfxId: ClassVar[int] = 0
+	DefaultVfxId: ClassVar[int] = -1
+	DefaultVfxDuration: ClassVar[int] = 0
+	DefaultSpawnInterval: ClassVar[int] = 0
+	DefaultVfxColors: ClassVar[str] = None
 	DefaultOffsetX: ClassVar[int] = 0
 	DefaultOffsetY: ClassVar[int] = 0
 	DefaultScaleX: ClassVar[float_nan] = 1
@@ -34,6 +38,10 @@ class SpellScriptGfxUsageParams(MyBaseModel):
 	DefaultStagingIsBlocking: ClassVar[bool] = False
 	type: Annotated[Union[SpellScriptGfxType, int], Field(union_mode='left_to_right')]
 	gfxId: int
+	vfxId: int
+	vfxDuration: int
+	spawnInterval: int
+	vfxColors: str
 	offsetX: int
 	offsetY: int
 	scaleX: float_nan

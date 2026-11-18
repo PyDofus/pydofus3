@@ -5,3 +5,6 @@ class GroupSearch:
 		DungeonMatchmaking = 0
 		AnnounceTab = 1
 
+class TimerType(IntEnum):
+	GroupSearch = 0
+

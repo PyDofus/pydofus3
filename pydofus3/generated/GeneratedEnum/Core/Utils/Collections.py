@@ -2,9 +2,9 @@ from enum import IntEnum
 
 class SmallSet[T]:
 	class Enumerator:
-		class td[a](IntEnum):
-			dgce = 0
-			dgcf = 1
-			dgcg = 2
-			dgch = 3
+		class tj[a](IntEnum):
+			dhba = 0
+			dhbb = 1
+			dhbc = 2
+			dhbd = 3
 

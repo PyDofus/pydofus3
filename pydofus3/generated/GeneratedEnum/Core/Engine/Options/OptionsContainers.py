@@ -10,11 +10,11 @@ class DofusOptionsContainer:
 		Right = 1
 
 class RoleplayOptionsContainer:
-	class gqv(IntEnum):
-		ealc = 0
-		eald = 1
+	class gtl(IntEnum):
+		ebto = 0
+		ebtp = 1
 
-	class gqw(IntEnum):
-		eale = 0
-		ealf = 1
+	class gtm(IntEnum):
+		ebtq = 0
+		ebtr = 1
 

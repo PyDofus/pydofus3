@@ -126,6 +126,9 @@ async def BodyData() -> list[Breed.BodyData]:
 @app.get("/BreedData", tags=["Breed"])
 async def BreedData() -> list[Breed.BreedData]:
     return data.BreedData
+@app.get("/BreedLineageData", tags=["Breed"])
+async def BreedLineageData() -> list[Breed.BreedLineageData]:
+    return data.BreedLineageData
 @app.get("/BreedRoleData", tags=["Breed"])
 async def BreedRoleData() -> list[Breed.BreedRoleData]:
     return data.BreedRoleData
@@ -549,6 +552,12 @@ async def SocialTagTypeData() -> list[Social.SocialTagTypeData]:
 @app.get("/SoundBoneData", tags=["Sound"])
 async def SoundBoneData() -> list[Sound.SoundBoneData]:
     return data.SoundBoneData
+@app.get("/HaloShapeData", tags=["Spell"])
+async def HaloShapeData() -> list[Spell.HaloShapeData]:
+    return data.HaloShapeData
+@app.get("/MarkData", tags=["Spell"])
+async def MarkData() -> list[Spell.MarkData]:
+    return data.MarkData
 @app.get("/SpellBombData", tags=["Spell"])
 async def SpellBombData() -> list[Spell.SpellBombData]:
     return data.SpellBombData
@@ -558,6 +567,9 @@ async def SpellBombWallData() -> list[Spell.SpellBombWallData]:
 @app.get("/SpellData", tags=["Spell"])
 async def SpellData() -> list[Spell.SpellData]:
     return data.SpellData
+@app.get("/SpellHaloData", tags=["Spell"])
+async def SpellHaloData() -> list[Spell.SpellHaloData]:
+    return data.SpellHaloData
 @app.get("/SpellLevelData", tags=["Spell"])
 async def SpellLevelData() -> list[Spell.SpellLevelData]:
     return data.SpellLevelData

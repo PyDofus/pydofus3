@@ -1,10 +1,10 @@
 from enum import IntEnum
 
 class DelayedEvent:
-	class hbv(IntEnum):
-		ebij = 0
-		ebik = 1
-		ebil = 2
-		ebim = 3
-		ebin = 4
+	class hel(IntEnum):
+		ecqy = 0
+		ecqz = 1
+		ecra = 2
+		ecrb = 3
+		ecrc = 4
 

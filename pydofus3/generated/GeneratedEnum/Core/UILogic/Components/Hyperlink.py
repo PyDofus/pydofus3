@@ -93,5 +93,6 @@ class HyperlinkType(IntEnum):
 	openRaid = 84
 	ride = 85
 	lobby = 86
+	fightMark = 87
 	unknown = 1000
 

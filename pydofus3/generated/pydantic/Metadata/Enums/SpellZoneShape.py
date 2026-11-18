@@ -29,5 +29,6 @@ class SpellZoneShape(OpenAPIIntEnum):
 	Cross = 88
 	OutsideComplexCircle = 90
 	WholeMap = 97
+	Relative = 99
 	LineFromCaster = 108
 

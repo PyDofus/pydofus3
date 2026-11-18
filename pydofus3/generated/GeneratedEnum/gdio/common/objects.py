@@ -5,6 +5,7 @@ class ApiTypes(IntEnum):
 	OVR = 1
 	REWIRED = 2
 	LUA = 3
+	OpenXR = 4
 
 class COLLISION_EVENT(IntEnum):
 	COLLISION_ENTER = 0

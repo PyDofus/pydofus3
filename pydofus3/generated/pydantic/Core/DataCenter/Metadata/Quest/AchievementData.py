@@ -14,6 +14,7 @@ class AchievementData(D2oData):
 	level: int
 	order: int
 	accountLinked: bool
+	lobbyDisplay: bool
 	objectiveIds: list[int]
 	rewardIds: list[int]
 

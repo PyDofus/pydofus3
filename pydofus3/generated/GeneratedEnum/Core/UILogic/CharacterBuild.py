@@ -8,4 +8,5 @@ class CharacterPresetUi:
 		Stat = 8
 		Name = 16
 		Gfx = 32
+		Lineage = 64
 

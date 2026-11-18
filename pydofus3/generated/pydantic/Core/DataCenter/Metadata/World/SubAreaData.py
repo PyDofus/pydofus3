@@ -30,4 +30,5 @@ class SubAreaData(D2oData):
 	associatedZaapMapId: int
 	neighbors: list[int]
 	dungeonId: int
+	isEvolutive: bool
 

@@ -113,6 +113,8 @@ class ItemGid(IntEnum):
 	BebemothReflect = 20968
 	InhibCristal = 27631
 	PacifyCristal = 27632
+	IvoryDraconicRune = 31571
+	EbonyDraconicRune = 31573
 
 class ItemSuperTypeEnum(IntEnum):
 	None_ = -1
@@ -248,6 +250,7 @@ class ItemTypeEnum(IntEnum):
 	FlyHorn = 333
 	SmithmagicSliver = 335
 	SmithmagicGem = 336
+	SmithMagicDraconicRune = 341
 
 class JobId(IntEnum):
 	Base = 1

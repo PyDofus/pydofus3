@@ -6,5 +6,6 @@ class ChoiceOptionData(MyBaseModel):
 	descriptionId: i18n
 	rewardType: int
 	rewardValue: str
+	alreadyVisible: bool
 	gfxId: int
 

@@ -113,4 +113,5 @@ class JobUis(IntEnum):
 	SmithMagicCoop = 4
 	CheckCraft = 5
 	RuneMaker = 6
+	SmithMagicDraconicPopup = 7
 

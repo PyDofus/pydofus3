@@ -6,4 +6,5 @@ class AnomalyData(D2oData):
 
 	id: int
 	monsterId: int
+	achievements: list[int]
 

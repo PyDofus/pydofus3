@@ -67,6 +67,8 @@ class GuideBookArticleEnum(IntEnum):
 	KolossiumSurrender = 229
 	KolossiumEventRules = 472
 	InfiniteDreamTrial = 473
+	SmithmagicDraconicRune = 499
+	AdventureMode = 500
 
 class GuideBookImageHorizontalAlignEnum(IntEnum):
 	Left = 0

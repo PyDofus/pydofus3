@@ -1,14 +1,14 @@
 from pydantic import Field
 from pydofus3.generated.pydantic.Ankama.Animations.Sources.Rendering.CustomPasses.CustomRenderObjectsPassSettings import CustomRenderObjectsPassSettings
-from pydofus3.generated.pydantic.hbz import hbz
-from pydofus3.generated.pydantic.hch import hch
+from pydofus3.generated.pydantic.hep import hep
+from pydofus3.generated.pydantic.hex import hex
 from pydofus3.not_generated.unity import RenderPassEvent
 from pydofus3.not_generated.unity import ScriptableRendererFeature
 from typing import Annotated, Union
 
 class CustomRenderObjectsFeature(ScriptableRendererFeature):
 	renderPassEvent: RenderPassEvent
-	renderFeatureType: Annotated[Union[hch.hcg, int], Field(union_mode='left_to_right')]
-	renderObjectPass: hbz
+	renderFeatureType: Annotated[Union[hex.hew, int], Field(union_mode='left_to_right')]
+	renderObjectPass: hep
 	renderObjectsSettings: CustomRenderObjectsPassSettings
 

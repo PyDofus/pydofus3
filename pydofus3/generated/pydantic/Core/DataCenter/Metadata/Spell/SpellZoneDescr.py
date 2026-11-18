@@ -41,6 +41,7 @@ class SpellZoneDescr(MyBaseModel):
 		defaultParam2: int
 		isCustom: bool
 		isPoint: bool
+		isRelative: bool
 
 	class SpellZoneFormat(MyBaseModel):
 		pass

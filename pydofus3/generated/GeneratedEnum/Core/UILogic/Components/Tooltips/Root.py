@@ -18,7 +18,6 @@ class TooltipType(IntEnum):
 	ThinkBubble = 13
 	Player = 14
 	MonsterGroup = 17
-	GroundObject = 20
 	TaxCollector = 21
 	TexturesList = 25
 	DelayedAction = 26
@@ -68,4 +67,6 @@ class TooltipType(IntEnum):
 	FightMark = 78
 	SpellState = 79
 	TextShortcut = 80
+	AvatarSelection = 81
+	Lineage = 82
 

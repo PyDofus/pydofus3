@@ -1,5 +1,18 @@
 from enum import IntEnum
 
+class SmithMagicDraconicPopup:
+	class DraconicRuneType(IntEnum):
+		Offensive = 0
+		Defensive = 1
+		Power = 2
+
+class SmithMagicDraconicUtils:
+	class DraconicRuneError(IntEnum):
+		None_ = 0
+		NoElementToTransform = 1
+		ElementAlreadyOnItem = 2
+		HasDraconicMark = 3
+
 class SmithMagicItemEffectLine:
 	class EffectStateStyle(IntEnum):
 		neutral = 0

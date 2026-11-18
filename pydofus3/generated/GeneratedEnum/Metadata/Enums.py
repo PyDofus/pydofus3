@@ -61,6 +61,7 @@ class SpellZoneShape(IntEnum):
 	Cross = 88
 	OutsideComplexCircle = 90
 	WholeMap = 97
+	Relative = 99
 	LineFromCaster = 108
 
 class WorldEventDataType(IntEnum):

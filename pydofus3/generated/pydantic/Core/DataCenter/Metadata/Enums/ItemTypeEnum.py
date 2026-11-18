@@ -102,4 +102,5 @@ class ItemTypeEnum(OpenAPIIntEnum):
 	FlyHorn = 333
 	SmithmagicSliver = 335
 	SmithmagicGem = 336
+	SmithMagicDraconicRune = 341
 

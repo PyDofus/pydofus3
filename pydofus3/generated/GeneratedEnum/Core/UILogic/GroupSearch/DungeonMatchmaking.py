@@ -8,6 +8,12 @@ class DungeonMatchmaking:
 		Level = 2
 		Keys = 3
 
+	class TimerType(IntEnum):
+		None_ = 0
+		Classic = 1
+		Party = 2
+		Random = 3
+
 	class Section(IntEnum):
 		Classic = 0
 		Random = 1
@@ -15,6 +21,6 @@ class DungeonMatchmaking:
 	class DungeonAccessError(IntEnum):
 		None_ = 0
 		Level = 1
-		Key = 2
+		HasAccess = 2
 		Criterion = 3
 

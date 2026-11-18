@@ -44,6 +44,7 @@ class ActionId(IntEnum):
 	BreachModifyBoss = 61
 	BreachAddBoss = 62
 	AnomalyExit = 63
+	BreachGainChallengeQuest = 64
 	CharacterMovementPointsSteal = 77
 	CharacterMovementPointsWin = 78
 	CharacterMultiplyReceivedDamageOrGiveLifeWithRatio = 79
@@ -255,13 +256,13 @@ class ActionId(IntEnum):
 	FightAddTrapCastingSpell = 400
 	FightAddGlyphCastingSpell = 401
 	FightAddGlyphCastingSpellEndturn = 402
-	FightAddAuraOnTarget = 403
-	FightDisableAura = 404
+	AddHalo = 403
+	DeactivateHalo = 404
 	FightKillAndSummon = 405
 	CharacterDispellSpell = 406
 	CharacterLifePointsWinNoBoost = 407
-	FightActivateAura = 408
-	FightRemoveAura = 409
+	ReactivateHalo = 408
+	RemoveHalo = 409
 	CharacterBoostApAttack = 410
 	CharacterDeboostApAttack = 411
 	CharacterBoostMpAttack = 412
@@ -284,9 +285,9 @@ class ActionId(IntEnum):
 	CharacterDeboostAirDamages = 429
 	CharacterBoostNeutralDamages = 430
 	CharacterDeboostNeutralDamages = 431
-	FightIncreaseAuraSize = 432
-	FightDecreaseAuraSize = 433
-	FightModifyAuraArea = 434
+	ApplyNextHaloShape = 432
+	ApplyPreviousHaloShape = 433
+	SetHaloShape = 434
 	CharacterActionPointsStealNoEvade = 440
 	CharacterMovementPointsStealNoEvade = 441
 	ExchangeCraftOpen = 502
@@ -689,6 +690,8 @@ class ActionId(IntEnum):
 	FinishMove = 2029
 	CharacterLearnFinishMove = 2030
 	CharacterLearnHavenBagTheme = 2031
+	DispelPreviewMarkOfTarget = 2048
+	DispelGlyphsOnCell = 2118
 	CasterExecuteSpellGlobalLimitation = 2160
 	FightEnablePortal = 2183
 	TargetFollowCaster = 2184
@@ -976,6 +979,10 @@ class ActionId(IntEnum):
 	RideBreedGrowerOpportunity = 3844
 	TeleportFromSubarea = 3845
 	BoostWeaponBaseHeal = 3935
+	BoostSpellZoneSize = 3936
+	DeboostSpellZoneSize = 3937
+	BoostWeaponZoneSize = 3938
+	DeboostWeaponZoneSize = 3939
 	RunawayFight = 4000
 	CharacterPushDirectional = 4001
 	CharacterPushForceDirectional = 4002
@@ -1031,6 +1038,17 @@ class ActionId(IntEnum):
 	CharacterIncreaseCounter = 4071
 	CharacterDecreaseCounter = 4072
 	CharacterResetCounter = 4073
+	DisplayPreviewMark = 4074
+	FightEnableCell = 4075
+	FightDisableCell = 4076
+	CharacterSetCounter = 4077
+	CharacterTeleportOnSameMapForceDirection = 4080
+	AddElementalDraconicMark = 4081
+	AddResistanceDraconicMark = 4082
+	AddPowerDraconicMark = 4083
+	PreventFutureSmithmagicDraconicMark = 4180
+	TransformationElementEffect = 4181
+	DisplayBossLife = 4182
 
 class EffectInstanceData:
 	class UndefinedValues(IntEnum):

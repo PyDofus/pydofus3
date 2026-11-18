@@ -7,6 +7,7 @@ class SpellBombWallData(D2oData):
 	id: int
 	spellId: int
 	color: int
+	markId: int
 	linear: bool
 	minHop: int
 	maxHop: int

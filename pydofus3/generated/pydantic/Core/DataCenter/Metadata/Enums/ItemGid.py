@@ -21,4 +21,6 @@ class ItemGid(OpenAPIIntEnum):
 	BebemothReflect = 20968
 	InhibCristal = 27631
 	PacifyCristal = 27632
+	IvoryDraconicRune = 31571
+	EbonyDraconicRune = 31573
 

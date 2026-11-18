@@ -2,55 +2,55 @@ from enum import IntEnum
 from enum import IntFlag
 
 class Animation:
-	class hbc(IntFlag):
-		ebcx = 0
-		ebcy = 1
-		ebcz = 2
-		ebda = 4
-		ebdb = 8
-		ebdc = 16
-		ebdd = 32
-		ebde = 64
-		ebdf = 128
+	class hds(IntFlag):
+		eclj = 0
+		eclk = 1
+		ecll = 2
+		eclm = 4
+		ecln = 8
+		eclo = 16
+		eclp = 32
+		eclq = 64
+		eclr = 128
 
-	class hbd(IntEnum):
-		ebdg = 0
-		ebdh = 1
-		ebdi = 2
-		ebdj = 4
-		ebdk = 8
-		ebdl = 16
-		ebdm = 32
-		ebdn = 64
-		ebdo = 128
+	class hdt(IntEnum):
+		ecls = 0
+		eclt = 1
+		eclu = 2
+		eclv = 4
+		eclw = 8
+		eclx = 16
+		ecly = 32
+		eclz = 64
+		ecma = 128
 
-	class hbe(IntFlag):
-		ebdp = 0
-		ebdq = 1
-		ebdr = 2
-		ebds = 4
+	class hdu(IntFlag):
+		ecmb = 0
+		ecmc = 1
+		ecmd = 2
+		ecme = 4
 
-	class hbf(IntEnum):
-		ebdt = 0
-		ebdu = 1
-		ebdv = 2
-		ebdw = 3
-		ebdx = 4
-		ebdy = 5
-		ebdz = 6
-		ebea = 7
-		ebeb = 8
-		ebec = 9
-		ebed = 10
-		ebee = 11
-		ebef = 12
-		ebeg = 13
-		ebeh = 14
-		ebei = 15
+	class hdv(IntEnum):
+		ecmf = 0
+		ecmg = 1
+		ecmh = 2
+		ecmi = 3
+		ecmj = 4
+		ecmk = 5
+		ecml = 6
+		ecmm = 7
+		ecmn = 8
+		ecmo = 9
+		ecmp = 10
+		ecmq = 11
+		ecmr = 12
+		ecms = 13
+		ecmt = 14
+		ecmu = 15
 
 class Animator2D:
-	class hbh(IntEnum):
-		ebet = 0
-		ebeu = 1
-		ebev = 2
+	class hdx(IntEnum):
+		ecnf = 0
+		ecng = 1
+		ecnh = 2
 

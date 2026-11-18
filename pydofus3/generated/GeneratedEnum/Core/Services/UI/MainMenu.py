@@ -1,35 +1,35 @@
 from enum import IntEnum
 
 class BannerMenu:
-	class gbh(IntEnum):
-		dxer = 1
-		dxes = 2
-		dxet = 3
-		dxeu = 4
-		dxev = 5
-		dxew = 6
-		dxex = 7
-		dxey = 8
-		dxez = 9
-		dxfa = 10
-		dxfb = 11
-		dxfc = 12
-		dxfd = 13
-		dxfe = 14
-		dxff = 15
-		dxfg = 16
-		dxfh = 17
-		dxfi = 18
-		dxfj = 19
-		dxfk = 20
-		dxfl = 21
-		dxfm = 22
-		dxfn = 23
-		dxfo = 24
-		dxfp = 25
-		dxfq = 2147483647
+	class gdq(IntEnum):
+		dykx = 1
+		dyky = 2
+		dykz = 3
+		dyla = 4
+		dylb = 5
+		dylc = 6
+		dyld = 7
+		dyle = 8
+		dylf = 9
+		dylg = 10
+		dylh = 11
+		dyli = 12
+		dylj = 13
+		dylk = 14
+		dyll = 15
+		dylm = 16
+		dyln = 17
+		dylo = 18
+		dylp = 19
+		dylq = 20
+		dylr = 21
+		dyls = 22
+		dylt = 23
+		dylu = 24
+		dylv = 25
+		dylw = 2147483647
 
-	class gbi(IntEnum):
-		dxfr = 0
-		dxfs = 1
+	class gdr(IntEnum):
+		dylx = 0
+		dyly = 1
 

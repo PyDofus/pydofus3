@@ -1,13 +1,13 @@
 from enum import IntEnum
 
 class Transition:
-	class ent(IntEnum):
-		docf = 0
-		docg = 1
-		doch = 2
-		doci = 4
-		docj = 8
-		dock = 16
-		docl = 32
-		docm = 64
+	class epr(IntEnum):
+		dpgr = 0
+		dpgs = 1
+		dpgt = 2
+		dpgu = 4
+		dpgv = 8
+		dpgw = 16
+		dpgx = 32
+		dpgy = 64
 

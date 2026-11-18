@@ -1,6 +1,13 @@
 from enum import IntEnum
+from enum import IntFlag
 
 class AuctionHouseEffectFilter:
+	class ItemFilterTag(IntFlag):
+		None_ = 1
+		Pet = 2
+		Mount = 4
+		SmithMagic = 8
+
 	class RideFertility(IntEnum):
 		Fertile = 0
 		Feconde = 1

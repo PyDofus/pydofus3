@@ -1,4 +1,4 @@
-from pydofus3.generated.pydantic.hbg import hbg
+from pydofus3.generated.pydantic.hdw import hdw
 from pydofus3.not_generated.base import FlagBaseModel
 from pydofus3.not_generated.base import MyBaseModel
 from pydofus3.not_generated.base import OpenAPIIntEnum
@@ -9,51 +9,51 @@ class Animation(MyBaseModel):
 	name: str
 	boneId: str
 	bounds: Rect
-	instance: hbg
+	instance: hdw
 
-	class hbc(FlagBaseModel):
-		ebcx : Annotated[bool,0]
-		ebcy : Annotated[bool,1]
-		ebcz : Annotated[bool,2]
-		ebda : Annotated[bool,4]
-		ebdb : Annotated[bool,8]
-		ebdc : Annotated[bool,16]
-		ebdd : Annotated[bool,32]
-		ebde : Annotated[bool,64]
-		ebdf : Annotated[bool,128]
+	class hds(FlagBaseModel):
+		eclj : Annotated[bool,0]
+		eclk : Annotated[bool,1]
+		ecll : Annotated[bool,2]
+		eclm : Annotated[bool,4]
+		ecln : Annotated[bool,8]
+		eclo : Annotated[bool,16]
+		eclp : Annotated[bool,32]
+		eclq : Annotated[bool,64]
+		eclr : Annotated[bool,128]
 
-	class hbd(OpenAPIIntEnum):
-		ebdg = 0
-		ebdh = 1
-		ebdi = 2
-		ebdj = 4
-		ebdk = 8
-		ebdl = 16
-		ebdm = 32
-		ebdn = 64
-		ebdo = 128
+	class hdt(OpenAPIIntEnum):
+		ecls = 0
+		eclt = 1
+		eclu = 2
+		eclv = 4
+		eclw = 8
+		eclx = 16
+		ecly = 32
+		eclz = 64
+		ecma = 128
 
-	class hbe(FlagBaseModel):
-		ebdp : Annotated[bool,0]
-		ebdq : Annotated[bool,1]
-		ebdr : Annotated[bool,2]
-		ebds : Annotated[bool,4]
+	class hdu(FlagBaseModel):
+		ecmb : Annotated[bool,0]
+		ecmc : Annotated[bool,1]
+		ecmd : Annotated[bool,2]
+		ecme : Annotated[bool,4]
 
-	class hbf(OpenAPIIntEnum):
-		ebdt = 0
-		ebdu = 1
-		ebdv = 2
-		ebdw = 3
-		ebdx = 4
-		ebdy = 5
-		ebdz = 6
-		ebea = 7
-		ebeb = 8
-		ebec = 9
-		ebed = 10
-		ebee = 11
-		ebef = 12
-		ebeg = 13
-		ebeh = 14
-		ebei = 15
+	class hdv(OpenAPIIntEnum):
+		ecmf = 0
+		ecmg = 1
+		ecmh = 2
+		ecmi = 3
+		ecmj = 4
+		ecmk = 5
+		ecml = 6
+		ecmm = 7
+		ecmn = 8
+		ecmo = 9
+		ecmp = 10
+		ecmq = 11
+		ecmr = 12
+		ecms = 13
+		ecmt = 14
+		ecmu = 15
 

@@ -16,4 +16,5 @@ class HighlightUIEnum(IntEnum):
 	Inventory = 12
 	StatSheet = 13
 	StatBoostSheet = 14
+	PlayerSpell = 15
 
