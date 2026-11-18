@@ -75,10 +75,13 @@
     ],
     "Core.DataCenter.Metadata.Breed.BreedData": [
       "descriptionId",
-      "gameplayClassDescriptionId",
+      "shortDescriptionId",
       "gameplayDescriptionId",
-      "longNameId",
       "shortNameId"
+    ],
+    "Core.DataCenter.Metadata.Breed.BreedLineageData": [
+      "nameId",
+      "descriptionId"
     ],
     "Core.DataCenter.Metadata.Breed.BreedRoleByBreedData": [
       "descriptionId"

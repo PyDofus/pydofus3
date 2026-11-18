@@ -26,6 +26,7 @@ class AchievementData:
     level: int
     order: int
     accountLinked: int
+    lobbyDisplay: int
     objectiveIds: list[int]
     rewardIds: list[int]
 
@@ -297,6 +298,7 @@ class AnomaliesDataRoot(MonoBehaviour):
 class AnomalyData:
     id: int
     monsterId: int
+    achievements: list[int]
 
 class AppearanceData:
     id: int
@@ -475,6 +477,7 @@ class BreedData:
     id: int
     shortNameId: str
     descriptionId: int
+    shortDescriptionId: int
     gameplayDescriptionId: str
     maleLook: str
     femaleLook: str
@@ -491,6 +494,23 @@ class BreedData:
     femaleColors: list[int]
     complexity: int
     sortIndex: int
+
+class BreedLineageData:
+    id: int
+    nameId: int
+    descriptionId: int
+    breedId: int
+    subEntityLook: str
+    maxLevel: int
+    xpFormulaId: int
+    illustrationId: int
+    gfxId: int
+    indexedColors: str
+    lineageSpells: list[LineageSpellData]
+
+class BreedLineagesDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[BreedLineageData]
+    references: ManagedReferencesRegistry
 
 class BreedRoleByBreedData:
     roleId: int
@@ -612,6 +632,7 @@ class ChoiceOptionData:
     descriptionId: int
     rewardType: int
     rewardValue: str
+    alreadyVisible: int
     gfxId: int
 
 class ChoicesDataRoot(MonoBehaviour):
@@ -1314,6 +1335,18 @@ class GuildTagsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[GuildTagData]
     references: ManagedReferencesRegistry
 
+class HaloShapeData:
+    id: int
+    shapeOrder: int
+    haloId: int
+    effectShape: str
+    color: int
+    markId: int
+
+class HaloShapeDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[HaloShapeData]
+    references: ManagedReferencesRegistry
+
 class HavenbagFurnitureData:
     typeId: int
     themeId: int
@@ -1602,6 +1635,14 @@ class LegendaryTreasureHuntsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[LegendaryTreasureHuntData]
     references: ManagedReferencesRegistry
 
+class LineageSpellData:
+    id: int
+    lineageId: int
+    lineageLevel: int
+    spellLevelId: int
+    keptForHigherLevels: int
+    isStartingSpell: int
+
 class LivingObjectSkinMoodsData:
     skinId: int
     moods: list[WrappedIntList]
@@ -1685,6 +1726,30 @@ class MapsCoordinatesDataRoot(MonoBehaviour):
 
 class MapsInformationDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[MapInformationData]
+    references: ManagedReferencesRegistry
+
+class MarkData:
+    id: int
+    color: str
+    gfxID: int
+    directionId: int
+    strataId: int
+    offsetX: int
+    offsetY: int
+    scaleX: float
+    scaleY: float
+    rotation: int
+    frameOffset: int
+    vfxId: int
+    vfxDuration: int
+    vfxColors: str
+    startVfxId: int
+    endVfxId: int
+    materialName: str
+    tooltipTextureName: str
+
+class MarksDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[MarkData]
     references: ManagedReferencesRegistry
 
 class MetadataDictionaryContainer[T]:
@@ -2518,16 +2583,8 @@ class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[ServerPopulationData]
     references: ManagedReferencesRegistry
 
-class ServerSeasonData:
-    uid: int
-    nameId: str
-    beginning: float
-    closure: float
-    resetDate: float
-    flagObjectId: int
-
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: MetadataDictionaryContainer[ServerSeasonData]
+    objectsById: MetadataDictionaryContainer
     references: ManagedReferencesRegistry
 
 class ServerValueData:
@@ -2683,6 +2740,7 @@ class SpellBombWallData:
     id: int
     spellId: int
     color: int
+    markId: int
     linear: int
     minHop: int
     maxHop: int
@@ -2712,6 +2770,19 @@ class SpellData:
     criticalHitBoundScriptUsageData: list[BoundScriptUsageData]
     basePreviewZoneDescr: SpellZoneDescr
     adminName: str
+
+class SpellHaloData:
+    id: int
+    spellGradeByPlayerLevel: int
+    shapesIds: list[int]
+    entrySpellId: int
+    entrySpellDefaultGrade: int
+    exitSpellId: int
+    exitSpellDefaultGrade: int
+
+class SpellHaloDataRoot(MonoBehaviour):
+    objectsById: MetadataDictionaryContainer[SpellHaloData]
+    references: ManagedReferencesRegistry
 
 class SpellLevelData:
     m_flags: int
@@ -2858,6 +2929,7 @@ class SubAreaData:
     associatedZaapMapId: int
     neighbors: list[int]
     dungeonId: int
+    isEvolutive: int
 
 class SubAreasDataRoot(MonoBehaviour):
     objectsById: MetadataDictionaryContainer[SubAreaData]

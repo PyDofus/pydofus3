@@ -10,7 +10,7 @@ class BreedData(D2oData):
 	id: int
 	shortNameId: i18n
 	descriptionId: i18n
-	shortDescriptionId: int
+	shortDescriptionId: i18n
 	gameplayDescriptionId: i18n
 	maleLook: str
 	femaleLook: str

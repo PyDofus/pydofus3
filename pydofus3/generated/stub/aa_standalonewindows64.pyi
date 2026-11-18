@@ -356,7 +356,8 @@ class BasicTooltipHeader_UxmlSerializedData:
     bindingPath_UxmlAttributeFlags: int
     tooltipHeaderStyle: int
     text: str
-    icon: int
+    leftIcon: int
+    rightIcon: int
     subtitleText: str
     tagText: str
     tagSize: int
@@ -365,7 +366,8 @@ class BasicTooltipHeader_UxmlSerializedData:
     tagStatus: int
     tooltipHeaderStyle_UxmlAttributeFlags: int
     text_UxmlAttributeFlags: int
-    icon_UxmlAttributeFlags: int
+    leftIcon_UxmlAttributeFlags: int
+    rightIcon_UxmlAttributeFlags: int
     subtitleText_UxmlAttributeFlags: int
     tagText_UxmlAttributeFlags: int
     tagSize_UxmlAttributeFlags: int
@@ -778,9 +780,11 @@ class ColorPickerField_UxmlSerializedData:
     dataSourceTypeString_UxmlAttributeFlags: int
     bindings_UxmlAttributeFlags: int
     buttonEditIcon: int
+    size: int
     hasBtnReset: int
     m_needToValidate: int
     buttonEditIcon_UxmlAttributeFlags: int
+    size_UxmlAttributeFlags: int
     hasBtnReset_UxmlAttributeFlags: int
     m_needToValidate_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
@@ -1216,6 +1220,7 @@ class DofusButtonCustom_UxmlSerializedData:
     displayTooltipWhenElided: int
     text: str
     imageUrl: str
+    iconShadow: int
     icon: int
     mainStyle: int
     status: int
@@ -1228,6 +1233,7 @@ class DofusButtonCustom_UxmlSerializedData:
     displayTooltipWhenElided_UxmlAttributeFlags: int
     text_UxmlAttributeFlags: int
     imageUrl_UxmlAttributeFlags: int
+    iconShadow_UxmlAttributeFlags: int
     icon_UxmlAttributeFlags: int
     mainStyle_UxmlAttributeFlags: int
     status_UxmlAttributeFlags: int
@@ -1692,10 +1698,12 @@ class DofusToggleButtonGroupCustom_UxmlSerializedData:
     hasShadow_UxmlAttributeFlags: int
     mainStyle: int
     toggleColor: int
+    ignoreGroupColor: int
     toggleSize: int
     gap: int
     mainStyle_UxmlAttributeFlags: int
     toggleColor_UxmlAttributeFlags: int
+    ignoreGroupColor_UxmlAttributeFlags: int
     toggleSize_UxmlAttributeFlags: int
     gap_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
@@ -1777,6 +1785,7 @@ class DofusTweenerVisualElement_UxmlSerializedData:
 
 class DofusUISettings(MonoBehaviour):
     floorElement: PPtr[FloorElement]
+    haloTooltipTexturesTemp: list[PPtr[Texture2D]]
     largeFontStandardTssRef: AssetReferenceThemeStyleSheet
     largeFontBontaTssRef: AssetReferenceThemeStyleSheet
     largeFontBrakmarTssRef: AssetReferenceThemeStyleSheet
@@ -2012,6 +2021,7 @@ class DofusUISettings(MonoBehaviour):
     playerInfoLadderLineRef: AssetReferenceVisualTreeAsset
     playerCardBackgroundTileRef: AssetReferenceVisualTreeAsset
     fighterInfoRef: AssetReferenceVisualTreeAsset
+    draconicElementItemRef: AssetReferenceVisualTreeAsset
     spellBuffComponentRef: AssetReferenceVisualTreeAsset
     buffSummaryComponentRef: AssetReferenceVisualTreeAsset
     buffSpellsBySourceComponentRef: AssetReferenceVisualTreeAsset
@@ -2020,6 +2030,8 @@ class DofusUISettings(MonoBehaviour):
     buffTooltipPartRef: AssetReferenceVisualTreeAsset
     buffsWindowRef: AssetReferenceVisualTreeAsset
     fightMarkTooltipRef: AssetReferenceVisualTreeAsset
+    lineageLineRef: AssetReferenceVisualTreeAsset
+    legendaryHuntLineRef: AssetReferenceVisualTreeAsset
     popUpDefaultRef: AssetReferenceVisualTreeAsset
     popUpImageRef: AssetReferenceVisualTreeAsset
     popUpActionWarningRef: AssetReferenceVisualTreeAsset
@@ -2981,7 +2993,7 @@ class FloorElement(MonoBehaviour):
     isHitboxSelection: int
     isMark: int
     meshRenderer: PPtr[MeshRenderer]
-    m_defaultAndMarkMaterials: list[PPtr[Material]]
+    m_defaultMaterial: PPtr[Material]
     m_spriteSummoned: PPtr[Texture]
     m_spritePlayer: PPtr[Texture]
     m_spriteBoss: PPtr[Texture]
@@ -3389,6 +3401,42 @@ class HeaderWindow_UxmlSerializedData:
     imageUrl_UxmlAttributeFlags: int
     showHelpButton_UxmlAttributeFlags: int
     helpIcon_UxmlAttributeFlags: int
+    references: ManagedReferencesRegistry
+
+class HexagonalTile_UxmlSerializedData:
+    uxmlAssetId: int
+    name: str
+    bindings: list[managedRefArrayItem]
+    tooltip: str
+    dataSourcePathString: str
+    dataSourceTypeString: str
+    dataSourceUnityObject: PPtr[Object]
+    viewDataKey: str
+    pickingMode: int
+    usageHints: int
+    languageDirection: int
+    tabIndex: int
+    focusable: int
+    enabledSelf: int
+    name_UxmlAttributeFlags: int
+    enabledSelf_UxmlAttributeFlags: int
+    viewDataKey_UxmlAttributeFlags: int
+    pickingMode_UxmlAttributeFlags: int
+    tooltip_UxmlAttributeFlags: int
+    usageHints_UxmlAttributeFlags: int
+    tabIndex_UxmlAttributeFlags: int
+    focusable_UxmlAttributeFlags: int
+    languageDirection_UxmlAttributeFlags: int
+    dataSourceUnityObject_UxmlAttributeFlags: int
+    dataSourcePathString_UxmlAttributeFlags: int
+    dataSourceTypeString_UxmlAttributeFlags: int
+    bindings_UxmlAttributeFlags: int
+    iconUrl: str
+    isSelected: int
+    canBeHovered: int
+    iconUrl_UxmlAttributeFlags: int
+    isSelected_UxmlAttributeFlags: int
+    canBeHovered_UxmlAttributeFlags: int
     references: ManagedReferencesRegistry
 
 class HueSaturationGradient_UxmlSerializedData:

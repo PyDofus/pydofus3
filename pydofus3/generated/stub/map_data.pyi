@@ -1,7 +1,7 @@
 from UnityPy.classes.PPtr import PPtr
 from UnityPy.classes.generated import MonoBehaviour
 from typing import Union
-from UnityPy.classes.generated import Material, ParticleSystem, Texture2D
+from UnityPy.classes.generated import Material, ParticleSystem
 
 class Ale2ConstantsOrCurves:
     constantMin: float
@@ -189,38 +189,6 @@ class ClientCellData:
     red: int
     blue: int
     arrow: int
-
-class ClientInteractiveAnimatedElementTransform:
-    gfxId: int
-    cellId: int
-    playAnimation: int
-    playAnimStatic: int
-    playerGuildCustomisable: int
-    isStagingTarget: int
-    stagingId: str
-    minDelay: int
-    maxDelay: int
-    requiresServerUpdate: int
-    transform: Transform2D
-    type: int
-    color: AleColor
-    innerCellRenderOrder: int
-    displayBehaviour: int
-    m_interactionId: int
-    shaderOutlineParameters: managedReference[ShaderOutlineParameters]
-    references: ManagedReferencesRegistry
-
-class ClientInteractiveElementTransform:
-    gfxId: int
-    color: AleColor
-    transform: Transform2D
-    materialIndex: int
-    displayBehaviour: int
-    cellId: int
-    innerCellRenderOrder: int
-    m_interactionId: int
-    shaderOutlineParameters: managedReference[ShaderOutlineParameters]
-    references: ManagedReferencesRegistry
 
 class ClientInteractiveMapAnimatedElement:
     position: AleVector2
@@ -438,17 +406,11 @@ class MapElementsMetadata(MonoBehaviour):
     m_elementsMap: MapElementsDictionary
     references: ManagedReferencesRegistry
 
-class MapMetadata(MonoBehaviour):
-    mapData: ClientMapData
-    mapTextures: list[PPtr[Texture2D]]
-    allowMapEffects: int
-    references: ManagedReferencesRegistry
-
 class MapNoiseModifierConfiguration:
     noiseModifierParameters: NoiseModifierParameters
 
 class MapPostProcessConfiguration:
-    postProcessParameters: list[managedRefArrayItem[Union[PPBloomParameters| PPChromaticAberrationParameters| PPFilmGrainParameters]]]
+    postProcessParameters: list[managedRefArrayItem[Union[PPBloomParameters| PPChromaticAberrationParameters]]]
     references: ManagedReferencesRegistry
 
 class MapWaveConfiguration:
@@ -483,21 +445,6 @@ class PPBloomParameters:
 
 class PPChromaticAberrationParameters:
     intensity: float
-
-class PPFilmGrainParameters:
-    type: int
-    intensity: float
-    response: float
-
-class PaintShaderData:
-    shaderParameters: list[managedRefArrayItem[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]]
-    gfxId: int
-    unique: int
-    isStagingTarget: int
-    stagingId: str
-    paintSpanOrder: int
-    background: int
-    references: ManagedReferencesRegistry
 
 class ParticleEmissionBurstStagingParameters:
     burstIndex: int
@@ -618,14 +565,6 @@ class ParticlesRotationOverLifetimeParameters:
     angularVelocityX: AleMinMaxCurveHideMode
     angularVelocityY: AleMinMaxCurveHideMode
     angularVelocityZ: AleMinMaxCurveHideMode
-
-class ParticlesShaderData:
-    shaderParameters: list[managedRefArrayItem[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]]
-    gfxId: int
-    unique: int
-    isStagingTarget: int
-    stagingId: str
-    references: ManagedReferencesRegistry
 
 class ParticlesShapeParameters:
     particleSystemShape: AleParticleSystemShapeType
@@ -1017,14 +956,6 @@ class StagingShot:
 
 class StopLocalizedFmodEventsStagingEffect:
     fmodEvent: str
-
-class Transform2D:
-    m11: float
-    m12: float
-    m21: float
-    m22: float
-    m31: float
-    m32: float
 
 class TransformParameters:
     pos: AleVector3

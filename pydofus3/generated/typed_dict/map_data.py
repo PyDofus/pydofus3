@@ -14,8 +14,6 @@ class Material(TypedDict):
     pass
 class ParticleSystem(TypedDict):
     pass
-class Texture2D(TypedDict):
-    pass
 
 class Ale2ConstantsOrCurves(TypedDict):
     constantMin: float
@@ -201,36 +199,6 @@ class ClientCellData(TypedDict):
     red: int
     blue: int
     arrow: int
-
-class ClientInteractiveAnimatedElementTransform(TypedDict):
-    gfxId: int
-    cellId: int
-    playAnimation: int
-    playAnimStatic: int
-    playerGuildCustomisable: int
-    isStagingTarget: int
-    stagingId: str
-    minDelay: int
-    maxDelay: int
-    requiresServerUpdate: int
-    transform: Transform2D
-    type: int
-    color: AleColor
-    innerCellRenderOrder: int
-    displayBehaviour: int
-    m_interactionId: int
-    shaderOutlineParameters: ShaderOutlineParameters
-
-class ClientInteractiveElementTransform(TypedDict):
-    gfxId: int
-    color: AleColor
-    transform: Transform2D
-    materialIndex: int
-    displayBehaviour: int
-    cellId: int
-    innerCellRenderOrder: int
-    m_interactionId: int
-    shaderOutlineParameters: ShaderOutlineParameters
 
 class ClientInteractiveMapAnimatedElement(TypedDict):
     position: AleVector2
@@ -442,16 +410,11 @@ type MapElementsDictionary = dict[int, managedRefArrayItem]
 class MapElementsMetadata(MonoBehaviour):
     m_elementsMap: MapElementsDictionary
 
-class MapMetadata(MonoBehaviour):
-    mapData: ClientMapData
-    mapTextures: list[PPtr]
-    allowMapEffects: int
-
 class MapNoiseModifierConfiguration(TypedDict):
     noiseModifierParameters: NoiseModifierParameters
 
 class MapPostProcessConfiguration(TypedDict):
-    postProcessParameters: list[Union[PPBloomParameters| PPChromaticAberrationParameters| PPFilmGrainParameters]]
+    postProcessParameters: list[Union[PPBloomParameters| PPChromaticAberrationParameters]]
 
 class MapWaveConfiguration(TypedDict):
     waveParameters: WaveParameters
@@ -485,20 +448,6 @@ class PPBloomParameters(TypedDict):
 
 class PPChromaticAberrationParameters(TypedDict):
     intensity: float
-
-class PPFilmGrainParameters(TypedDict):
-    type: int
-    intensity: float
-    response: float
-
-class PaintShaderData(TypedDict):
-    shaderParameters: list[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]
-    gfxId: int
-    unique: int
-    isStagingTarget: int
-    stagingId: str
-    paintSpanOrder: int
-    background: int
 
 class ParticleEmissionBurstStagingParameters(TypedDict):
     burstIndex: int
@@ -619,13 +568,6 @@ class ParticlesRotationOverLifetimeParameters(TypedDict):
     angularVelocityX: AleMinMaxCurveHideMode
     angularVelocityY: AleMinMaxCurveHideMode
     angularVelocityZ: AleMinMaxCurveHideMode
-
-class ParticlesShaderData(TypedDict):
-    shaderParameters: list[Union[ShaderBlendingParameters| ShaderColorAnimationParameters| ShaderCustomFramerateParameters| ShaderDepthAlphaClipParameters| ShaderDissolveParameters| ShaderDistortionParameters| ShaderEmissiveParameters| ShaderRefractionParameters| ShaderRotationParameters| ShaderScaleParameters| ShaderTextureOffsetParameters| ShaderTranslationParameters| ShaderWaveParameters| ShaderWindParameters]]
-    gfxId: int
-    unique: int
-    isStagingTarget: int
-    stagingId: str
 
 class ParticlesShapeParameters(TypedDict):
     particleSystemShape: AleParticleSystemShapeType
@@ -1015,14 +957,6 @@ class StagingShot(TypedDict):
 
 class StopLocalizedFmodEventsStagingEffect(TypedDict):
     fmodEvent: str
-
-class Transform2D(TypedDict):
-    m11: float
-    m12: float
-    m21: float
-    m22: float
-    m31: float
-    m32: float
 
 class TransformParameters(TypedDict):
     pos: AleVector3

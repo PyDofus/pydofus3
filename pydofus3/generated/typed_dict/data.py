@@ -34,6 +34,7 @@ class AchievementData(TypedDict):
     level: int
     order: int
     accountLinked: int
+    lobbyDisplay: int
     objectiveIds: list[int]
     rewardIds: list[int]
 
@@ -279,6 +280,7 @@ class AnomaliesDataRoot(MonoBehaviour):
 class AnomalyData(TypedDict):
     id: int
     monsterId: int
+    achievements: list[int]
 
 class AppearanceData(TypedDict):
     id: int
@@ -444,6 +446,7 @@ class BreedData(TypedDict):
     id: int
     shortNameId: str
     descriptionId: int
+    shortDescriptionId: int
     gameplayDescriptionId: str
     maleLook: str
     femaleLook: str
@@ -460,6 +463,22 @@ class BreedData(TypedDict):
     femaleColors: list[int]
     complexity: int
     sortIndex: int
+
+class BreedLineageData(TypedDict):
+    id: int
+    nameId: int
+    descriptionId: int
+    breedId: int
+    subEntityLook: str
+    maxLevel: int
+    xpFormulaId: int
+    illustrationId: int
+    gfxId: int
+    indexedColors: str
+    lineageSpells: list[LineageSpellData]
+
+class BreedLineagesDataRoot(MonoBehaviour):
+    objectsById: dict[str, BreedLineageData]
 
 class BreedRoleByBreedData(TypedDict):
     roleId: int
@@ -572,6 +591,7 @@ class ChoiceOptionData(TypedDict):
     descriptionId: int
     rewardType: int
     rewardValue: str
+    alreadyVisible: int
     gfxId: int
 
 class ChoicesDataRoot(MonoBehaviour):
@@ -1223,6 +1243,17 @@ class GuildTagTypesDataRoot(MonoBehaviour):
 class GuildTagsDataRoot(MonoBehaviour):
     objectsById: dict[str, GuildTagData]
 
+class HaloShapeData(TypedDict):
+    id: int
+    shapeOrder: int
+    haloId: int
+    effectShape: str
+    color: int
+    markId: int
+
+class HaloShapeDataRoot(MonoBehaviour):
+    objectsById: dict[str, HaloShapeData]
+
 class HavenbagFurnitureData(TypedDict):
     typeId: int
     themeId: int
@@ -1487,6 +1518,14 @@ class LegendaryTreasureHuntData(TypedDict):
 class LegendaryTreasureHuntsDataRoot(MonoBehaviour):
     objectsById: dict[str, LegendaryTreasureHuntData]
 
+class LineageSpellData(TypedDict):
+    id: int
+    lineageId: int
+    lineageLevel: int
+    spellLevelId: int
+    keptForHigherLevels: int
+    isStartingSpell: int
+
 class LivingObjectSkinMoodsData(TypedDict):
     skinId: int
     moods: list[WrappedIntList]
@@ -1563,6 +1602,29 @@ class MapsCoordinatesDataRoot(MonoBehaviour):
 
 class MapsInformationDataRoot(MonoBehaviour):
     objectsById: dict[str, MapInformationData]
+
+class MarkData(TypedDict):
+    id: int
+    color: str
+    gfxID: int
+    directionId: int
+    strataId: int
+    offsetX: int
+    offsetY: int
+    scaleX: float
+    scaleY: float
+    rotation: int
+    frameOffset: int
+    vfxId: int
+    vfxDuration: int
+    vfxColors: str
+    startVfxId: int
+    endVfxId: int
+    materialName: str
+    tooltipTextureName: str
+
+class MarksDataRoot(MonoBehaviour):
+    objectsById: dict[str, MarkData]
 
 type MetadataDictionaryContainer = dict[int, managedRefArrayItem]
 
@@ -2350,16 +2412,8 @@ class ServerPopulationData(TypedDict):
 class ServerPopulationsDataRoot(MonoBehaviour):
     objectsById: dict[str, ServerPopulationData]
 
-class ServerSeasonData(TypedDict):
-    uid: int
-    nameId: str
-    beginning: float
-    closure: float
-    resetDate: float
-    flagObjectId: int
-
 class ServerSeasonsDataRoot(MonoBehaviour):
-    objectsById: dict[str, ServerSeasonData]
+    objectsById: dict[str, Any]
 
 class ServerValueData(TypedDict):
     id: int
@@ -2501,6 +2555,7 @@ class SpellBombWallData(TypedDict):
     id: int
     spellId: int
     color: int
+    markId: int
     linear: int
     minHop: int
     maxHop: int
@@ -2528,6 +2583,18 @@ class SpellData(TypedDict):
     criticalHitBoundScriptUsageData: list[BoundScriptUsageData]
     basePreviewZoneDescr: SpellZoneDescr
     adminName: str
+
+class SpellHaloData(TypedDict):
+    id: int
+    spellGradeByPlayerLevel: int
+    shapesIds: list[int]
+    entrySpellId: int
+    entrySpellDefaultGrade: int
+    exitSpellId: int
+    exitSpellDefaultGrade: int
+
+class SpellHaloDataRoot(MonoBehaviour):
+    objectsById: dict[str, SpellHaloData]
 
 class SpellLevelData(TypedDict):
     m_flags: int
@@ -2666,6 +2733,7 @@ class SubAreaData(TypedDict):
     associatedZaapMapId: int
     neighbors: list[int]
     dungeonId: int
+    isEvolutive: int
 
 class SubAreasDataRoot(MonoBehaviour):
     objectsById: dict[str, SubAreaData]
